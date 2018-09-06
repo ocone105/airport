@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<
 	<div class="content">
 		<div class="container-fluid">
 			<div class="row">
@@ -22,8 +21,8 @@
 								<div class="row">
 									<div class="col-md-4">
 										<div class="form-group">
-											<label class="bmd-label-floating">사원ID</label>
-											<input type="text" class="form-control">
+											<label class="bmd-label-floating">사원ID</label> <input
+												type="text" class="form-control">
 										</div>
 									</div>
 									<div class="col-md-5">
@@ -34,26 +33,26 @@
 									</div>
 									<div class="col-md-8">
 										<div class="form-group">
-											<label class="bmd-label-floating">이름</label>
-											<input type="text" class="form-control">
+											<label class="bmd-label-floating">이름</label> <input
+												type="text" class="form-control">
 										</div>
 									</div>
 									<div class="col-md-5">
 										<div class="form-group">
-											<label class="bmd-label-floating">생일</label>
-											<input type="text" class="form-control">
+											<label class="bmd-label-floating">생일</label> <input
+												type="text" class="form-control">
 										</div>
 									</div>
 									<div class="col-md-5">
 										<div class="form-group">
-											<label class="bmd-label-floating">성별</label>
-											<input type="text" class="form-control">
+											<label class="bmd-label-floating">성별</label> <input
+												type="text" class="form-control">
 										</div>
 									</div>
 									<div class="col-md-10">
 										<div class="form-group">
-											<label class="bmd-label-floating">전화번호</label>
-											<input type="text" class="form-control">
+											<label class="bmd-label-floating">전화번호</label> <input
+												type="text" class="form-control">
 										</div>
 									</div>
 									<div class="col-md-8">
@@ -79,5 +78,6 @@
 				</div>
 			</div>
 		</div>
+	</div>
 </body>
 </html>

@@ -24,7 +24,7 @@
 		data-image="../assets/img/sidebar-1.jpg">
 		<div class="logo">
 			<a href="http://www.creative-tim.com" class="simple-text logo-normal">
-				ERP </a>
+				<i class="material-icons">flight</i>ERP </a>
 		</div>
 		<div class="sidebar-wrapper">
 			<ul class="nav">
@@ -71,12 +71,12 @@
 						<ul class="nav">
 							<li>
 								<a href="./pages/pricing.html"> 
-									<span>출입증허가</span>
+									<span><i class="material-icons">contact_mail</i>출입증허가</span>
 								</a>
 							</li>
 							<li>
 								<a href="./pages/pricing.html"> 
-									<span>출입증조회</span>
+									<span><i class="material-icons">recent_actors</i>출입증조회</span>
 								</a>
 							</li>
 						</ul>
@@ -92,17 +92,17 @@
 						<ul class="nav">
 							<li>
 								<a href="./pages/pricing.html"> 
-									<span>데이터조회</span>
+									<span><i class="material-icons">timeline</i>데이터조회</span>
 								</a>
 							</li>
 							<li>
 								<a href="./pages/pricing.html"> 
-									<span>인원요청</span>
+									<span><i class="material-icons">group_add</i>인원요청</span>
 								</a>
 							</li>
 							<li>
 								<a href="./pages/pricing.html"> 
-									<span>인원배치조회</span>
+									<span><i class="material-icons">group</i>인원배치조회</span>
 								</a>
 							</li>
 						</ul>
