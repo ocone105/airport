@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="erp/dashboard" extends="ERPTemplate">
+		<put-attribute name="content" 
+				value="/WEB-INF/contents/dashboard.jsp"/>
+	</definition>
+	<definition name="erp/user" extends="ERPTemplate">
+		<put-attribute name="content" 
+				value="/WEB-INF/contents/user.jsp"/>
+	</definition>
+	<definition name="erp/table" extends="ERPTemplate">
+		<put-attribute name="content" 
+				value="/WEB-INF/contents/tables.jsp"/>
+	</definition>
+	<definition name="erp/icon" extends="ERPTemplate">
+		<put-attribute name="content" 
+				value="/WEB-INF/contents/icon.jsp"/>
+	</definition>
+	<definition name="erp/notification" extends="ERPTemplate">
+		<put-attribute name="content" 
+				value="/WEB-INF/contents/notifications.jsp"/>
+	</definition>
+	<definition name="erp/map" extends="ERPTemplate">
+		<put-attribute name="content" 
+				value="/WEB-INF/contents/map.jsp"/>
+	</definition>
+	<definition name="erp/typography" extends="ERPTemplate">
+		<put-attribute name="content" 
+				value="/WEB-INF/contents/typography.jsp"/>
+	</definition>
+	<definition name="erp/upgrade" extends="ERPTemplate">
+		<put-attribute name="content" 
+				value="/WEB-INF/contents/upgrade.jsp"/>
+	</definition>
+
+</tiles-definitions>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
