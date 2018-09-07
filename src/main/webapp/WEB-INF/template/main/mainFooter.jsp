@@ -79,8 +79,9 @@
 				</div>
 			</div>
 		</div>
-		<div class="col text-center">Copyright International Airport Corporation.&copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="/airport/main/index.do" target="_blank">Airport</a>
-Template is licensed under CC BY 3.0. </div>
+		<div class="col text-center">Copyright International Airport Corporation.&copy;<script>document.write(new Date().getFullYear());</script> 
+		All rights reserved | <i class="fa fa-heart-o" aria-hidden="true"></i> This site is licensed under <a href="/airport/main/index.do" target="_blank">Airport</a>
+		</div>
 	</footer>
 
 </body>
