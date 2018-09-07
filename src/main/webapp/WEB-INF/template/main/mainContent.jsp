@@ -39,7 +39,7 @@
 
 				<!-- Slide -->
 				<div class="owl-item">
-					<div class="background_image" style="background-image:url(/airport/resources/images/home_slider.jpg)"></div>
+					<div class="background_image" style="background-image:url(/airport/resources/images/about.jpg)"></div>
 					<div class="home_slider_content_container">
 						<div class="container">
 							<div class="row">
@@ -55,7 +55,7 @@
 
 				<!-- Slide -->
 				<div class="owl-item">
-					<div class="background_image" style="background-image:url(/airport/resources/images/home_slider.jpg)"></div>
+					<div class="background_image" style="background-image:url(/airport/resources/images/news.jpg)"></div>
 					<div class="home_slider_content_container">
 						<div class="container">
 							<div class="row">
