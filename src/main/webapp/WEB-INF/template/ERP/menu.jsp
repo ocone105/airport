@@ -20,8 +20,7 @@
 </style>
 </head>
 <body>
-	<div class="sidebar" data-color="azure" data-background-color="white"
-		data-image="../assets/img/sidebar-1.jpg">
+	<div class="sidebar" data-color="azure" data-background-color="white">
 		<div class="logo">
 			<a href="http://www.creative-tim.com" class="simple-text logo-normal">
 				<i class="material-icons">flight</i>ERP </a>
@@ -39,15 +38,9 @@
 						<i class="material-icons">work</i>
 						<p>업무관리</p>
 					</a>
-				</li>
-				<!-- 인사팀이 로그인했을 경우 -->
-				<li>
-					<a class="nav-link" data-toggle="collapse" href="#insatask">
-						<i class="material-icons">work</i>
-						<p>업무관리</p>
-					</a>
-					<div class="collapse" id="insatask">
+					<div class="collapse" id="task">
 						<ul class="nav">
+							<!-- 인사팀이 로그인했을 경우 -->
 							<li>
 								<a href="/airport/erp/empinsert.do"> 
 									<span><i class="material-icons">person</i>사원등록</span>
@@ -58,58 +51,41 @@
 									<span><i class="material-icons">how_to_reg</i>사원조회</span>
 								</a>
 							</li>
-						</ul>
-					</div>
-				</li>
-				<!-- 보안팀이 로그인했을 경우 -->
-				<li>
-					<a class="nav-link" data-toggle="collapse" href="#securitytask">
-						<i class="material-icons">work</i>
-						<p>업무관리</p>
-					</a>
-					<div class="collapse" id="securitytask">
-						<ul class="nav">
+							
+							<!-- 보안팀이 로그인한 경우 -->
 							<li>
-								<a href="./pages/pricing.html"> 
+								<a href="/airport/erp/permissionlist.do"> 
 									<span><i class="material-icons">contact_mail</i>출입증허가</span>
 								</a>
 							</li>
 							<li>
-								<a href="./pages/pricing.html"> 
+								<a href="/airport/erp/passlist.do"> 
 									<span><i class="material-icons">recent_actors</i>출입증조회</span>
 								</a>
 							</li>
-						</ul>
-					</div>
-				</li>
-				<!-- 여객시설팀이 로그인했을 경우 -->
-				<li>
-					<a class="nav-link" data-toggle="collapse" href="#facilitytask">
-						<i class="material-icons">work</i>
-						<p>업무관리</p>
-					</a>
-					<div class="collapse" id="facilitytask">
-						<ul class="nav">
+								
+							<!-- 여객시설팀이 로그인했을 경우 -->
 							<li>
-								<a href="./pages/pricing.html"> 
+								<a href="/airport/erp/datalist.do"> 
 									<span><i class="material-icons">timeline</i>데이터조회</span>
 								</a>
 							</li>
 							<li>
-								<a href="./pages/pricing.html"> 
+								<a href="/airport/erp/pfrequest.do"> 
 									<span><i class="material-icons">group_add</i>인원요청</span>
 								</a>
 							</li>
 							<li>
-								<a href="./pages/pricing.html"> 
+								<a href="/airport/erp/pflist.do"> 
 									<span><i class="material-icons">group</i>인원배치조회</span>
 								</a>
 							</li>
 						</ul>
 					</div>
 				</li>
+	
 				<li class="nav-item ">
-					<a class="nav-link" href="/airport/erp/dashboard.do"> 
+					<a class="nav-link" href="/airport/erp/pass.do"> 
 						<i class="material-icons">picture_in_picture</i>
 						<p>출입증신청</p>
 					</a>
@@ -122,12 +98,12 @@
 					<div class="collapse" id="board">
 						<ul class="nav">
 							<li>
-								<a href="./pages/pricing.html"> 
+								<a href="/airport/erp/noticelist.do"> 
 									<span><i class="material-icons">notifications</i>공지사항</span>
 								</a>
 							</li>
 							<li>
-								<a href="./pages/pricing.html"> 
+								<a href="/airport/erp/anonymouslist.do"> 
 									<span><i class="material-icons">face</i>익명게시판</span>
 								</a>
 							</li>

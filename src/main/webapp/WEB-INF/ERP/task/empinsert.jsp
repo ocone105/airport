@@ -45,8 +45,12 @@
 									</div>
 									<div class="col-md-5">
 										<div class="form-group">
-											<label class="bmd-label-floating">성별</label> <input
-												type="text" class="form-control">
+											<label class="bmd-label-floating">성별</label> 
+											<div class="radio">
+												<label> <input type="radio" name="me_gender" value="male" checked/>남자</label> 
+												<label> <input type="radio" name="me_gender" value="female" />여자
+												</label>
+											</div>
 										</div>
 									</div>
 									<div class="col-md-10">
