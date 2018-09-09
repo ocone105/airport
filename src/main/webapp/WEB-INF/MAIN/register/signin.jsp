@@ -173,6 +173,7 @@
 										</div>
 
 										<button type="submit" class="btn">Sign up 회원가입</button>
+										<a href="/airport/main/privacy.do">개인정보처리방침</a>
 									</form>
 								</div>
 							</div>
