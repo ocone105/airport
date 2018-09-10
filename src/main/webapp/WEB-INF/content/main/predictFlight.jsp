@@ -15,7 +15,6 @@
 	</div>
 
 	<!-- Search -->
-
 	<div class="home_search">
 		<div class="container">
 			<div class="row">
@@ -40,11 +39,71 @@
 	</div>
 
 	<!-- News -->
-
 	<div class="news">
 		<div class="container">
 			<div class="row">
 
+			<!-- Categories -->
+			<div class="col-lg-12">
+						<div class="categories">
+							<div class="sidebar_title">Categories</div>
+							<div class="sidebar_list">
+								<ul>
+									<li><a href="#"><div class="d-flex flex-row align-items-start justify-content-start">Travels<span class="ml-auto">(09)</span></div></a></li>
+									<li><a href="#"><div class="d-flex flex-row align-items-start justify-content-start">Organization<span class="ml-auto">(12)</span></div></a></li>
+									<li><a href="#"><div class="d-flex flex-row align-items-start justify-content-start">Tips & Tricks<span class="ml-auto">(16)</span></div></a></li>
+									<li><a href="#"><div class="d-flex flex-row align-items-start justify-content-start">Uncategorized<span class="ml-auto">(22)</span></div></a></li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- Latest News -->
+						<div class="latest">
+							<div class="sidebar_title">Latest News</div>
+							<div class="latest_container">
+								
+								<!-- Latest Post -->
+								<div class="latest_post d-flex flex-row align-items-start justify-content-start">
+									<div class="latest_post_image"><img src="/airport/resources/images/latest_1.jpg" alt=""></div>
+									<div class="latest_post_content">
+										<div class="latest_post_date d-flex flex-row align-items-end justify-content-start">
+											<div class="latest_post_day">02</div>
+											<div class="latest_post_month">june</div>
+										</div>
+										<div class="latest_post_title"><a href="#">Best tips to travel light</a></div>
+										<div class="latest_post_text"><p>Pellentesque sit amet..Pellentesque sit amet..Pellentesque sit amet..Pellentesque sit amet..</p></div>
+									</div>
+									<div class="test">
+										TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST
+									</div>
+								</div>
+
+								<!-- Latest Post -->
+								<div class="latest_post d-flex flex-row align-items-start justify-content-start">
+									<div class="latest_post_image"><img src="/airport/resources/images/latest_2.jpg" alt=""></div>
+									<div class="latest_post_content">
+										<div class="latest_post_date d-flex flex-row align-items-end justify-content-start">
+											<div class="latest_post_day">02</div>
+											<div class="latest_post_month">june</div>
+										</div>
+										<div class="latest_post_title"><a href="#">Best tips to travel light</a></div>
+										<div class="latest_post_text"><p>Pellentesque sit amet..</p></div>
+									</div>
+								</div>
+
+								<!-- Latest Post -->
+								<div class="latest_post d-flex flex-row align-items-start justify-content-start">
+									<div class="latest_post_image"><img src="/airport/resources/images/latest_3.jpg" alt=""></div>
+									<div class="latest_post_content">
+										<div class="latest_post_date d-flex flex-row align-items-end justify-content-start">
+											<div class="latest_post_day">02</div>
+											<div class="latest_post_month">june</div>
+										</div>
+										<div class="latest_post_title"><a href="#">Best tips to travel light</a></div>
+										<div class="latest_post_text"><p>Pellentesque sit amet..</p></div>
+									</div>
+								</div>
+						</div>
 				<!-- News Container -->
 				<div class="col-lg-8">
 					<div class="news_container">
@@ -130,62 +189,7 @@
 				<div class="col-lg-4">
 					<div class="news_sidebar">
 
-						<!-- Categories -->
-						<div class="categories">
-							<div class="sidebar_title">Categories</div>
-							<div class="sidebar_list">
-								<ul>
-									<li><a href="#"><div class="d-flex flex-row align-items-start justify-content-start">Travels<span class="ml-auto">(09)</span></div></a></li>
-									<li><a href="#"><div class="d-flex flex-row align-items-start justify-content-start">Organization<span class="ml-auto">(12)</span></div></a></li>
-									<li><a href="#"><div class="d-flex flex-row align-items-start justify-content-start">Tips & Tricks<span class="ml-auto">(16)</span></div></a></li>
-									<li><a href="#"><div class="d-flex flex-row align-items-start justify-content-start">Uncategorized<span class="ml-auto">(22)</span></div></a></li>
-								</ul>
-							</div>
-						</div>
-
-						<!-- Latest News -->
-						<div class="latest">
-							<div class="sidebar_title">Latest News</div>
-							<div class="latest_container">
-								
-								<!-- Latest Post -->
-								<div class="latest_post d-flex flex-row align-items-start justify-content-start">
-									<div class="latest_post_image"><img src="/airport/resources/images/latest_1.jpg" alt=""></div>
-									<div class="latest_post_content">
-										<div class="latest_post_date d-flex flex-row align-items-end justify-content-start">
-											<div class="latest_post_day">02</div>
-											<div class="latest_post_month">june</div>
-										</div>
-										<div class="latest_post_title"><a href="#">Best tips to travel light</a></div>
-										<div class="latest_post_text"><p>Pellentesque sit amet..</p></div>
-									</div>
-								</div>
-
-								<!-- Latest Post -->
-								<div class="latest_post d-flex flex-row align-items-start justify-content-start">
-									<div class="latest_post_image"><img src="/airport/resources/images/latest_2.jpg" alt=""></div>
-									<div class="latest_post_content">
-										<div class="latest_post_date d-flex flex-row align-items-end justify-content-start">
-											<div class="latest_post_day">02</div>
-											<div class="latest_post_month">june</div>
-										</div>
-										<div class="latest_post_title"><a href="#">Best tips to travel light</a></div>
-										<div class="latest_post_text"><p>Pellentesque sit amet..</p></div>
-									</div>
-								</div>
-
-								<!-- Latest Post -->
-								<div class="latest_post d-flex flex-row align-items-start justify-content-start">
-									<div class="latest_post_image"><img src="/airport/resources/images/latest_3.jpg" alt=""></div>
-									<div class="latest_post_content">
-										<div class="latest_post_date d-flex flex-row align-items-end justify-content-start">
-											<div class="latest_post_day">02</div>
-											<div class="latest_post_month">june</div>
-										</div>
-										<div class="latest_post_title"><a href="#">Best tips to travel light</a></div>
-										<div class="latest_post_text"><p>Pellentesque sit amet..</p></div>
-									</div>
-								</div>
+						
 
 							</div>
 						</div>
