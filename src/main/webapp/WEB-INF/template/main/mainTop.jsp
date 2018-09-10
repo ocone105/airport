@@ -20,7 +20,7 @@
 									<li><a href="/airport/main/passenger.do">예상승객</a></li>
 									<li><a href="/airport/main/flight.do">비정상운항</a></li>
 									<li><a href="/airport/main/myservice.do">My Service</a></li>
-									<li><a href="#">Sign in</a></li>
+									<li><a href="/airport/main/signin.do">Sign in</a></li>
 								</ul>
 							</nav>
 
