@@ -82,7 +82,6 @@
 	</div>
 
 	<!-- Search -->
-
 	<div class="home_search">
 		<div class="container">
 			<div class="row">
