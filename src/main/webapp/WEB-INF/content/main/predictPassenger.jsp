@@ -6,14 +6,12 @@
 	<title>Insert title here</title>
 	<link rel="stylesheet" type="text/css" href="/airport/resources/styles/news.css">
 	<link rel="stylesheet" type="text/css" href="/airport/resources/styles/news_responsive.css">
-	
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a278f885094d42e1e7475ea96828d5a1"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ebf7b2f2c5987b5f48041fd7c1490397"></script>
+	<!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a278f885094d42e1e7475ea96828d5a1"></script> -->
 </head>
 <body>
 	<!-- Home -->
-
 	<div class="home">
-		
 		<!-- Home Slider -->
 		<div class="home_slider_container">
 			<div class="owl-carousel owl-theme home_slider">
