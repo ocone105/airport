@@ -6,6 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class DeptinsertController {
 	@RequestMapping("/erp/deptlist.do")
 	public String main(){
-		return "erp/deptlist";
-	}
+		return "erp/deptlist"; 
+	} 
 }

@@ -6,210 +6,221 @@
 	<title>Insert title here</title>
 	<link rel="stylesheet" type="text/css" href="/airport/resources/styles/news.css">
 	<link rel="stylesheet" type="text/css" href="/airport/resources/styles/news_responsive.css">
+	
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a278f885094d42e1e7475ea96828d5a1"></script>
 </head>
 <body>
 	<!-- Home -->
 
 	<div class="home">
-		<div class="background_image" style="background-image:url(/airport/resources/images/news.jpg)"></div>
-	</div>
-
-	<!-- Search -->
-
-	<div class="home_search">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="home_search_container">
-						<div class="home_search_title">Search for your trip</div>
-						<div class="home_search_content">
-							<form action="#" class="home_search_form" id="home_search_form">
-								<div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
-									<input type="text" class="search_input search_input_1" placeholder="City" required="required">
-									<input type="text" class="search_input search_input_2" placeholder="Departure" required="required">
-									<input type="text" class="search_input search_input_3" placeholder="Arrival" required="required">
-									<input type="text" class="search_input search_input_4" placeholder="Budget" required="required">
-									<button class="home_search_button">search</button>
+		
+		<!-- Home Slider -->
+		<div class="home_slider_container">
+			<div class="owl-carousel owl-theme home_slider">
+				
+				<!-- Slide -->
+				<div class="owl-item">
+					<div class="background_image" style="background-image:url(/airport/resources/images/home_slider.jpg)"></div>
+					<div class="home_slider_content_container">
+						<div class="container">
+							<div class="row">
+								<div class="col">
+									<div class="home_slider_content">
+										<div class="home_title"><h2>Let us take you away</h2></div>
+									</div>
 								</div>
-							</form>
+							</div>
 						</div>
 					</div>
 				</div>
+
+				<!-- Slide -->
+				<div class="owl-item">
+					<div class="background_image" style="background-image:url(/airport/resources/images/about.jpg)"></div>
+					<div class="home_slider_content_container">
+						<div class="container">
+							<div class="row">
+								<div class="col">
+									<div class="home_slider_content">
+										<div class="home_title"><h2>Let us take you away</h2></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Slide -->
+				<div class="owl-item">
+					<div class="background_image" style="background-image:url(/airport/resources/images/news.jpg)"></div>
+					<div class="home_slider_content_container">
+						<div class="container">
+							<div class="row">
+								<div class="col">
+									<div class="home_slider_content">
+										<div class="home_title"><h2>Let us take you away</h2></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="home_page_nav">
+				<ul class="d-flex flex-column align-items-end justify-content-end">
+					<li><a href="#" data-scroll-to="#destinations">Offers<span>01</span></a></li>
+					<li><a href="#" data-scroll-to="#testimonials">Testimonials<span>02</span></a></li>
+					<li><a href="#" data-scroll-to="#news">Latest<span>03</span></a></li>
+				</ul>
 			</div>
 		</div>
 	</div>
-
+	
+	
 	<!-- News -->
 
 	<div class="news">
 		<div class="container">
 			<div class="row">
 
-				<!-- News Container -->
-				<div class="col-lg-8">
-					<div class="news_container">
-						
-						<!-- News Post -->
-						<div class="news_post">
-							<div class="news_post_image"><img src="/airport/resources/images/news_4.jpg" alt=""></div>
-							<div class="news_post_content">
-								<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
-									<div>02</div>
-									<div>june</div>
+				<div class="card">
+					<div class="card-body">
+							<nav>
+								<div class="nav nav-tabs" id="nav-tab" role="tablist">
+									<a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+										aria-controls="nav-home" aria-selected="true">출국장</a> <a
+										class="nav-item nav-link" id="nav-profile-tab"
+										data-toggle="tab" href="#nav-profile" role="tab"
+										aria-controls="nav-profile" aria-selected="false">입국장</a>
 								</div>
-								<div class="news_post_title"><a href="#">Best tips to travel light</a></div>
-								<div class="news_post_category">
-									<ul>
-										<li><a href="#">lifestyle & travel</a></li>
-									</ul>
+							</nav>
+							<div class="tab-content pl-3 pt-2" id="nav-tabContent">
+								<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+										<div id="map" style="width: 1005px; height: 700px; margin-top: 100px"></div>
 								</div>
-								<div class="news_post_text">
-									<p>Pellentesque sit amet elementum ccumsan sit amet mattis eget, tristique at leo. Vivamus massa.Tempor massa et laoreet. Pellentesque sit amet elementum ccumsan sit amet mattis eget, tristique at leo. Vivamus massa.Tempor massa et laoreet.</p>
+								<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+									<div id="map" style="width: 1005px; height: 700px; margin-top: 100px"></div>
 								</div>
-								<div class="news_post_link"><a href="#">Read More</a></div>
 							</div>
-						</div>
 
-						<!-- News Post -->
-						<div class="news_post">
-							<div class="news_post_image"><img src="/airport/resources/images/news_5.jpg" alt=""></div>
-							<div class="news_post_content">
-								<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
-									<div>02</div>
-									<div>june</div>
-								</div>
-								<div class="news_post_title"><a href="#">10 Amazing Destination for you this summer</a></div>
-								<div class="news_post_category">
-									<ul>
-										<li><a href="#">lifestyle & travel</a></li>
-									</ul>
-								</div>
-								<div class="news_post_text">
-									<p>Pellentesque sit amet elementum ccumsan sit amet mattis eget, tristique at leo. Vivamus massa.Tempor massa et laoreet. Pellentesque sit amet elementum ccumsan sit amet mattis eget, tristique at leo. Vivamus massa.Tempor massa et laoreet.</p>
-								</div>
-								<div class="news_post_link"><a href="#">Read More</a></div>
-							</div>
-						</div>
-
-						<!-- News Post -->
-						<div class="news_post">
-							<div class="news_post_image"><img src="/airport/resources/images/news_6.jpg" alt=""></div>
-							<div class="news_post_content">
-								<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
-									<div>02</div>
-									<div>june</div>
-								</div>
-								<div class="news_post_title"><a href="#">How to organize your perfect vacation</a></div>
-								<div class="news_post_category">
-									<ul>
-										<li><a href="#">lifestyle & travel</a></li>
-									</ul>
-								</div>
-								<div class="news_post_text">
-									<p>Pellentesque sit amet elementum ccumsan sit amet mattis eget, tristique at leo. Vivamus massa.Tempor massa et laoreet. Pellentesque sit amet elementum ccumsan sit amet mattis eget, tristique at leo. Vivamus massa.Tempor massa et laoreet.</p>
-								</div>
-								<div class="news_post_link"><a href="#">Read More</a></div>
-							</div>
-						</div>
-
-					</div>
-
-					<!-- Pagination -->
-					<div class="pagination">
-						<ul class="d-flex flex-row align-items-start justify-content-start">
-							<li class="active"><a href="#">1.</a></li>
-							<li><a href="#">2.</a></li>
-							<li><a href="#">3.</a></li>
-							<li><a href="#">4.</a></li>
-							<li><a href="#">5.</a></li>
-						</ul>
 					</div>
 				</div>
+				
+								<!-- Map -->
+				
+									<script>
+										var mapContainer = document
+												.getElementById('map'), // 지도를 표시할 div  
+										mapOption = {
+											center : new daum.maps.LatLng(
+													37.448180, 126.451617), // 지도의 중심좌표
+											level : 3
+										// 지도의 확대 레벨
+										};
 
-				<!-- News Sidebar -->
-				<div class="col-lg-4">
-					<div class="news_sidebar">
+										var map = new daum.maps.Map(
+												mapContainer, mapOption); // 지도를 생성합니다
 
-						<!-- Categories -->
-						<div class="categories">
-							<div class="sidebar_title">Categories</div>
-							<div class="sidebar_list">
-								<ul>
-									<li><a href="#"><div class="d-flex flex-row align-items-start justify-content-start">Travels<span class="ml-auto">(09)</span></div></a></li>
-									<li><a href="#"><div class="d-flex flex-row align-items-start justify-content-start">Organization<span class="ml-auto">(12)</span></div></a></li>
-									<li><a href="#"><div class="d-flex flex-row align-items-start justify-content-start">Tips & Tricks<span class="ml-auto">(16)</span></div></a></li>
-									<li><a href="#"><div class="d-flex flex-row align-items-start justify-content-start">Uncategorized<span class="ml-auto">(22)</span></div></a></li>
-								</ul>
-							</div>
-						</div>
+										// 마커를 표시할 위치와 title 객체 배열입니다 
+										var positions = [
+												{
+													content : '<div>GATE1<div>',
+													latlng : new daum.maps.LatLng(
+															37.450347,
+															126.454258)
+												},
+												{
+													content : '<div>GATE2<div>',
+													latlng : new daum.maps.LatLng(
+															37.450280,
+															126.453037)
+												},
+												{
+													content : '<div>GATE3<div>',
+													latlng : new daum.maps.LatLng(
+															37.449976,
+															126.451739)
+												},
+												{
+													content : '<div>GATE4<div>',
+													latlng : new daum.maps.LatLng(
+															37.448835,
+															126.449808)
+												},
+												{
+													content : '<div>GATE5<div>',
+													latlng : new daum.maps.LatLng(
+															37.448017,
+															126.448981)
+												},
+												{
+													content : '<div>GATE6<div>',
+													latlng : new daum.maps.LatLng(
+															37.447149,
+															126.448445)
+												} ];
 
-						<!-- Latest News -->
-						<div class="latest">
-							<div class="sidebar_title">Latest News</div>
-							<div class="latest_container">
-								
-								<!-- Latest Post -->
-								<div class="latest_post d-flex flex-row align-items-start justify-content-start">
-									<div class="latest_post_image"><img src="/airport/resources/images/latest_1.jpg" alt=""></div>
-									<div class="latest_post_content">
-										<div class="latest_post_date d-flex flex-row align-items-end justify-content-start">
-											<div class="latest_post_day">02</div>
-											<div class="latest_post_month">june</div>
-										</div>
-										<div class="latest_post_title"><a href="#">Best tips to travel light</a></div>
-										<div class="latest_post_text"><p>Pellentesque sit amet..</p></div>
-									</div>
-								</div>
+										// 마커 이미지의 이미지 주소입니다
+										var imageSrc = "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
 
-								<!-- Latest Post -->
-								<div class="latest_post d-flex flex-row align-items-start justify-content-start">
-									<div class="latest_post_image"><img src="/airport/resources/images/latest_2.jpg" alt=""></div>
-									<div class="latest_post_content">
-										<div class="latest_post_date d-flex flex-row align-items-end justify-content-start">
-											<div class="latest_post_day">02</div>
-											<div class="latest_post_month">june</div>
-										</div>
-										<div class="latest_post_title"><a href="#">Best tips to travel light</a></div>
-										<div class="latest_post_text"><p>Pellentesque sit amet..</p></div>
-									</div>
-								</div>
+										for (var i = 0; i < positions.length; i++) {
 
-								<!-- Latest Post -->
-								<div class="latest_post d-flex flex-row align-items-start justify-content-start">
-									<div class="latest_post_image"><img src="/airport/resources/images/latest_3.jpg" alt=""></div>
-									<div class="latest_post_content">
-										<div class="latest_post_date d-flex flex-row align-items-end justify-content-start">
-											<div class="latest_post_day">02</div>
-											<div class="latest_post_month">june</div>
-										</div>
-										<div class="latest_post_title"><a href="#">Best tips to travel light</a></div>
-										<div class="latest_post_text"><p>Pellentesque sit amet..</p></div>
-									</div>
-								</div>
+											// 마커 이미지의 이미지 크기 입니다
+											var imageSize = new daum.maps.Size(
+													24, 35);
 
-							</div>
-						</div>
+											// 마커 이미지를 생성합니다    
+											var markerImage = new daum.maps.MarkerImage(
+													imageSrc, imageSize);
 
-						<div class="travello">
-							<div class="background_image" style="background-image:url(/airport/resources/images/travello.jpg)"></div>
-							<div class="travello_content">
-								<div class="travello_content_inner">
-									<div></div>
-									<div></div>
-								</div>
-							</div>
-							<div class="travello_container">
-								<a href="#">
-									<div class="d-flex flex-column align-items-center justify-content-end">
-										<span class="travello_title">Get a 20% Discount</span>
-										<span class="travello_subtitle">Buy Your Vacation Online Now</span>
-									</div>
-								</a>
-							</div>
-						</div>
-						
-					</div>
-				</div>
+											// 마커를 생성합니다
+											var marker = new daum.maps.Marker({
+												map : map, // 마커를 표시할 지도
+												position : positions[i].latlng, // 마커를 표시할 위치
+												title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+												image : markerImage
+											// 마커 이미지 
+											});
+
+											var infowindow = new daum.maps.InfoWindow(
+													{
+														content : positions[i].content
+													// 인포윈도우에 표시할 내용
+													});
+											daum.maps.event
+													.addListener(marker,
+															'mouseover',
+															makeOverListener(
+																	map,
+																	marker,
+																	infowindow));
+											daum.maps.event
+													.addListener(
+															marker,
+															'mouseout',
+															makeOutListener(infowindow));
+										}
+
+										// 인포윈도우를 표시하는 클로저를 만드는 함수입니다 
+										function makeOverListener(map, marker,
+												infowindow) {
+											return function() {
+												infowindow.open(map, marker);
+											};
+										}
+
+										// 인포윈도우를 닫는 클로저를 만드는 함수입니다 
+										function makeOutListener(infowindow) {
+											return function() {
+												infowindow.close();
+											};
+										}
+									</script>
+									
+									<!-- End Map -->
+
 			</div>
 		</div>
 	</div>

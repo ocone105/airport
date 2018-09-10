@@ -22,8 +22,8 @@
 <body>
 	<div class="sidebar" data-color="azure" data-background-color="white">
 		<div class="logo">
-			<a href="http://www.creative-tim.com" class="simple-text logo-normal">
-				<i class="material-icons">flight</i>ERP </a>
+			<a href="/airport/erp/index.do" class="simple-text logo-normal">
+				<i class="material-icons">flight</i>ERP</a>
 		</div>
 		<div class="sidebar-wrapper">
 			<ul class="nav">
@@ -111,7 +111,7 @@
 					</div>
 				</li>
 				
-				<li class="nav-item "><a class="nav-link"
+				<!-- <li class="nav-item "><a class="nav-link"
 					href="/airport/erp/dashboard.do"> <i class="material-icons">dashboard</i>
 						<p>Dashboard</p>
 				</a></li>
@@ -122,7 +122,7 @@
 				<li class="nav-item "><a class="nav-link"
 					href="/airport/erp/table.do"> <i class="material-icons">content_paste</i>
 						<p>Table List</p>
-				</a></li>
+				</a></li> 
 				<li class="nav-item "><a class="nav-link"
 					href="/airport/erp/typography.do"> <i class="material-icons">library_books</i>
 						<p>Typography</p>
@@ -138,7 +138,7 @@
 				<li class="nav-item "><a class="nav-link"
 					href="/airport/erp/notification.do"> <i class="material-icons">notifications</i>
 						<p>Notifications</p>
-				</a></li>
+				</a></li> -->
 				<!-- <li class="nav-item active-pro "><a class="nav-link"
 					href="/airport/erp/upgrade.do"> <i class="material-icons">unarchive</i>
 						<p>Upgrade to PRO</p>

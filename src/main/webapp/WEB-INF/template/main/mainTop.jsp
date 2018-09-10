@@ -12,17 +12,17 @@
 				<div class="col">
 					<div class="header_content d-flex flex-row align-items-center justify-content-start">
 						<div class="header_content_inner d-flex flex-row align-items-end justify-content-start">
-							<div class="logo"><a href="/airport/index.do">Airport</a></div>
+							<div class="logo"><a href="/airport/main/index.do">Airport</a> | <a href="/airport/erp/index.do">Corporation</a></div>
 							<nav class="main_nav">
 								<ul class="d-flex flex-row align-items-start justify-content-start">
-									<li class="active"><a href="/airport/main/index.do">Home</a></li>
-									<li><a href="/airport/main/realtime.do">실시간상황</a></li>
+									<li class="active"><a href="/airport/main/index.do">Airport</a></li>
+									<li><a href="/airport/main/realtime.do">실시간정보</a></li>
 									<li><a href="/airport/main/passenger.do">예상승객</a></li>
-									<li><a href="/airport/main/flight.do">비정상운항</a></li>
+									<li><a href="/airport/main/flight.do">지연결항</a></li>
 									<li><a href="/airport/main/myservice.do">My Service</a></li>
+									<li><a href="#">Sign in</a></li>
 								</ul>
 							</nav>
-							<div class="header_phone ml-auto">Call us: 00-56 445 678 33</div>
 
 							<!-- Hamburger -->
 

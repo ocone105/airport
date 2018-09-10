@@ -26,8 +26,8 @@
       <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="/airport/main/index.do">공항</a>
-            <a class="navbar-brand" href="/airport/erp/index.do">공사</a>
+            <a class="navbar-brand" href="/airport/main/index.do">Airport</a>
+            <a class="navbar-brand" href="/airport/erp/index.do">Corporation</a>
           </div>
           <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
