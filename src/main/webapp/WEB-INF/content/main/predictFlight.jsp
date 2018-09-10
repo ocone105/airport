@@ -6,6 +6,10 @@
 	<title>Insert title here</title>
 	<link rel="stylesheet" type="text/css" href="/airport/resources/styles/news.css">
 	<link rel="stylesheet" type="text/css" href="/airport/resources/styles/news_responsive.css">
+	
+	<link href="/airport/resources/list/style.css" rel="stylesheet" media="all">
+	<link href="/airport/resources/list/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="/airport/resources/list/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
 </head>
 <body>
 	<!-- Home -->
@@ -15,19 +19,20 @@
 	</div>
 
 	<!-- Search -->
+
 	<div class="home_search">
 		<div class="container">
 			<div class="row">
 				<div class="col">
 					<div class="home_search_container">
-						<div class="home_search_title">Search for your trip</div>
+						<div class="home_search_title">Departures</div>
 						<div class="home_search_content">
 							<form action="#" class="home_search_form" id="home_search_form">
 								<div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
-									<input type="text" class="search_input search_input_1" placeholder="City" required="required">
-									<input type="text" class="search_input search_input_2" placeholder="Departure" required="required">
-									<input type="text" class="search_input search_input_3" placeholder="Arrival" required="required">
-									<input type="text" class="search_input search_input_4" placeholder="Budget" required="required">
+									<input type="text" class="search_input search_input_1" placeholder="Destination" required="required">
+									<input type="text" class="search_input search_input_2" placeholder="Airline" required="required">
+									<input type="text" class="search_input search_input_3" placeholder="Flight" required="required">
+									<input type="text" class="search_input search_input_4" placeholder="Time" required="required">
 									<button class="home_search_button">search</button>
 								</div>
 							</form>
@@ -39,184 +44,139 @@
 	</div>
 
 	<!-- News -->
+
 	<div class="news">
 		<div class="container">
-			<div class="row">
 
-			<!-- Categories -->
-			<div class="col-lg-12">
-						<div class="categories">
-							<div class="sidebar_title">Categories</div>
-							<div class="sidebar_list">
-								<ul>
-									<li><a href="#"><div class="d-flex flex-row align-items-start justify-content-start">Travels<span class="ml-auto">(09)</span></div></a></li>
-									<li><a href="#"><div class="d-flex flex-row align-items-start justify-content-start">Organization<span class="ml-auto">(12)</span></div></a></li>
-									<li><a href="#"><div class="d-flex flex-row align-items-start justify-content-start">Tips & Tricks<span class="ml-auto">(16)</span></div></a></li>
-									<li><a href="#"><div class="d-flex flex-row align-items-start justify-content-start">Uncategorized<span class="ml-auto">(22)</span></div></a></li>
-								</ul>
-							</div>
-						</div>
-
-						<!-- Latest News -->
-						<div class="latest">
-							<div class="sidebar_title">Latest News</div>
-							<div class="latest_container">
-								
-								<!-- Latest Post -->
-								<div class="latest_post d-flex flex-row align-items-start justify-content-start">
-									<div class="latest_post_image"><img src="/airport/resources/images/latest_1.jpg" alt=""></div>
-									<div class="latest_post_content">
-										<div class="latest_post_date d-flex flex-row align-items-end justify-content-start">
-											<div class="latest_post_day">02</div>
-											<div class="latest_post_month">june</div>
-										</div>
-										<div class="latest_post_title"><a href="#">Best tips to travel light</a></div>
-										<div class="latest_post_text"><p>Pellentesque sit amet..Pellentesque sit amet..Pellentesque sit amet..Pellentesque sit amet..</p></div>
-									</div>
-									<div class="test">
-										TESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTESTTEST
-									</div>
-								</div>
-
-								<!-- Latest Post -->
-								<div class="latest_post d-flex flex-row align-items-start justify-content-start">
-									<div class="latest_post_image"><img src="/airport/resources/images/latest_2.jpg" alt=""></div>
-									<div class="latest_post_content">
-										<div class="latest_post_date d-flex flex-row align-items-end justify-content-start">
-											<div class="latest_post_day">02</div>
-											<div class="latest_post_month">june</div>
-										</div>
-										<div class="latest_post_title"><a href="#">Best tips to travel light</a></div>
-										<div class="latest_post_text"><p>Pellentesque sit amet..</p></div>
-									</div>
-								</div>
-
-								<!-- Latest Post -->
-								<div class="latest_post d-flex flex-row align-items-start justify-content-start">
-									<div class="latest_post_image"><img src="/airport/resources/images/latest_3.jpg" alt=""></div>
-									<div class="latest_post_content">
-										<div class="latest_post_date d-flex flex-row align-items-end justify-content-start">
-											<div class="latest_post_day">02</div>
-											<div class="latest_post_month">june</div>
-										</div>
-										<div class="latest_post_title"><a href="#">Best tips to travel light</a></div>
-										<div class="latest_post_text"><p>Pellentesque sit amet..</p></div>
-									</div>
-								</div>
-						</div>
-				<!-- News Container -->
-				<div class="col-lg-8">
-					<div class="news_container">
-						
-						<!-- News Post -->
-						<div class="news_post">
-							<div class="news_post_image"><img src="/airport/resources/images/news_4.jpg" alt=""></div>
-							<div class="news_post_content">
-								<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
-									<div>02</div>
-									<div>june</div>
-								</div>
-								<div class="news_post_title"><a href="#">Best tips to travel light</a></div>
-								<div class="news_post_category">
-									<ul>
-										<li><a href="#">lifestyle & travel</a></li>
-									</ul>
-								</div>
-								<div class="news_post_text">
-									<p>Pellentesque sit amet elementum ccumsan sit amet mattis eget, tristique at leo. Vivamus massa.Tempor massa et laoreet. Pellentesque sit amet elementum ccumsan sit amet mattis eget, tristique at leo. Vivamus massa.Tempor massa et laoreet.</p>
-								</div>
-								<div class="news_post_link"><a href="#">Read More</a></div>
-							</div>
-						</div>
-
-						<!-- News Post -->
-						<div class="news_post">
-							<div class="news_post_image"><img src="/airport/resources/images/news_5.jpg" alt=""></div>
-							<div class="news_post_content">
-								<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
-									<div>02</div>
-									<div>june</div>
-								</div>
-								<div class="news_post_title"><a href="#">10 Amazing Destination for you this summer</a></div>
-								<div class="news_post_category">
-									<ul>
-										<li><a href="#">lifestyle & travel</a></li>
-									</ul>
-								</div>
-								<div class="news_post_text">
-									<p>Pellentesque sit amet elementum ccumsan sit amet mattis eget, tristique at leo. Vivamus massa.Tempor massa et laoreet. Pellentesque sit amet elementum ccumsan sit amet mattis eget, tristique at leo. Vivamus massa.Tempor massa et laoreet.</p>
-								</div>
-								<div class="news_post_link"><a href="#">Read More</a></div>
-							</div>
-						</div>
-
-						<!-- News Post -->
-						<div class="news_post">
-							<div class="news_post_image"><img src="/airport/resources/images/news_6.jpg" alt=""></div>
-							<div class="news_post_content">
-								<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
-									<div>02</div>
-									<div>june</div>
-								</div>
-								<div class="news_post_title"><a href="#">How to organize your perfect vacation</a></div>
-								<div class="news_post_category">
-									<ul>
-										<li><a href="#">lifestyle & travel</a></li>
-									</ul>
-								</div>
-								<div class="news_post_text">
-									<p>Pellentesque sit amet elementum ccumsan sit amet mattis eget, tristique at leo. Vivamus massa.Tempor massa et laoreet. Pellentesque sit amet elementum ccumsan sit amet mattis eget, tristique at leo. Vivamus massa.Tempor massa et laoreet.</p>
-								</div>
-								<div class="news_post_link"><a href="#">Read More</a></div>
-							</div>
-						</div>
-
+			<!-- List -->
+			<div class="user-data m-b-40">
+				<h3 class="title-3 m-b-30">
+					<i class="zmdi zmdi-airplane"></i>비정상운항
+				</h3>
+				<div class="filters m-b-45">
+					<div
+						class="rs-select2--dark rs-select2--md m-r-10 rs-select2--border">
+						<select class="js-select2" name="property">
+							<option selected="selected">All Status</option>
+							<option value="">delayed</option>
+							<option value="">Cancelled</option>
+						</select>
+						<div class="dropDownSelect2"></div>
 					</div>
-
-					<!-- Pagination -->
-					<div class="pagination">
-						<ul class="d-flex flex-row align-items-start justify-content-start">
-							<li class="active"><a href="#">1.</a></li>
-							<li><a href="#">2.</a></li>
-							<li><a href="#">3.</a></li>
-							<li><a href="#">4.</a></li>
-							<li><a href="#">5.</a></li>
-						</ul>
+					<div class="rs-select2--dark rs-select2--sm rs-select2--border">
+						<select class="js-select2 au-select-dark" name="time">
+							<option selected="selected">All Time</option>
+							<option value="">By Month</option>
+							<option value="">By Day</option>
+						</select>
+						<div class="dropDownSelect2"></div>
 					</div>
 				</div>
-
-				<!-- News Sidebar -->
-				<div class="col-lg-4">
-					<div class="news_sidebar">
-
-						
-
-							</div>
-						</div>
-
-						<div class="travello">
-							<div class="background_image" style="background-image:url(/airport/resources/images/travello.jpg)"></div>
-							<div class="travello_content">
-								<div class="travello_content_inner">
-									<div></div>
-									<div></div>
-								</div>
-							</div>
-							<div class="travello_container">
-								<a href="#">
-									<div class="d-flex flex-column align-items-center justify-content-end">
-										<span class="travello_title">Get a 20% Discount</span>
-										<span class="travello_subtitle">Buy Your Vacation Online Now</span>
+				<div class="table-responsive table-data">
+					<table class="table">
+						<thead>
+							<tr>
+								<td><label class="au-checkbox"> <input
+										type="checkbox"> <span class="au-checkmark"></span>
+								</label></td>
+								<td>Airline/Flight
+								<td>
+								<td>Destination</td>
+								<td>Departure Time</td>
+								<td>GATE</td>
+								<td>Status</td>
+								<td>More</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><label class="au-checkbox"> <input
+										type="checkbox"> <span class="au-checkmark"></span>
+								</label></td>
+								<td>
+									<div class="table-data__info">
+										<h6>KE5691</h6>
+										<span> <a href="#">대한항공</a>
+										</span>
 									</div>
-								</a>
-							</div>
-						</div>
-						
-					</div>
+								</td>
+								<td><img src="/airport/resources/logo/KOREANAIR.jpg"
+									width="300"></td>
+								<td>
+									<div class="table-data__info">
+										<h6>TAIPEI</h6>
+									</div>
+								</td>
+								<td>
+									<h4>17:50</h4>
+								</td>
+								<td>30</td>
+								<td><span class="role admin">결항</span></td>
+								<td><span class="more"> <i class="zmdi zmdi-more"></i>
+								</span></td>
+							</tr>
+							<tr>
+								<td><label class="au-checkbox"> <input
+										type="checkbox"> <span class="au-checkmark"></span>
+								</label></td>
+								<td>
+									<div class="table-data__info">
+										<h6>OZ106</h6>
+										<span> <a href="#">Asiana Airlines</a>
+										</span>
+									</div>
+								</td>
+								<td><img src="/airport/resources/logo/ASIANAAIRLINES.png"
+									width="300"></td>
+								<td>
+									<div class="table-data__info">
+										<h6>TOKYO/NARITA</h6>
+									</div>
+								</td>
+								<td>
+									<h4>17:55</h4>
+								</td>
+								<td>17</td>
+								<td><span class="role member">지연</span></td>
+								<td><span class="more"> <i class="zmdi zmdi-more"></i>
+								</span></td>
+							</tr>
+							<tr>
+								<td><label class="au-checkbox"> <input
+										type="checkbox"> <span class="au-checkmark"></span>
+								</label></td>
+								<td>
+									<div class="table-data__info">
+										<h6>KE5749</h6>
+										<span> <a href="#">대한항공</a>
+										</span>
+									</div>
+								</td>
+								<td><img src="/airport/resources/logo/KOREANAIR.jpg"
+									width="300"></td>
+								<td>
+									<div class="table-data__info">
+										<h6>KITA KYUSHU</h6>
+									</div>
+								</td>
+								<td>
+									<h4>18:00</h4>
+								</td>
+								<td>103</td>
+								<td><span class="role user">탑승중</span></td>
+								<td><span class="more"> <i class="zmdi zmdi-more"></i>
+								</span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="user-data__footer">
+					<button class="au-btn au-btn-load">load more</button>
 				</div>
 			</div>
+			<!-- END LIST-->
+			
 		</div>
 	</div>
-<script src="/airport/resources/js/news.js"></script>
 </body>
 </html>

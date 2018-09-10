@@ -30,14 +30,4 @@ public class IndexController{
 	public String myservice(){
 		return "myservice";
 	}
-	
-	@RequestMapping("/main/signin.do")
-	public String signin(){
-		return "signin";
-	}
-	
-	@RequestMapping("/main/privacy.do")
-	public String privacy(){
-		return "privacy";
-	}
 }
