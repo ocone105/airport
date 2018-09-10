@@ -122,7 +122,7 @@
 				<li class="nav-item "><a class="nav-link"
 					href="/airport/erp/table.do"> <i class="material-icons">content_paste</i>
 						<p>Table List</p>
-				</a></li>
+				</a></li> 
 				<li class="nav-item "><a class="nav-link"
 					href="/airport/erp/typography.do"> <i class="material-icons">library_books</i>
 						<p>Typography</p>
