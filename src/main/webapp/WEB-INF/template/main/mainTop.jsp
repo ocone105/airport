@@ -16,15 +16,13 @@
 							<nav class="main_nav">
 								<ul class="d-flex flex-row align-items-start justify-content-start">
 									<li class="active"><a href="/airport/main/index.do">Airport</a></li>
-									<li><a href="/airport/main/realtime.do">실시간상황</a></li>
+									<li><a href="/airport/main/realtime.do">실시간정보</a></li>
 									<li><a href="/airport/main/passenger.do">예상승객</a></li>
-									<li><a href="/airport/main/flight.do">비정상운항</a></li>
+									<li><a href="/airport/main/flight.do">지연결항</a></li>
 									<li><a href="/airport/main/myservice.do">My Service</a></li>
 									<li><a href="#">Sign in</a></li>
 								</ul>
 							</nav>
-
-							<!-- <div class="header_phone ml-auto">Call us: 00-56 445 678 33</div> -->
 
 							<!-- Hamburger -->
 
