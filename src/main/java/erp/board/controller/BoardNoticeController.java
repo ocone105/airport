@@ -17,8 +17,4 @@ public class BoardNoticeController {
 	public String noticeinsert(){
 		return "erp/noticelist";
 	}
-	
-
-	
-	
 }
