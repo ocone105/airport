@@ -41,4 +41,10 @@ public class IndexController {
 	public String privacy() {
 		return "privacy";
 	}
+	
+	@RequestMapping("/main/email.do")
+	public String rejectEmail() {
+		System.out.println("이메일");
+		return "email";
+	}
 }

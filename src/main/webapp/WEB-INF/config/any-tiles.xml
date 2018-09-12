@@ -7,18 +7,21 @@
 
 	<definition name="realtime" extends="mainTemplate">
 		<put-attribute name="content" value="/WEB-INF/content/main/realtime.jsp" />
-	</definition>	
-	
+	</definition>
+
 	<definition name="passenger" extends="mainTemplate">
-		<put-attribute name="content" value="/WEB-INF/content/main/predictPassenger.jsp" />
+		<put-attribute name="content"
+			value="/WEB-INF/content/main/predictPassenger.jsp" />
 	</definition>
-	
+
 	<definition name="abnormalflight" extends="mainTemplate">
-		<put-attribute name="content" value="/WEB-INF/content/main/predictFlight.jsp" />
+		<put-attribute name="content"
+			value="/WEB-INF/content/main/predictFlight.jsp" />
 	</definition>
-	
+
 	<definition name="myservice" extends="mainTemplate">
-		<put-attribute name="content" value="/WEB-INF/content/main/myservice.jsp" />
+		<put-attribute name="content"
+			value="/WEB-INF/content/main/myservice.jsp" />
 	</definition>
 
 	<definition name="signin" extends="mainTemplate">
@@ -28,5 +31,9 @@
 	<definition name="privacy" extends="mainTemplate">
 		<put-attribute name="content" value="/WEB-INF/MAIN/register/privacy.jsp" />
 	</definition>
-			
+
+	<definition name="email" extends="mainTemplate">
+		<put-attribute name="email" value="/WEB-INF/MAIN/register/email.jsp" />
+	</definition>
+
 </tiles-definitions>   

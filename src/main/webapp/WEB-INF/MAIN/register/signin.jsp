@@ -20,13 +20,46 @@
 <link rel="stylesheet" type="text/css"
 	href="/airport/resources/styles/contact_responsive.css">
 
+<script type="text/javascript">
+	function autoHypenPhone(str) {
+		str = str.replace(/[^0-9]/g, '');
+		var tmp = '';
+		if (str.length < 4) {
+			return str;
+		} else if (str.length < 7) {
+			tmp += str.substr(0, 3);
+			tmp += '-';
+			tmp += str.substr(3);
+			return tmp;
+		} else if (str.length < 11) {
+			tmp += str.substr(0, 3);
+			tmp += '-';
+			tmp += str.substr(3, 3);
+			tmp += '-';
+			tmp += str.substr(6);
+			return tmp;
+		} else {
+			tmp += str.substr(0, 3);
+			tmp += '-';
+			tmp += str.substr(3, 4);
+			tmp += '-';
+			tmp += str.substr(7);
+			return tmp;
+		}
+		return str;
+	}
+
+	var cellPhone = document.getElementById('cellPhone');
+	cellPhone.onkeyup = function(event) {
+		event = event || window.event;
+		var _val = this.value.trim();
+		this.value = autoHypenPhone(_val);
+	}
+</script>
 
 <title>Insert title here</title>
 </head>
 <body>
-	<!-- <div class="home"> -->
-
-	<!-- </div> -->
 
 
 	<!-- 로그인 및 회원가입 -->
@@ -126,7 +159,8 @@
 										<div class="form-group">
 											<label class="sr-only" for="form-id">ID</label> <input
 												type="text" name="form-id" placeholder="ID 아이디"
-												class="form-id form-control" id="form-id">
+												class="form-id form-control" id="form-id" required
+												autocomplete="off">
 										</div>
 
 
@@ -134,46 +168,54 @@
 											<label class="sr-only" for="form-password">Password</label> <input
 												type="password" name="form-password"
 												placeholder="Password 비밀번호"
-												class="form-password form-control" id="form-password">
+												class="form-password form-control" id="form-password"
+												required autocomplete="off">
 										</div>
 
 										<div class="form-group">
 											<label class="sr-only" for="form-password">Verify
 												Password</label> <input type="password" name="form-password-verify"
 												placeholder="Verify Password 비밀번호 확인"
-												class="form-password form-control" id="form-password-verify">
+												class="form-password form-control" id="form-password-verify"
+												required autocomplete="off">
 										</div>
 
 										<div class="form-group">
 											<label class="sr-only" for="form-name">Name</label> <input
 												type="text" name="form-name" placeholder="Name 이름"
-												class="form-name form-control" id="form-name">
+												class="form-name form-control" id="form-name" required
+												autocomplete="off">
 										</div>
 
 										<div class="form-group">
 											<label class="sr-only" for="form-phone">Phone</label> <input
-												type="text" name="form-phone" placeholder="Phone 전화번호"
-												class="form-phone form-control" id="form-phone">
+												type="text" name="cellPhone" placeholder="Phone 전화번호"
+												class="form-phone form-control" id="cellPhone"
+												maxlength="13" required autocomplete="off">
 										</div>
 
 										<div class="form-group">
 											<label class="sr-only" for="form-email">Email</label> <input
-												type="text" name="form-email" placeholder="Email 이메일"
-												class="form-email form-control" id="form-email">
+												type="email" name="form-email" placeholder="Email 이메일"
+												class="form-email form-control" id="form-email" required
+												autocomplete="off">
 										</div>
 
-										<p style="font-size:14pt; color:white;">  Receive 알림 받기</p>
+										<p style="font-size: 14pt; color: white;">Receive 알림 받기</p>
 										<div class="form-group">
 											<label class="control control--checkbox" for="form-alarm"></label>
-											<span style="font-size:large; color: white;"> Email: 
-											<input type="checkbox" name="form-email-check" id="form-email-check">
-											</span>&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-size:large; color: white;">
-												Phone: <input type="checkbox" name="form-phone-check" id="form-phone-check">
+											<span style="font-size: large; color: white;"> Email:
+												<input type="checkbox" name="form-email-check"
+												id="form-email-check">
+											</span>&nbsp;&nbsp;&nbsp;&nbsp; <span
+												style="font-size: large; color: white;"> Phone: <input
+												type="checkbox" name="form-phone-check"
+												id="form-phone-check">
 											</span>
 										</div>
 
 										<button type="submit" class="btn">Sign up 회원가입</button>
-										<a href="/airport/main/privacy.do">개인정보처리방침</a>
+
 									</form>
 								</div>
 							</div>
