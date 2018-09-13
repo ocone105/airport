@@ -5,113 +5,38 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-.organization-chart-wrap {
-	width: 100%;
-	overflow: hidden;
-	padding-bottom: 30px;
-	border-bottom: 1px solid #d9d9d9;
-}
-.organization-chart-list {
-	float: left;
-}
-.organization-chart-tit {
-	display: block;
-	width: 100%;
-	background: #00bcd4;
-	font-weight: 900;
-	color: white;
-	padding: 13px;
-}
-.organization-chart-list-item {
-	float: left;
-	width: 205px;
-	margin-left: 16px;
-	color: black;
-	font-size: 1rem;
-}
-.organization-chart-subtit {
-	display: block;
-	width: 100%;
-	border: 1px solid #d9d9d9;
-	margin-top: 16px;
-	padding: 13px;
-	font-weight: 500;
-	font-size: 1rem;
-}
-.organization-chart-team {
-	padding: 18px;
-	text-align: left;
-	background: #f2f2f2;
-}
-
-</style>
+<link rel="stylesheet" href="/airport/resources/common/css/jquery.treeview.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="/airport/resources/common/js/jquery.treeview.js"
+	type="text/javascript"></script>
+<script src="/airport/resources/common/js/query.cookie.js"></script>
+<script type="text/javascript" src="/airport/resources/common/js/treedemo.js"></script>
 </head>
 <body>
 	<div class="content">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="organization-chart-wrap">
-						<ul class="organization-chart-list">
-							<li class="organization-chart-list-item">
-							<span class="organization-chart-tit">항공보안실</span>
-								<a class="organization-chart-subtit">항공보안처</a>
-								<ul class="organization-chart-team">
-									<li class="list1-item">
-									보안계획팀 
-									</li>
-									<li>
-									보안검색팀 
-									</li>
-									<li>
-									테러탐색팀 
-									</li>
-								</ul>
-								<a class="organization-chart-subtit">항공보안처2</a>
-								<ul class="organization-chart-team">
-									<li class="list1-item">
-									보안계획팀2
-									</li>
-									<li>
-									보안검색팀2
-									</li>
-									<li>
-									테러탐색팀2 
-									</li>
-								</ul>
-							</li>
-							<li class="organization-chart-list-item">
-							<span class="organization-chart-tit">항공보안실</span>
-								<a class="organization-chart-subtit">항공보안처</a>
-								<ul class="organization-chart-team">
-									<li class="list1-item">
-									보안계획팀 
-									</li>
-									<li>
-									보안검색팀 
-									</li>
-									<li>
-									테러탐색팀 
-									</li>
-								</ul>
-								<a class="organization-chart-subtit">항공보안처2</a>
-								<ul class="organization-chart-team">
-									<li class="list1-item">
-									보안계획팀2
-									</li>
-									<li>
-									보안검색팀2
-									</li>
-									<li>
-									테러탐색팀2 
-									</li>
-								</ul>
-							</li>
-							
-						</ul>
-					</div>
-				</div>
-			</div>
+		<div class="pull-right">
+			<a href="/airport/erp/deptwrite.do">부서등록하기</a>
 		</div>
+	<div class="treeview" id="tree" style="margin: 20px" class="col-sm-6">
+		<ul id="browser" class="filetree">
+			<li class="closed"><span class="folder">123</span>
+				<ul>
+					<li><span class="file">장동건</span></li>
+					<li><span class="file">장동건</span></li>
+					<li>
+					<span class="file">장동건</span>
+						<ul>
+							<li><span class="file">장동건</span></li>
+						</ul>
+					</li>
+					
+				</ul>
+				
+			</li>
+		</ul>
+	</div>
+	
+	</div>
 </body>
 </html>

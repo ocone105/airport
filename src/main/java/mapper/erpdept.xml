@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.airport.erp.dept">
+	<select id="deptlist" resultType="dept">
+		select * from dept 
+	</select>
+	
+	<insert id="deptinsert" parameterType="dept">
+		insert into dept 
+		values(#{deptno},#{deptctg1},#{deptctg2},#{deptctg3},#{tel},#{task},#{mgr})
+	</insert>
+	
+	<delete id="deptdelete" parameterType="String">
+		delete from dept where deptno=#{deptno}
+	</delete>
+	
+	<update id="deptupdate" parameterType="String">
+		update dept 
+		set deptctg1=#{deptctg1},deptctg2=#{deptctg2},deptctg3=#{deptctg3},tel=#{tel},task=#{task},mgr=#{mgr} 
+		where deptno=#{deptno}
+	</update>
+
+	
+</mapper>
+
+
