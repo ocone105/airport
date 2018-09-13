@@ -44,7 +44,6 @@ public class IndexController {
 	
 	@RequestMapping("/main/email.do")
 	public String rejectEmail() {
-		System.out.println("이메일");
 		return "email";
 	}
 }

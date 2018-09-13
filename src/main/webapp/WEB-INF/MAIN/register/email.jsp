@@ -34,8 +34,8 @@
 			<div class="row">
 				<div class="col">
 					<div class="home_search_container">
-						<span style="font-size: 30pt; color: white; font-weight: bold;">
-						Rejection of Unauthorized Collection of Email Address 이메일 무단수집 거부</span>
+						<span style="font-size: 24pt; color: white; font-weight: bold;">
+						Rejection of Unauthorized Collection of Email Address<br/> 이메일 무단수집 거부</span>
 					</div>
 				</div>
 			</div>

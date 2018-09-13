@@ -33,7 +33,7 @@
 	</definition>
 
 	<definition name="email" extends="mainTemplate">
-		<put-attribute name="email" value="/WEB-INF/MAIN/register/email.jsp" />
+		<put-attribute name="content" value="/WEB-INF/MAIN/register/email.jsp" />
 	</definition>
 
 </tiles-definitions>   
