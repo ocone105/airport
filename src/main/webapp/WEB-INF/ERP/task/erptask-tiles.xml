@@ -6,4 +6,7 @@
 	<definition name="erp/empinsert" extends="ERPTemplate">
 		<put-attribute name="content" value="/WEB-INF/ERP/task/empinsert.jsp"/>
 	</definition>
+	<definition name="erp/emplist" extends="ERPTemplate">
+		<put-attribute name="content" value="/WEB-INF/ERP/task/emplist.jsp"/>
+	</definition>
 </tiles-definitions>
