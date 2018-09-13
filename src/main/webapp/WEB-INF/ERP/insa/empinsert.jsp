@@ -1,33 +1,71 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-.selectpicker {
-	padding: 5px 0;
-	margin: 2px 0 0;
-	width: 80%;
-	font-size: 13pt; list-style : none;
-	background-color: #ffffff;
-	border: 1px solid #ccc;
-	border: 1px solid rgba(0, 0, 0, 0.2);
-	*border-right-width: 2px;
-	*border-bottom-width: 2px;
-	-webkit-border-radius: 6px;
-	-moz-border-radius: 6px;
-	border-radius: 6px;
-	-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-	-moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-	-webkit-background-clip: padding-box;
-	-moz-background-clip: padding;
-	background-clip: padding-box;
-	list-style: none;
-}
-</style>
+<link href="/airport/resources/common/css/select.css" rel="stylesheet" />
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#ctg1").change(function(){
+			category = $(this).val();
+				$.ajax({
+					url: "/airport/erp/ctglist.do?action=ctg1",
+					type: "get",
+					data:{
+						"category":category
+					},
+					success:function(data){
+						mydata1 = ""; 
+						mydata2 = ""; 
+						for(i=0;i<data.length;i++){
+							if(data[i].deptctg2!=null){
+								mydata1 = mydata1 + "<option value='"+data[i].deptctg2+"'>"+data[i].deptctg2+"</option>";
+							}else{
+								if(data[i].deptctg3!=null){
+									mydata2 = mydata2 + "<option value='"+data[i].deptctg3+"'>"+data[i].deptctg3+"</option>";
+									mydata1 = "<option value='no2'>분류2가존재하지않습니다</option>"
+								}
+							}
+						}
+						$("#ctg2").empty(mydata1);
+						$("#ctg2").append(mydata1);
+						$("#ctg3").empty(mydata2);
+						$("#ctg3").append(mydata2);
+					},
+					error:function(a,b,c){	
+						alert(a+b+c);
+					}
+				});
+			
+	});
+	$("#ctg2").change(function(){
+		category = $(this).val();
+		$.ajax({
+			url: "/airport/erp/ctglist.do?action=ctg2",
+			type: "get",
+			data:{
+				"category":category
+			},
+			success:function(data){
+				mydata = ""; 
+				for(i=0;i<data.length;i++){
+					if(data[i].deptctg3!=null){
+						mydata = mydata + "<option value='"+data[i].deptctg3+"'>"+data[i].deptctg3+"</option>";
+					}
+				}
+				$("#ctg3").empty(mydata);
+				$("#ctg3").append(mydata);
+			},
+			error:function(a,b,c){	
+				alert(a+b+c);
+			}
+		});
+	})
+});
+</script>
 </head>
 <body>
 	<div class="content">
@@ -99,18 +137,14 @@
 												</div>
 											</a>
 											<div id="collapseOne" class="panel-collapse collapse">
-												<div class="panel-body">
-													<select class="selectpicker" size="5">
-														<option>Mustard</option>
-														<option>Ketchup</option>
-														<option>Relish</option>
-														<option>Mayonnaise</option>
-														<option>Barbecue Sauce</option>
-														<option>Salad Dressing</option>
-														<option>Tabasco</option>
-														<option>Salsa</option>
+												<div class="panel-body" id="input">
+													<select class="selectpicker" id="ctg1" name="deptctg1" size="5">
+														<c:forEach var="ctg1" items="${ctg1list }">
+															<option value="${ctg1 }">${ctg1 }</option>
+														</c:forEach>
 													</select>
 												</div>
+												<div id="input1"> </div>
 											</div>
 										</div>
 									</div>
@@ -124,17 +158,10 @@
 											</a>
 											<div id="collapsetwo" class="panel-collapse collapse">
 												<div class="panel-body">
-													<select class="selectpicker" size="5">
-														<option>Mustard</option>
-														<option>Ketchup</option>
-														<option>Relish</option>
-														<option>Mayonnaise</option>
-														<option>Barbecue Sauce</option>
-														<option>Salad Dressing</option>
-														<option>Tabasco</option>
-														<option>Salsa</option>
+													<select class="selectpicker" id="ctg2" name="deptctg2" size="5">
 													</select>
 												</div>
+												<div id="input2"> </div>
 											</div>
 										</div>
 									</div>
@@ -147,16 +174,8 @@
 												</div>
 											</a>
 											<div id="collapse3" class="panel-collapse collapse">
-												<div class="panel-body">
-													<select class="selectpicker" size="5">
-														<option>Mustard</option>
-														<option>Ketchup</option>
-														<option>Relish</option>
-														<option>Mayonnaise</option>
-														<option>Barbecue Sauce</option>
-														<option>Salad Dressing</option>
-														<option>Tabasco</option>
-														<option>Salsa</option>
+												<div class="panel-body" id="input3">
+													<select class="selectpicker" id="ctg3" name="deptctg3" size="5">
 													</select>
 												</div>
 											</div>

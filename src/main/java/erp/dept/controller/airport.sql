@@ -1,4 +1,6 @@
 select * from dept;
+select * from dept where deptno='test111';
+delete from where dpetno='test111';
 delete from dept;
 1.비서실
 insert into dept values('se000','비서실','','','','비서업무',001);

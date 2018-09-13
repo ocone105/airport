@@ -10,7 +10,7 @@ import erp.dept.dao.DeptDAO;
 import erp.dept.dto.DeptDTO;
 
 @Service
-public class BoardServiceImpl implements BoardService {
+public class DeptServiceImpl implements DeptService {
 
 	@Autowired
 	@Qualifier("deptdao")
@@ -34,6 +34,16 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void deptupdate(DeptDTO dept) {
 		dao.deptupdate(dept);
+	}
+
+	@Override
+	public List<DeptDTO> getctg2(String deptctg1) {
+		return dao.getctg2(deptctg1);
+	}
+
+	@Override
+	public List<DeptDTO> getctg3(String deptctg2) {
+		return dao.getctg3(deptctg2);
 	}
 
 }

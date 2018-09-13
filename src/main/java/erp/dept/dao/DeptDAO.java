@@ -9,4 +9,7 @@ public interface DeptDAO {
 	void deptinsert(DeptDTO dept);
 	void deptdelete(String deptno);
 	void deptupdate(DeptDTO dept);
+	
+	List<DeptDTO> getctg2(String deptctg1);
+	List<DeptDTO> getctg3(String deptctg2);
 }

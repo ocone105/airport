@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.airport.erp.dept">
 	<select id="deptlist" resultType="dept">
-		select * from dept 
+		select * from dept order by deptctg1 asc
 	</select>
 	
 	<insert id="deptinsert" parameterType="dept">
@@ -22,6 +22,17 @@
 		where deptno=#{deptno}
 	</update>
 
+	<select id="getctg2" resultType="dept" parameterType="String">
+		select * from dept 
+		where deptctg1=#{deptctg1}
+		order by deptctg2 asc
+	</select>
+	
+	<select id="getctg3" resultType="dept" parameterType="String">
+		select * from dept 
+		where deptctg2=#{deptctg2}
+		order by deptctg3 asc
+	</select>
 	
 </mapper>
 
