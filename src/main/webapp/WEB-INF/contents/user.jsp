@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<
 	<div class="content">
 		<div class="container-fluid">
 			<div class="row">

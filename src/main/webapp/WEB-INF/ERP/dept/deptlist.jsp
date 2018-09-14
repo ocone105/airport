@@ -1,147 +1,117 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+.organization-chart-wrap {
+	width: 100%;
+	overflow: hidden;
+	padding-bottom: 30px;
+	border-bottom: 1px solid #d9d9d9;
+}
+.organization-chart-list {
+	float: left;
+}
+.organization-chart-tit {
+	display: block;
+	width: 100%;
+	background: #00bcd4;
+	font-weight: 900;
+	color: white;
+	padding: 13px;
+}
+.organization-chart-list-item {
+	float: left;
+	width: 205px;
+	margin-left: 16px;
+	color: black;
+	font-size: 1rem;
+}
+.organization-chart-subtit {
+	display: block;
+	width: 100%;
+	border: 1px solid #d9d9d9;
+	margin-top: 16px;
+	padding: 13px;
+	font-weight: 500;
+	font-size: 1rem;
+}
+.organization-chart-team {
+	padding: 18px;
+	text-align: left;
+	background: #f2f2f2;
+}
+
+</style>
 </head>
 <body>
-<div class="content">
+	<div class="content">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-md-12">
-					<div class="card">
-						<div class="card-header card-header-info">
-							<h4 class="card-title ">Simple Table</h4>
-							<p class="card-category">Here is a subtitle for this table</p>
-						</div>
-						<div class="card-body">
-							<div class="table-responsive">
-								<table class="table">
-									<thead class=" text-primary">
-										<th>ID</th>
-										<th>Name</th>
-										<th>Country</th>
-										<th>City</th>
-										<th>Salary</th>
-									</thead>
-									<tbody>
-										<tr>
-											<td>1</td>
-											<td>Dakota Rice</td>
-											<td>Niger</td>
-											<td>Oud-Turnhout</td>
-											<td class="text-primary">$36,738</td>
-										</tr>
-										<tr>
-											<td>2</td>
-											<td>Minerva Hooper</td>
-											<td>Curaçao</td>
-											<td>Sinaai-Waas</td>
-											<td class="text-primary">$23,789</td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td>Sage Rodriguez</td>
-											<td>Netherlands</td>
-											<td>Baileux</td>
-											<td class="text-primary">$56,142</td>
-										</tr>
-										<tr>
-											<td>4</td>
-											<td>Philip Chaney</td>
-											<td>Korea, South</td>
-											<td>Overland Park</td>
-											<td class="text-primary">$38,735</td>
-										</tr>
-										<tr>
-											<td>5</td>
-											<td>Doris Greene</td>
-											<td>Malawi</td>
-											<td>Feldkirchen in Kärnten</td>
-											<td class="text-primary">$63,542</td>
-										</tr>
-										<tr>
-											<td>6</td>
-											<td>Mason Porter</td>
-											<td>Chile</td>
-											<td>Gloucester</td>
-											<td class="text-primary">$78,615</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-12">
-					<div class="card card-plain">
-						<div class="card-header card-header-info">
-							<h4 class="card-title mt-0">Table on Plain Background</h4>
-							<p class="card-category">Here is a subtitle for this table</p>
-						</div>
-						<div class="card-body">
-							<div class="table-responsive">
-								<table class="table table-hover">
-									<thead class="">
-										<th>ID</th>
-										<th>Name</th>
-										<th>Country</th>
-										<th>City</th>
-										<th>Salary</th>
-									</thead>
-									<tbody>
-										<tr>
-											<td>1</td>
-											<td>Dakota Rice</td>
-											<td>Niger</td>
-											<td>Oud-Turnhout</td>
-											<td>$36,738</td>
-										</tr>
-										<tr>
-											<td>2</td>
-											<td>Minerva Hooper</td>
-											<td>Curaçao</td>
-											<td>Sinaai-Waas</td>
-											<td>$23,789</td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td>Sage Rodriguez</td>
-											<td>Netherlands</td>
-											<td>Baileux</td>
-											<td>$56,142</td>
-										</tr>
-										<tr>
-											<td>4</td>
-											<td>Philip Chaney</td>
-											<td>Korea, South</td>
-											<td>Overland Park</td>
-											<td>$38,735</td>
-										</tr>
-										<tr>
-											<td>5</td>
-											<td>Doris Greene</td>
-											<td>Malawi</td>
-											<td>Feldkirchen in Kärnten</td>
-											<td>$63,542</td>
-										</tr>
-										<tr>
-											<td>6</td>
-											<td>Mason Porter</td>
-											<td>Chile</td>
-											<td>Gloucester</td>
-											<td>$78,615</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
+				<div class="organization-chart-wrap">
+						<ul class="organization-chart-list">
+							<li class="organization-chart-list-item">
+							<span class="organization-chart-tit">항공보안실</span>
+								<a class="organization-chart-subtit">항공보안처</a>
+								<ul class="organization-chart-team">
+									<li class="list1-item">
+									보안계획팀 
+									</li>
+									<li>
+									보안검색팀 
+									</li>
+									<li>
+									테러탐색팀 
+									</li>
+								</ul>
+								<a class="organization-chart-subtit">항공보안처2</a>
+								<ul class="organization-chart-team">
+									<li class="list1-item">
+									보안계획팀2
+									</li>
+									<li>
+									보안검색팀2
+									</li>
+									<li>
+									테러탐색팀2 
+									</li>
+								</ul>
+							</li>
+							<li class="organization-chart-list-item">
+							<span class="organization-chart-tit">항공보안실</span>
+								<a class="organization-chart-subtit">항공보안처</a>
+								<ul class="organization-chart-team">
+									<li class="list1-item">
+									보안계획팀 
+									</li>
+									<li>
+									보안검색팀 
+									</li>
+									<li>
+									테러탐색팀 
+									</li>
+								</ul>
+								<a class="organization-chart-subtit">항공보안처2</a>
+								<ul class="organization-chart-team">
+									<li class="list1-item">
+									보안계획팀2
+									</li>
+									<li>
+									보안검색팀2
+									</li>
+									<li>
+									테러탐색팀2 
+									</li>
+								</ul>
+							</li>
+							
+						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 </body>
 </html>

@@ -12,5 +12,9 @@
 	
 	<definition name="erp/index" extends="ERPTemplate">
 	</definition>
+	
+	<definition name="erp/login" extends="ERPTemplate">
+		<put-attribute name="content" value="/WEB-INF/template/ERP/login.jsp"/>
+	</definition>
 
 </tiles-definitions>
