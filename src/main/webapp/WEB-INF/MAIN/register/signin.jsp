@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8" session="true"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,14 +19,10 @@
 	href="/airport/resources/styles/contact.css">
 <link rel="stylesheet" type="text/css"
 	href="/airport/resources/styles/contact_responsive.css">
-
-
+<script src="/airport/resources/js/sign.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
-	<!-- <div class="home"> -->
-
-	<!-- </div> -->
 
 
 	<!-- 로그인 및 회원가입 -->
@@ -34,15 +30,6 @@
 		style="background-image: url(/airport/resources/images/greece.jpg); background-size: width: 100%;">
 	</div>
 	<div class="container">
-
-
-		<!-- 		<div class="row">
-			<div class="home_search_container">
-				<h3 style="color: white; text-align: center;">Sign in &amp;
-					Sign up</h3>
-			</div>
-		</div> -->
-
 
 		<!-- Top content -->
 		<div class="top-content">
@@ -120,60 +107,61 @@
 									</div>
 								</div>
 								<div class="form-bottom">
-									<form role="form" action="" method="post"
-										class="registration-form">
+
+									<form role="form" action="/airport/member/signup.do"
+										method="post" class="registration-form">
 
 										<div class="form-group">
-											<label class="sr-only" for="form-id">ID</label> <input
-												type="text" name="form-id" placeholder="ID 아이디"
-												class="form-id form-control" id="form-id">
+											<label class="sr-only" for="form-id">ID</label> 
+											<input type="text" name="id" id="id" placeholder="ID 아이디"
+												class="form-id form-control" required>
 										</div>
 
-
 										<div class="form-group">
-											<label class="sr-only" for="form-password">Password</label> <input
-												type="password" name="form-password"
+											<label class="sr-only" for="form-password">Password</label> 
+											<input type="password" name="pwd" id="pwd"
 												placeholder="Password 비밀번호"
-												class="form-password form-control" id="form-password">
+												class="form-password form-control" required>
 										</div>
 
 										<div class="form-group">
-											<label class="sr-only" for="form-password">Verify
-												Password</label> <input type="password" name="form-password-verify"
+											<label class="sr-only" for="form-password">Verify Password</label> 
+											<input type="password" name="pwd-verify"
 												placeholder="Verify Password 비밀번호 확인"
-												class="form-password form-control" id="form-password-verify">
+												class="form-password form-control" required>
 										</div>
 
 										<div class="form-group">
-											<label class="sr-only" for="form-name">Name</label> <input
-												type="text" name="form-name" placeholder="Name 이름"
-												class="form-name form-control" id="form-name">
+											<label class="sr-only" for="form-name">Name</label> 
+											<input type="text" name="name" id="name" placeholder="Name 이름"
+												class="form-name form-control" required>
 										</div>
 
 										<div class="form-group">
-											<label class="sr-only" for="form-phone">Phone</label> <input
-												type="text" name="form-phone" placeholder="Phone 전화번호"
-												class="form-phone form-control" id="form-phone">
+											<label class="sr-only" for="form-phone">Phone</label> 
+											<input type="text" name="phone" id="phone" placeholder="Phone 전화번호"
+												class="form-phone form-control" maxlength="13" required>
 										</div>
 
 										<div class="form-group">
-											<label class="sr-only" for="form-email">Email</label> <input
-												type="text" name="form-email" placeholder="Email 이메일"
-												class="form-email form-control" id="form-email">
+											<label class="sr-only" for="form-email">Email</label> 
+											<input type="email" name="email" id="email" placeholder="Email 이메일"
+												class="form-email form-control" required>
 										</div>
 
-										<p style="font-size:14pt; color:white;">  Receive 알림 받기</p>
+										<p style="font-size: 14pt; color: white;">Receive 알림 받기</p>
 										<div class="form-group">
 											<label class="control control--checkbox" for="form-alarm"></label>
-											<span style="font-size:large; color: white;"> Email: 
-											<input type="checkbox" name="form-email-check" id="form-email-check">
-											</span>&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-size:large; color: white;">
-												Phone: <input type="checkbox" name="form-phone-check" id="form-phone-check">
+											<span style="font-size: large; color: white;"> Email:
+												<input type="checkbox" name="email-check" id="email-check">
+											</span>&nbsp;&nbsp;&nbsp;&nbsp; <span
+												style="font-size: large; color: white;"> Phone: 
+												<input type="checkbox" name="phone-check" id="phone-check">
 											</span>
 										</div>
 
 										<button type="submit" class="btn">Sign up 회원가입</button>
-										<a href="/airport/main/privacy.do">개인정보처리방침</a>
+
 									</form>
 								</div>
 							</div>

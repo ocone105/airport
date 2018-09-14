@@ -3,10 +3,13 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+<<<<<<< HEAD
  	<typeAliases>
   		<typeAlias type="erp.board.DTO.BoardNoticeDTO" alias="notice"/>
+		<typeAlias type="main.member.MemberDTO" alias="member" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="/mapper/BoardNotice.xml"/>
+		<mapper resource="mapper/member.xml" />
 	</mappers>
 </configuration>
