@@ -1,12 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" session="true"%>
+<%@ page import="java.net.URLEncoder"%>
+<%@ page import="java.security.SecureRandom"%>
+<%@ page import="java.math.BigInteger"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset=UTF-8>
 
-<!-- <link rel="stylesheet"
-	href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500"> -->
+<!-- 카카오톡 로그인 -->
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
+<!-- ---------------------------------------- -->
+
 <link rel="stylesheet" type="text/css"
 	href="/airport/resources/styles/bootstrap4/bootstrap.min.css">
 <link rel="stylesheet" type="text/css"
@@ -77,17 +84,46 @@
 										<i class="fa fa-google-plus"></i>
 									</div>
 								</div>
-								<div class="social-login-buttons">
-									<a class="btn btn-link-2" href="#"> <i
-										class="fa fa-facebook"></i> Facebook
-									</a> <a class="btn btn-link-2" href="#"> <i
-										class="fa fa-twitter"></i> Twitter
-									</a> <a class="btn btn-link-2" href="#"> <i
-										class="fa fa-google-plus"></i> Google Plus
-									</a>
-								</div>
-							</div>
+								<!-- 네이버 아이디로 로그인 -->
+								<%
+									String clientId = "8WNSYq9HslIkdHkdXkX8";//애플리케이션 클라이언트 아이디값";
+									String redirectURI = URLEncoder.encode("http://localhost:8088/airport/main/index.do", "UTF-8");
+									SecureRandom random = new SecureRandom();
+									String state = new BigInteger(130, random).toString();
+									String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
+									apiURL += "&client_id=" + clientId;
+									apiURL += "&redirect_uri=" + redirectURI;
+									apiURL += "&state=" + state;
+									session.setAttribute("state", state);
+								%>
+								<a href="<%=apiURL%>"><img src="/airport/resources/sns/naver2.PNG" /></a>
 
+
+								<!-- 카카오톡으로 로그인 -->
+								<a id="custom-login-btn" href="javascript:loginWithKakao()">
+									<img src="/airport/resources/sns/kakao.png" />
+								</a>
+								<script type='text/javascript'>
+									//<![CDATA[
+									// 사용할 앱의 JavaScript 키를 설정해 주세요.
+									Kakao
+											.init('0b4f8ab826d5bd1a8e4fd171582f0088');
+									function loginWithKakao() {
+										// 로그인 창을 띄웁니다.
+										Kakao.Auth.login({
+											success : function(authObj) {
+												alert(JSON.stringify(authObj));
+											},
+											fail : function(err) {
+												alert(JSON.stringify(err));
+											}
+										});
+									};
+									//]]>
+								</script>
+
+
+							</div>
 						</div>
 
 						<div class="col-sm-1 middle-border"></div>
@@ -112,40 +148,40 @@
 										method="post" class="registration-form">
 
 										<div class="form-group">
-											<label class="sr-only" for="form-id">ID</label> 
-											<input type="text" name="id" id="id" placeholder="ID 아이디"
+											<label class="sr-only" for="form-id">ID</label> <input
+												type="text" name="id" id="id" placeholder="ID 아이디"
 												class="form-id form-control" required>
 										</div>
 
 										<div class="form-group">
-											<label class="sr-only" for="form-password">Password</label> 
-											<input type="password" name="pwd" id="pwd"
+											<label class="sr-only" for="form-password">Password</label> <input
+												type="password" name="pwd" id="pwd"
 												placeholder="Password 비밀번호"
 												class="form-password form-control" required>
 										</div>
 
 										<div class="form-group">
-											<label class="sr-only" for="form-password">Verify Password</label> 
-											<input type="password" name="pwd-verify"
+											<label class="sr-only" for="form-password">Verify
+												Password</label> <input type="password" name="pwd-verify"
 												placeholder="Verify Password 비밀번호 확인"
 												class="form-password form-control" required>
 										</div>
 
 										<div class="form-group">
-											<label class="sr-only" for="form-name">Name</label> 
-											<input type="text" name="name" id="name" placeholder="Name 이름"
+											<label class="sr-only" for="form-name">Name</label> <input
+												type="text" name="name" id="name" placeholder="Name 이름"
 												class="form-name form-control" required>
 										</div>
 
 										<div class="form-group">
-											<label class="sr-only" for="form-phone">Phone</label> 
-											<input type="text" name="phone" id="phone" placeholder="Phone 전화번호"
+											<label class="sr-only" for="form-phone">Phone</label> <input
+												type="text" name="phone" id="phone" placeholder="Phone 전화번호"
 												class="form-phone form-control" maxlength="13" required>
 										</div>
 
 										<div class="form-group">
-											<label class="sr-only" for="form-email">Email</label> 
-											<input type="email" name="email" id="email" placeholder="Email 이메일"
+											<label class="sr-only" for="form-email">Email</label> <input
+												type="email" name="email" id="email" placeholder="Email 이메일"
 												class="form-email form-control" required>
 										</div>
 
@@ -155,8 +191,8 @@
 											<span style="font-size: large; color: white;"> Email:
 												<input type="checkbox" name="email-check" id="email-check">
 											</span>&nbsp;&nbsp;&nbsp;&nbsp; <span
-												style="font-size: large; color: white;"> Phone: 
-												<input type="checkbox" name="phone-check" id="phone-check">
+												style="font-size: large; color: white;"> Phone: <input
+												type="checkbox" name="phone-check" id="phone-check">
 											</span>
 										</div>
 
