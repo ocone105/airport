@@ -4,7 +4,7 @@ import java.sql.Date;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class BoardNoticeDTO {
+public class BoardAnonymousDTO {
 	private int boardno;
 	private String ctg;
 	private String title;
@@ -15,9 +15,9 @@ public class BoardNoticeDTO {
 	private int empno;
 	private MultipartFile upfile;
 
-	public BoardNoticeDTO(){}
+	public BoardAnonymousDTO(){}
 
-	public BoardNoticeDTO(int boardno, String ctg, String title, String txt, Date boarddate, int hits, String attach,
+	public BoardAnonymousDTO(int boardno, String ctg, String title, String txt, Date boarddate, int hits, String attach,
 			int empno, MultipartFile upfile) {
 		super();
 		this.boardno = boardno;

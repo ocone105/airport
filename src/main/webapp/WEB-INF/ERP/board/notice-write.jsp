@@ -29,7 +29,7 @@
 					</div>
 						<div><label>첨부파일</label>
 						<div class="attr-value">
-							<input type="file" id="fileName" name="fileName">
+							<input type="file" id="upfile" name="upfile">
 						</div>
 					</div>
 				</div>

@@ -8,6 +8,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,20 +36,22 @@ public class BoardNoticeController {
 	}
 	@RequestMapping(value="/erp/noticewrite.do",method=RequestMethod.POST) 
 	public String noticeinsert(BoardNoticeDTO post, HttpSession session) throws Exception{
+		System.out.println("컨트롤러임");
 		
 		// 파일업로드
-		MultipartFile file = post.getFileName();
+		if(!post.getFile().isEmpty()) {
+		MultipartFile file = post.getFile();
 		String path = WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/ERP/board/upload");
 		String fileName = file.getOriginalFilename();
 		System.out.println("path : "+path+"   fileName : "+fileName);
 		upload(file, path, fileName);
 		service.insert(post);
+	}
 		List<BoardNoticeDTO> posts = service.boardlist();
 		System.out.println("게시글 : "+posts);
 		return "erp/noticelist";
 	}
-	
-	
+
 	// 파일업로드 로직
 	public void upload(MultipartFile file, String path, String fileName) {
 		try {
