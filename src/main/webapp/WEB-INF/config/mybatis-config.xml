@@ -5,8 +5,10 @@
 <configuration>
 	<typeAliases>
   		<typeAlias type="erp.dept.dto.DeptDTO" alias="dept"/>
+  		<typeAlias type="erp.insa.dto.InsaDTO" alias="emp"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="/mapper/erpdept.xml"/>
+		<mapper resource="/mapper/erpinsa.xml"/>
 	</mappers>
 </configuration>

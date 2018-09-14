@@ -36,5 +36,15 @@ public class DeptDAOImpl implements DeptDAO {
 		sqlSession.update("kr.airport.erp.dept.deptupdate", dept);
 		
 	}
+
+	@Override
+	public List<DeptDTO> getctg2(String deptctg1) {
+		return sqlSession.selectList("kr.airport.erp.dept.getctg2", deptctg1);
+	}
+
+	@Override
+	public List<DeptDTO> getctg3(String deptctg2) {
+		return sqlSession.selectList("kr.airport.erp.dept.getctg3", deptctg2);
+	}
 	
 }

@@ -1,33 +1,66 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-.selectpicker {
-	padding: 5px 0;
-	margin: 2px 0 0;
-	width: 80%;
-	font-size: 13pt; list-style : none;
-	background-color: #ffffff;
-	border: 1px solid #ccc;
-	border: 1px solid rgba(0, 0, 0, 0.2);
-	*border-right-width: 2px;
-	*border-bottom-width: 2px;
-	-webkit-border-radius: 6px;
-	-moz-border-radius: 6px;
-	border-radius: 6px;
-	-webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-	-moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-	-webkit-background-clip: padding-box;
-	-moz-background-clip: padding;
-	background-clip: padding-box;
-	list-style: none;
-}
-</style>
+<link href="/airport/resources/common/css/select.css" rel="stylesheet" />
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#ctg1").change(function(){
+			//현재 작업중인 객체가 click되면 ajax를 요청할 수 있도록 처리
+			category = $(this).val();
+			alert(category)
+			//alert($(this).val());
+			if(category=="self"){
+				//alert("test");
+				myself = "<input type='text' class='form-control' name='deptctg1' id='deptctg1'>";
+				$("#input1").empty(myself);
+				$("#input1").append(myself);
+				myself = "<input type='text' class='form-control' name='deptctg2' id='deptctg2'>";
+				$("#input2").empty(myself);
+				$("#input2").append(myself);
+			}else{
+				$.ajax({
+					url: "/airport/erp/ctglist.do?action=ctg1",
+					type: "get",
+					data:{
+						"category":category
+					},
+					success:function(data){
+						//alert(data);
+						mydata = ""; 
+						for(i=0;i<data.length;i++){
+							if(data[i].deptctg2!=null){
+								mydata = mydata + "<option value='"+data[i].deptctg2+"'>"+data[i].deptctg2+"</option>";
+							}
+						}
+						mydata = mydata + "<option value='self'>직접입력하기</option>";
+						$("#input1").empty(mydata);
+						$("#ctg2").empty(mydata);
+						$("#ctg2").append(mydata);
+					},
+					error:function(a,b,c){	//ajax실패시 원인(에러메시지)
+						alert(a+b+c);
+					}
+				});
+			}
+	});
+	$("#ctg2").change(function(){
+		category = $(this).val();
+		if(category=="self"){
+			//alert("test");
+			myself = "<input type='text' class='form-control' name='deptctg2' id='deptctg2'>";
+			$("#input2").empty(myself);
+			$("#input2").append(myself);
+		}else{
+			$("#input2").empty(myself);
+		}
+	})
+});
+</script>
 </head>
 <body>
 	<div class="content">
@@ -52,18 +85,15 @@
 												</div>
 											</a>
 											<div id="collapseOne" class="panel-collapse collapse">
-												<div class="panel-body">
-													<select class="selectpicker" size="5">
-														<option>Mustard</option>
-														<option>Ketchup</option>
-														<option>Relish</option>
-														<option>Mayonnaise</option>
-														<option>Barbecue Sauce</option>
-														<option>Salad Dressing</option>
-														<option>Tabasco</option>
-														<option>Salsa</option>
+												<div class="panel-body" id="input">
+													<select class="selectpicker" id="ctg1" name="deptctg1" size="5">
+														<c:forEach var="ctg1" items="${ctg1list }">
+															<option value="${ctg1 }">${ctg1 }</option>
+														</c:forEach>
+														<option value="self">직접입력하기</option>
 													</select>
 												</div>
+												<div id="input1"> </div>
 											</div>
 										</div>
 									</div>
@@ -77,17 +107,10 @@
 											</a>
 											<div id="collapsetwo" class="panel-collapse collapse">
 												<div class="panel-body">
-													<select class="selectpicker" size="5">
-														<option>Mustard</option>
-														<option>Ketchup</option>
-														<option>Relish</option>
-														<option>Mayonnaise</option>
-														<option>Barbecue Sauce</option>
-														<option>Salad Dressing</option>
-														<option>Tabasco</option>
-														<option>Salsa</option>
+													<select class="selectpicker" id="ctg2" name="deptctg2" size="5">
 													</select>
 												</div>
+												<div id="input2"> </div>
 											</div>
 										</div>
 									</div>
@@ -100,17 +123,8 @@
 												</div>
 											</a>
 											<div id="collapse3" class="panel-collapse collapse">
-												<div class="panel-body">
-													<select class="selectpicker" size="5">
-														<option>Mustard</option>
-														<option>Ketchup</option>
-														<option>Relish</option>
-														<option>Mayonnaise</option>
-														<option>Barbecue Sauce</option>
-														<option>Salad Dressing</option>
-														<option>Tabasco</option>
-														<option>Salsa</option>
-													</select>
+												<div class="panel-body" id="input3">
+													<input type='text' class='form-control' name='deptctg3' id='deptctg3'>
 												</div>
 											</div>
 										</div>
@@ -129,34 +143,16 @@
 												type="text" class="form-control" name="mgr" id="mgr">
 										</div>
 									</div>
-									<!-- <div class="col-md-3">
+									<div class="col-md-7">
 										<div class="form-group">
-											<label class="bmd-label-floating">분류1</label> <input
-												type="text" class="form-control" name="deptctg1" id="deptctg1">
+											<label class="bmd-label-floating">부서연락처</label> <input
+												type="text" class="form-control" name="tel" id="tel">
 										</div>
 									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="bmd-label-floating">분류2</label> <input
-												type="text" class="form-control" name="deptctg2" id="deptctg2">
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div class="form-group">
-											<label class="bmd-label-floating">분류3</label> <input
-												type="text" class="form-control" name="deptctg3" id="deptctg3">
-										</div>
-									</div> -->
 									<div class="col-md-10">
 										<div class="form-group">
 											<label class="bmd-label-floating">임무</label> <input
-												type="text" class="form-control">
-										</div>
-									</div>
-									<div class="col-md-10">
-										<div class="form-group">
-											<label class="bmd-label-floating">매니저</label> <input
-												type="text" class="form-control">
+												type="text" class="form-control" name="task" id="task">
 										</div>
 									</div>
 								</div>
