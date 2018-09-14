@@ -3,9 +3,9 @@ package erp.dept.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
-public class EmpinsertController {
+public class DeptinsertController {
 	@RequestMapping("/erp/deptlist.do")
 	public String main(){
-		return "erp/deptlist";
-	}
+		return "erp/deptlist"; 
+	} 
 }

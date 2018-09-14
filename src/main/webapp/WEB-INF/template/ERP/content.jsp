@@ -7,141 +7,52 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div class="content">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="card">
-						<div class="card-header card-header-info">
-							<h4 class="card-title ">Simple Table</h4>
-							<p class="card-category">Here is a subtitle for this table</p>
-						</div>
-						<div class="card-body">
-							<div class="table-responsive">
-								<table class="table">
-									<thead class=" text-primary">
-										<th>ID</th>
-										<th>Name</th>
-										<th>Country</th>
-										<th>City</th>
-										<th>Salary</th>
-									</thead>
-									<tbody>
-										<tr>
-											<td>1</td>
-											<td>Dakota Rice</td>
-											<td>Niger</td>
-											<td>Oud-Turnhout</td>
-											<td class="text-primary">$36,738</td>
-										</tr>
-										<tr>
-											<td>2</td>
-											<td>Minerva Hooper</td>
-											<td>Curaçao</td>
-											<td>Sinaai-Waas</td>
-											<td class="text-primary">$23,789</td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td>Sage Rodriguez</td>
-											<td>Netherlands</td>
-											<td>Baileux</td>
-											<td class="text-primary">$56,142</td>
-										</tr>
-										<tr>
-											<td>4</td>
-											<td>Philip Chaney</td>
-											<td>Korea, South</td>
-											<td>Overland Park</td>
-											<td class="text-primary">$38,735</td>
-										</tr>
-										<tr>
-											<td>5</td>
-											<td>Doris Greene</td>
-											<td>Malawi</td>
-											<td>Feldkirchen in Kärnten</td>
-											<td class="text-primary">$63,542</td>
-										</tr>
-										<tr>
-											<td>6</td>
-											<td>Mason Porter</td>
-											<td>Chile</td>
-											<td>Gloucester</td>
-											<td class="text-primary">$78,615</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-12">
-					<div class="card card-plain">
-						<div class="card-header card-header-info">
-							<h4 class="card-title mt-0">Table on Plain Background</h4>
-							<p class="card-category">Here is a subtitle for this table</p>
-						</div>
-						<div class="card-body">
-							<div class="table-responsive">
-								<table class="table table-hover">
-									<thead class="">
-										<th>ID</th>
-										<th>Name</th>
-										<th>Country</th>
-										<th>City</th>
-										<th>Salary</th>
-									</thead>
-									<tbody>
-										<tr>
-											<td>1</td>
-											<td>Dakota Rice</td>
-											<td>Niger</td>
-											<td>Oud-Turnhout</td>
-											<td>$36,738</td>
-										</tr>
-										<tr>
-											<td>2</td>
-											<td>Minerva Hooper</td>
-											<td>Curaçao</td>
-											<td>Sinaai-Waas</td>
-											<td>$23,789</td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td>Sage Rodriguez</td>
-											<td>Netherlands</td>
-											<td>Baileux</td>
-											<td>$56,142</td>
-										</tr>
-										<tr>
-											<td>4</td>
-											<td>Philip Chaney</td>
-											<td>Korea, South</td>
-											<td>Overland Park</td>
-											<td>$38,735</td>
-										</tr>
-										<tr>
-											<td>5</td>
-											<td>Doris Greene</td>
-											<td>Malawi</td>
-											<td>Feldkirchen in Kärnten</td>
-											<td>$63,542</td>
-										</tr>
-										<tr>
-											<td>6</td>
-											<td>Mason Porter</td>
-											<td>Chile</td>
-											<td>Gloucester</td>
-											<td>$78,615</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	<div class="content">
+        <div class="container">
+          <div class="col-lg-6 col-md-8 ml-auto mr-auto">
+            <form class="form" method="" action="#">
+              <div class="card card-login">
+                <div class="card-header ">
+                  <div class="card-header ">
+                    <h3 class="header text-center">Login</h3>
+                  </div>
+                </div>
+                <div class="card-body ">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="nc-icon nc-single-02"></i>
+                      </span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="ID.">
+                  </div>
+                  <br/>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="nc-icon nc-key-25"></i>
+                      </span>
+                    </div>
+                    <input type="password" placeholder="Password" class="form-control">
+                  </div>
+                  <br/>
+                  <div class="form-group">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input type="checkbox" value="">
+                        <span class="form-check-sign"></span>
+                       remember
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer ">
+                  <a href="#" class="btn btn-warning btn-round btn-block mb-3">login</a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
 </body>
 </html>
