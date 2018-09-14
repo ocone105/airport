@@ -4,6 +4,12 @@
       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 	<definition name="erp/deptlist" extends="ERPTemplate">
-		<put-attribute name="content" value="/WEB-INF/ERP/dept/deptlist.jsp"/>
+		<put-attribute name="content"
+			value="/WEB-INF/ERP/dept/deptlist.jsp" />
+	</definition>
+	
+	<definition name="erp/deptinsert" extends="ERPTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/ERP/dept/deptinsert.jsp" />
 	</definition>
 </tiles-definitions>

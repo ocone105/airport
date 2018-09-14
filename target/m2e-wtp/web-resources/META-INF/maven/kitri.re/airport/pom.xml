@@ -154,6 +154,30 @@
 			<version>1.2.2</version>
 		</dependency>
 
+		<!-- json변환 -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.4.6</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.4.6</version>
+		</dependency>
+		
+		<!-- aop기능 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aop</artifactId>
+			<version>4.2.4.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-aspects</artifactId>
+			<version>4.2.4.RELEASE</version>
+		</dependency>
+		
 		<!-- 파일업로드 -->
 		<dependency>
 			<groupId>commons-fileupload</groupId>
@@ -167,7 +191,6 @@
 		</dependency>
 
 		<!-- xmlpullparser -->
-		<!-- https://mvnrepository.com/artifact/xpp3/xpp3 -->
 		<dependency>
 			<groupId>xpp3</groupId>
 			<artifactId>xpp3</artifactId>
@@ -175,6 +198,7 @@
 		</dependency>
 
 	</dependencies>
+
 	<build>
 		<plugins>
 			<plugin>
