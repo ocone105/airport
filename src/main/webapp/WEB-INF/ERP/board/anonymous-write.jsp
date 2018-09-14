@@ -9,7 +9,7 @@
 <body>
 	<div class="content">
 		<div class="col-md-12">
-			<form method="post" action="/airport/erp/anonymouswrite.do"
+			<form class="form-horizontal" method="post" action="/airport/erp/anonymouswrite.do"
 				enctype="multipart/form-data">
 			<div class="card">
 				<div class="card-header card-header-primary">
@@ -18,8 +18,8 @@
 				<div class="card-body">
 					<div>
 					<span>제목</span>
-					<input type="text" class="form-control">
-					<input type="hidden" name="empno" id="empno" value="empno">
+					<input type="text" class="form-control" name="title" id="title">
+					<input type="hidden" name="empno" id="empno" >
 					</div>
 					<div>
 						<label>내용</label>
@@ -27,7 +27,7 @@
 					</div>
 						<div><label>첨부파일</label>
 						<div class="attr-value">
-						<input type="file" id="attach" name="attach">
+						<input type="file" id="upfile" name="upfile">
 						</div>
 					</div>
 				</div>

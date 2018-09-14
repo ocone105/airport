@@ -4,9 +4,15 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-  		<typeAlias type="erp.board.DTO.BoardNoticeDTO" alias="notice"/>
+		<typeAlias type="erp.board.DTO.BoardNoticeDTO" alias="notice" />
+		<typeAlias type="main.member.MemberDTO" alias="member" />
+		<typeAlias type="erp.dept.dto.DeptDTO" alias="dept" />
+		<typeAlias type="erp.insa.dto.InsaDTO" alias="emp" />
 	</typeAliases>
 	<mappers>
-		<mapper resource="/mapper/BoardNotice.xml"/>
+		<mapper resource="/mapper/BoardNotice.xml" />
+		<mapper resource="mapper/member.xml" />
+		<mapper resource="/mapper/erpdept.xml" />
+		<mapper resource="/mapper/erpinsa.xml" />
 	</mappers>
 </configuration>
