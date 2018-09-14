@@ -117,7 +117,6 @@
 												class="form-id form-control" required>
 										</div>
 
-
 										<div class="form-group">
 											<label class="sr-only" for="form-password">Password</label> 
 											<input type="password" name="pwd" id="pwd"
