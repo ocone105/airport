@@ -112,45 +112,42 @@
 										method="post" class="registration-form">
 
 										<div class="form-group">
-											<label class="sr-only" for="form-id">ID</label> <input
-												type="text" name="id" id="id" placeholder="ID 아이디"
-												class="form-id form-control" required autocomplete="off">
+											<label class="sr-only" for="form-id">ID</label> 
+											<input type="text" name="id" id="id" placeholder="ID 아이디"
+												class="form-id form-control" required>
 										</div>
 
 
 										<div class="form-group">
-											<label class="sr-only" for="form-password">Password</label> <input
-												type="password" name="pwd" id="pwd"
+											<label class="sr-only" for="form-password">Password</label> 
+											<input type="password" name="pwd" id="pwd"
 												placeholder="Password 비밀번호"
-												class="form-password form-control" required
-												autocomplete="off">
+												class="form-password form-control" required>
 										</div>
 
 										<div class="form-group">
-											<label class="sr-only" for="form-password">Verify
-												Password</label> <input type="password" name="pwd-verify"
+											<label class="sr-only" for="form-password">Verify Password</label> 
+											<input type="password" name="pwd-verify"
 												placeholder="Verify Password 비밀번호 확인"
-												class="form-password form-control" required
-												autocomplete="off">
+												class="form-password form-control" required>
 										</div>
 
 										<div class="form-group">
-											<label class="sr-only" for="form-name">Name</label> <input
-												type="text" name="name" id="name" placeholder="Name 이름"
-												class="form-name form-control" required autocomplete="off">
+											<label class="sr-only" for="form-name">Name</label> 
+											<input type="text" name="name" id="name" placeholder="Name 이름"
+												class="form-name form-control" required>
 										</div>
 
 										<div class="form-group">
-											<label class="sr-only" for="form-phone">Phone</label> <input
-												type="text" name="phone" id="phone" placeholder="Phone 전화번호"
-												class="form-phone form-control" maxlength="13" required
-												autocomplete="off">
+											<label class="sr-only" for="form-phone">Phone</label> 
+											<input type="text" name="phone" id="phone" placeholder="Phone 전화번호"
+												class="form-phone form-control" maxlength="13" required>
 										</div>
 
 										<div class="form-group">
-											<label class="sr-only" for="form-email">Email</label> <input
-												type="email" name="email" id="email" placeholder="Email 이메일"
-												class="form-email form-control" required autocomplete="off">
+											<label class="sr-only" for="form-email">Email</label> 
+											<input type="email" name="email" id="email" placeholder="Email 이메일"
+												class="form-email form-control" required>
 										</div>
 
 										<p style="font-size: 14pt; color: white;">Receive 알림 받기</p>
@@ -159,8 +156,8 @@
 											<span style="font-size: large; color: white;"> Email:
 												<input type="checkbox" name="email-check" id="email-check">
 											</span>&nbsp;&nbsp;&nbsp;&nbsp; <span
-												style="font-size: large; color: white;"> Phone: <input
-												type="checkbox" name="phone-check" id="phone-check">
+												style="font-size: large; color: white;"> Phone: 
+												<input type="checkbox" name="phone-check" id="phone-check">
 											</span>
 										</div>
 
