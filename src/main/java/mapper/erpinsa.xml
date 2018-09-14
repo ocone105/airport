@@ -4,23 +4,23 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.airport.erp.insa">
 	<select id="emplist" resultType="emp">
-		select * from member
+		select * from emp
 	</select>
 	
 	<insert id="empinsert" parameterType="emp">
-		insert into member
+		insert into emp
 		values(emp_seq.nextVal,#{empid},#{pwd},#{name},#{birth},#{gender},
 		#{phone},#{email},#{position},#{state},sysdate,null,#{deptno})
 	</insert>
 	
 	<update id="empchange" parameterType="emp">
-		update member 
+		update emp
 		set state=#{state}
 		where empno=#{empno}
 	</update>
 	
 	<update id="empupdate" parameterType="emp">
-		update member 
+		update emp 
 		set pwd=#{pwd},phone=#{phone},email=#{email},position=#{position},enddate=#{enddate},deptno=#{deptno} 
 		where empno=#{empno}
 	</update>

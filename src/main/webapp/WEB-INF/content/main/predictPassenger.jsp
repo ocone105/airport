@@ -12,6 +12,7 @@
 <body>
 	<!-- Home -->
 	<div class="home">
+
 		<!-- Home Slider -->
 		<div class="home_slider_container">
 			<div class="owl-carousel owl-theme home_slider">

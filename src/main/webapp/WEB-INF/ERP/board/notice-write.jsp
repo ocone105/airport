@@ -9,8 +9,7 @@
 <body>
 	<div class="content">
 		<div class="col-md-12">
-			<form method="post" action="/airport/erp/noticewrite.do"
-				enctype="multipart/form-data">
+			<form method="post" action="/airport/erp/noticewrite.do" enctype="multipart/form-data">
 			<div class="card">
 				<div class="card-header card-header-primary">
 					<h4 class="card-title">공지사항</h4>
@@ -18,8 +17,7 @@
 				<div class="card-body">
 					<div>
 					<span>제목</span>
-					<input type="text" class="form-control">
-					<input type="hidden" name="empno" id="empno" value="empno">
+					<input type="text" class="form-control" name="title">
 					</div>
 					<div>
 						<span><label>작성자</label></span>
@@ -31,7 +29,7 @@
 					</div>
 						<div><label>첨부파일</label>
 						<div class="attr-value">
-						<input type="file" id="attach" name="attach">
+							<input type="file" id="upfile" name="upfile">
 						</div>
 					</div>
 				</div>
