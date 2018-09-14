@@ -3,12 +3,10 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<!-- <typeAliases>
-  		<typeAlias type="kr.kitri.bigdataShop.product.ProductDTO" alias="product"/>
-  		<typeAlias type="kr.kitri.bigdataShop.product.comment.ProductCommentDTO" alias="comment"/>
+ 	<typeAliases>
+  		<typeAlias type="erp.board.DTO.BoardNoticeDTO" alias="notice"/>
 	</typeAliases>
 	<mappers>
-		<mapper resource="/mapper/product.xml"/>
-		<mapper resource="/mapper/productComment.xml"/>
-	</mappers> -->
+		<mapper resource="/mapper/BoardNotice.xml"/>
+	</mappers>
 </configuration>
