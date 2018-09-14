@@ -78,7 +78,8 @@ $(document).ready(function() {
 							<p class="card-category">Complete profile</p>
 						</div>
 						<div class="card-body">
-							<form>
+							<form class="form-horizontal" method="post"
+								action="/airport/erp/empinsert.do">
 								<div class="row">
 									<div class="col-md-4">
 										<div class="form-group">
