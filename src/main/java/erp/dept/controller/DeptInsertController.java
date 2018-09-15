@@ -16,7 +16,7 @@ import erp.dept.service.DeptService;
 @Controller
 public class DeptInsertController {
 	@Autowired
-	DeptService service;
+	DeptService service; 
 	
 	@RequestMapping(value="/erp/deptwrite.do", method=RequestMethod.GET)
 	public ModelAndView deptlist(){
@@ -30,7 +30,7 @@ public class DeptInsertController {
 			if(!deptlist.get(i).getDeptctg1().equals(deptlist.get(i-1).getDeptctg1())) {
 				ctg1list.add(deptlist.get(i).getDeptctg1());
 			}
-		}
+		} 
 		mav.addObject("ctg1list", ctg1list);
 		mav.setViewName("erp/deptinsert");
 		return mav;
