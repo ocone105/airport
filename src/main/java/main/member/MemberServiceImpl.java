@@ -15,4 +15,14 @@ public class MemberServiceImpl implements MemberService {
 		return dao.signup(member);
 	}
 
+	@Override
+	public MemberDTO login(String id, String pwd) {
+		return dao.login(id, pwd);
+	}
+
+	@Override
+	public boolean idCheck(String id) {
+		return dao.idCheck(id);
+	}
+
 }

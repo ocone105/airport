@@ -9,6 +9,7 @@
 <head>
 <meta charset=UTF-8>
 
+
 <!-- 카카오톡 로그인 -->
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
@@ -58,17 +59,17 @@
 									</div>
 								</div>
 								<div class="form-bottom">
-									<form role="form" action="" method="post" class="login-form">
+									<form role="form" action="/airport/member/login.do" method="post" class="login-form" name="loginform">
 										<div class="form-group">
 											<label class="sr-only" for="form-username">ID 아이디</label> <input
-												type="text" name="form-username" placeholder="ID"
-												class="form-username form-control" id="form-username">
+												type="text" name="id" placeholder="ID"
+												class="form-username form-control" id="id">
 										</div>
 										<div class="form-group">
 											<label class="sr-only" for="form-password">Password
-												비밀번호</label> <input type="password" name="form-password"
+												비밀번호</label> <input type="password" name="pwd"
 												placeholder="Password" class="form-password form-control"
-												id="form-password">
+												id="pwd">
 										</div>
 										<button type="submit" class="btn">Sign in 로그인</button>
 									</form>
@@ -84,45 +85,67 @@
 										<i class="fa fa-google-plus"></i>
 									</div>
 								</div>
-								<!-- 네이버 아이디로 로그인 -->
-								<%
-									String clientId = "8WNSYq9HslIkdHkdXkX8";//애플리케이션 클라이언트 아이디값";
-									String redirectURI = URLEncoder.encode("http://localhost:8088/airport/main/index.do", "UTF-8");
-									SecureRandom random = new SecureRandom();
-									String state = new BigInteger(130, random).toString();
-									String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
-									apiURL += "&client_id=" + clientId;
-									apiURL += "&redirect_uri=" + redirectURI;
-									apiURL += "&state=" + state;
-									session.setAttribute("state", state);
-								%>
-								<a href="<%=apiURL%>"><img src="/airport/resources/sns/naver2.PNG" /></a>
+								<div class="form-bottom">
+									<!-- 네이버 아이디로 로그인 -->
+									<%
+										String clientId = "8WNSYq9HslIkdHkdXkX8";//애플리케이션 클라이언트 아이디값";
+										String redirectURI = URLEncoder.encode("http://localhost:8088/airport/main/index.do", "UTF-8");
+										SecureRandom random = new SecureRandom();
+										String state = new BigInteger(130, random).toString();
+										String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
+										apiURL += "&client_id=" + clientId;
+										apiURL += "&redirect_uri=" + redirectURI;
+										apiURL += "&state=" + state;
+										session.setAttribute("state", state);
+									%>
+									<a href="<%=apiURL%>"><img height="50px"
+										src="/airport/resources/sns/naver2.PNG" /></a>
 
 
-								<!-- 카카오톡으로 로그인 -->
-								<a id="custom-login-btn" href="javascript:loginWithKakao()">
-									<img src="/airport/resources/sns/kakao.png" />
-								</a>
-								<script type='text/javascript'>
-									//<![CDATA[
-									// 사용할 앱의 JavaScript 키를 설정해 주세요.
-									Kakao
-											.init('0b4f8ab826d5bd1a8e4fd171582f0088');
-									function loginWithKakao() {
-										// 로그인 창을 띄웁니다.
-										Kakao.Auth.login({
-											success : function(authObj) {
-												alert(JSON.stringify(authObj));
-											},
-											fail : function(err) {
-												alert(JSON.stringify(err));
-											}
-										});
-									};
-									//]]>
-								</script>
+									<!-- 카카오톡으로 로그인 -->
+									<a id="custom-login-btn" href="javascript:loginWithKakao()">
+										<img src="/airport/resources/sns/kakao.png" height="50px" />
+									</a>
+									<script type='text/javascript'>
+										//<![CDATA[
+										// 사용할 앱의 JavaScript 키를 설정해 주세요.
+										Kakao
+												.init('0b4f8ab826d5bd1a8e4fd171582f0088');
+										function loginWithKakao() {
+											// 로그인 창을 띄웁니다.
+											Kakao.Auth
+													.login({
+														success : function(
+																authObj) {
+															alert(JSON
+																	.stringify(authObj));
+														},
+														fail : function(err) {
+															alert(JSON
+																	.stringify(err));
+														}
+													});
+										};
+										//]]>
+									</script>
 
-
+									<!-- 페이스북으로 로그인 -->
+									<script>
+										(function(d, s, id) {
+											var js, fjs = d
+													.getElementsByTagName(s)[0];
+											if (d.getElementById(id))
+												return;
+											js = d.createElement(s);
+											js.id = id;
+											js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.1&appId=2203155433297404&autoLogAppEvents=1';
+											fjs.parentNode
+													.insertBefore(js, fjs);
+										}(document, 'script', 'facebook-jssdk'));
+									</script>
+									
+									<div class="fb-login-button" scope="public_profile,email" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+								</div>
 							</div>
 						</div>
 
@@ -145,12 +168,13 @@
 								<div class="form-bottom">
 
 									<form role="form" action="/airport/member/signup.do"
-										method="post" class="registration-form">
+										method="post" class="registration-form" id="signupform" name="signupform" onsubmit="return join()">
 
 										<div class="form-group">
 											<label class="sr-only" for="form-id">ID</label> <input
 												type="text" name="id" id="id" placeholder="ID 아이디"
-												class="form-id form-control" required>
+												class="form-id form-control" maxlength="12" required>
+											<p class="help-block" id="idChk" ></p>
 										</div>
 
 										<div class="form-group">
@@ -162,9 +186,10 @@
 
 										<div class="form-group">
 											<label class="sr-only" for="form-password">Verify
-												Password</label> <input type="password" name="pwd-verify"
+												Password</label> <input type="password" name="pwd2" id="pwd2"
 												placeholder="Verify Password 비밀번호 확인"
 												class="form-password form-control" required>
+											<p class="help-block" id="pwMsg"></p>
 										</div>
 
 										<div class="form-group">
