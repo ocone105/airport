@@ -25,4 +25,14 @@ public class MemberServiceImpl implements MemberService {
 		return dao.idCheck(id);
 	}
 
+	@Override
+	public int update(MemberDTO member) {
+		return dao.update(member);
+	}
+
+	@Override
+	public int withdraw(MemberDTO member) {
+		return dao.withdraw(member);
+	}
+
 }

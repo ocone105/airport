@@ -38,4 +38,14 @@ public class MemberDAOImpl implements MemberDAO {
 		return state;
 	}
 
+	@Override
+	public int update(MemberDTO member) {
+		return sqlSession.update("main.member.update", member);
+	}
+
+	@Override
+	public int withdraw(MemberDTO member) {
+		return sqlSession.update("main.member.withdraw", member);
+	}
+
 }
