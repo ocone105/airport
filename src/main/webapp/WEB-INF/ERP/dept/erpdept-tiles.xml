@@ -12,4 +12,9 @@
 		<put-attribute name="content"
 			value="/WEB-INF/ERP/dept/deptinsert.jsp" />
 	</definition>
+	
+	<definition name="erp/deptupdate" extends="ERPTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/ERP/dept/deptupdate.jsp" />
+	</definition>
 </tiles-definitions>

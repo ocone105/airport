@@ -12,18 +12,39 @@ import erp.dept.dto.DeptDTO;
 public class DeptDAOImpl implements DeptDAO {
 	@Autowired
 	SqlSession sqlSession;
-
+	
+	@Override
+	public DeptDTO deptread(String deptno) {
+		return sqlSession.selectOne("kr.airport.erp.dept.deptread",deptno);
+	}
+	
 	@Override
 	public List<DeptDTO> deptList() {
 		return sqlSession.selectList("kr.airport.erp.dept.deptlist");
 	}
+	
+
+	@Override
+	public List<DeptDTO> deptstepList(String deptno) {
+		return sqlSession.selectList("kr.airport.erp.dept.deptstep",deptno);
+	}
+	
+
+	@Override
+	public List<DeptDTO> getByUpper(String deptno) {
+		return sqlSession.selectList("kr.airport.erp.dept.getbyupper",deptno);
+	}
+	
+	@Override
+	public String getUpcode(String deptno) {
+		return sqlSession.selectOne("kr.airport.erp.dept.getupcode",deptno);
+	}
+
 
 	@Override
 	public void deptinsert(DeptDTO dept) {
 		sqlSession.insert("kr.airport.erp.dept.deptinsert", dept);
-		
 	}
-
 
 	@Override
 	public void deptdelete(String deptno) {
@@ -37,14 +58,7 @@ public class DeptDAOImpl implements DeptDAO {
 		
 	}
 
-	@Override
-	public List<DeptDTO> getctg2(String deptctg1) {
-		return sqlSession.selectList("kr.airport.erp.dept.getctg2", deptctg1);
-	}
 
-	@Override
-	public List<DeptDTO> getctg3(String deptctg2) {
-		return sqlSession.selectList("kr.airport.erp.dept.getctg3", deptctg2);
-	}
+
 	
 }
