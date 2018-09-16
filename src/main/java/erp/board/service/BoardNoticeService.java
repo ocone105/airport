@@ -8,5 +8,7 @@ public interface BoardNoticeService {
 	
 	int insert(BoardNoticeDTO post);
 	List<BoardNoticeDTO> boardlist();
-	int delete(String boardno);
+	BoardNoticeDTO read(int boardno);
+	int update(int boardno);
+	int delete(int boardno);
 }

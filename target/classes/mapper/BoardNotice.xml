@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="kitri.re.airport.erp.board">
+<mapper namespace="kr.airport.erp.board">
  	<insert id="insert" parameterType="notice">
-		insert into BOARD values(boardno_seq.nextval, #{ctg}, #{title}, #{txt}, sysdate, 0, #{attach}, #{empno})
+		insert into BOARD values(boardno_seq.nextval, #{ctg}, #{title}, #{txt}, sysdate, 0, #{attach}, #{empno}) 
 	</insert>
 	
 	<select id="noticelist" resultType="notice">
+		select * from BOARD order by boarddate desc
+	</select>
+	
+	<select id="read" parameterType="Integer" resultType="notice">
 		select * from BOARD where boardno=#{boardno}
 	</select>
 	
-	<delete id="delete" parameterType="String">
-		delete from BOARD where boardno = #{boardno}
+	<update id="update" parameterType="Integer">
+		update board set title=#{title}, txt=#{txt}, attach=#{attach} where boardno=#{boardno}
+	</update>
+	
+	<delete id="delete" parameterType="Integer">
+		delete from BOARD where boardno=#{boardno}
 	</delete>
 </mapper>

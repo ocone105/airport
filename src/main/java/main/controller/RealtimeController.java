@@ -1,8 +1,8 @@
-package main.api;
+package main.controller;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -12,11 +12,23 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-public class realtimeAPI {
+import main.api.FlightDTO;
 
-	public static void main(String[] args) throws IOException {
+@Controller
+public class RealtimeController {
 
+	@RequestMapping("/main/realtime.do")
+	public String realtime() throws Exception {
+		list();
+		return "realtime";
+	}
+	
+	public ArrayList<FlightDTO> list() throws Exception{
+		ArrayList<FlightDTO> info = new ArrayList<FlightDTO>();
+		
 		StringBuilder urlBuilder = new StringBuilder("http://openapi.airport.kr/openapi/service/StatusOfPassengerFlightsDS/getPassengerDeparturesDS");
 		urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8") + "=SIiebQZNZnHWh2wfaDQr3sqEbhZH5dOGGBBnUuGTfGX0YfQLrVkPYI9IoYeHbFV0b2x0TxmtG873O%2BSlIjb8WA%3D%3D");
 		urlBuilder.append("&" + URLEncoder.encode("airport_code", "UTF-8") + "=" + URLEncoder.encode("NRT", "UTF-8")); 
@@ -52,7 +64,7 @@ public class realtimeAPI {
 	            JSONObject items = (JSONObject) body.get("items");
 	            
 	            JSONArray item = (JSONArray) items.get("item");
-	            ArrayList<FlightDTO> info = new ArrayList<FlightDTO>();
+	            
 	            for(int i=0 ; i<item.size() ; i++){
 	                JSONObject tempObj = (JSONObject) item.get(i);
 	                FlightDTO data = new FlightDTO();
@@ -74,5 +86,6 @@ public class realtimeAPI {
 	        } catch (ParseException e) {
 	            e.printStackTrace();
 	        }
+		return info;
 	}
 }

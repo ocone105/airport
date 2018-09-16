@@ -31,6 +31,13 @@ public class BoardNoticeDTO {
 		this.upfile = upfile;
 	}
 
+	@Override
+	public String toString() {
+		return "BoardNoticeDTO [boardno=" + boardno + ", ctg=" + ctg + ", title=" + title + ", txt=" + txt
+				+ ", boarddate=" + boarddate + ", hits=" + hits + ", attach=" + attach + ", empno=" + empno
+				+ ", upfile=" + upfile + "]";
+	}
+
 	public int getBoardno() {
 		return boardno;
 	}
@@ -95,12 +102,12 @@ public class BoardNoticeDTO {
 		this.empno = empno;
 	}
 
-	public MultipartFile getFile() {
+	public MultipartFile getUpfile() {
 		return upfile;
 	}
 
-	public void setFile(MultipartFile upfile) {
+	public void setUpfile(MultipartFile upfile) {
 		this.upfile = upfile;
 	}
-	
+
 }

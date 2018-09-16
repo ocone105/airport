@@ -22,13 +22,22 @@ public class BoardNoticeServiceImpl implements BoardNoticeService {
 	public List<BoardNoticeDTO> boardlist() {
 		return dao.boardlist();
 	}
+	
+	@Override
+	public BoardNoticeDTO read(int boardno) {
+		return dao.read(boardno);
+	}
 
 	@Override
-	public int delete(String boardno) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int update(int boardno) {
+		return dao.update(boardno);
 	}
 	
+	@Override
+	public int delete(int boardno) {
+		return dao.delete(boardno);
+	}
+
 
 	
 }
