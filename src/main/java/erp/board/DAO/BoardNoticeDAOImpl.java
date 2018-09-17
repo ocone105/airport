@@ -29,8 +29,9 @@ public class BoardNoticeDAOImpl implements BoardNoticeDAO {
 	}
 	
 	@Override
-	public int update(int boardno) {
-		return sqlSession.delete("kr.airport.erp.board.update", boardno);
+	public int update(BoardNoticeDTO post) {
+		System.out.println(post);
+		return sqlSession.update("kr.airport.erp.board.update", post);
 	}
 	
 	@Override

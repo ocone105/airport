@@ -65,6 +65,7 @@ public class realtimeAPI {
 	                data.setGatenumber((Long) tempObj.get("gatenumber"));
 	                data.setScheduleDateTime((Long) tempObj.get("scheduleDateTime"));
 	                data.setTerminalid((String) tempObj.get("terminalid"));
+	                data.setRemark((String) tempObj.get("remark"));
 	                info.add(data);
 	            }
 	            // System.out.println(info.get(2).getAirline());

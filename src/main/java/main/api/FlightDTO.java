@@ -10,11 +10,12 @@ public class FlightDTO {
 	private Long gatenumber;
 	private Long scheduleDateTime;
 	private String terminalid;
+	private String remark;
 	
 	public FlightDTO() {}
 
 	public FlightDTO(String airline, String airport, String airportcode, String chkinrange, long estimatedDateTime,
-			String flightId, Long gatenumber, Long scheduleDateTime, String terminalid) {
+			String flightId, Long gatenumber, Long scheduleDateTime, String terminalid, String remark) {
 		super();
 		this.airline = airline;
 		this.airport = airport;
@@ -25,6 +26,7 @@ public class FlightDTO {
 		this.gatenumber = gatenumber;
 		this.scheduleDateTime = scheduleDateTime;
 		this.terminalid = terminalid;
+		this.remark = remark;
 	}
 
 	@Override
@@ -32,7 +34,16 @@ public class FlightDTO {
 		return "FlightDTO [airline=" + airline + ", airport=" + airport + ", airportcode=" + airportcode
 				+ ", chkinrange=" + chkinrange + ", estimatedDateTime=" + estimatedDateTime + ", flightId=" + flightId
 				+ ", gatenumber=" + gatenumber + ", scheduleDateTime=" + scheduleDateTime + ", terminalid=" + terminalid
-				+ "]";
+				+ ", remark=" + remark + "]";
+	}
+
+	
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
 	}
 
 	public String getAirline() {

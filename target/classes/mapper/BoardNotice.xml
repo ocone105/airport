@@ -13,7 +13,7 @@
 		select * from BOARD where boardno=#{boardno}
 	</select>
 	
-	<update id="update" parameterType="Integer">
+	<update id="update" parameterType="notice">
 		update board set title=#{title}, txt=#{txt}, attach=#{attach} where boardno=#{boardno}
 	</update>
 	

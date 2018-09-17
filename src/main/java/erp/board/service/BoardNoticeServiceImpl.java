@@ -29,8 +29,8 @@ public class BoardNoticeServiceImpl implements BoardNoticeService {
 	}
 
 	@Override
-	public int update(int boardno) {
-		return dao.update(boardno);
+	public int update(BoardNoticeDTO post) {
+		return dao.update(post);
 	}
 	
 	@Override

@@ -82,8 +82,11 @@ public class BoardNoticeController {
 	}
 	
 	@RequestMapping("/erp/noticeupdate.do")
-	public String update(int boardno){
-		service.update(boardno);
+	public String update(BoardNoticeDTO post){
+		if(post.getUpfile().isEmpty()) {
+			post.setAttach("null");
+		} else {}
+		service.update(post);
 		return "redirect:/erp/noticelist.do";
 	}
 	
