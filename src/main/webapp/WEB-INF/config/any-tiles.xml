@@ -4,7 +4,6 @@
        "http://tiles.apache.org/dtds/tiles-config_3.0.dtd">
 
 <tiles-definitions>
-
 	<definition name="realtime" extends="mainTemplate">
 		<put-attribute name="content" value="/WEB-INF/content/main/realtime.jsp" />
 	</definition>
@@ -20,8 +19,7 @@
 	</definition>
 
 	<definition name="myservice" extends="mainTemplate">
-		<put-attribute name="content"
-			value="/WEB-INF/content/main/myservice.jsp" />
+		<put-attribute name="content" value="/WEB-INF/content/main/predictFlight2.jsp" />
 	</definition>
 
 	<definition name="signin" extends="mainTemplate">

@@ -7,4 +7,24 @@
 		(#{id}, #{pwd}, #{name}, #{phone}, #{email}, '0', '1')
 	</insert>
 
+	<select id="login" parameterType="Map" resultType="member">
+		select * from member where id = #{id} and pwd = #{pwd}
+	</select>
+
+	<select id="idcheck" parameterType="String" resultType="member">
+		select * from member where id = #{id}
+	</select>
+
+	<update id="update" parameterType="member">
+		update member set
+		pwd=#{pwd}, phone=#{phone}, email=#{email}, alarm=#{alarm} where
+		id=#{id}
+	</update>
+
+	<update id="withdraw" parameterType="member">
+		update member set
+		state='1' where
+		id=#{id}
+	</update>
+	
 </mapper>

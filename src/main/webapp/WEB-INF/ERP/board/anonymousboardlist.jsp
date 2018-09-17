@@ -1,16 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel='stylesheet' id='kboard-skin-thumbnail-css'
-	href='/airport/resources/common/css/thumbnail.css?ver=5.3.9' type='text/css'
-	media='all' />
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel='stylesheet' id='kboard-skin-thumbnail-css' href='/airport/resources/common/css/thumbnail.css?ver=5.3.9' type='text/css'media='all' />
+	<style type="text/css">
+		.kboard-list-uid,.kboard-list-title,.kboard-list-user,.kboard-list-date,.kboard-list-view { font-weight: bold;}
+	</style>
 </head>
 <body>
-<div class="content">
+	<div class="content">
 	<h3>익명게시판</h3>
 		<div id="kboard-thumbnail-list">
 				<!-- 리스트 시작 -->
