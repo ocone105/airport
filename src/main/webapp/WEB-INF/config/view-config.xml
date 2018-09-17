@@ -23,4 +23,6 @@
 		view-name="erp/typography" />
 	<view-controller path="/erp/upgrade.do"
 		view-name="erp/upgrade" />
+			
+		
 </beans:beans>

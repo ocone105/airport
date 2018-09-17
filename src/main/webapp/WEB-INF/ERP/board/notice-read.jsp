@@ -45,6 +45,7 @@
 							<div id="kboard-comments-1851" class="kboard-comments-default">
 								<div class="kboard-comments-wrap">
 									<!-- 댓글 리스트 시작 -->
+									${cmt }
 									<div id="kboard-comments-1851" class="kboard-comments-default">
 										<div class="kboard-comments-wrap">
 											<div class="comments-header">

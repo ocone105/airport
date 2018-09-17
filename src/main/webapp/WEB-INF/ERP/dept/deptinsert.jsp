@@ -10,55 +10,37 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$("#ctg1").change(function(){
-			//현재 작업중인 객체가 click되면 ajax를 요청할 수 있도록 처리
-			category = $(this).val();
-			alert(category)
-			//alert($(this).val());
-			if(category=="self"){
-				//alert("test");
-				myself = "<input type='text' class='form-control' name='deptctg1' id='deptctg1'>";
-				$("#input1").empty(myself);
-				$("#input1").append(myself);
-				myself = "<input type='text' class='form-control' name='deptctg2' id='deptctg2'>";
-				$("#input2").empty(myself);
-				$("#input2").append(myself);
-			}else{
-				$.ajax({
-					url: "/airport/erp/ctglist.do?action=ctg1",
-					type: "get",
-					data:{
-						"category":category
-					},
-					success:function(data){
-						//alert(data);
-						mydata = ""; 
-						for(i=0;i<data.length;i++){
-							if(data[i].deptctg2!=null){
-								mydata = mydata + "<option value='"+data[i].deptctg2+"'>"+data[i].deptctg2+"</option>";
-							}
-						}
-						mydata = mydata + "<option value='self'>직접입력하기</option>";
-						$("#input1").empty(mydata);
-						$("#ctg2").empty(mydata);
-						$("#ctg2").append(mydata);
-					},
-					error:function(a,b,c){	//ajax실패시 원인(에러메시지)
-						alert(a+b+c);
-					}
-				});
+		deptno = $(this).val();
+		$("#deptno").val(deptno)
+		$.ajax({
+			url: "/airport/erp/deptlist",
+			type: "get",
+			data:{
+				"deptno":deptno
+			},
+			success:function(data){
+				//alert(data); 	
+				mydata = ""; 
+				for(i=0;i<data.length;i++){
+					mydata = mydata + "<option value='"+data[i].deptno+"'>"+data[i].deptname+"</option>";
+				} 
+				if(data[0].deptstep==3){
+					$("#ctg2").empty(mydata);
+					$("#ctg2").append("<option value='"+deptno+"'>없음</option>");
+				}else{
+					$("#ctg2").empty(mydata);
+					$("#ctg2").append(mydata);
+				}
+			},
+			error:function(a,b,c){	//ajax실패시 원인(에러메시지)
+				alert(a+b+c);
 			}
+		}); 
 	});
-	$("#ctg2").change(function(){
-		category = $(this).val();
-		if(category=="self"){
-			//alert("test");
-			myself = "<input type='text' class='form-control' name='deptctg2' id='deptctg2'>";
-			$("#input2").empty(myself);
-			$("#input2").append(myself);
-		}else{
-			$("#input2").empty(myself);
-		}
-	})
+	$(document).on("change","#ctg2",function(){
+		deptno = $(this).val();
+		$("#deptno").val(deptno)
+	});
 });
 </script>
 </head>
@@ -86,14 +68,14 @@ $(document).ready(function() {
 											</a>
 											<div id="collapseOne" class="panel-collapse collapse">
 												<div class="panel-body" id="input">
-													<select class="selectpicker" id="ctg1" name="deptctg1" size="5">
-														<c:forEach var="ctg1" items="${ctg1list }">
-															<option value="${ctg1 }">${ctg1 }</option>
+													<select class="selectpicker" id="ctg1" name="dept1" size="5">
+													 <c:forEach var="dept" items="${deptlist }">
+															<c:if test="${dept.deptstep eq 1}"> 
+																<option id="${dept.deptno }" value="${dept.deptno}">${dept.deptname }</option>
+															</c:if>
 														</c:forEach>
-														<option value="self">직접입력하기</option>
 													</select>
 												</div>
-												<div id="input1"> </div>
 											</div>
 										</div>
 									</div>
@@ -107,10 +89,9 @@ $(document).ready(function() {
 											</a>
 											<div id="collapsetwo" class="panel-collapse collapse">
 												<div class="panel-body">
-													<select class="selectpicker" id="ctg2" name="deptctg2" size="5">
+													<select class="selectpicker" id="ctg2" name="dept2" size="5">
 													</select>
 												</div>
-												<div id="input2"> </div>
 											</div>
 										</div>
 									</div>
@@ -124,7 +105,7 @@ $(document).ready(function() {
 											</a>
 											<div id="collapse3" class="panel-collapse collapse">
 												<div class="panel-body" id="input3">
-													<input type='text' class='form-control' name='deptctg3' id='deptctg3'>
+													<input type='text' class='form-control' name='deptname' id='ctg3'>
 												</div>
 											</div>
 										</div>
@@ -135,12 +116,13 @@ $(document).ready(function() {
 										<div class="form-group">
 											<label class="bmd-label-floating">부서번호</label> <input
 												type="text" class="form-control" name="deptno" id="deptno">
+												<span>숫자3자리를 더 입력해주세요</span>
 										</div>
 									</div>
 									<div class="col-md-5">
 										<div class="form-group">
 											<label class="bmd-label-floating">매니저</label> <input
-												type="text" class="form-control" name="mgr" id="mgr">
+												type="number" class="form-control" name="mgr" id="mgr">
 										</div>
 									</div>
 									<div class="col-md-7">

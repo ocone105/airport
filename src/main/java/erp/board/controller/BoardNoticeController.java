@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
+import erp.board.DTO.BoardNoticeCmtDTO;
 import erp.board.DTO.BoardNoticeDTO;
 import erp.board.service.BoardNoticeService;
 
@@ -77,8 +78,13 @@ public class BoardNoticeController {
 	
 	@RequestMapping("/erp/noticeread.do")
 	public ModelAndView read(int boardno){
+		ModelAndView mav = new ModelAndView();
 		BoardNoticeDTO post = service.read(boardno);
-		return new ModelAndView("erp/boardread1", "post", post);
+		List<BoardNoticeCmtDTO> cmt = service.Cmtlist(boardno);
+		mav.addObject("post",post);
+		mav.addObject("cmt", cmt);
+		mav.setViewName("erp/boardread1");
+		return mav;
 	}
 	
 	@RequestMapping("/erp/noticeupdate.do")

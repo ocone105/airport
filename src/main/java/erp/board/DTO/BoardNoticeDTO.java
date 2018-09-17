@@ -5,14 +5,14 @@ import java.sql.Date;
 import org.springframework.web.multipart.MultipartFile;
 
 public class BoardNoticeDTO {
-	private int boardno;
+	private int boardno; 
 	private String ctg;
 	private String title;
 	private String txt;
-	private Date boarddate;
+	private Date boarddate; 
 	private int hits;
 	private String attach;
-	private int empno;
+	private int empno; 
 	private MultipartFile upfile;
 
 	public BoardNoticeDTO(){}

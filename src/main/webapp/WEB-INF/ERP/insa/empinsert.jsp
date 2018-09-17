@@ -10,60 +10,57 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$("#ctg1").change(function(){
-			category = $(this).val();
-				$.ajax({
-					url: "/airport/erp/ctglist.do?action=ctg1",
-					type: "get",
-					data:{
-						"category":category
-					},
-					success:function(data){
-						mydata1 = ""; 
-						mydata2 = ""; 
-						for(i=0;i<data.length;i++){
-							if(data[i].deptctg2!=null){
-								mydata1 = mydata1 + "<option value='"+data[i].deptctg2+"'>"+data[i].deptctg2+"</option>";
-							}else{
-								if(data[i].deptctg3!=null){
-									mydata2 = mydata2 + "<option value='"+data[i].deptctg3+"'>"+data[i].deptctg3+"</option>";
-									mydata1 = "<option value='no2'>분류2가존재하지않습니다</option>"
-								}
-							}
-						}
-						$("#ctg2").empty(mydata1);
-						$("#ctg2").append(mydata1);
-						$("#ctg3").empty(mydata2);
-						$("#ctg3").append(mydata2);
-					},
-					error:function(a,b,c){	
-						alert(a+b+c);
-					}
-				});
-			
-	});
-	$("#ctg2").change(function(){
-		category = $(this).val();
+		deptno = $(this).val();
+		$("#deptno").val(deptno)
 		$.ajax({
-			url: "/airport/erp/ctglist.do?action=ctg2",
+			url: "/airport/erp/deptlist",
 			type: "get",
 			data:{
-				"category":category
+				"deptno":deptno
 			},
 			success:function(data){
+				//alert(data); 	
 				mydata = ""; 
 				for(i=0;i<data.length;i++){
-					if(data[i].deptctg3!=null){
-						mydata = mydata + "<option value='"+data[i].deptctg3+"'>"+data[i].deptctg3+"</option>";
-					}
+					mydata = mydata + "<option value='"+data[i].deptno+"'>"+data[i].deptname+"</option>";
+				} 
+				if(data[0].deptstep==3){
+					$("#ctg2").empty(mydata);
+					$("#ctg2").append("<option value='"+deptno+"'>없음</option>");
+					$("#ctg3").empty(mydata);
+					$("#ctg3").append(mydata);
+				}else{
+					$("#ctg2").empty(mydata);
+					$("#ctg2").append(mydata);
 				}
+			},
+			error:function(a,b,c){	//ajax실패시 원인(에러메시지)
+				alert(a+b+c);
+			}
+		}); 
+	});
+	$(document).on("change","#ctg2",function(){
+		deptno = $(this).val();
+		$.ajax({
+			url: "/airport/erp/insadept",
+			type: "get",
+			data:{
+				"deptno":deptno
+			},
+			success:function(data){
+				//alert(data); 	
+				mydata = ""; 
+				for(i=0;i<data.length;i++){
+					mydata = mydata + "<option value='"+data[i].deptno+"'>"+data[i].deptname+"</option>";
+				} 
 				$("#ctg3").empty(mydata);
 				$("#ctg3").append(mydata);
 			},
-			error:function(a,b,c){	
+			error:function(a,b,c){	//ajax실패시 원인(에러메시지)
 				alert(a+b+c);
 			}
-		});
-	})
+		}); 
+	});
 });
 </script>
 </head>
@@ -84,33 +81,33 @@ $(document).ready(function() {
 									<div class="col-md-4">
 										<div class="form-group">
 											<label class="bmd-label-floating">사원ID</label> <input
-												type="text" class="form-control">
+												type="text" class="form-control" name="empid">
 										</div>
 									</div>
 									<div class="col-md-5">
 										<div class="form-group">
 											<label class="bmd-label-floating">비밀번호</label> <input
-												type="password" class="form-control">
+												type="password" class="form-control" name="pwd">
 										</div>
 									</div>
 									<div class="col-md-8">
 										<div class="form-group">
 											<label class="bmd-label-floating">이름</label> <input
-												type="text" class="form-control">
+												type="text" class="form-control" name="name">
 										</div>
 									</div>
 									<div class="col-md-5">
 										<div class="form-group">
 											<label class="bmd-label-floating">생일</label> <input
-												type="text" class="form-control">
+												type="text" class="form-control" name="birth"> 
 										</div>
 									</div>
 									<div class="col-md-5">
 										<div class="form-group">
 											<label class="bmd-label-floating">성별</label> 
 											<div class="radio">
-												<label> <input type="radio" name="me_gender" value="male" checked/>남자</label> 
-												<label> <input type="radio" name="me_gender" value="female" />여자
+												<label> <input type="radio" name="gender" value="m" checked/>남자</label> 
+												<label> <input type="radio" name="gender" value="f" />여자
 												</label>
 											</div>
 										</div>
@@ -118,13 +115,13 @@ $(document).ready(function() {
 									<div class="col-md-10">
 										<div class="form-group">
 											<label class="bmd-label-floating">전화번호</label> <input
-												type="text" class="form-control">
+												type="text" class="form-control" name="phone">
 										</div>
 									</div>
 									<div class="col-md-8">
 										<div class="form-group">
 											<label class="bmd-label-floating">Email address</label> <input
-												type="email" class="form-control">
+												type="email" class="form-control" name="email">
 										</div>
 									</div>
 								</div>
@@ -139,13 +136,12 @@ $(document).ready(function() {
 											</a>
 											<div id="collapseOne" class="panel-collapse collapse">
 												<div class="panel-body" id="input">
-													<select class="selectpicker" id="ctg1" name="deptctg1" size="5">
-														<c:forEach var="ctg1" items="${ctg1list }">
-															<option value="${ctg1 }">${ctg1 }</option>
+													<select class="selectpicker" id="ctg1" size="5">
+														<c:forEach var="dept" items="${deptlist }">
+															<option value="${dept.deptno }">${dept.deptname }</option>
 														</c:forEach>
 													</select>
 												</div>
-												<div id="input1"> </div>
 											</div>
 										</div>
 									</div>
@@ -159,10 +155,9 @@ $(document).ready(function() {
 											</a>
 											<div id="collapsetwo" class="panel-collapse collapse">
 												<div class="panel-body">
-													<select class="selectpicker" id="ctg2" name="deptctg2" size="5">
+													<select class="selectpicker" id="ctg2" size="5">
 													</select>
 												</div>
-												<div id="input2"> </div>
 											</div>
 										</div>
 									</div>
@@ -176,7 +171,7 @@ $(document).ready(function() {
 											</a>
 											<div id="collapse3" class="panel-collapse collapse">
 												<div class="panel-body" id="input3">
-													<select class="selectpicker" id="ctg3" name="deptctg3" size="5">
+													<select class="selectpicker" id="ctg3" name="deptno" size="5">
 													</select>
 												</div>
 											</div>
@@ -187,7 +182,7 @@ $(document).ready(function() {
 									<div class="col-md-4">
 										<div class="form-group">
 											<label class="bmd-label-floating">직급</label> <input
-												type="text" class="form-control">
+												type="text" class="form-control" name="position">
 										</div>
 									</div>
 								</div>
