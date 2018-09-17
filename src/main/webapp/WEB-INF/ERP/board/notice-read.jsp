@@ -8,6 +8,11 @@
 <link rel='stylesheet' id='kboard-skin-thumbnail-css'
 	href='/airport/resources/common/css/comments.css' type='text/css'
 	media='all' />
+	<script type="text/javascript">
+		window.onload = function(){
+			
+		}
+	</script>
 </head>
 <body>
 	<div class="content">
