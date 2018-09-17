@@ -7,7 +7,7 @@ public class EmpDTO {
 	String empid;
 	String pwd;
 	String name;
-	Date birth;
+	String birth;
 	String gender;
 	String phone;
 	String email;
@@ -20,7 +20,7 @@ public class EmpDTO {
 	String deptname;
 	
 	public EmpDTO() {}
-	public EmpDTO(int empno, String empid, String pwd, String name, Date birth, String gender, String phone,
+	public EmpDTO(int empno, String empid, String pwd, String name, String birth, String gender, String phone,
 			String email, String position, String state, Date startdate, Date enddate, String deptno) {
 		super();
 		this.empno = empno;
@@ -38,7 +38,7 @@ public class EmpDTO {
 		this.deptno = deptno;
 	}
 	//empread용
-	public EmpDTO(int empno, String empid, String pwd, String name, Date birth, String gender, String phone,
+	public EmpDTO(int empno, String empid, String pwd, String name, String birth, String gender, String phone,
 			String email, String position, String state, Date startdate, Date enddate, String deptno, String deptname) {
 		super();
 		this.empno = empno;
@@ -88,10 +88,10 @@ public class EmpDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Date getBirth() {
+	public String getBirth() {
 		return birth;
 	}
-	public void setBirth(Date birth) {
+	public void setBirth(String birth) {
 		this.birth = birth;
 	}
 	public String getGender() {

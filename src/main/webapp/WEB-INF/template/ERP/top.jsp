@@ -32,6 +32,9 @@
           <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
               <li class="nav-item">
+             	<a class="nav-link" href="/airport/erp/login.do">
+                 login
+                </a>
                 <a class="nav-link" href="/airport/erp/logout.do">
                  logout
                 </a>
