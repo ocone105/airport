@@ -2,12 +2,12 @@ package erp.insa.dto;
 
 import java.sql.Date;
 
-public class InsaDTO {
+public class EmpDTO {
 	int empno;
 	String empid;
 	String pwd;
 	String name;
-	Date birth;
+	String birth;
 	String gender;
 	String phone;
 	String email;
@@ -17,8 +17,10 @@ public class InsaDTO {
 	Date enddate;
 	String deptno;
 	
-	public InsaDTO() {}
-	public InsaDTO(int empno, String empid, String pwd, String name, Date birth, String gender, String phone,
+	String deptname;
+	
+	public EmpDTO() {}
+	public EmpDTO(int empno, String empid, String pwd, String name, String birth, String gender, String phone,
 			String email, String position, String state, Date startdate, Date enddate, String deptno) {
 		super();
 		this.empno = empno;
@@ -35,7 +37,25 @@ public class InsaDTO {
 		this.enddate = enddate;
 		this.deptno = deptno;
 	}
-	
+	//empread용
+	public EmpDTO(int empno, String empid, String pwd, String name, String birth, String gender, String phone,
+			String email, String position, String state, Date startdate, Date enddate, String deptno, String deptname) {
+		super();
+		this.empno = empno;
+		this.empid = empid;
+		this.pwd = pwd;
+		this.name = name;
+		this.birth = birth;
+		this.gender = gender;
+		this.phone = phone;
+		this.email = email;
+		this.position = position;
+		this.state = state;
+		this.startdate = startdate;
+		this.enddate = enddate;
+		this.deptno = deptno;
+		this.deptname = deptname;
+	}
 	
 	@Override
 	public String toString() {
@@ -43,6 +63,7 @@ public class InsaDTO {
 				+ ", gender=" + gender + ", phone=" + phone + ", email=" + email + ", position=" + position + ", state="
 				+ state + ", startdate=" + startdate + ", enddate=" + enddate + ", deptno=" + deptno + "]";
 	}
+	
 	public int getEmpno() {
 		return empno;
 	}
@@ -67,10 +88,10 @@ public class InsaDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Date getBirth() {
+	public String getBirth() {
 		return birth;
 	}
-	public void setBirth(Date birth) {
+	public void setBirth(String birth) {
 		this.birth = birth;
 	}
 	public String getGender() {
@@ -120,6 +141,12 @@ public class InsaDTO {
 	}
 	public void setDeptno(String deptno) {
 		this.deptno = deptno;
+	}
+	public String getDeptname() {
+		return deptname;
+	}
+	public void setDeptname(String deptname) {
+		this.deptname = deptname;
 	}
 	
 	

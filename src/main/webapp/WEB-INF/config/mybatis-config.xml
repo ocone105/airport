@@ -7,7 +7,7 @@
 		<typeAlias type="erp.board.DTO.BoardNoticeDTO" alias="notice" />
 		<typeAlias type="main.member.MemberDTO" alias="member" />
 		<typeAlias type="erp.dept.dto.DeptDTO" alias="dept" />
-		<typeAlias type="erp.insa.dto.InsaDTO" alias="emp" />
+		<typeAlias type="erp.insa.dto.EmpDTO" alias="emp" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="/mapper/BoardNotice.xml" />
