@@ -132,7 +132,6 @@ function getEmpInfo(emp) {
 			</c:forEach>
 		</ul>
 	</div>
-	
 	</div>
 </body>
 </html>

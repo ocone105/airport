@@ -33,7 +33,6 @@
 		where deptctg2=#{deptctg2}
 		order by deptctg3 asc
 	</select>
-	
 </mapper>
 
 
