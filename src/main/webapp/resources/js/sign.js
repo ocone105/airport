@@ -52,6 +52,7 @@ $(document).ready(function() {
 	});
 });
 
+
 //회원가입 비밀번호 일치, 중복 아이디x
 function join(){
 	if($("#idChk").val){		//비밀번호 중복 거르는거 안됨..
