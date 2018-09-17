@@ -80,7 +80,7 @@ public class BoardNoticeController {
 		BoardNoticeDTO post = service.read(boardno);
 		return new ModelAndView("erp/boardread1", "post", post);
 	}
-	
+	 
 	@RequestMapping("/erp/noticeupdate.do")
 	public String update(BoardNoticeDTO post){
 		if(post.getUpfile().isEmpty()) {
