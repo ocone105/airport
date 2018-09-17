@@ -18,7 +18,7 @@
 				<div class="card-body">
 					<div>
 					<span>제목</span>
-					<input type="text" class="form-control" name="title" required>
+					<input type="text" class="form-control" name="title" value="${post.title}" required>
 					</div>
 					<div>
 						<span><label>작성자</label></span>
@@ -26,11 +26,11 @@
 					</div>
 					<div>
 						<label>내용</label>
-						<textarea class="form-control" rows="15" name="txt" id="txt" required></textarea>
+						<textarea class="form-control" rows="15" name="txt" required>${post.txt}</textarea>
 					</div>
 						<div><label>첨부파일</label>
 						<div class="attr-value">
-							<input type="file" id="upfile" name="upfile">
+							<input type="file" id="upfile" name="upfile" value="${post.attach}">
 						</div>
 					</div>
 				</div>

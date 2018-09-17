@@ -12,11 +12,6 @@ public class IndexController {
 		return "index";
 	}
 
-	@RequestMapping("/main/realtime.do")
-	public String realtime() {
-		return "realtime";
-	}
-
 	@RequestMapping("/main/passenger.do")
 	public String predictPassenger() {
 		return "passenger";
