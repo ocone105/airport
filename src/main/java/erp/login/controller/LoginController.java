@@ -27,7 +27,7 @@ public class LoginController {
 		
 		String url = "";
 		if(loginUser!=null) {
-			session.setAttribute("loginUser", loginUser);
+			session.setAttribute("erploginUser", loginUser);
 			url = "redirect:/erp/deptlist.do";
 		}else {
 			url = "erp/login";
