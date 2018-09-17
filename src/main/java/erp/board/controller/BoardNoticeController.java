@@ -36,7 +36,6 @@ public class BoardNoticeController {
 		return "erp/noticewrite";
 	}
 	
-	
 	@RequestMapping(value="/erp/noticewrite.do",method=RequestMethod.POST) 
 	public String noticeinsert(BoardNoticeDTO post, HttpSession session) throws Exception{
 
@@ -79,6 +78,7 @@ public class BoardNoticeController {
 	@RequestMapping("/erp/noticeread.do")
 	public ModelAndView read(int boardno){
 		ModelAndView mav = new ModelAndView();
+		service.hits(boardno);
 		BoardNoticeDTO post = service.read(boardno);
 		List<BoardNoticeCmtDTO> cmt = service.Cmtlist(boardno);
 		mav.addObject("post",post);
@@ -87,11 +87,25 @@ public class BoardNoticeController {
 		return mav;
 	}
 	
-	@RequestMapping("/erp/noticeupdate.do")
-	public String update(BoardNoticeDTO post){
+	@RequestMapping(value="/erp/noticeupdate.do", method=RequestMethod.GET)
+	public ModelAndView update1(int boardno){
+		BoardNoticeDTO post = service.read(boardno);
+		return new ModelAndView("erp/noticeupdate", "post", post);
+	}
+	
+	@RequestMapping(value="/erp/noticeupdate.do", method=RequestMethod.POST)
+	public String update2(BoardNoticeDTO post, HttpSession session) throws Exception{
 		if(post.getUpfile().isEmpty()) {
-			post.setAttach("null");
-		} else {}
+			BoardNoticeDTO origin = service.read(post.getBoardno());
+			String attach = origin.getAttach();
+			post.setAttach(attach);
+		} else {
+			MultipartFile file = post.getUpfile();
+			String path = WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/ERP/board/upload/");
+			String fileName = file.getOriginalFilename();
+			post.setAttach(fileName);
+			upload(file, path, fileName);
+		}
 		service.update(post);
 		return "redirect:/erp/noticelist.do";
 	}

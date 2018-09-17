@@ -28,9 +28,9 @@
 								</tr>
 							</thead>
 							<tbody>
-							<c:forEach var="post" items="${posts}">
+							<c:forEach var="post" items="${posts}" varStatus="postno">
 								<tr class="kboard-list-notice">
-									<td class="kboard-list-uid">1</td>
+									<td class="kboard-list-uid">${postno.count}</td>
 									<td class="kboard-list-user"><a href="/airport/erp/noticeread.do?boardno=${post.boardno}">${post.title}</a></td>
 									<td class="kboard-list-user">${post.empno}</td>
 									<td class="kboard-list-date">${post.boarddate}</td>

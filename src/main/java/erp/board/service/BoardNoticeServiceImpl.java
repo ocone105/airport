@@ -30,6 +30,11 @@ public class BoardNoticeServiceImpl implements BoardNoticeService {
 	}
 
 	@Override
+	public int hits(int boardno) {
+		return dao.hits(boardno);
+	}
+	
+	@Override
 	public int update(BoardNoticeDTO post) {
 		return dao.update(post);
 	}
@@ -53,5 +58,5 @@ public class BoardNoticeServiceImpl implements BoardNoticeService {
 	public int deleteCmt(int cmtno) {
 		return dao.deleteCmt(cmtno);
 	}
-	
+
 }

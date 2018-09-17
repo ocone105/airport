@@ -10,6 +10,7 @@ public interface BoardNoticeDAO {
 	int insert(BoardNoticeDTO post);
 	List<BoardNoticeDTO> boardlist();
 	BoardNoticeDTO read(int boardno);
+	int hits(int boardno);
 	int update(BoardNoticeDTO post);
 	int delete(int boardno);
 	

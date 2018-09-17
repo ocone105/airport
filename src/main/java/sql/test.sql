@@ -21,5 +21,3 @@ create table BOARDCMT(
 create sequence cmtno_seq;
 select * from BOARDCMT;
 
-insert into BOARDCMT values(cmtno_seq.nextval, 55, sysdate, 1, 1);
-select * from BOARDCMT where boardno=1 order by cmtdate desc

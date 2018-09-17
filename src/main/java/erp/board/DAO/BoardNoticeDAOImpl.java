@@ -30,8 +30,12 @@ public class BoardNoticeDAOImpl implements BoardNoticeDAO {
 	}
 	
 	@Override
+	public int hits(int boardno) {
+		return sqlSession.update("kr.airport.erp.board.hits", boardno);
+	}
+	
+	@Override
 	public int update(BoardNoticeDTO post) {
-		System.out.println(post);
 		return sqlSession.update("kr.airport.erp.board.update", post);
 	}
 	
@@ -54,5 +58,6 @@ public class BoardNoticeDAOImpl implements BoardNoticeDAO {
 	public int deleteCmt(int cmtno) {
 		return sqlSession.delete("kr.airport.erp.board.deleteCmt", cmtno);
 	}
+
 	
 }
