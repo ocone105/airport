@@ -4,19 +4,20 @@
        "http://tiles.apache.org/dtds/tiles-config_3.0.dtd">
 
 <tiles-definitions>
-
 	<definition name="realtime" extends="mainTemplate">
 		<put-attribute name="content" value="/WEB-INF/content/main/realtime.jsp" />
-	</definition>	
-	
+	</definition>
+
 	<definition name="passenger" extends="mainTemplate">
-		<put-attribute name="content" value="/WEB-INF/content/main/predictPassenger.jsp" />
+		<put-attribute name="content"
+			value="/WEB-INF/content/main/predictPassenger.jsp" />
 	</definition>
-	
+
 	<definition name="abnormalflight" extends="mainTemplate">
-		<put-attribute name="content" value="/WEB-INF/content/main/predictFlight.jsp" />
+		<put-attribute name="content"
+			value="/WEB-INF/content/main/predictFlight.jsp" />
 	</definition>
-	
+
 	<definition name="myservice" extends="mainTemplate">
 		<put-attribute name="content" value="/WEB-INF/content/main/predictFlight2.jsp" />
 	</definition>
@@ -28,5 +29,9 @@
 	<definition name="privacy" extends="mainTemplate">
 		<put-attribute name="content" value="/WEB-INF/MAIN/register/privacy.jsp" />
 	</definition>
-			
+
+	<definition name="email" extends="mainTemplate">
+		<put-attribute name="content" value="/WEB-INF/MAIN/register/email.jsp" />
+	</definition>
+
 </tiles-definitions>   

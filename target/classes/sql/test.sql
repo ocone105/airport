@@ -1,5 +1,4 @@
-Drop table BOARD
-create sequence boardno_seq
+Drop table BOARD;
 create table BOARD(
 	boardno number,
 	ctg varchar2(30),
@@ -7,7 +6,8 @@ create table BOARD(
 	txt varchar2(1000),
 	boarddate date,
 	hits number,
-	fileName varchar2(100),
-	empno number)
+	attach varchar2(100),
+	empno number);
 	
+create sequence boardno_seq;
 select * from BOARD

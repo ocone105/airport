@@ -23,4 +23,9 @@ public class BoardAnonymousController {
 		System.out.println("게시글 : "+post);
 		return "erp/anonymouslist";
 	}
+	
+	@RequestMapping("/erp/anonymousread.do")
+	public String read(int boardno){
+		return "erp/boardread2";
+	}
 }

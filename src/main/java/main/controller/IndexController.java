@@ -12,11 +12,6 @@ public class IndexController {
 		return "index";
 	}
 
-	@RequestMapping("/main/realtime.do")
-	public String realtime() {
-		return "realtime";
-	}
-
 	@RequestMapping("/main/passenger.do")
 	public String predictPassenger() {
 		return "passenger";
@@ -40,5 +35,10 @@ public class IndexController {
 	@RequestMapping("/main/privacy.do")
 	public String privacy() {
 		return "privacy";
+	}
+	
+	@RequestMapping("/main/email.do")
+	public String rejectEmail() {
+		return "email";
 	}
 }

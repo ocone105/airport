@@ -4,9 +4,9 @@
       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 	<definition name="erp/empinsert" extends="ERPTemplate">
-		<put-attribute name="content" value="/WEB-INF/ERP/task/empinsert.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/ERP/insa/empinsert.jsp"/>
 	</definition>
 	<definition name="erp/emplist" extends="ERPTemplate">
-		<put-attribute name="content" value="/WEB-INF/ERP/task/emplist.jsp"/>
+		<put-attribute name="content" value="/WEB-INF/ERP/insa/emplist.jsp"/>
 	</definition>
 </tiles-definitions>

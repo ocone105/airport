@@ -15,7 +15,11 @@
 	<definition name="erp/anonymouswrite" extends="ERPTemplate">
 		<put-attribute name="content" value="/WEB-INF/ERP/board/anonymous-write.jsp"/>
 	</definition>
-	<definition name="erp/boardread" extends="ERPTemplate">
-		<put-attribute name="content" value="/WEB-INF/ERP/board/boardread.jsp"/>
+	<definition name="erp/boardread1" extends="ERPTemplate">
+		<put-attribute name="content" value="/WEB-INF/ERP/board/notice-read.jsp"/>
 	</definition>
+	<definition name="erp/boardread2" extends="ERPTemplate">
+		<put-attribute name="content" value="/WEB-INF/ERP/board/anonymous-read.jsp"/>
+	</definition>
+	
 </tiles-definitions>
