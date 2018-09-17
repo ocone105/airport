@@ -10,7 +10,7 @@
 	<div class="content">
         <div class="container">
           <div class="col-lg-6 col-md-8 ml-auto mr-auto">
-            <form class="form" method="" action="#">
+            <form class="form" method="post" action="/airport/erp/login.do">
               <div class="card card-login">
                 <div class="card-header ">
                   <div class="card-header ">
@@ -24,7 +24,7 @@
                         <i class="nc-icon nc-single-02"></i>
                       </span>
                     </div>
-                    <input type="text" class="form-control" placeholder="ID.">
+                    <input type="text" class="form-control" name='id' placeholder="ID.">
                   </div>
                   <br/>
                   <div class="input-group">
@@ -33,10 +33,10 @@
                         <i class="nc-icon nc-key-25"></i>
                       </span>
                     </div>
-                    <input type="password" placeholder="Password" class="form-control">
+                    <input type="password" name='pwd' placeholder="Password" class="form-control">
                   </div>
                   <br/>
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <div class="form-check">
                       <label class="form-check-label">
                         <input type="checkbox" value="">
@@ -44,10 +44,10 @@
                        remember
                       </label>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
-                <div class="card-footer ">
-                  <a href="#" class="btn btn-warning btn-round btn-block mb-3">login</a>
+                <div class="card-footer">
+                	<input type="submit" class="btn btn-warning btn-round btn-block mb-3" value="login">
                 </div>
               </div>
             </form>

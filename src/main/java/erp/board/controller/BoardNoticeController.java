@@ -24,7 +24,7 @@ public class BoardNoticeController {
 	@Autowired
 	BoardNoticeService service;
 	
-	FileOutputStream fos;
+	FileOutputStream fos; 
 	
 	@RequestMapping("/erp/noticelist.do")
 	public String noticelist(){

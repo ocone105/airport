@@ -14,124 +14,180 @@
 <script src="/airport/resources/common/js/query.cookie.js"></script>
 <script type="text/javascript" src="/airport/resources/common/js/treedemo.js"></script>
 <script type="text/javascript">
-/* $(document).ready(function() {
-	$(".folder").on("click", function() {
-		deptname = $(this).text().trim();
-		//this의 다음노드로 접근
-		ulnode = $(this).next();
-		//ul노드의 id속성 값을 구하기
-		deptno = $(ulnode).attr("id");
-		//alert(deptno);
-		$.get("/kimsaemERP/ajaxtreedata", {
-			"deptno" : deptno
-		}, getData, "json");
-	});
-}); */
-/*
- * $(document).ready(function() {
-		//id속성이 boardCategory로 정의된 모든 li에 익명의 함수를 적용하겠다는 의미
-		$("#boardCategory>li").each(function(){
-			$(this).click(function(){
-				//현재 작업중인 객체가 click되면 ajax를 요청할 수 있도록 처리
-				category = $(this).text();
-				//alert(category);
-				$.ajax({
-					url: "/stswebTest/board/ajax_boardlist.do",
-					type: "get",
-					data:{
-						"category":category
-					},
-					success:function(data){
-						//alert(data[0].title+","+data[0].write_date);
-						mydata = ""; //조회한 json객체안의 모든 데이터를 꺼내서 추가할 변수
-						for(i=0;i<data.length;i++){
-							mydata = mydata + "<tr>"
-							+"<td class='boardContent'>"+data[i].title+"</td>"
-							+"<td class='boardDate'>"+data[i].write_date+"</td>"
-							+"</tr>";
-						}
-						//alert(mydata);
-						$("#mydatalist").empty(mydata);
-						$("#mydatalist").append(mydata);
-					},
-					error:function(a,b,c){	//ajax실패시 원인(에러메시지)
-						alert(a+b+c);
-					}
-				});
-			});
+$(document).ready(function() {
+	$(".step1").on("click",function(){
+		//alert($(this).text());
+		//alert($(this).next().val());
+		deptno = $(this).next().val();
+		$.ajax({
+			url: "/airport/erp/ajaxdeptlist",
+			type: "get",
+			data:{
+				"deptno":deptno
+			},
+			success:function(data){
+				mydata = ""; 
+				for(i=0;i<data.length;i++){
+					mydata = mydata + "<li><span class='step2 folder'>"
+					+data[i].deptname+"</span>"
+					+"<input type='hidden' value='"+data[i].deptno+"'/>"
+					+"<ul id='"+data[i].deptno+"' class='filetree'></ul></li>"
+				}
+				$("#"+deptno).empty(mydata);
+				$("#"+deptno).append(mydata); 
+			},
+			error:function(a,b,c){	//ajax실패시 원인(에러메시지)
+				alert(a+b+c);
+			}
 		});
 	});
- */
-/* ulnode = "";
-$(document).ready(function() {
-	$(".folder").on("click", function() {
-		deptname = $(this).text().trim();
-		//this의 다음노드로 접근
-		ulnode = $(this).next();
-		//ul노드의 id속성 값을 구하기
-		deptno = $(ulnode).attr("id");
-		//alert(deptno);
-		$.get("/kimsaemERP/ajaxtreedata", {
-			"deptno" : deptno
-		}, getData, "json");
+	$(document).on("click",".step2",function(){
+		deptno2 = $(this).next().val();
+		$.ajax({
+			url: "/airport/erp/ajaxdeptlist",
+			type: "get",
+			data:{
+				"deptno":deptno2
+			},
+			success:function(data){
+				mydata = ""; 
+				for(i=0;i<data.length;i++){
+					mydata = mydata + "<li><span class='step3 folder'>"
+					+data[i].deptname+"</span>"
+					+"<input type='hidden' value='"+data[i].deptno+"'/>"
+					+"</li>"
+					
+				}
+				//alert(deptno2)
+				$("#"+deptno2).empty(mydata);
+				$("#"+deptno2).append(mydata); 
+			},
+			error:function(a,b,c){	//ajax실패시 원인(에러메시지)
+				alert(a+b+c);
+			}
+		});
+	});  
+	
+	$(document).on("click",".folder",function(){
+		//alert($(this).next().val());
+	 	deptno = $(this).next().val();
+		$.ajax({
+			url: "/airport/erp/ajaxdeptread",
+			type: "get",
+			data:{
+				"deptno":deptno
+			},
+			success:function(data){
+				$("#deptname").text(data.deptname);
+				$("#deptname2").text(data.deptname);
+				$("#deptno").text(data.deptno);
+				$("#tel").text(data.tel);
+				$("#mgr").text(data.mgr);
+				$("#task2").text(data.task);
+				if(data.deptstep==3){
+					editdata = "<a id='deptupdate' href='#' class='btn btn-info btn-round btn-sm'>Edit</a>"
+							+"<a href='/airport/erp/deptdelete.do?deptno="+data.deptno+"' class='btn btn-info btn-round btn-sm'>삭제</a>"
+					
+					$("#edit").empty(editdata);
+					$("#edit").append(editdata);
+				}
+			},
+			error:function(a,b,c){	//ajax실패시 원인(에러메시지)
+				alert(a+b+c);
+			}
+		}); 
 	});
-	//동적으로 생성된 노드(ajax실행결과로 추가된 태그)에 이벤트를 연결하는 방법		
-	//1번매개변수 - 이벤트시점, 2번매개변수 - 어떤 태그에 이벤트를 연결할 것 인지 정의
-	//3번매개변수 - 이벤트가 발생할 때 실행할 함수
-	$(document).on("click", ".file", function() {
-		id = $(this).attr("id");
-		//alert(id);
-		$.get("/kimsaemERP/getempinfo.do", {
-			"id" : id
-		}, getEmpInfo, "json");
-	})
-})
-//jquery를 이용하면 json이 파싱되어 객체상태로 리턴된다.
-function getData(data) {
-	//alert(data.emplist[0].name);
-	myli = "";
-	for (i in data.emplist) {
-		myli = myli
-				+ "<li><span class='file' id='"+ data.emplist[i].id +"'>"
-				+ data.emplist[i].name + "</span></li>";
-	}
-	$(ulnode).html(myli);
-}
-function getEmpInfo(emp) {
-	//alert("test");
-	$("#empinfo").css("display", "block");
-	$("#userImage").attr("src", "/kimsaemERP/images/" + emp.profile_photo);
-	$("#deptno").text(emp.deptno);
-	$("#name").text(emp.name);
-	$("#id").text(emp.id);
-	$("#position").text(emp.position);
-	$("#duty").text(emp.duty);
+	
+	$(document).on("click","#deptupdate",function(){
+		//alert(deptno);
+		$.ajax({
+			url: "/airport/erp/ajaxdeptread",
+			type: "get",
+			data:{
+				"deptno":deptno
+			},
+			success:function(data){
+				$("#deptname2").empty();
+				$("#deptname2").append("<input type='text' class='form-control' name='deptname' value='"+data.deptname+"'>");
+				$("#deptno").empty();
+				$("#deptno").text(data.deptno);
+				$("#deptno").append("<input type='hidden' class='form-control' name='deptno' value='"+data.deptno+"'>");
+				$("#tel").empty();
+				$("#tel").append("<input type='text' class='form-control' name='tel' value='"+data.tel+"'>");
+				$("#mgr").empty();
+				$("#mgr").append("<input type='number' class='form-control' name='mgr' value='"+data.mgr+"'>");
+				$("#task2").empty();
+				$("#task2").append("<input type='text' class='form-control' name='task' value='"+data.task+"'>");
+				editdata = "<input type='submit' class='btn btn-info' value='수정'/>"
+				
+				$("#edit").empty(editdata);
+				$("#edit").append(editdata);
+			},
+			error:function(a,b,c){	//ajax실패시 원인(에러메시지)
+				alert(a+b+c);
+			}
+		});  
+	});
+});
 
-} */
 </script>
 </head>
 <body>
-	<div class="content">
-		<div class="pull-right">
+<div class="content">
+	<div class="pull-right">
 			<a href="/airport/erp/deptwrite.do">부서등록하기</a>
-		</div>
-	<div class="treeview" id="tree" style="margin: 20px" class="col-sm-6">
-		<ul id="browser" class="filetree">
-		<c:forEach var="dept" items="${deptlist}">
-			<li class="closed"><span class="folder">${dept.deptctg1}</span>
-				<ul>
-					<%-- <li><span class="file">${dept.deptctg2 }</span></li> --%>
-					<li>
-					<span class="file">${dept.deptctg2 }</span>
-						<ul>
-							<li><span class="file">${dept.deptctg3 }</span></li>
-						</ul>
+	</div>
+	<br/>
+	<br/>
+	<div class="row">
+		<div class="col-sm-7">
+			<div class="treeview" id="tree" style="margin: 20px">
+				<ul id="browser" class="filetree">
+				<c:forEach var="dept" items="${deptlist}">
+					<li class="closed"><span class="step1 folder">${dept.deptname}</span>
+						<input type="hidden" value="${dept.deptno}"/>
+						<ul id="${dept.deptno}" class="filetree"></ul>
 					</li>
+					</c:forEach>
 				</ul>
-			</li>
-			</c:forEach>
-		</ul>
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="card card-profile">
+				<div class="card-body">
+				<form class="form-horizontal" method="post"
+								action="/airport/erp/deptupdate.do">
+					<h6 class="card-category text-gray">부서정보</h6>
+					<h4 class="card-title" id="deptname">부서</h4>
+						<table class="table">
+							<tbody>
+								<tr>
+									<td>부서번호</td>
+									<td id="deptno">000</td>
+								</tr>
+								<tr>
+									<td>부서이름</td>
+									<td id="deptname2">부서</td>
+								</tr>
+								<tr>
+									<td>부서연락처</td>
+									<td id="tel">000)000-0000</td>
+								</tr>
+								<tr>
+									<td>매니저</td>
+									<td id='mgr'>매니저</td>
+								</tr>
+								</tbody>
+							</table>					
+			
+					<p class="card-description" id="task2">TASK</p>
+					<span class="pull-right" id="edit">
+					</span>
+					</form>
+				</div>
+			</div>
+		</div>
 	</div>
-	</div>
+</div>
 </body>
 </html>
