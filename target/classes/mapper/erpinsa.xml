@@ -4,28 +4,39 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.airport.erp.insa">
 	<select id="emplist" resultType="emp">
-		select * from member
+		select e.*,d.deptname from emp e, dept d
+		where e.deptno=d.deptno
+		order by e.deptno asc
+	</select>
+	
+	<select id="empread" resultType="emp" parameterType="Integer">
+		select e.*,d.deptname from emp e, dept d
+		where e.deptno=d.deptno and e.empno=#{empno}
+		order by e.deptno asc
 	</select>
 	
 	<insert id="empinsert" parameterType="emp">
-		insert into member
+		insert into emp
 		values(emp_seq.nextVal,#{empid},#{pwd},#{name},#{birth},#{gender},
-		#{phone},#{email},#{position},#{state},sysdate,null,#{deptno})
+		#{phone},#{email},#{position},'0',sysdate,null,#{deptno})
 	</insert>
 	
-	<update id="empchange" parameterType="emp">
-		update member 
-		set state=#{state}
-		where empno=#{empno}
-	</update>
-	
 	<update id="empupdate" parameterType="emp">
-		update member 
-		set pwd=#{pwd},phone=#{phone},email=#{email},position=#{position},enddate=#{enddate},deptno=#{deptno} 
+		update emp 
+		set pwd=#{pwd},gender=#{gender},phone=#{phone},email=#{email},position=#{position},state=${state},deptno=#{deptno} 
 		where empno=#{empno}
 	</update>
 
+	<update id="empdelete" parameterType="Integer">
+		update emp 
+		set state='1'
+		where empno=#{empno}
+	</update>
 	
+	<select id="login" resultType="emp" parameterType="emp">
+		select * from emp
+		where empid=#{empid} and pwd=#{pwd}
+	</select>
 </mapper>
 
 

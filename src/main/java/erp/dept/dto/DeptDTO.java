@@ -2,55 +2,53 @@ package erp.dept.dto;
 
 public class DeptDTO {
 	String deptno;
-	String deptctg1;
-	String deptctg2;
-	String deptctg3;
+	String deptname;
+	int deptstep;
+	String uppercode;
 	String tel;
 	String task;
 	int mgr;
 	
 	public DeptDTO() {}
-	public DeptDTO(String deptno, String deptctg1, String deptctg2, String deptctg3, String tel, String task, int mgr) {
+	public DeptDTO(String deptno, String deptname, int deptstep, String uppercode, String tel, String task, int mgr) {
 		super();
 		this.deptno = deptno;
-		this.deptctg1 = deptctg1;
-		this.deptctg2 = deptctg2;
-		this.deptctg3 = deptctg3;
+		this.deptname = deptname;
+		this.deptstep = deptstep;
+		this.uppercode = uppercode;
 		this.tel = tel;
 		this.task = task;
 		this.mgr = mgr;
 	}
 	
-	
 	@Override
 	public String toString() {
-		return "DeptDTO [deptno=" + deptno + ", deptctg1=" + deptctg1 + ", deptctg2=" + deptctg2 + ", deptctg3="
-				+ deptctg3 + ", tel=" + tel + ", task=" + task + ", mgr=" + mgr + "]";
+		return "DeptDTO [deptno=" + deptno + ", deptname=" + deptname + ", deptstep=" + deptstep + ", uppercode="
+				+ uppercode + ", tel=" + tel + ", task=" + task + ", mgr=" + mgr + "]";
 	}
-	
 	public String getDeptno() {
 		return deptno;
 	}
 	public void setDeptno(String deptno) {
 		this.deptno = deptno;
 	}
-	public String getDeptctg1() {
-		return deptctg1;
+	public String getDeptname() {
+		return deptname;
 	}
-	public void setDeptctg1(String deptctg1) {
-		this.deptctg1 = deptctg1;
+	public void setDeptname(String deptname) {
+		this.deptname = deptname;
 	}
-	public String getDeptctg2() {
-		return deptctg2;
+	public int getDeptstep() {
+		return deptstep;
 	}
-	public void setDeptctg2(String deptctg2) {
-		this.deptctg2 = deptctg2;
+	public void setDeptstep(int deptstep) {
+		this.deptstep = deptstep;
 	}
-	public String getDeptctg3() {
-		return deptctg3;
+	public String getUppercode() {
+		return uppercode;
 	}
-	public void setDeptctg3(String deptctg3) {
-		this.deptctg3 = deptctg3;
+	public void setUppercode(String uppercode) {
+		this.uppercode = uppercode;
 	}
 	public String getTel() {
 		return tel;
@@ -70,7 +68,5 @@ public class DeptDTO {
 	public void setMgr(int mgr) {
 		this.mgr = mgr;
 	}
-
-	
 	
 }
