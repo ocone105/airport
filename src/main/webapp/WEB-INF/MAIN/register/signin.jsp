@@ -125,10 +125,11 @@
 																	.stringify(err));
 														}
 													});
+
 										};
 										//]]>
 									</script>
-
+								
 									<!-- 페이스북으로 로그인 -->
 									<script>
 										(function(d, s, id) {
