@@ -1,11 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="/airport/resources/common/js/plugins/chartist.min.js"></script>
+<!-- <script type="text/javascript">
+$(document).on("load",function(){
+	var dt = new Date();
+ 	var recentYear = dt.getFullYear();
+	var recentMonth = dt.getMonth() + 1;
+	var recentDay = dt.getDate();
+	if(recentMonth < 10) recentMonth = "0" + recentMonth;
+	if(recentDay < 10) recentDay = "0" + recentDay;
+	alert(recentYear + "-" + recentMonth + "-" + recentDay);
+})
+
+</script> -->
 </head>
 <body>
 	<div class="content">
@@ -40,16 +53,22 @@
 									<table class="table">
 										<tbody>
 											<tr>
-												<td>신청자</td>
-												<td>신청자아이디</td>
+												<td>신청자사원번호</td>
+												<td>${erploginUser.empno }</td>
+											</tr>
+											<tr>
+												<td>신청자이름</td>
+												<td>${erploginUser.name }</td>
 											</tr>
 											<tr>
 												<td>부서</td>
-												<td>신청자부서</td>
+												<td>${erploginUser.deptname }</td>
 											</tr>
 											<tr>
 												<td>신청일</td>
-												<td>오늘날짜</td>
+												<td>${today }
+												<input type="hidden" name="" value="${today }">
+												</td>
 											</tr>
 											<tr>
 												<td>사진</td>
