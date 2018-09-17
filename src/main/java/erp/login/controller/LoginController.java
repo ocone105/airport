@@ -37,7 +37,6 @@ public class LoginController {
 	
 	@RequestMapping(value="/erp/logout.do")
 	public String emplogout(HttpServletRequest request) {
-		
 		HttpSession ses = request.getSession(false);
 		if(ses!=null){
 			//세션을 제거한다.
