@@ -7,18 +7,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="/airport/resources/common/js/plugins/chartist.min.js"></script>
-<!-- <script type="text/javascript">
-$(document).on("load",function(){
-	var dt = new Date();
- 	var recentYear = dt.getFullYear();
-	var recentMonth = dt.getMonth() + 1;
-	var recentDay = dt.getDate();
-	if(recentMonth < 10) recentMonth = "0" + recentMonth;
-	if(recentDay < 10) recentDay = "0" + recentDay;
-	alert(recentYear + "-" + recentMonth + "-" + recentDay);
-})
-
-</script> -->
 </head>
 <body>
 	<div class="content">
@@ -67,7 +55,7 @@ $(document).on("load",function(){
 											<tr>
 												<td>신청일</td>
 												<td>${today }
-												<input type="hidden" name="" value="${today }">
+												<input type="hidden" name="appdate" value="${today }">
 												</td>
 											</tr>
 											<tr>
