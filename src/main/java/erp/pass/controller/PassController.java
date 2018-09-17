@@ -3,7 +3,7 @@ package erp.pass.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-@Controller
+@Controller  
 public class PassController {
 	@RequestMapping("/erp/pass.do")
 	public String insertView(Model model){
