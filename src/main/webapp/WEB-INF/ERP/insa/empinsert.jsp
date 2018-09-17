@@ -98,8 +98,8 @@ $(document).ready(function() {
 									</div>
 									<div class="col-md-5">
 										<div class="form-group">
-											<label class="bmd-label-floating">생일</label> <!-- <input
-												type="date" class="form-control" name="birth">  -->
+											<label class="bmd-label-floating">생일</label> <input
+												type="text" class="form-control" name="birth"> 
 										</div>
 									</div>
 									<div class="col-md-5">

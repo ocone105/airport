@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,14 +19,18 @@
 								<div class="nav-tabs-wrapper">
 									<span class="nav-tabs-title">출입증</span>
 									<ul class="nav nav-tabs" data-tabs="tabs">
+										<c:if test="${sec eq null}">
 										<li class="nav-item"><a class="nav-link active"
 											href="#application" data-toggle="tab"> <i
 												class="material-icons">chevron_right</i>신청
 										</a></li>
-										<li class="nav-item"><a class="nav-link"
+										</c:if>
+										<c:if test="${sec ne null}">
+										<li class="nav-item"><a class="nav-link active"
 											href="#reissuance" data-toggle="tab"> <i
 												class="material-icons">chevron_right</i> 재발급
 										</a></li>
+										</c:if>
 										<li class="nav-item"><a class="nav-link" href="#inquiry"
 											data-toggle="tab"> <i class="material-icons">chevron_right</i>
 												조회
@@ -36,20 +41,37 @@
 						</div>
 						<div class="card-body">
 							<div class="tab-content">
+							<!-- 신청 form -->	
+							<c:if test="${sec eq null}">
 								<div class="tab-pane active" id="application">
+								<form class="form-horizontal" method="post" action="/airport/erp/scapply.do?action=first"
+									enctype="multipart/form-data">
 									<table class="table">
 										<tbody>
 											<tr>
-												<td>신청자</td>
+												<td>신청자사원번호</td>
+												<td>${erploginUser.empno }
+												<input type="hidden" name="empno" value="${erploginUser.empno }"/>
+												</td>
+											</tr>
+											<tr>
 												<td>신청자아이디</td>
+												<td>${erploginUser.empid }
+												</td>
+											</tr>
+											<tr>
+												<td>신청자이름</td>
+												<td>${erploginUser.name }</td>
 											</tr>
 											<tr>
 												<td>부서</td>
-												<td>신청자부서</td>
+												<td>${erploginUser.deptname }</td>
 											</tr>
 											<tr>
 												<td>신청일</td>
-												<td>오늘날짜</td>
+												<td>${today }
+												<input type="hidden" name="appdate" value="${today }">
+												</td>
 											</tr>
 											<tr>
 												<td>사진</td>
@@ -57,47 +79,67 @@
 														<img style="width: 130px; height: 150px;"
 															src="/airport/resources/common/images/basicUser.png"
 															id="empimg">
-													</div> <br /> <input type="file" name="me_img"
+													</div> <br /> <input type="file" name="upfile"
 													onchange="document.getElementById('empimg').src = window.URL.createObjectURL(this.files[0])"
-													accept="upload/*"></td>
+													accept="upload/*" required="required"></td>
 											</tr>
 										</tbody>
 									</table>
-									<input type="button" class="btn btn-primary pull-right" value="신청하기"> 
+									<input type="submit" class="btn btn-primary pull-right" value="신청하기"> 
+									</form>
 								</div>
-								<div class="tab-pane" id="reissuance">
+								</c:if>
+								<!-- 신청form끝 -->
+								
+								<!-- 재신청form -->
+								<c:if test="${sec.scno ne null}" >
+								<div class="tab-pane active" id="reissuance">
+								<form class="form-horizontal" method="post" action="/airport/erp/scapply.do?action=re"
+									enctype="multipart/form-data">
 									<table class="table">
 										<tbody>
 											<tr>
-												<td>신청자</td>
+												<td>신청자사원번호</td>
+												<td>${erploginUser.empno }
+												<input type="hidden" name="empno" value="${erploginUser.empno }"/>
+												</td>
+											</tr>
+											<tr>
 												<td>신청자아이디</td>
+												<td>${erploginUser.empid }
+												</td>
+											</tr>
+											<tr>
+												<td>신청자이름</td>
+												<td>${erploginUser.name }</td>
 											</tr>
 											<tr>
 												<td>부서</td>
-												<td>신청자부서</td>
+												<td>${erploginUser.deptname }</td>
 											</tr>
 											<tr>
 												<td>재발급신청일</td>
-												<td>오늘날짜</td>
+												<td>${today }
+												<input type="hidden" name="appdate" value="${today }">
+												</td>
+												
 											</tr>
 											<tr>
 												<td>사진</td>
 												<td><div>
 														<img style="width: 130px; height: 150px;"
-															src="/airport/resources/common/images/basicUser.png"
+															src="/airport/resources/upload/${sec.img }"
 															id="empimg">
 													</div> <br /> <input type="file" name="me_img"
 													onchange="document.getElementById('empimg').src = window.URL.createObjectURL(this.files[0])"
 													accept="upload/*"></td>
 											</tr>
-											<tr>
-												<td>재발급횟수</td>
-												<td>5</td>
-											</tr>
 										</tbody>
 									</table>
-									<input type="button" class="btn btn-primary pull-right" value="신청하기"> 
+									<input type="submit" class="btn btn-primary pull-right" value="신청하기"> 
+									</form>
 								</div>
+								</c:if>
 								<div class="tab-pane" id="inquiry">
 									<div>
 										<div class="row">

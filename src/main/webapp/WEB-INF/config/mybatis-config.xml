@@ -8,11 +8,13 @@
 		<typeAlias type="main.member.MemberDTO" alias="member" />
 		<typeAlias type="erp.dept.dto.DeptDTO" alias="dept" />
 		<typeAlias type="erp.insa.dto.EmpDTO" alias="emp" />
+		<typeAlias type="erp.security.dto.SecurityDTO" alias="security" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="/mapper/BoardNotice.xml" />
 		<mapper resource="mapper/member.xml" />
 		<mapper resource="/mapper/erpdept.xml" />
 		<mapper resource="/mapper/erpinsa.xml" />
+		<mapper resource="/mapper/erpsecurity.xml" />
 	</mappers>
 </configuration>

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,6 +71,35 @@
 							</tr>
 						</thead>
 						<tbody>
+						<c:forEach var="info" items="${info}">
+							<tr>
+								<td><label class="au-checkbox"> 
+									<input type="checkbox"> 
+									<span class="au-checkmark"></span>
+								</label></td>
+								<td>
+									<div class="table-data__info">
+										<h6>${info.flightId}</h6>
+										<span> <a href="#">${info.airline}</a>
+										</span>
+									</div>
+								</td>
+								<td><img src="/airport/resources/logo/KOREANAIR.jpg"
+									width="300"></td>
+								<td>
+									<div class="table-data__info">
+										<h6>${info.airport}</h6>
+									</div>
+								</td>
+								<td>
+									<h6>${info.scheduleDateTime}</h6>
+								</td>
+								<td>${info.gatenumber}</td>
+								<td><span class="role user">${info.remark}</span></td>
+								<td><span class="more"> <i class="zmdi zmdi-more"></i>
+								</span></td>
+							</tr>
+						</c:forEach>
 							<tr>
 								<td><label class="au-checkbox"> <input
 										type="checkbox"> <span class="au-checkmark"></span>

@@ -42,7 +42,6 @@
 		where deptno=#{deptno}
 	</update>
 	
-	
 </mapper>
 
 

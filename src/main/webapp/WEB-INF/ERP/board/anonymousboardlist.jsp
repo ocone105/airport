@@ -27,7 +27,7 @@
 						<tbody>
 							<tr class="kboard-list-notice">
 								<td class="kboard-list-uid">01</td>
-								<td class="kboard-list-user"><a href="/airport/erp/boardread.do">제목입니다</a></td>
+								<td class="kboard-list-user"><a href="/airport/erp/anonymousread.do?boardno=${post.boardno}">제목입니다</a></td>
 								<td class="kboard-list-date">20180908</td>
 								<td class="kboard-list-view">5</td>
 							</tr>

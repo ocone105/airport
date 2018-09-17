@@ -12,7 +12,6 @@ public class DeptDeleteController {
 	@Autowired
 	DeptService service; 
 	
-	
 	@RequestMapping(value="/erp/deptdelete.do", method=RequestMethod.GET)
 	public String deptinsert(String deptno){
 		service.deptdelete(deptno);

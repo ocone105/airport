@@ -17,7 +17,7 @@
 	
 	<insert id="empinsert" parameterType="emp">
 		insert into emp
-		values(emp_seq.nextVal,#{empid},#{pwd},#{name},sysdate,#{gender},
+		values(emp_seq.nextVal,#{empid},#{pwd},#{name},#{birth},#{gender},
 		#{phone},#{email},#{position},'0',sysdate,null,#{deptno})
 	</insert>
 	
@@ -29,13 +29,13 @@
 
 	<update id="empdelete" parameterType="Integer">
 		update emp 
-		set state='1'
+		set state='1', enddate=sysdate
 		where empno=#{empno}
 	</update>
 	
 	<select id="login" resultType="emp" parameterType="emp">
-		select * from emp
-		where empid=${empid} and pwd=${pwd}
+		select e.*,d.deptname from emp e, dept d
+		where e.deptno=d.deptno and empid=#{empid} and pwd=#{pwd}
 	</select>
 </mapper>
 

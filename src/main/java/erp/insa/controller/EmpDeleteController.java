@@ -10,7 +10,7 @@ import erp.insa.service.EmpService;
 public class EmpDeleteController {
 	@Autowired
 	EmpService service;
-	
+	 
 	@RequestMapping(value="/erp/empdelete.do", method=RequestMethod.GET)
 	public String empinsert(int empno){
 		service.empdelete(empno);

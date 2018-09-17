@@ -13,7 +13,7 @@ import erp.insa.service.EmpService;
 public class EmpListController {
 	@Autowired
 	EmpService service;
-	
+	 
 	@RequestMapping(value="/erp/emplist.do")
 	public ModelAndView emplist(){
 		ModelAndView mav = new ModelAndView();
