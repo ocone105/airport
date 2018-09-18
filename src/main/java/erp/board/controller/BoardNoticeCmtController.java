@@ -18,9 +18,12 @@ public class BoardNoticeCmtController {
 	BoardNoticeService service;
 	
 	@RequestMapping(value="/erp/cmt/noticewrite.do", method=RequestMethod.GET, produces="application/json;charset=utf-8")
-	public @ResponseBody List<BoardNoticeCmtDTO> insert(BoardNoticeCmtDTO cmt){
+	public @ResponseBody List<BoardNoticeCmtDTO> insert(int boardno, int empno, String cmttxt){
+		BoardNoticeCmtDTO cmt = new BoardNoticeCmtDTO();
+		cmt.setBoardno(boardno);
+		cmt.setEmpno(empno);
+		cmt.setCmttxt(cmttxt);
 		service.insertCmt(cmt);
-		System.out.println("댓글 : "+cmt);
 		List<BoardNoticeCmtDTO> list = service.Cmtlist(cmt.getBoardno());
 		return list;
 	}

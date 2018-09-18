@@ -21,3 +21,5 @@ create table BOARDCMT(
 create sequence cmtno_seq;
 select * from BOARDCMT;
 
+insert into BOARDCMT values(cmtno_seq.nextval, '테스트중', sysdate, 12, 111)
+
