@@ -21,7 +21,7 @@ public class LoginController {
 	}
 	@RequestMapping(value="/erp/login.do", method=RequestMethod.POST)
 	public String empinsert(EmpDTO emp,HttpSession session){
-		System.out.println("emp"+emp);
+		//System.out.println("emp"+emp);
 		
 		EmpDTO loginUser = service.login(emp);
 		
