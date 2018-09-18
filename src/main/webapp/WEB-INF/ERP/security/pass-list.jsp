@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,48 +40,26 @@
 							<div class="table-responsive">
 								<table class="table">
 									<thead class=" text-primary">
-										<th>사원번호</th>
-										<th>이름</th>
-										<th>부서</th>
-										<th>발급일</th>
-										<th>만료일</th>
+										<tr>
+											<th>출입증번호</th>
+											<th>사원번호</th>
+											<th>이름</th>
+											<th>부서</th>
+											<th>발급일</th>
+											<th>만료일</th>
+										</tr>
 									</thead>
 									<tbody>
+										<c:forEach var="pass" items="${passlist }">
 										<tr>
-											<td>001</td>
-											<td><a href="#">이름</a></td>
-											<td>부서이름</td>
-											<td>20180808</td>
-											<td>20180909</td>
+											<td>${pass.scno }</td>
+											<td>${pass.empno }</td>
+											<td><a href="#">${pass.name }</a></td>
+											<td>${pass.deptname }</td>
+											<td>${pass.issuedate }</td>
+											<td>${pass.exdate }</td>
 										</tr>
-										<tr>
-											<td>002</td>
-											<td><a href="#">이름</a></td>
-											<td>부서이름</td>
-											<td>20180808</td>
-											<td>20180909</td>
-										</tr>
-										<tr>
-											<td>003</td>
-											<td><a href="#">이름</a></td>
-											<td>부서이름</td>
-											<td>20180808</td>
-											<td>20180909</td>
-										</tr>
-										<tr>
-											<td>004</td>
-											<td><a href="#">이름</a></td>
-											<td>부서이름</td>
-											<td>20180808</td>
-											<td>20180909</td>
-										</tr>
-										<tr>
-											<td>005</td>
-											<td><a href="#">이름</a></td>
-											<td>부서이름</td>
-											<td>20180808</td>
-											<td>20180909</td>
-										</tr>
+										</c:forEach>
 									</tbody>
 								</table>
 							</div>

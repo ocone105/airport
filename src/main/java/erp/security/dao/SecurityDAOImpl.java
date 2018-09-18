@@ -1,5 +1,7 @@
 package erp.security.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -24,6 +26,16 @@ public class SecurityDAOImpl implements SecurityDAO {
 	@Override
 	public void reapply(SecurityDTO sec) {
 		sqlSession.update("kr.airport.erp.security.reapply", sec);
+	}
+
+	@Override
+	public List<SecurityDTO> permitlist() {
+		return sqlSession.selectList("kr.airport.erp.security.secpermitlist");
+	}
+
+	@Override
+	public List<SecurityDTO> passlist() {
+		return sqlSession.selectList("kr.airport.erp.security.passlist");
 	}
 	
 }

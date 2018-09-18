@@ -18,5 +18,15 @@
 		set img=#{img}, appdate=#{appdate}, issuedate=null, exdate=null, scstate='2', 
 		where scno=#{scno}
 	</update>
+	
+	<select id="secpermitlist" resultType="security">
+		select s.*,e.name,e.email,d.deptname from security s, emp e, dept d
+		where s.empno=e.empno and d.deptno=e.deptno and scstate='2'
+	</select>	
+	
+	<select id="passlist" resultType="security">
+		select s.*,e.name,e.email,d.deptname from security s, emp e, dept d
+		where s.empno=e.empno and d.deptno=e.deptno and scstate='1'
+	</select>	
 </mapper>
 

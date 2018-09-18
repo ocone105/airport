@@ -14,6 +14,10 @@ public class SecurityDTO {
 	String scstate;
 	MultipartFile upfile;
 	
+	String name;
+	String deptname;
+	String email;
+	
 	public SecurityDTO(){}
 	public SecurityDTO(int scno, int empno, String img, String appdate, Date issuedate, String exdate, String scstate) {
 		super();
@@ -26,7 +30,7 @@ public class SecurityDTO {
 		this.scstate = scstate;
 	}
 	
-	
+	//파일업로드용
 	public SecurityDTO(int scno, int empno, String img, String appdate, Date issuedate, String exdate, String scstate,
 			MultipartFile upfile) {
 		super();
@@ -38,6 +42,23 @@ public class SecurityDTO {
 		this.exdate = exdate;
 		this.scstate = scstate;
 		this.upfile = upfile;
+	}
+	
+	//permitlist select용
+	public SecurityDTO(int scno, int empno, String img, String appdate, Date issuedate, String exdate, String scstate,
+			MultipartFile upfile, String name, String deptname, String email) {
+		super();
+		this.scno = scno;
+		this.empno = empno;
+		this.img = img;
+		this.appdate = appdate;
+		this.issuedate = issuedate;
+		this.exdate = exdate;
+		this.scstate = scstate;
+		this.upfile = upfile;
+		this.name = name;
+		this.deptname = deptname;
+		this.email = email;
 	}
 	@Override
 	public String toString() {
@@ -92,6 +113,24 @@ public class SecurityDTO {
 	}
 	public void setUpfile(MultipartFile upfile) {
 		this.upfile = upfile;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getDeptname() {
+		return deptname;
+	}
+	public void setDeptname(String deptname) {
+		this.deptname = deptname;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 }
