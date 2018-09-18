@@ -23,5 +23,10 @@ public class SecurityServiceImpl implements SecurityService {
 		return dao.secCheck(empno);
 	}
 
+	@Override
+	public void reapply(SecurityDTO sec) {
+		dao.reapply(sec);
+	}
+
 	
 }

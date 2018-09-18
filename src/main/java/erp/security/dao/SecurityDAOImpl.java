@@ -20,5 +20,10 @@ public class SecurityDAOImpl implements SecurityDAO {
 	public SecurityDTO secCheck(int empno) {
 		return sqlSession.selectOne("kr.airport.erp.security.seccheck", empno);
 	}
+
+	@Override
+	public void reapply(SecurityDTO sec) {
+		sqlSession.update("kr.airport.erp.security.reapply", sec);
+	}
 	
 }

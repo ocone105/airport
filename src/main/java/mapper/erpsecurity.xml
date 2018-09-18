@@ -12,5 +12,11 @@
 		select * from security
 		where empno=#{empno}
 	</select>
+
+	<update id="reapply" parameterType="security">
+		update security
+		set img=#{img}, appdate=#{appdate}, issuedate=null, exdate=null, scstate='2', 
+		where scno=#{scno}
+	</update>
 </mapper>
 

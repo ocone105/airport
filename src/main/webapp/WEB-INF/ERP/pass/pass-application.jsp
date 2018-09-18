@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html> 
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -25,13 +25,13 @@
 												class="material-icons">chevron_right</i>신청
 										</a></li>
 										</c:if>
-										<c:if test="${sec ne null}">
+										<c:if test="${sec.scstate eq '0'}">
 										<li class="nav-item"><a class="nav-link active"
 											href="#reissuance" data-toggle="tab"> <i
 												class="material-icons">chevron_right</i> 재발급
 										</a></li>
 										</c:if>
-										<li class="nav-item"><a class="nav-link" href="#inquiry"
+										<li class="nav-item"><a class="nav-link active" href="#inquiry"
 											data-toggle="tab"> <i class="material-icons">chevron_right</i>
 												조회
 										</a></li>
@@ -92,7 +92,7 @@
 								<!-- 신청form끝 -->
 								
 								<!-- 재신청form -->
-								<c:if test="${sec.scno ne null}" >
+								<c:if test="${sec.scstate eq '0'}" >
 								<div class="tab-pane active" id="reissuance">
 								<form class="form-horizontal" method="post" action="/airport/erp/scapply.do?action=re"
 									enctype="multipart/form-data">
@@ -140,7 +140,9 @@
 									</form>
 								</div>
 								</c:if>
-								<div class="tab-pane" id="inquiry">
+								<!-- 재신청 form끝 -->
+								<!-- 조회 -->
+								<div class="tab-pane active" id="inquiry">
 									<div>
 										<div class="row">
 											<div class="col-sm-5">
@@ -170,6 +172,7 @@
 										</div>
 									</div>
 								</div>
+								<!-- 조회 -->
 							</div>
 						</div>
 					</div>
