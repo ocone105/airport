@@ -59,7 +59,8 @@
 									</div>
 								</div>
 								<div class="form-bottom">
-									<form role="form" action="/airport/member/login.do" method="post" class="login-form" name="loginform">
+									<form role="form" action="/airport/member/login.do"
+										method="post" class="login-form" name="loginform">
 										<div class="form-group">
 											<label class="sr-only" for="form-username">ID 아이디</label> <input
 												type="text" name="id" placeholder="ID"
@@ -89,7 +90,7 @@
 									<!-- 네이버 아이디로 로그인 -->
 									<%
 										String clientId = "8WNSYq9HslIkdHkdXkX8";//애플리케이션 클라이언트 아이디값";
-										String redirectURI = URLEncoder.encode("http://localhost:8088/airport/main/index.do", "UTF-8");
+										String redirectURI = URLEncoder.encode("http://localhost:8088/airport/callback", "UTF-8");
 										SecureRandom random = new SecureRandom();
 										String state = new BigInteger(130, random).toString();
 										String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
@@ -103,7 +104,7 @@
 
 
 									<!-- 카카오톡으로 로그인 -->
-									<a id="custom-login-btn" href="javascript:loginWithKakao()">
+									<!-- 									<a id="custom-login-btn" href="javascript:loginWithKakao()">
 										<img src="/airport/resources/sns/kakao.png" height="50px" />
 									</a>
 									<script type='text/javascript'>
@@ -128,8 +129,55 @@
 
 										};
 										//]]>
+									</script> -->
+									<a id="kakao-login-btn"></a>
+									<script type='text/javascript'>
+										//<![CDATA[
+										// 사용할 앱의 JavaScript 키를 설정해 주세요.
+										Kakao.init('0b4f8ab826d5bd1a8e4fd171582f0088');
+										// 카카오 로그인 버튼을 생성합니다.
+										Kakao.Auth
+												.createLoginButton({
+													container : '#kakao-login-btn',
+													success : function(authObj) {
+														// 로그인 성공시, API를 호출합니다.
+														Kakao.API.request({
+																	url : '/v2/user/me',
+																	success : function(res) {
+																		alert(JSON.stringify(res.id));
+																		//alert(res.id);
+																		alert(res.properties.nickname+"  "+res.kakao_account.email);
+																		
+																		// 카카오 값 보내기
+																		var jsonStr = JSON.stringify(pObj);
+																		$.ajax({
+																			url : '/airport/member/kakao.do', 
+																			method : "post", 
+																			//dataType : 'json', 
+																			//data : jsonStr, 
+																			data:{
+																			"id":JSON.stringify(res.id),
+																			"name":JSON.stringify(res.properties.nickname),
+																			"email":JSON.stringify(res.kakao_account.email)
+																			}});    
+																	},
+																	fail : function(
+																			error) {
+																		alert(JSON
+																				.stringify(error));
+																	}
+																});
+													},
+													fail : function(err) {
+														alert(JSON
+																.stringify(err));
+													}
+												});
+										//]]>
 									</script>
-								
+									
+
+									
 									<!-- 페이스북으로 로그인 -->
 									<script>
 										(function(d, s, id) {
@@ -144,8 +192,11 @@
 													.insertBefore(js, fjs);
 										}(document, 'script', 'facebook-jssdk'));
 									</script>
-									
-									<div class="fb-login-button" scope="public_profile,email" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+
+									<div class="fb-login-button" scope="public_profile,email"
+										data-max-rows="1" data-size="large"
+										data-button-type="continue_with" data-show-faces="false"
+										data-auto-logout-link="false" data-use-continue-as="false"></div>
 								</div>
 							</div>
 						</div>
@@ -169,13 +220,14 @@
 								<div class="form-bottom">
 
 									<form role="form" action="/airport/member/signup.do"
-										method="post" class="registration-form" id="signupform" name="signupform" onsubmit="return join()">
+										method="post" class="registration-form" id="signupform"
+										name="signupform" onsubmit="return join()">
 
 										<div class="form-group">
 											<label class="sr-only" for="form-id">ID</label> <input
 												type="text" name="id" id="id" placeholder="ID 아이디"
 												class="form-id form-control" maxlength="12" required>
-											<p class="help-block" id="idChk" ></p>
+											<p class="help-block" id="idChk"></p>
 										</div>
 
 										<div class="form-group">
@@ -215,10 +267,11 @@
 										<div class="form-group">
 											<label class="control control--checkbox" for="form-alarm"></label>
 											<span style="font-size: large; color: white;"> Email:
-												<input type="checkbox" name="email-check" id="email-check">
+												<input type="checkbox" name="alarm" id="email-check"
+												value="메일">
 											</span>&nbsp;&nbsp;&nbsp;&nbsp; <span
 												style="font-size: large; color: white;"> Phone: <input
-												type="checkbox" name="phone-check" id="phone-check">
+												type="checkbox" name="alarm" id="phone-check" value="문자">
 											</span>
 										</div>
 

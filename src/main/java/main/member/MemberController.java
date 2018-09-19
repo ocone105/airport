@@ -15,11 +15,18 @@ public class MemberController {
 	@Autowired
 	MemberService service;
 
+	@RequestMapping(value = "/member/kakao.do", method = RequestMethod.POST)
+	public String kakao(String id, String name, String email, HttpSession session, HttpServletRequest req) {
+		System.out.println(id+"~~~"+name+"~~~"+email);
+		return "redirect:/main/myservice.do";
+	}
+	
+	
 	// 회원가입
 	@RequestMapping(value = "/member/signup.do", method = RequestMethod.POST)
 	public String signup(MemberDTO member, HttpSession session) {
 		int result = service.signup(member);
-		System.out.println(result + "가입 성공");
+		//System.out.println(result + "가입 성공");
 		return "redirect:/main/signin.do";
 	}
 
