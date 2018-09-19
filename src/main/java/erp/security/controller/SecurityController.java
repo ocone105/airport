@@ -22,17 +22,6 @@ public class SecurityController {
 	@Autowired
 	SecurityService service;
 	
-	
-	@RequestMapping("/erp/permissionlist.do")
-	public String permission(){
-		return "erp/permissionlist";
-	}
-	
-	@RequestMapping("/erp/passlist.do")
-	public String passlist(){
-		return "erp/passlist";
-	}
-	
 	@RequestMapping(value = "/erp/scapply.do", method = RequestMethod.POST)
 	public String apply(String action,SecurityDTO sec ,HttpSession ses,Model model) throws FileNotFoundException{
 		SecurityDTO security = service.secCheck(sec.getEmpno());

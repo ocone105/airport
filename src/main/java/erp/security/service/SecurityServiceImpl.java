@@ -1,5 +1,7 @@
 package erp.security.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -26,6 +28,16 @@ public class SecurityServiceImpl implements SecurityService {
 	@Override
 	public void reapply(SecurityDTO sec) {
 		dao.reapply(sec);
+	}
+
+	@Override
+	public List<SecurityDTO> permitlist() {
+		return dao.permitlist();
+	}
+
+	@Override
+	public List<SecurityDTO> passlist() {
+		return dao.passlist();
 	}
 
 	
