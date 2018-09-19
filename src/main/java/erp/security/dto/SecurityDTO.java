@@ -5,12 +5,12 @@ import java.sql.Date;
 import org.springframework.web.multipart.MultipartFile;
 
 public class SecurityDTO {
-	int scno;
+	String scno;
 	int empno;
 	String img;
 	String appdate;
 	Date issuedate;
-	String exdate;
+	Date exdate;
 	String scstate;
 	MultipartFile upfile;
 	
@@ -19,7 +19,7 @@ public class SecurityDTO {
 	String email;
 	
 	public SecurityDTO(){}
-	public SecurityDTO(int scno, int empno, String img, String appdate, Date issuedate, String exdate, String scstate) {
+	public SecurityDTO(String scno, int empno, String img, String appdate, Date issuedate, Date exdate, String scstate) {
 		super();
 		this.scno = scno;
 		this.empno = empno;
@@ -31,7 +31,7 @@ public class SecurityDTO {
 	}
 	
 	//파일업로드용
-	public SecurityDTO(int scno, int empno, String img, String appdate, Date issuedate, String exdate, String scstate,
+	public SecurityDTO(String scno, int empno, String img, String appdate, Date issuedate, Date exdate, String scstate,
 			MultipartFile upfile) {
 		super();
 		this.scno = scno;
@@ -45,7 +45,7 @@ public class SecurityDTO {
 	}
 	
 	//permitlist select용
-	public SecurityDTO(int scno, int empno, String img, String appdate, Date issuedate, String exdate, String scstate,
+	public SecurityDTO(String scno, int empno, String img, String appdate, Date issuedate, Date exdate, String scstate,
 			MultipartFile upfile, String name, String deptname, String email) {
 		super();
 		this.scno = scno;
@@ -66,10 +66,10 @@ public class SecurityDTO {
 				+ ", issuedate=" + issuedate + ", exdate=" + exdate + ", scstate=" + scstate + "]";
 	}
 
-	public int getScno() {
+	public String getScno() {
 		return scno;
 	}
-	public void setScno(int scno) {
+	public void setScno(String scno) {
 		this.scno = scno;
 	}
 	public int getEmpno() {
@@ -96,10 +96,10 @@ public class SecurityDTO {
 	public void setIssuedate(Date issuedate) {
 		this.issuedate = issuedate;
 	}
-	public String getExdate() {
+	public Date getExdate() {
 		return exdate;
 	}
-	public void setExdate(String exdate) {
+	public void setExdate(Date exdate) {
 		this.exdate = exdate;
 	}
 	public String getScstate() {

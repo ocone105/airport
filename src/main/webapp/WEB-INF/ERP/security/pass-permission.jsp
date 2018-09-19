@@ -28,6 +28,31 @@ a:focus {
 }
 
 </style>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#permitInfo").on("show.bs.modal",function(){
+		mydata="<img src='/airport/resources/upload/"+$("#empimg").val()+"' class='img-responsive thumbnail'>"
+		$("#applicantimg").empty();
+		$("#applicantimg").append(mydata);
+		$("#applicantno").empty();
+		$("#applicantno").append($("#empno").val());
+		$("#applicantname").empty();
+		$("#applicantname").append($("#empname").val());
+		$("#applicantdept").empty();
+		$("#applicantdept").append($("#empdept").val());
+		$("#applicantemail").empty();
+		$("#applicantemail").append($("#empemail").val());
+		$("#applicantappdate").empty();
+		$("#applicantappdate").append($("#empappdate").val());
+	})
+
+});
+function onepermit(){
+	//alert("test");
+	location.href="/airport/erp/permit.do?scno="+$("#empscno").val();
+}
+
+</script>
 </head>
 <body>
 	<div class="content">
@@ -42,6 +67,8 @@ a:focus {
 						</div>
 					</div>
 					<div class="tab-pane" id="messages">
+					<form class="form-horizontal" method="post"
+								action="/airport/erp/permitall.do">
 						<table class="table">
 							<thead>
 								<tr>
@@ -64,16 +91,24 @@ a:focus {
 											</div>
 										</td>
 										<td>${permit.empno }</td>
-										<td><a data-toggle="modal" data-target="#Modaltest">${permit.name }</a></td>
+										<td><a data-toggle="modal" data-target="#permitInfo" id="modal">${permit.name }</a></td>
 										<td>${permit.appdate }</td>
-										<th>${permit.deptname }</th>
+										<td>${permit.deptname }</td>
 									</tr>
+									<input type="hidden" id="empimg" value="${permit.img }"/>
+									<input type="hidden" id="empno" value="${permit.empno }"/>
+									<input type="hidden" id="empname" value="${permit.name }"/>
+									<input type="hidden" id="empdept" value="${permit.deptname }"/>
+									<input type="hidden" id="empemail" value="${permit.email }"/>
+									<input type="hidden" id="empappdate" value="${permit.appdate }"/>
+									<input type="hidden" id="empscno" value="${permit.scno }"/>
 								</c:forEach>
 							</tbody>
 						</table>
-						<button type="button" class="btn btn-info btn-link btn-sm pull-right">
-							<i class="material-icons">done_all</i>허가
+						<button type="submit" class="btn btn-info btn-link btn-sm pull-right">
+							<i class="material-icons">done_all</i>출입증 발급 승인
 						</button>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -81,7 +116,7 @@ a:focus {
 	</div>
 	
 	<!-- modal pass_info -->
-	<div id="Modaltest" class="modal fade" role="dialog">
+	<div id="permitInfo" class="modal fade" role="dialog">
         <div class="modal-dialog">
 	        <div class="modal-content">
 	            <div class="modal-header">
@@ -89,27 +124,38 @@ a:focus {
 	                <button type="button" class="close" data-dismiss="modal"> &times;</button>
 	            </div>
 	            <div class="modal-body">
-	                   <form class="form-inline">
 		                  <label class="sr-only">상세정보</label>
 		                  <table class="table">
 								<tbody>
 									<tr>
-										<td>123</td>
-										<td>456</td>
+										<td>사진</td>
+										<td id="applicantimg"></td>
 									</tr>
 									<tr>
-										<td>123</td>
-										<td>456</td>
+										<td>사원번호</td>
+										<td id="applicantno"></td>
+									</tr>
+									<tr>
+										<td>사원이름</td>
+										<td id="applicantname"></td>
+									</tr>
+									<tr>
+										<td>부서</td>
+										<td id="applicantdept"></td>
+									</tr>
+									<tr>
+										<td>email</td>
+										<td id="applicantemail"></td>
+									</tr>
+									<tr>
+										<td>신청일</td>
+										<td id="applicantappdate"></td>
 									</tr>
 								</tbody>
 						</table>
-		                        <!-- <div class="form-group">  
-		                        <label class="sr-only" for="password">Password</label>
-		                                     <input type="password" class="form-control input-sm" placeholder="Password" id="password" name="password"></div>
-		                         -->
-		                       <button type="submit" class="btn btn-info btn-xs">출입증 발급 승인</button>
-		                       <button type="button" class="btn btn-default btn-xs" data-dismiss="modal">Cancel</button> 
-	                  </form>
+						<hr/>
+							<input type="button" class="btn btn-info pull-right" data-dismiss="modal" value="Cancel"/>
+							<input type="button" class="btn btn-info pull-right" onclick="onepermit()" value="출입증 발급 승인"/>
 	            </div>
 	        </div>
         </div>

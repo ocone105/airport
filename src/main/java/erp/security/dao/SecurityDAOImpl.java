@@ -37,5 +37,10 @@ public class SecurityDAOImpl implements SecurityDAO {
 	public List<SecurityDTO> passlist() {
 		return sqlSession.selectList("kr.airport.erp.security.passlist");
 	}
+
+	@Override
+	public void permit(String scno) {
+		sqlSession.update("kr.airport.erp.security.permit", scno);
+	}
 	
 }

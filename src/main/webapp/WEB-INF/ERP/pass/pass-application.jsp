@@ -170,7 +170,17 @@ div.user-menu div.user-menu-content:not(.active){
                									 <div class="col-md-6 no-pad">
                    									 <div class="user-pad">
 								                        <h3></h3>
-								                        <h4 class="white"><i class="fa fa-check-circle-o"></i>${sec.scno }</h4>
+								                        <h4 class="white"><i class="fa fa-check-circle-o"></i>
+								                        <c:choose>
+								                         <c:when test="${sec.scstate ne '1'}">
+								                         	출입증 없음
+								                         </c:when>
+								                         <c:when test="${sec.scstate eq '1'}">
+								                         	${sec.scno }
+								                         </c:when>
+								                        </c:choose>
+								                        
+								                        </h4>
 									                      <table class="table">
 															<tbody>
 																<tr>
@@ -199,7 +209,14 @@ div.user-menu div.user-menu-content:not(.active){
 								                </div>
 							                <div class="col-md-6 no-pad">
 							                    <div class="user-image">
-							                        <img src="/airport/resources/upload/${sec.img }" class="img-responsive thumbnail">
+							                    <c:choose>
+							                    	<c:when test="${sec eq null }">
+							                    	 <img src="/airport/resources/upload/basicUser.png" class="img-responsive thumbnail">
+							                    	</c:when>
+							                    	<c:when test="${sec ne null }">
+							                    	 <img src="/airport/resources/upload/${sec.img }" class="img-responsive thumbnail">
+							                    	</c:when>
+							                    </c:choose>
 							                    </div>
 							                </div>
 								        </div>
@@ -268,7 +285,7 @@ div.user-menu div.user-menu-content:not(.active){
 												<td>사진</td>
 												<td><div>
 														<img style="width: 130px; height: 150px;"
-															src="/airport/resources/common/images/basicUser.png"
+															src="/airport/resources/upload/basicUser.png"
 															id="empimg">
 													</div> <br /> <input type="file" name="upfile"
 													onchange="document.getElementById('empimg').src = window.URL.createObjectURL(this.files[0])"
@@ -318,10 +335,10 @@ div.user-menu div.user-menu-content:not(.active){
 											<tr>
 												<td>사진</td>
 												<td><div>
-														<img style="width: 130px; height: 150px;"
+													<img style="width: 130px; height: 150px;"
 															src="/airport/resources/upload/${sec.img }"
 															id="empimg">
-													</div> <br /> <input type="file" name="me_img"
+													</div> <br /> <input type="file" name="upfile" 
 													onchange="document.getElementById('empimg').src = window.URL.createObjectURL(this.files[0])"
 													accept="upload/*"></td>
 											</tr>
