@@ -5,7 +5,7 @@
 <mapper namespace="kr.airport.erp.security">
 	<insert id="secinsert" parameterType="security">
 		insert into security
-		values(sec_seq.nextVal,#{empno},#{img},#{appdate},null,null,'2')
+		values('se62-0623-2311-'||sec_seq.nextVal,#{empno},#{img},#{appdate},null,null,'2')
 	</insert>
 	
 	<select id="seccheck" parameterType="Integer" resultType="security">
@@ -20,13 +20,28 @@
 	</update>
 	
 	<select id="secpermitlist" resultType="security">
-		select s.*,e.name,e.email,d.deptname from security s, emp e, dept d
+		select s.*,e.name,e.email,d.deptname 
+		from security s, emp e, dept d
 		where s.empno=e.empno and d.deptno=e.deptno and scstate='2'
 	</select>	
 	
 	<select id="passlist" resultType="security">
-		select s.*,e.name,e.email,d.deptname from security s, emp e, dept d
+		select s.*,e.name,e.email,d.deptname 
+		from security s, emp e, dept d
 		where s.empno=e.empno and d.deptno=e.deptno and scstate='1'
 	</select>	
+	
+	<update id="permit" parameterType="String">
+		update security
+		set scstate='1', issuedate=sysdate, exdate=add_months(sysdate,12)
+		where scno=#{scno}
+	</update>
+	
+	<update id="permitall" parameterType="String">
+		<foreach collection="scnolist" item="scnumber"  separator=" ">
+		update security
+		set scstate='1', issuedate=sysdate, exdate=add_months(sysdate,12)
+		where scno=#{scnumber}
+		</foreach>
+	</update>
 </mapper>
-

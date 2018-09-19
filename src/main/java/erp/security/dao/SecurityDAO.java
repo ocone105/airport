@@ -10,4 +10,5 @@ public interface SecurityDAO {
 	void reapply(SecurityDTO sec);
 	List<SecurityDTO> permitlist();
 	List<SecurityDTO> passlist();
+	void permit(String scno);
 }

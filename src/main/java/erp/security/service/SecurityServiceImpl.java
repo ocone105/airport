@@ -40,5 +40,10 @@ public class SecurityServiceImpl implements SecurityService {
 		return dao.passlist();
 	}
 
+	@Override
+	public void permit(String scno) {
+		dao.permit(scno);
+	}
+
 	
 }
