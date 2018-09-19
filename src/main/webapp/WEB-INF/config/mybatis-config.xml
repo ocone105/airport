@@ -6,6 +6,7 @@
 	<typeAliases>
 		<typeAlias type="erp.board.DTO.BoardNoticeDTO" alias="notice" />
 		<typeAlias type="erp.board.DTO.BoardNoticeCmtDTO" alias="noticeCmt" />
+		<typeAlias type="erp.pf.DTO.PFDTO" alias="pf" />
 		<typeAlias type="main.member.MemberDTO" alias="member" />
 		<typeAlias type="erp.dept.dto.DeptDTO" alias="dept" />
 		<typeAlias type="erp.insa.dto.EmpDTO" alias="emp" />
@@ -15,5 +16,6 @@
 		<mapper resource="mapper/member.xml" />
 		<mapper resource="/mapper/erpdept.xml" />
 		<mapper resource="/mapper/erpinsa.xml" />
+		<mapper resource="/mapper/erppf.xml" />
 	</mappers>
 </configuration>
