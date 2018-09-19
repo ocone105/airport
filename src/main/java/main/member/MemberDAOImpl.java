@@ -21,6 +21,12 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
+	public int kakao(MemberDTO member) {
+		int result = sqlSession.insert("main.member.kakao", member);
+		return result;
+	}
+	
+	@Override
 	public MemberDTO login(String id, String pwd) {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("id", id);

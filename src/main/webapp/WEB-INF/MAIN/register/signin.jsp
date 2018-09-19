@@ -130,7 +130,10 @@
 										};
 										//]]>
 									</script> -->
-									<a id="kakao-login-btn"></a>
+									
+									<a href="https://kauth.kakao.com/oauth/authorize?client_id=8bed9b180428407e27708779a7d4e327&redirect_uri=http://localhost:8088/airport/member/kakao&response_type=code"><img height="50px"
+										src="/airport/resources/sns/kakao.png" /></a>
+									<!-- <a id="kakao-login-btn" href="https://kauth.kakao.com/oauth/authorize?client_id=8bed9b180428407e27708779a7d4e327&redirect_uri=http://localhost:8088/member/kakao&response_type=code "></a>
 									<script type='text/javascript'>
 										//<![CDATA[
 										// 사용할 앱의 JavaScript 키를 설정해 주세요.
@@ -174,7 +177,7 @@
 													}
 												});
 										//]]>
-									</script>
+									</script> -->
 									
 
 									
