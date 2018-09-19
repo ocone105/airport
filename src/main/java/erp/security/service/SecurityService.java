@@ -11,5 +11,7 @@ public interface SecurityService {
 	List<SecurityDTO> permitlist();
 	List<SecurityDTO> passlist();
 	void permit(String scno);
+	void reject(String scno);
+	void expire(String scno);
 
 }

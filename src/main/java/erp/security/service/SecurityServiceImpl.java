@@ -45,5 +45,17 @@ public class SecurityServiceImpl implements SecurityService {
 		dao.permit(scno);
 	}
 
+	@Override
+	public void reject(String scno) {
+		dao.reject(scno);
+		
+	}
+
+	@Override
+	public void expire(String scno) {
+		dao.expire(scno);
+		
+	}
+
 	
 }

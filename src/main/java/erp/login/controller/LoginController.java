@@ -1,5 +1,7 @@
 package erp.login.controller;
 
+import java.text.SimpleDateFormat;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,10 +12,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import erp.insa.dto.EmpDTO;
 import erp.insa.service.EmpService;
+import erp.security.dto.SecurityDTO;
+import erp.security.service.SecurityService;
 @Controller
 public class LoginController {
 	@Autowired
 	EmpService service;
+	@Autowired
+	SecurityService secservice;
 	
 	@RequestMapping(value="/erp/login.do", method=RequestMethod.GET)
 	public String emploginView(){
@@ -28,7 +34,18 @@ public class LoginController {
 		String url = "";
 		if(loginUser!=null) {
 			session.setAttribute("erploginUser", loginUser);
-			url = "redirect:/erp/deptlist.do";
+			url = "redirect:/erp/index.do";
+			
+			//출입증 만료
+			SecurityDTO sec = secservice.secCheck(loginUser.getEmpno());
+			if(sec != null & sec.getScstate().equals("1")) {
+				String today = new java.text.SimpleDateFormat ("yyyy-MM-dd").format(new java.util.Date()); 
+				SimpleDateFormat fmt=new SimpleDateFormat("yyyy-MM-dd"); 
+				String exdate=fmt.format(sec.getExdate()); 
+				if(today.equals(exdate)) {
+					secservice.expire(sec.getScno());
+				}
+			}
 		}else {
 			url = "erp/login";
 		}

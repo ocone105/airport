@@ -42,5 +42,18 @@ public class SecurityDAOImpl implements SecurityDAO {
 	public void permit(String scno) {
 		sqlSession.update("kr.airport.erp.security.permit", scno);
 	}
+
+	@Override
+	public void reject(String scno) {
+		sqlSession.update("kr.airport.erp.security.reject", scno);
+		
+	}
+
+	@Override
+	public void expire(String scno) {
+		sqlSession.update("kr.airport.erp.security.expire", scno);
+		
+	}
+
 	
 }

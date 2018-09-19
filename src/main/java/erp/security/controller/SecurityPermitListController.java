@@ -24,16 +24,24 @@ public class SecurityPermitListController {
 	}
 	
 	@RequestMapping("/erp/permit.do")
-	public String permit(String scno, Model model){
-		service.permit(scno);
+	public String permit(String scno, Model model, String action) {
+		if(action.equals("permit")) {
+			service.permit(scno);
+		}else if(action.equals("reject")) {
+			service.reject(scno);
+		}
 		List<SecurityDTO> permitlist = service.permitlist();
 		model.addAttribute("permitlist", permitlist);
 		return "erp/permissionlist";
 	}
 	
 	@RequestMapping("/erp/permitall.do")
-	public String permitall(@RequestParam(value = "scno") List<String> scno, Model model){
-		//System.out.println(scno.get(0));
+	public String permitall(@RequestParam(value = "scno",required=false) List<String> scnolist, Model model){
+		if(scnolist!=null) {
+			for(int i=0; i<scnolist.size();i++) {
+				service.permit(scnolist.get(i));
+			}
+		}
 		List<SecurityDTO> permitlist = service.permitlist();
 		model.addAttribute("permitlist", permitlist);
 		return "erp/permissionlist";

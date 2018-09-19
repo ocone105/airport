@@ -31,7 +31,7 @@ a:focus {
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#permitInfo").on("show.bs.modal",function(){
-		mydata="<img src='/airport/resources/upload/"+$("#empimg").val()+"' class='img-responsive thumbnail'>"
+		mydata="<img src='/airport/resources/upload/"+$("#empimg").val()+"' class='img-responsive thumbnail' style='width: 130px; height: 150px;'>"
 		$("#applicantimg").empty();
 		$("#applicantimg").append(mydata);
 		$("#applicantno").empty();
@@ -49,7 +49,10 @@ $(document).ready(function(){
 });
 function onepermit(){
 	//alert("test");
-	location.href="/airport/erp/permit.do?scno="+$("#empscno").val();
+	location.href="/airport/erp/permit.do?scno="+$("#empscno").val()+"&action=permit";
+}
+function reject(){
+	location.href="/airport/erp/permit.do?scno="+$("#empscno").val()+"&action=reject";
 }
 
 </script>
@@ -59,7 +62,7 @@ function onepermit(){
 		<div class="row">
 			<div class="col-lg-12 col-md-12">
 				<div class="card">
-					<div class="card-header card-header-tabs card-header-primary">
+					<div class="card-header card-header-tabs card-header-info">
 						<div class="nav-tabs-navigation">
 							<div class="nav-tabs-wrapper">
 								<span class="nav-tabs-title">신청자목록</span>
@@ -155,6 +158,7 @@ function onepermit(){
 						</table>
 						<hr/>
 							<input type="button" class="btn btn-info pull-right" data-dismiss="modal" value="Cancel"/>
+							<input type="button" class="btn btn-info pull-right" onclick="reject()" value="출입증 발급 불승인"/>
 							<input type="button" class="btn btn-info pull-right" onclick="onepermit()" value="출입증 발급 승인"/>
 	            </div>
 	        </div>

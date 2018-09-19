@@ -34,8 +34,10 @@ public class SecurityController {
 			sec.setImg(fileName);
 			fileservice.upload(file, path, fileName);
 		}
+		
 		if(action.equals("re")) {
 			sec.setScno(security.getScno());
+			System.out.println(sec);
 			service.reapply(sec);
 		}else if(action.equals("first")) {
 			service.securityinsert(sec);

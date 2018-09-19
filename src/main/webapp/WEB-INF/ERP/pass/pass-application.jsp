@@ -149,7 +149,7 @@ div.user-menu div.user-menu-content:not(.active){
 												class="material-icons">chevron_right</i>신청
 										</a></li>
 										</c:if>
-										<c:if test="${sec.scstate eq '0'}">
+										<c:if test="${sec.scstate eq '0' or sec.scstate eq '3'}">
 										<li class="nav-item"><a class="nav-link"
 											href="#reissuance" data-toggle="tab"> <i
 												class="material-icons">chevron_right</i> 재발급
@@ -242,6 +242,10 @@ div.user-menu div.user-menu-content:not(.active){
 													    <li><h4><i class="fa fa-user coral"></i>  출입증 신청 승인 대기중</h4></li>
 								                		<li><h4><i class="fa fa-paper-plane-o coral"></i>  승인시까지 대기해주세요</h4></li>
 													  </c:when>
+													  <c:when test="${sec.scstate eq '3'}">
+													    <li><h4><i class="fa fa-user coral"></i>  출입증 신청이 거절되었습니다</h4></li>
+								                		<li><h4><i class="fa fa-paper-plane-o coral"></i>  다시 신청해주세요</h4></li>
+													  </c:when>
 													</c:choose>
 								                </ul>
 								            </div>
@@ -300,7 +304,7 @@ div.user-menu div.user-menu-content:not(.active){
 								<!-- 신청form끝 -->
 								
 								<!-- 재신청form -->
-								<c:if test="${sec.scstate eq '0'}" >
+								<c:if test="${sec.scstate eq '0' or sec.scstate eq '3'}" >
 								<div class="tab-pane" id="reissuance">
 								<form class="form-horizontal" method="post" action="/airport/erp/scapply.do?action=re"
 									enctype="multipart/form-data">

@@ -15,7 +15,7 @@
 
 	<update id="reapply" parameterType="security">
 		update security
-		set img=#{img}, appdate=#{appdate}, issuedate=null, exdate=null, scstate='2', 
+		set img=#{img}, appdate=#{appdate}, issuedate=null, exdate=null, scstate='2'
 		where scno=#{scno}
 	</update>
 	
@@ -29,6 +29,7 @@
 		select s.*,e.name,e.email,d.deptname 
 		from security s, emp e, dept d
 		where s.empno=e.empno and d.deptno=e.deptno and scstate='1'
+		order by d.deptname asc
 	</select>	
 	
 	<update id="permit" parameterType="String">
@@ -37,11 +38,16 @@
 		where scno=#{scno}
 	</update>
 	
-	<update id="permitall" parameterType="String">
-		<foreach collection="scnolist" item="scnumber"  separator=" ">
+	<update id="reject" parameterType="String">
 		update security
-		set scstate='1', issuedate=sysdate, exdate=add_months(sysdate,12)
-		where scno=#{scnumber}
-		</foreach>
+		set scstate='3'
+		where scno=#{scno}
 	</update>
+	
+	<update id="expire" parameterType="String">
+		update security
+		set scstate='0'
+		where scno=#{scno}
+	</update>
+	
 </mapper>
