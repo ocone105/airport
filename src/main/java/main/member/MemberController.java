@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.fasterxml.jackson.databind.JsonNode;
 
 @Controller
 public class MemberController {
@@ -15,11 +18,40 @@ public class MemberController {
 	@Autowired
 	MemberService service;
 
+
+	@RequestMapping(value = "/member/kakao", produces = "application/json", 
+			method = { RequestMethod.GET, RequestMethod.POST })
+	public String kakaologin(@RequestParam("code") String code, HttpSession Session) {
+		JsonNode token = KakaoLogin.getAccessToken(code);
+		JsonNode profile = KakaoLogin.getKakaoUserInfo(token.path("access_token").toString());
+		String id = profile.path("id").asText();
+		String nickname = profile.path("properties").path("nickname").asText();
+		String email = profile.path("kaccount_email").asText();
+		System.out.println(email+" 이메일");
+		String urlPath = null;
+		MemberDTO member = new MemberDTO();
+		boolean loginUser = service.idCheck(id);
+		if (loginUser == false) {
+			member.setId(id);
+			member.setName(nickname);
+			member.setEmail(email);
+			service.kakao(member);
+			Session.removeAttribute("loginUser");
+			Session.setAttribute("loginUser", id);
+			urlPath = "redirect:/main/myservice.do";
+		} else {
+			Session.removeAttribute("loginUser");
+			Session.setAttribute("loginUser", id);
+			urlPath = "redirect:/main/myservice.do";
+		}
+		return urlPath;
+	}
+	
 	// 회원가입
 	@RequestMapping(value = "/member/signup.do", method = RequestMethod.POST)
 	public String signup(MemberDTO member, HttpSession session) {
 		int result = service.signup(member);
-		System.out.println(result + "가입 성공");
+		//System.out.println(result + "가입 성공");
 		return "redirect:/main/signin.do";
 	}
 
@@ -30,10 +62,10 @@ public class MemberController {
 		MemberDTO loginUser = service.login(user.getId(), user.getPwd());
 
 		if (loginUser != null) {
-			if (loginUser.getState().equals("0")) {
+			if (loginUser.getState().equals("1")) {
 				viewName = "redirect:/main/myservice.do";
 				session.setAttribute("loginUser", loginUser); 
-			} else if (loginUser.getState().equals("1")) {	// 회원탈퇴의 경우
+			} else if (loginUser.getState().equals("0")) {	// 회원탈퇴의 경우
 				viewName = "redirect:/main/signin.do";
 			}
 		} else {
