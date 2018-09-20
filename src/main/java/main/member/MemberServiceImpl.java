@@ -14,6 +14,11 @@ public class MemberServiceImpl implements MemberService {
 	public int signup(MemberDTO member) {
 		return dao.signup(member);
 	}
+	
+	@Override
+	public int kakao(MemberDTO member) {
+		return dao.kakao(member);
+	}
 
 	@Override
 	public MemberDTO login(String id, String pwd) {
