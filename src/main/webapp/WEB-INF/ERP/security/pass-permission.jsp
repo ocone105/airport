@@ -30,8 +30,12 @@ a:focus {
 </style>
 <script type="text/javascript">
 $(document).ready(function(){
+	$("#modal").on("click",function(){
+		scno = $(this).next().val();
+		alert(scno);
+	})
 	$("#permitInfo").on("show.bs.modal",function(){
-		mydata="<img src='/airport/resources/upload/"+$("#empimg").val()+"' class='img-responsive thumbnail' style='width: 130px; height: 150px;'>"
+	/* 	mydata="<img src='/airport/resources/upload/"+$("#empimg").val()+"' class='img-responsive thumbnail' style='width: 130px; height: 150px;'>"
 		$("#applicantimg").empty();
 		$("#applicantimg").append(mydata);
 		$("#applicantno").empty();
@@ -43,16 +47,15 @@ $(document).ready(function(){
 		$("#applicantemail").empty();
 		$("#applicantemail").append($("#empemail").val());
 		$("#applicantappdate").empty();
-		$("#applicantappdate").append($("#empappdate").val());
+		$("#applicantappdate").append($("#empappdate").val()); */
 	})
-
 });
 function onepermit(){
-	//alert("test");
-	location.href="/airport/erp/permit.do?scno="+$("#empscno").val()+"&action=permit";
+	alert(scno);
+	//location.href="/airport/erp/permit.do?scno="+scno+"&action=permit";
 }
 function reject(){
-	location.href="/airport/erp/permit.do?scno="+$("#empscno").val()+"&action=reject";
+	//location.href="/airport/erp/permit.do?scno="+scno+"&action=reject";
 }
 
 </script>
@@ -94,17 +97,11 @@ function reject(){
 											</div>
 										</td>
 										<td>${permit.empno }</td>
-										<td><a data-toggle="modal" data-target="#permitInfo" id="modal">${permit.name }</a></td>
+										<td><a data-toggle="modal" data-target="#permitInfo" id="modal">${permit.name }</a>
+										<input type="hidden" id="empscno" value="${permit.scno }"/></td>
 										<td>${permit.appdate }</td>
 										<td>${permit.deptname }</td>
 									</tr>
-									<input type="hidden" id="empimg" value="${permit.img }"/>
-									<input type="hidden" id="empno" value="${permit.empno }"/>
-									<input type="hidden" id="empname" value="${permit.name }"/>
-									<input type="hidden" id="empdept" value="${permit.deptname }"/>
-									<input type="hidden" id="empemail" value="${permit.email }"/>
-									<input type="hidden" id="empappdate" value="${permit.appdate }"/>
-									<input type="hidden" id="empscno" value="${permit.scno }"/>
 								</c:forEach>
 							</tbody>
 						</table>
