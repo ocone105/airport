@@ -16,11 +16,31 @@ public class DeptServiceImpl implements DeptService {
 	@Qualifier("deptdao")
 	DeptDAO dao;
 
+	
+	
+	@Override
+	public DeptDTO deptread(String deptno) {
+		return dao.deptread(deptno);
+	}
+	
 	@Override
 	public List<DeptDTO> deptList() {
 		return dao.deptList();
 	}
-
+	@Override
+	public List<DeptDTO> deptstepList(String deptno) {
+		return dao.deptstepList(deptno);
+	}
+	@Override
+	public List<DeptDTO> getByUpper(String deptno) {
+		return dao.getByUpper(deptno);
+	}
+	@Override
+	public String getUpcode(String deptno) {
+		return dao.getUpcode(deptno);
+	}
+	
+	
 	@Override
 	public void deptinsert(DeptDTO dept) {
 		dao.deptinsert(dept);
@@ -36,14 +56,5 @@ public class DeptServiceImpl implements DeptService {
 		dao.deptupdate(dept);
 	}
 
-	@Override
-	public List<DeptDTO> getctg2(String deptctg1) {
-		return dao.getctg2(deptctg1);
-	}
-
-	@Override
-	public List<DeptDTO> getctg3(String deptctg2) {
-		return dao.getctg3(deptctg2);
-	}
 
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,48 +40,24 @@
 							<div class="table-responsive">
 								<table class="table">
 									<thead class=" text-primary">
-										<th>사원번호</th>
-										<th>이름</th>
-										<th>부서</th>
-										<th>전화번호</th>
-										<th>이메일</th>
+										<tr>
+											<th>사원번호</th>
+											<th>이름</th>
+											<th>부서</th>
+											<th>전화번호</th>
+											<th>이메일</th>
+										</tr>
 									</thead>
 									<tbody>
+									<c:forEach var="emp" items="${emplist}">
 										<tr>
-											<td>001</td>
-											<td><a href="#">이름</a></td>
-											<td>부서이름</td>
-											<td>010-0000-0000</td>
-											<td>abc@gmail.com</td>
+											<td>${emp.empno }</td>
+											<td><a href="/airport/erp/empread.do?empno=${emp.empno }">${emp.name }</a></td>
+											<td>${emp.deptname }</td>
+											<td>${emp.phone  }</td>
+											<td>${emp.email }</td>
 										</tr>
-										<tr>
-											<td>002</td>
-											<td><a href="#">이름</a></td>
-											<td>부서이름</td>
-											<td>010-0000-0000</td>
-											<td>abc@gmail.com</td>
-										</tr>
-										<tr>
-											<td>003</td>
-											<td><a href="#">이름</a></td>
-											<td>부서이름</td>
-											<td>010-0000-0000</td>
-											<td>abc@gmail.com</td>
-										</tr>
-										<tr>
-											<td>004</td>
-											<td><a href="#">이름</a></td>
-											<td>부서이름</td>
-											<td>010-0000-0000</td>
-											<td>abc@gmail.com</td>
-										</tr>
-										<tr>
-											<td>005</td>
-											<td><a href="#">이름</a></td>
-											<td>부서이름</td>
-											<td>010-0000-0000</td>
-											<td>abc@gmail.com</td>
-										</tr>
+									</c:forEach>
 									</tbody>
 								</table>
 							</div>

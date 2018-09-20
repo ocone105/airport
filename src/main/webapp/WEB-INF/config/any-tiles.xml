@@ -19,7 +19,7 @@
 	</definition>
 
 	<definition name="myservice" extends="mainTemplate">
-		<put-attribute name="content" value="/WEB-INF/content/main/predictFlight2.jsp" />
+		<put-attribute name="content" value="/WEB-INF/content/main/predictPassenger2.jsp" />
 	</definition>
 
 	<definition name="signin" extends="mainTemplate">

@@ -84,8 +84,8 @@
 										</span>
 									</div>
 								</td>
-								<td><img src="/airport/resources/logo/KOREANAIR.jpg"
-									width="300"></td>
+								<td><img src="/airport/resources/logo/${info.airline}.jpg"
+									width="300" height="150"></td>
 								<td>
 									<div class="table-data__info">
 										<h6>${info.airport}</h6>

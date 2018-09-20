@@ -28,9 +28,16 @@ public class DeptListController {
 		
 	} 
 	
-	@RequestMapping(value = "/erp/ajaxdeptlist.do", method=RequestMethod.GET,produces="application/json;charset=utf-8")
-	public @ResponseBody List<DeptDTO> deptlist() {
-		List<DeptDTO> deptlist = service.deptList();
+	@RequestMapping(value = "/erp/ajaxdeptlist", method=RequestMethod.GET,produces="application/json;charset=utf-8")
+	public @ResponseBody List<DeptDTO> deptsteplist(String deptno) {
+		List<DeptDTO> deptlist = service.deptstepList(deptno);
+		//System.out.println(deptlist);
 		return deptlist;
+	}
+	
+	@RequestMapping(value = "/erp/ajaxdeptread", method=RequestMethod.GET,produces="application/json;charset=utf-8")
+	public @ResponseBody DeptDTO deptread(String deptno) {
+		DeptDTO deptInfo = service.deptread(deptno);
+		return deptInfo;
 	}
 }
