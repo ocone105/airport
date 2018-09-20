@@ -8,6 +8,8 @@ public interface BoardNoticeDAO {
 
 	int insert(BoardNoticeDTO post);
 	List<BoardNoticeDTO> boardlist();
-	int delete(String boardno);
+	BoardNoticeDTO read(int boardno);
+	int update(BoardNoticeDTO post);
+	int delete(int boardno);
 	
 }

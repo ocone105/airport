@@ -1,27 +1,25 @@
 package main.api;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlPullParserFactory;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 public class realtimeAPI {
 
 	public static void main(String[] args) throws IOException {
 
 		StringBuilder urlBuilder = new StringBuilder("http://openapi.airport.kr/openapi/service/StatusOfPassengerFlightsDS/getPassengerDeparturesDS");
-		urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8")
-				+ "=SIiebQZNZnHWh2wfaDQr3sqEbhZH5dOGGBBnUuGTfGX0YfQLrVkPYI9IoYeHbFV0b2x0TxmtG873O%2BSlIjb8WA%3D%3D");
-		urlBuilder.append("&" + URLEncoder.encode("airport_code", "UTF-8") + "="
-				+ URLEncoder.encode("NRT", "UTF-8"));
+		urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8") + "=SIiebQZNZnHWh2wfaDQr3sqEbhZH5dOGGBBnUuGTfGX0YfQLrVkPYI9IoYeHbFV0b2x0TxmtG873O%2BSlIjb8WA%3D%3D");
+		urlBuilder.append("&" + URLEncoder.encode("airport_code", "UTF-8") + "=" + URLEncoder.encode("NRT", "UTF-8")); 
 		URL url = new URL(urlBuilder.toString());
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod("GET");
@@ -39,60 +37,43 @@ public class realtimeAPI {
 		while ((line = rd.readLine()) != null) {
 			sb.append(line);
 		}
+		
 		rd.close();
 		conn.disconnect();
 		System.out.println(sb.toString());
-		/*try {
-			XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
-			XmlPullParser pullparser = factory.newPullParser();
-			BufferedInputStream bis = new BufferedInputStream(url.openStream());
-			pullparser.setInput(bis, "utf-8");
-			int eventType = pullparser.getEventType();
-			String tagName = "";
-
-			while (eventType != XmlPullParser.END_DOCUMENT) {
-				if (eventType == XmlPullParser.START_TAG) {
-					tagName = pullparser.getName();
-				} else if (eventType == XmlPullParser.TEXT) {
-					System.out.println(tagName + " : " + pullparser.getText());
-				} else if (eventType == XmlPullParser.END_TAG) {
-					tagName = pullparser.getName();
-					if (tagName.equals("item")) {
-						System.out.println();
-						System.out.println();
-					}
+		String lines = sb.toString();
+		
+		 try {
+	            JSONParser jsonParser = new JSONParser();
+	            JSONObject jsonObj = (JSONObject) jsonParser.parse(lines);
+	            
+	            JSONObject root = (JSONObject) jsonObj.get("response");
+	            JSONObject body = (JSONObject) root.get("body");
+	            JSONObject items = (JSONObject) body.get("items");
+	            
+	            JSONArray item = (JSONArray) items.get("item");
+	            ArrayList<FlightDTO> info = new ArrayList<FlightDTO>();
+	            for(int i=0 ; i<item.size() ; i++){
+	                JSONObject tempObj = (JSONObject) item.get(i);
+	                FlightDTO data = new FlightDTO();
+	                data.setAirline((String) tempObj.get("airline"));
+	                data.setAirport((String) tempObj.get("airport"));
+	                data.setAirportcode((String) tempObj.get("airportcode"));
+	                data.setChkinrange((String) tempObj.get("chkinrange"));
+	                data.setEstimatedDateTime((Long) tempObj.get("estimatedDateTime"));
+	                data.setFlightId((String) tempObj.get("flightId"));
+	                data.setGatenumber((Long) tempObj.get("gatenumber"));
+	                data.setScheduleDateTime((Long) tempObj.get("scheduleDateTime"));
+	                data.setTerminalid((String) tempObj.get("terminalid"));
+	                data.setRemark((String) tempObj.get("remark"));
+	                info.add(data);
+	            }
+	            // System.out.println(info.get(2).getAirline());
+	            for (int i = 0; i < info.size(); i++) {
+	            	System.out.println(info.get(i));
 				}
-				eventType = pullparser.next();
-			}
-		} catch (XmlPullParserException e) {
-			e.printStackTrace();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) { e.printStackTrace(); }
-*/
-		 /*
-		 * 
-		 * XmlPullParser pullparser = factory.newPullParser();
-		 * 
-		 * String airurl =
-		 * "http://openapi.airport.kr/openapi/service/StatusOfPassengerFlightsDS/getPassengerArrivalsDS";
-		 * String key =
-		 * "SIiebQZNZnHWh2wfaDQr3sqEbhZH5dOGGBBnUuGTfGX0YfQLrVkPYI9IoYeHbFV0b2x0TxmtG873O%2BSlIjb8WA%3D%3D";
-		 * String realUrl = airurl + "?ServiceKey=" + key; URL url = new URL(realUrl);
-		 * 
-		 * BufferedInputStream bis = new BufferedInputStream(url.openStream());
-		 * pullparser.setInput(bis, "utf-8"); int eventType = pullparser.getEventType();
-		 * String tagName = "";
-		 * 
-		 * while (eventType != XmlPullParser.END_DOCUMENT) { if (eventType ==
-		 * XmlPullParser.START_TAG) { tagName = pullparser.getName(); } else if
-		 * (eventType == XmlPullParser.TEXT) { System.out.println(tagName + " : " +
-		 * pullparser.getText()); } else if (eventType == XmlPullParser.END_TAG) {
-		 * tagName = pullparser.getName(); if (tagName.equals("item")) {
-		 * System.out.println(); System.out.println(); } } eventType =
-		 * pullparser.next(); } } catch (XmlPullParserException e) {
-		 * e.printStackTrace(); } catch (FileNotFoundException e) { e.printStackTrace();
-		 * } catch (IOException e) { e.printStackTrace(); }
-		 */
+	        } catch (ParseException e) {
+	            e.printStackTrace();
+	        }
 	}
 }

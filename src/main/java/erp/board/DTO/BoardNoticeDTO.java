@@ -5,14 +5,14 @@ import java.sql.Date;
 import org.springframework.web.multipart.MultipartFile;
 
 public class BoardNoticeDTO {
-	private int boardno;
+	private int boardno; 
 	private String ctg;
 	private String title;
 	private String txt;
-	private Date boarddate;
+	private Date boarddate; 
 	private int hits;
 	private String attach;
-	private int empno;
+	private int empno; 
 	private MultipartFile upfile;
 
 	public BoardNoticeDTO(){}
@@ -29,6 +29,13 @@ public class BoardNoticeDTO {
 		this.attach = attach;
 		this.empno = empno;
 		this.upfile = upfile;
+	}
+
+	@Override
+	public String toString() {
+		return "BoardNoticeDTO [boardno=" + boardno + ", ctg=" + ctg + ", title=" + title + ", txt=" + txt
+				+ ", boarddate=" + boarddate + ", hits=" + hits + ", attach=" + attach + ", empno=" + empno
+				+ ", upfile=" + upfile + "]";
 	}
 
 	public int getBoardno() {
@@ -95,12 +102,12 @@ public class BoardNoticeDTO {
 		this.empno = empno;
 	}
 
-	public MultipartFile getFile() {
+	public MultipartFile getUpfile() {
 		return upfile;
 	}
 
-	public void setFile(MultipartFile upfile) {
+	public void setUpfile(MultipartFile upfile) {
 		this.upfile = upfile;
 	}
-	
+
 }
