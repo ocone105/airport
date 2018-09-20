@@ -20,7 +20,7 @@ public class MemberController {
 
 
 	@RequestMapping(value = "/member/kakao", produces = "application/json", 
-			method = { RequestMethod.GET,RequestMethod.POST })
+			method = { RequestMethod.GET, RequestMethod.POST })
 	public String kakaologin(@RequestParam("code") String code, HttpSession Session) {
 		JsonNode token = KakaoLogin.getAccessToken(code);
 		JsonNode profile = KakaoLogin.getKakaoUserInfo(token.path("access_token").toString());
@@ -37,12 +37,12 @@ public class MemberController {
 			member.setEmail(email);
 			service.kakao(member);
 			Session.removeAttribute("loginUser");
-			Session.setAttribute("loginUser", service.idCheck(id));
+			Session.setAttribute("loginUser", id);
 			urlPath = "redirect:/main/myservice.do";
 		} else {
 			Session.removeAttribute("loginUser");
-			Session.setAttribute("loginUser", service.idCheck(id));
-			urlPath = "redirect:/main/signin.do";
+			Session.setAttribute("loginUser", id);
+			urlPath = "redirect:/main/myservice.do";
 		}
 		return urlPath;
 	}
@@ -62,10 +62,10 @@ public class MemberController {
 		MemberDTO loginUser = service.login(user.getId(), user.getPwd());
 
 		if (loginUser != null) {
-			if (loginUser.getState().equals("0")) {
+			if (loginUser.getState().equals("1")) {
 				viewName = "redirect:/main/myservice.do";
 				session.setAttribute("loginUser", loginUser); 
-			} else if (loginUser.getState().equals("1")) {	// 회원탈퇴의 경우
+			} else if (loginUser.getState().equals("0")) {	// 회원탈퇴의 경우
 				viewName = "redirect:/main/signin.do";
 			}
 		} else {

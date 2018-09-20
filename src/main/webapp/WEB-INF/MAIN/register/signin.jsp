@@ -133,6 +133,7 @@
 									
 									<a href="https://kauth.kakao.com/oauth/authorize?client_id=8bed9b180428407e27708779a7d4e327&redirect_uri=http://localhost:8088/airport/member/kakao&response_type=code"><img height="50px"
 										src="/airport/resources/sns/kakao.png" /></a>
+										
 									<!-- <a id="kakao-login-btn" href="https://kauth.kakao.com/oauth/authorize?client_id=8bed9b180428407e27708779a7d4e327&redirect_uri=http://localhost:8088/member/kakao&response_type=code "></a>
 									<script type='text/javascript'>
 										//<![CDATA[
@@ -180,22 +181,6 @@
 									</script> -->
 									
 
-									
-									<!-- 페이스북으로 로그인 -->
-									<script>
-										(function(d, s, id) {
-											var js, fjs = d
-													.getElementsByTagName(s)[0];
-											if (d.getElementById(id))
-												return;
-											js = d.createElement(s);
-											js.id = id;
-											js.src = 'https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.1&appId=2203155433297404&autoLogAppEvents=1';
-											fjs.parentNode
-													.insertBefore(js, fjs);
-										}(document, 'script', 'facebook-jssdk'));
-									</script>
-
 									<div class="fb-login-button" scope="public_profile,email"
 										data-max-rows="1" data-size="large"
 										data-button-type="continue_with" data-show-faces="false"
@@ -209,7 +194,6 @@
 
 						<!-- 회원가입 -->
 						<div class="col-sm-5">
-
 							<div class="form-box">
 								<div class="form-top">
 									<div class="form-top-left">
