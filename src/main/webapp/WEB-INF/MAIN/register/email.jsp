@@ -23,7 +23,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 	<div class="home">
 		<div class="background_image"
 			style="background-image: url(/airport/resources/images/greece.jpg)"></div>
@@ -67,7 +66,6 @@
 						아니한 자<br />
 
 					</p>
-
 
 					<div class="about_text">
 						<br />
