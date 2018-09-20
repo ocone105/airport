@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import erp.board.DAO.BoardNoticeDAO;
+import erp.board.DTO.BoardNoticeCmtDTO;
 import erp.board.DTO.BoardNoticeDTO;
 @Service
 public class BoardNoticeServiceImpl implements BoardNoticeService {
@@ -29,6 +30,11 @@ public class BoardNoticeServiceImpl implements BoardNoticeService {
 	}
 
 	@Override
+	public int hits(int boardno) {
+		return dao.hits(boardno);
+	}
+	
+	@Override
 	public int update(BoardNoticeDTO post) {
 		return dao.update(post);
 	}
@@ -38,6 +44,19 @@ public class BoardNoticeServiceImpl implements BoardNoticeService {
 		return dao.delete(boardno);
 	}
 
+	@Override
+	public int insertCmt(BoardNoticeCmtDTO cmt) {
+		return dao.insertCmt(cmt);
+	}
 
-	
+	@Override
+	public List<BoardNoticeCmtDTO> Cmtlist(int boardno) {
+		return dao.Cmtlist(boardno);
+	}
+
+	@Override
+	public int deleteCmt(int cmtno) {
+		return dao.deleteCmt(cmtno);
+	}
+
 }
