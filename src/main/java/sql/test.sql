@@ -36,6 +36,7 @@ insert into PFINFO values(pfinfono_seq.nextval, '37.449976, 126.451739', 'GATE3'
 insert into PFINFO values(pfinfono_seq.nextval, '37.448835, 126.449808', 'GATE4');
 insert into PFINFO values(pfinfono_seq.nextval, '37.448017, 126.448981', 'GATE5');
 insert into PFINFO values(pfinfono_seq.nextval, '37.447149, 126.448445', 'GATE6');
+insert into PFINFO values(pfinfono_seq.nextval, '37.447149, 126.448445', 'GATE6');
 
 select * from PFINFO;
 
