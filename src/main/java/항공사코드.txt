@@ -1,0 +1,17 @@
+오라클
+create table airlineCode(
+   lataCode varchar(10),
+   lcaoCode varchar(10),
+   name varchar(40));
+
+메모장 : .ctl로 저장
+LOAD DATA                                       
+INFILE 'C:\Users\kitri\Desktop\3rdProject\DB\항공사코드.csv'
+INTO Table airlineCode INSERT
+FIELDS terminated by ',' 
+trailing nullcols 
+(latacode,lcaocode, name)
+
+
+prompt창
+sqlldr air/port control = 'C:\Users\kitri\Desktop\3rdProject\DB\항공사코드.ctl' log='C:\Users\kitri\Desktop\3rdProject\DB\항공사코드.log'

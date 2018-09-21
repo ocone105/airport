@@ -9,6 +9,9 @@
 	<definition name="erp/noticewrite" extends="ERPTemplate">
 		<put-attribute name="content" value="/WEB-INF/ERP/board/notice-write.jsp"/>
 	</definition>
+	<definition name="erp/noticeupdate" extends="ERPTemplate">
+		<put-attribute name="content" value="/WEB-INF/ERP/board/notice-update.jsp"/>
+	</definition>
 	<definition name="erp/anonymouslist" extends="ERPTemplate">
 		<put-attribute name="content" value="/WEB-INF/ERP/board/anonymousboardlist.jsp"/>
 	</definition>

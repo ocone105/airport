@@ -9,11 +9,12 @@
 <body>
 	<div class="content">
 		<div class="col-md-12">
-			<form method="post" action="/airport/erp/noticewrite.do" enctype="multipart/form-data">
+			<form method="post" action="/airport/erp/noticeupdate.do" enctype="multipart/form-data">
 			<div class="card">
 				<div class="card-header card-header-primary">
 					<h4 class="card-title">공지사항</h4>
 					<input type="hidden" name="ctg" value="notice">
+					<input type="hidden" name="boardno" value="${post.boardno}">
 				</div>
 				<div class="card-body">
 					<div>

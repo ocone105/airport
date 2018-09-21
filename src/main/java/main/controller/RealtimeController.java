@@ -2,7 +2,6 @@ package main.controller;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -14,6 +13,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import main.api.FlightDTO;
 
@@ -21,9 +21,9 @@ import main.api.FlightDTO;
 public class RealtimeController {
 
 	@RequestMapping("/main/realtime.do")
-	public String realtime() throws Exception {
-		list();
-		return "realtime";
+	public ModelAndView realtime() throws Exception {
+		ArrayList<FlightDTO> info = list();
+		return new ModelAndView("realtime", "info", info);
 	}
 	
 	public ArrayList<FlightDTO> list() throws Exception{
@@ -52,7 +52,7 @@ public class RealtimeController {
 		
 		rd.close();
 		conn.disconnect();
-		System.out.println(sb.toString());
+		// System.out.println(sb.toString());
 		String lines = sb.toString();
 		
 		 try {
@@ -77,12 +77,13 @@ public class RealtimeController {
 	                data.setGatenumber((Long) tempObj.get("gatenumber"));
 	                data.setScheduleDateTime((Long) tempObj.get("scheduleDateTime"));
 	                data.setTerminalid((String) tempObj.get("terminalid"));
+	                data.setRemark((String) tempObj.get("remark"));
 	                info.add(data);
 	            }
 	            // System.out.println(info.get(2).getAirline());
-	            for (int i = 0; i < info.size(); i++) {
+	           /* for (int i = 0; i < info.size(); i++) {
 	            	System.out.println(info.get(i));
-				}
+				}*/
 	        } catch (ParseException e) {
 	            e.printStackTrace();
 	        }

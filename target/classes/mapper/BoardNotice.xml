@@ -13,11 +13,27 @@
 		select * from BOARD where boardno=#{boardno}
 	</select>
 	
-	<update id="update" parameterType="Integer">
+	<update id="hits" parameterType="Integer">
+		update board set hits=hits+1 where boardno=#{boardno}
+	</update>
+	
+	<update id="update" parameterType="notice">
 		update board set title=#{title}, txt=#{txt}, attach=#{attach} where boardno=#{boardno}
 	</update>
 	
 	<delete id="delete" parameterType="Integer">
 		delete from BOARD where boardno=#{boardno}
 	</delete>
+	
+	<insert id="insertCmt" parameterType="noticeCmt">
+		insert into BOARDCMT values(cmtno_seq.nextval, #{cmttxt}, sysdate, #{boardno}, #{empno}) 
+	</insert>
+	
+	<select id="noticeCmtlist" resultType="noticeCmt">
+		select * from BOARDCMT where boardno=#{boardno} order by cmtdate desc
+	</select>
+	
+	<delete id="deleteCmt" parameterType="Integer">
+		delete from BOARDCMT where cmtno=#{cmtno}
+	</delete>	
 </mapper>
