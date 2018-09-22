@@ -6,6 +6,8 @@
 	<typeAliases> 
 		<typeAlias type="erp.board.DTO.BoardNoticeDTO" alias="notice" />
 		<typeAlias type="erp.board.DTO.BoardNoticeCmtDTO" alias="noticeCmt" />
+		<typeAlias type="erp.pf.DTO.PFINFODTO" alias="pfinfo" />
+		<typeAlias type="erp.pf.DTO.PFTEAMDTO" alias="pfteam" />
 		<typeAlias type="erp.pf.DTO.PFDTO" alias="pf" />
 		<typeAlias type="main.member.MemberDTO" alias="member" />
 		<typeAlias type="erp.dept.dto.DeptDTO" alias="dept" />
