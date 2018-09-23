@@ -45,7 +45,7 @@
 											<th>이름</th>
 											<th>부서</th>
 											<th>전화번호</th>
-											<th>이메일</th>
+											<th>재직</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -55,7 +55,14 @@
 											<td><a href="/airport/erp/empread.do?empno=${emp.empno }">${emp.name }</a></td>
 											<td>${emp.deptname }</td>
 											<td>${emp.phone  }</td>
-											<td>${emp.email }</td>
+											<td>
+											<c:if test="${emp.state eq '0' }">
+												재직
+											</c:if>
+											<c:if test="${emp.state eq '1' }">
+												퇴사
+											</c:if>
+											</td>
 										</tr>
 									</c:forEach>
 									</tbody>

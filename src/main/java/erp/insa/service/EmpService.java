@@ -9,6 +9,6 @@ public interface EmpService {
 	EmpDTO empread(int empno);
 	void empinsert(EmpDTO emp);
 	void empupdate(EmpDTO emp);
-	void empdelete(int empno);
+	void trdelete(int empno);
 	EmpDTO login(EmpDTO emp);
 }

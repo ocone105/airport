@@ -23,7 +23,7 @@
 	
 	<update id="empupdate" parameterType="emp">
 		update emp 
-		set pwd=#{pwd},gender=#{gender},phone=#{phone},email=#{email},position=#{position},state=${state},deptno=#{deptno} 
+		set pwd=#{pwd},gender=#{gender},phone=#{phone},email=#{email},position=#{position},deptno=#{deptno} 
 		where empno=#{empno}
 	</update>
 

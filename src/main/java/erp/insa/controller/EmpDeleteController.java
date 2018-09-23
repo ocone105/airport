@@ -13,7 +13,7 @@ public class EmpDeleteController {
 	 
 	@RequestMapping(value="/erp/empdelete.do", method=RequestMethod.GET)
 	public String empinsert(int empno){
-		service.empdelete(empno);
+		service.trdelete(empno);
 		return "redirect:/erp/emplist.do";
 	}
 }
