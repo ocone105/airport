@@ -28,7 +28,7 @@
 <link rel="stylesheet" type="text/css"
 	href="/airport/resources/styles/contact_responsive.css">
 <script src="/airport/resources/js/sign.js"></script>
-<title>Insert title here</title>
+<title>로그인 / 회원가입</title>
 </head>
 <body>
 
@@ -88,98 +88,23 @@
 								</div>
 								<div class="form-bottom">
 									<!-- 네이버 아이디로 로그인 -->
-									<%
-										String clientId = "8WNSYq9HslIkdHkdXkX8";//애플리케이션 클라이언트 아이디값";
-										String redirectURI = URLEncoder.encode("http://localhost:8088/airport/callback", "UTF-8");
-										SecureRandom random = new SecureRandom();
-										String state = new BigInteger(130, random).toString();
-										String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
-										apiURL += "&client_id=" + clientId;
-										apiURL += "&redirect_uri=" + redirectURI;
-										apiURL += "&state=" + state;
-										session.setAttribute("state", state);
-									%>
-									<a href="<%=apiURL%>"><img height="50px"
-										src="/airport/resources/sns/naver2.PNG" /></a>
+  <%
+    String clientId = "8WNSYq9HslIkdHkdXkX8";//애플리케이션 클라이언트 아이디값";
+    String redirectURI = URLEncoder.encode("http://localhost:8088/airport/main/index.do", "UTF-8");
+    SecureRandom random = new SecureRandom();
+    String state = new BigInteger(130, random).toString();
+    String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
+    apiURL += "&client_id=" + clientId;
+    apiURL += "&redirect_uri=" + redirectURI;
+    apiURL += "&state=" + state;
+    session.setAttribute("state", state);
+ %>
+  <a href="<%=apiURL%>"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a>
 
-
-									<!-- 카카오톡으로 로그인 -->
-									<!-- 									<a id="custom-login-btn" href="javascript:loginWithKakao()">
-										<img src="/airport/resources/sns/kakao.png" height="50px" />
-									</a>
-									<script type='text/javascript'>
-										//<![CDATA[
-										// 사용할 앱의 JavaScript 키를 설정해 주세요.
-										Kakao
-												.init('0b4f8ab826d5bd1a8e4fd171582f0088');
-										function loginWithKakao() {
-											// 로그인 창을 띄웁니다.
-											Kakao.Auth
-													.login({
-														success : function(
-																authObj) {
-															alert(JSON
-																	.stringify(authObj));
-														},
-														fail : function(err) {
-															alert(JSON
-																	.stringify(err));
-														}
-													});
-
-										};
-										//]]>
-									</script> -->
-									
+									<!-- 카카오톡으로 로그인 -->			
 									<a href="https://kauth.kakao.com/oauth/authorize?client_id=8bed9b180428407e27708779a7d4e327&redirect_uri=http://localhost:8088/airport/member/kakao&response_type=code"><img height="50px"
 										src="/airport/resources/sns/kakao.png" /></a>
 										
-									<!-- <a id="kakao-login-btn" href="https://kauth.kakao.com/oauth/authorize?client_id=8bed9b180428407e27708779a7d4e327&redirect_uri=http://localhost:8088/member/kakao&response_type=code "></a>
-									<script type='text/javascript'>
-										//<![CDATA[
-										// 사용할 앱의 JavaScript 키를 설정해 주세요.
-										Kakao.init('0b4f8ab826d5bd1a8e4fd171582f0088');
-										// 카카오 로그인 버튼을 생성합니다.
-										Kakao.Auth
-												.createLoginButton({
-													container : '#kakao-login-btn',
-													success : function(authObj) {
-														// 로그인 성공시, API를 호출합니다.
-														Kakao.API.request({
-																	url : '/v2/user/me',
-																	success : function(res) {
-																		alert(JSON.stringify(res.id));
-																		//alert(res.id);
-																		alert(res.properties.nickname+"  "+res.kakao_account.email);
-																		
-																		// 카카오 값 보내기
-																		var jsonStr = JSON.stringify(pObj);
-																		$.ajax({
-																			url : '/airport/member/kakao.do', 
-																			method : "post", 
-																			//dataType : 'json', 
-																			//data : jsonStr, 
-																			data:{
-																			"id":JSON.stringify(res.id),
-																			"name":JSON.stringify(res.properties.nickname),
-																			"email":JSON.stringify(res.kakao_account.email)
-																			}});    
-																	},
-																	fail : function(
-																			error) {
-																		alert(JSON
-																				.stringify(error));
-																	}
-																});
-													},
-													fail : function(err) {
-														alert(JSON
-																.stringify(err));
-													}
-												});
-										//]]>
-									</script> -->
-									
 
 									<div class="fb-login-button" scope="public_profile,email"
 										data-max-rows="1" data-size="large"
@@ -254,11 +179,10 @@
 										<div class="form-group">
 											<label class="control control--checkbox" for="form-alarm"></label>
 											<span style="font-size: large; color: white;"> Email:
-												<input type="checkbox" name="alarm" id="email-check"
-												value="메일">
-											</span>&nbsp;&nbsp;&nbsp;&nbsp; <span
-												style="font-size: large; color: white;"> Phone: <input
-												type="checkbox" name="alarm" id="phone-check" value="문자">
+											<input type="checkbox" name="email_alarm" id="email_alarm" >
+											
+											</span>&nbsp;&nbsp;&nbsp;&nbsp; <span style="font-size: large; color: white;"> Phone: 
+											<input type="checkbox" name="sms_alarm" id="sms_alarm" >
 											</span>
 										</div>
 
