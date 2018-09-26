@@ -10,9 +10,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function() {
+		
+		// 댓글 삭제 Ajax
 		$(document).on("click",".deletecmt", function(){
 			cmtno = $("#cmtno").val();
-			alert(cmtno)
 			boardno = $("#boardno").val();
 			$.ajax({
 				url:"/airport/erp/cmt/noticedelete.do",
@@ -32,8 +33,8 @@
 									"</div><div class='comments-list-content'>"
 									+ list[i].cmttxt +
 									"</div><div class='comments-list-controller'><div class='right'>" +
-									"<input type='hidden' id='cmtno' value='"+list[i].cmtno+"'>" +
-									"<a type='button' data_num='"+list[i].cmtno+"' href='#' class='deletecmt comments-button-action comments-button-delete onclick='return confirm('삭제 하시겠습니까?')' title='삭제'>삭제</a></div></div></li></ul>";
+									"<a type='button' data_num='"+list[i].cmtno+"' href='#' class='deletecmt comments-button-action comments-button-delete onclick='return confirm('삭제 하시겠습니까?')' title='삭제'>삭제</a></div></div></li></ul>" +
+									"<input type='hidden' id='cmtno' value="+list[i].cmtno+">";
 					}
 					$("#cmtcount").val(list.length);
 					$("#cmtlist").empty();
@@ -67,9 +68,10 @@
 									"</div><div class='comments-list-content'>"
 									+ list[i].cmttxt +
 									"</div><div class='comments-list-controller'><div class='right'>" +
-									"<input type='hidden' id='cmtno' value='"+list[i].cmtno+"'>" + 
-									"<a type='button' data_num='"+list[i].cmtno+"' href='#' class='deletecmt comments-button-action comments-button-delete onclick='return confirm('삭제 하시겠습니까?')' title='삭제'>삭제</a></div></div></li></ul>";
+									"<a type='button' data_num='"+list[i].cmtno+"' href='#' class='deletecmt comments-button-action comments-button-delete onclick='return confirm('삭제 하시겠습니까?')' title='삭제'>삭제</a></div></div></li></ul>"+
+									"<input type='hidden' id='cmtno' value="+list[i].cmtno+">";
 					}
+					$("#cmtcount").val(list.length);
 					$("#cmtlist").empty();
 					$("#cmtlist").append(cmtlist);
 				
@@ -93,9 +95,14 @@
 							<h4>${post.title}</h4>
 							<hr />
 							<div class="row">
-								<span class="col-md-3"><label>작성자</label> ${post.empno}</span> <span
-									class="col-md-3"><label>작성일</label>${post.boarddate}</span> <span
-									class="col-md-3"><label>조회수</label>${post.hits}</span>
+								<span class="col-md-4"><label>작성자</label> ${post.empno}</span> 
+								<span class="col-md-4"><label>작성일</label>${post.boarddate}</span> 
+								<span class="col-md-4"><label>조회수</label>${post.hits}</span>
+								<c:if test="${post.attach!=null}">
+									<span class="col-md-4"><label>첨부파일 : </label>
+									<a href="/airport/erp/board/download.do?file=${post.attach}&boardno=${post.boardno}">
+									${post.attach}</a></span>
+								</c:if>
 							</div>
 							<hr />
 							<div>
@@ -163,6 +170,7 @@
 						<hr />
 						<a class="pull-right" href="/airport/erp/noticedelete.do?boardno=${post.boardno}"><i class="material-icons">delete</i>삭제</a>
 						<a class="pull-right" href="/airport/erp/noticeupdate.do?boardno=${post.boardno}"><i class="material-icons">edit</i>수정</a>
+						<a class="pull-right" href="/airport/erp/noticelist.do"><i class="material-icons">list</i>목록</a>
 					</div>
 				</div>
 			</div>
