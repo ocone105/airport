@@ -20,7 +20,7 @@
 <link rel="stylesheet" type="text/css"
 	href="/airport/resources/styles/about_responsive.css">
 
-<title>Insert title here</title>
+<title>개인정보처리방침</title>
 </head>
 <body>
 

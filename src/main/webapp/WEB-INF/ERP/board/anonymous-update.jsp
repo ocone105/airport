@@ -9,25 +9,26 @@
 <body>
 	<div class="content">
 		<div class="col-md-12">
-			<form class="form-horizontal" method="post" action="/airport/erp/anonymouswrite.do"
-				enctype="multipart/form-data">
+			<form class="form-horizontal" method="post" action="/airport/erp/anonymousupdate.do" enctype="multipart/form-data">
 			<div class="card">
 				<div class="card-header card-header-primary">
-					<h4 class="card-title">익명게시판</h4>
+					<h4 class="card-title">익명글</h4>
+					<input type="hidden" name="ctg" value="anonymous">
+					<input type="hidden" name="boardno" value="${post.boardno}">
 				</div>
 				<div class="card-body">
 					<div>
 					<span>제목</span>
-					<input type="text" class="form-control" name="title" id="title">
-					<input type="hidden" name="empno" id="empno" >
+					<input type="text" class="form-control" name="title" value="${post.title}" required>
+					<input type="hidden" name="empno" value="0">
 					</div>
 					<div>
 						<label>내용</label>
-						<textarea class="form-control" rows="15" name="txt" id="txt"></textarea>
+						<textarea class="form-control" rows="15" name="txt" required>${post.txt}</textarea>
 					</div>
 						<div><label>첨부파일</label>
 						<div class="attr-value">
-						<input type="file" id="upfile" name="upfile">
+						<input type="file" id="upfile" name="upfile" value="${post.attach}">
 						</div>
 					</div>
 				</div>
