@@ -90,7 +90,7 @@
 									<!-- 네이버 아이디로 로그인 -->
   <%
     String clientId = "8WNSYq9HslIkdHkdXkX8";//애플리케이션 클라이언트 아이디값";
-    String redirectURI = URLEncoder.encode("http://localhost:8088/airport/main/index.do", "UTF-8");
+    String redirectURI = URLEncoder.encode("http://localhost:8088/airport/WEB-INF/MAIN/register/callback.jsp", "UTF-8");
     SecureRandom random = new SecureRandom();
     String state = new BigInteger(130, random).toString();
     String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
@@ -100,6 +100,8 @@
     session.setAttribute("state", state);
  %>
   <a href="<%=apiURL%>"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a>
+  
+
 
 									<!-- 카카오톡으로 로그인 -->			
 									<a href="https://kauth.kakao.com/oauth/authorize?client_id=8bed9b180428407e27708779a7d4e327&redirect_uri=http://localhost:8088/airport/member/kakao&response_type=code"><img height="50px"
