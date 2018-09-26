@@ -11,5 +11,7 @@ public interface EmpDAO {
 	void empupdate(EmpDTO emp);
 	void empdelete(int empno);
 	EmpDTO login(EmpDTO emp);
+	void empserviceupdate(EmpDTO emp);
+	List<EmpDTO> empsearch(String tag,String search);
 	
 }

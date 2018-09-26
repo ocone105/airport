@@ -1,6 +1,8 @@
 package erp.insa.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +49,16 @@ public class EmpDAOImpl implements EmpDAO {
 		return sqlSession.selectOne("kr.airport.erp.insa.login", emp);
 	}
 
-	
-	
+	@Override
+	public void empserviceupdate(EmpDTO emp) {
+		sqlSession.update("kr.airport.erp.insa.empserviceupdate", emp);
+	}
+
+	@Override
+	public List<EmpDTO> empsearch(String tag, String search) {
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("tag", tag);
+		map.put("search", search);
+		return sqlSession.selectList("kr.airport.erp.insa.empsearch", map);
+	}
 }

@@ -24,6 +24,10 @@ public class SecurityServiceImpl implements SecurityService {
 	public SecurityDTO secCheck(int empno) {
 		return dao.secCheck(empno);
 	}
+	@Override
+	public SecurityDTO secread(String scno) {
+		return dao.secread(scno);
+	}
 
 	@Override
 	public void reapply(SecurityDTO sec) {
@@ -57,5 +61,9 @@ public class SecurityServiceImpl implements SecurityService {
 		
 	}
 
-	
+	@Override
+	public void delete(int empno) {
+		dao.delete(empno);
+	}
+
 }
