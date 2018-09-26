@@ -2,6 +2,8 @@ package erp.insa.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Controller;
@@ -55,5 +57,21 @@ public class EmpUpdateController {
 		empservice.empupdate(emp);
 		return "redirect:/erp/empread.do?empno="+emp.getEmpno();
 	}
+	
+	@RequestMapping(value="/erp/empserviceupdate.do", method=RequestMethod.GET)
+	public String empserviceupdateView(){
+		return "erp/empserviceupdate";
+	}
+	
+	@RequestMapping(value="/erp/empserviceupdate.do", method=RequestMethod.POST)
+	public String empserviceupdate(EmpDTO emp,HttpSession session){
+		empservice.empserviceupdate(emp);
+		EmpDTO loginUser = empservice.empread(emp.getEmpno());
+		session.setAttribute("erploginUser", loginUser);
+		return "erp/empservice";
+	}
+	
+	
+	
 	
 }

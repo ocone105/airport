@@ -39,7 +39,7 @@ public class LoginController {
 			
 			//출입증 만료
 			SecurityDTO sec = secservice.secCheck(loginUser.getEmpno());
-			if(sec != null & sec.getScstate().equals("1")) {
+			if(sec != null && sec.getScstate().equals("1")) {
 				String today = new java.text.SimpleDateFormat ("yyyy-MM-dd").format(new java.util.Date()); 
 				SimpleDateFormat fmt=new SimpleDateFormat("yyyy-MM-dd"); 
 				String exdate=fmt.format(sec.getExdate()); 

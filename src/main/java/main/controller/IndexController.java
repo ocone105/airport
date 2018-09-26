@@ -1,6 +1,5 @@
 package main.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -25,11 +24,6 @@ public class IndexController extends AbstractView{
 	@RequestMapping("/main/index.do")
 	public String main() {
 		return "index";
-	}
-
-	@RequestMapping("/main/passenger.do")
-	public String predictPassenger() {
-		return "passenger";
 	}
 
 	@RequestMapping("/main/flight.do")

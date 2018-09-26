@@ -30,32 +30,39 @@ a:focus {
 </style>
 <script type="text/javascript">
 $(document).ready(function(){
-	$("#modal").on("click",function(){
+	$(".modalname").on("click",function(){
 		scno = $(this).next().val();
-		alert(scno);
+		img = $(this).next().next().val();
+		empno =  $(this).next().next().next().val();
+		empname =  $(this).next().next().next().next().val();
+		deptname =  $(this).next().next().next().next().next().val();
+		email =  $(this).next().next().next().next().next().next().val();
+		appdate =  $(this).next().next().next().next().next().next().next().val();
+		
 	})
 	$("#permitInfo").on("show.bs.modal",function(){
-	/* 	mydata="<img src='/airport/resources/upload/"+$("#empimg").val()+"' class='img-responsive thumbnail' style='width: 130px; height: 150px;'>"
+		mydata="<img src='/airport/resources/upload/"+img+"' class='img-responsive thumbnail' style='width: 130px; height: 150px;'>"
 		$("#applicantimg").empty();
 		$("#applicantimg").append(mydata);
 		$("#applicantno").empty();
-		$("#applicantno").append($("#empno").val());
+		$("#applicantno").append(empno);
 		$("#applicantname").empty();
-		$("#applicantname").append($("#empname").val());
+		$("#applicantname").append(empname);
 		$("#applicantdept").empty();
-		$("#applicantdept").append($("#empdept").val());
+		$("#applicantdept").append(deptname);
 		$("#applicantemail").empty();
-		$("#applicantemail").append($("#empemail").val());
+		$("#applicantemail").append(email);
 		$("#applicantappdate").empty();
-		$("#applicantappdate").append($("#empappdate").val()); */
+		$("#applicantappdate").append(appdate); 
+		$("#empscno").val(scno); 
 	})
 });
 function onepermit(){
-	alert(scno);
-	//location.href="/airport/erp/permit.do?scno="+scno+"&action=permit";
+	//alert($("#empscno").val());
+	location.href="/airport/erp/permit.do?scno="+$("#empscno").val()+"&action=permit";
 }
 function reject(){
-	//location.href="/airport/erp/permit.do?scno="+scno+"&action=reject";
+	location.href="/airport/erp/permit.do?scno="+$("#empscno").val()+"&action=reject";
 }
 
 </script>
@@ -68,7 +75,7 @@ function reject(){
 					<div class="card-header card-header-tabs card-header-info">
 						<div class="nav-tabs-navigation">
 							<div class="nav-tabs-wrapper">
-								<span class="nav-tabs-title">신청자목록</span>
+								<span class="nav-tabs-title">출입증신청자목록</span>
 							</div>
 						</div>
 					</div>
@@ -79,8 +86,8 @@ function reject(){
 							<thead>
 								<tr>
 									<th>check</th>
-									<th>신청자no</th>
-									<th>신청자이름</th>
+									<th>사원번호</th>
+									<th>사원이름</th>
 									<th>신청일</th>
 									<th>부서</th>
 								</tr>
@@ -97,8 +104,14 @@ function reject(){
 											</div>
 										</td>
 										<td>${permit.empno }</td>
-										<td><a data-toggle="modal" data-target="#permitInfo" id="modal">${permit.name }</a>
-										<input type="hidden" id="empscno" value="${permit.scno }"/></td>
+										<td><a data-toggle="modal" data-target="#permitInfo" class="modalname" href="#">${permit.name }</a>
+										<input type="hidden" value="${permit.scno }"/>
+										<input type="hidden" value="${permit.img }"/>
+										<input type="hidden" value="${permit.empno }"/>
+										<input type="hidden" value="${permit.name }"/>
+										<input type="hidden" value="${permit.deptname }"/>
+										<input type="hidden" value="${permit.email }"/>
+										<input type="hidden" value="${permit.appdate }"/></td>
 										<td>${permit.appdate }</td>
 										<td>${permit.deptname }</td>
 									</tr>
@@ -154,6 +167,7 @@ function reject(){
 								</tbody>
 						</table>
 						<hr/>
+							<input type="hidden" id="empscno" value=""/>
 							<input type="button" class="btn btn-info pull-right" data-dismiss="modal" value="Cancel"/>
 							<input type="button" class="btn btn-info pull-right" onclick="reject()" value="출입증 발급 불승인"/>
 							<input type="button" class="btn btn-info pull-right" onclick="onepermit()" value="출입증 발급 승인"/>
