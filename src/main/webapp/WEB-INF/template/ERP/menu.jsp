@@ -51,11 +51,11 @@
 									<span><i class="material-icons">how_to_reg</i>사원조회</span>
 								</a>
 							</li>
-							<li>
+							<!-- <li>
 								<a href="/airport/erp/empdeptlist.do"> 
 									<span><i class="material-icons">how_to_reg</i>부서별사원조회</span>
 								</a>
-							</li>
+							</li> -->
 							<!-- 보안팀이 로그인한 경우 -->
 							<li>
 								<a href="/airport/erp/permissionlist.do"> 

@@ -1,6 +1,5 @@
 package main.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.AbstractView;
 
-import erp.pf.DTO.PFDTO;
+import erp.pf.DTO.PFINFODTO;
 import erp.pf.service.PFService;
 
 @Controller
@@ -39,7 +38,7 @@ public class IndexController extends AbstractView{
 
 	@RequestMapping("/main/myservice.do")
 	public ModelAndView myservice() {
-		List<PFDTO> pf = service.pflist();
+		List<PFINFODTO> pf = service.pfinfolist();
 		return new ModelAndView("myservice", "pf", pf);
 	}
 
