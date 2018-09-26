@@ -58,7 +58,7 @@ public class RealTimePassenger {
 			//System.out.println(item);
 			rtginfo.setAreadiv((Long) item.get("areadiv"));
 			rtginfo.setCgtdt((Long) item.get("cgtdt"));
-			rtginfo.setCgthm((String) item.get("cgthm"));
+			rtginfo.setCgthm((Long) item.get("cgthm"));
 			rtginfo.setGate1((Long) item.get("gate1"));
 			rtginfo.setGate2((Long) item.get("gate2"));
 			if(ter.equals("1")) {

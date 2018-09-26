@@ -52,5 +52,13 @@ public class EmpServiceImpl implements EmpService {
 	public EmpDTO login(EmpDTO emp) {
 		return empdao.login(emp);
 	}
+	@Override
+	public void empserviceupdate(EmpDTO emp) {
+		empdao.empserviceupdate(emp);
+	}
+	@Override
+	public List<EmpDTO> empsearch(String tag, String search) {
+		return empdao.empsearch(tag, search);
+	}
 	
 }

@@ -5,14 +5,13 @@
 <mapper namespace="kr.airport.erp.insa">
 	<select id="emplist" resultType="emp">
 		select e.*,d.deptname from emp e, dept d
-		where e.deptno=d.deptno
+		where e.deptno=d.deptno and state='0'
 		order by e.deptno asc
 	</select>
 	
 	<select id="empread" resultType="emp" parameterType="Integer">
 		select e.*,d.deptname from emp e, dept d
 		where e.deptno=d.deptno and e.empno=#{empno}
-		order by e.deptno asc
 	</select>
 	
 	<insert id="empinsert" parameterType="emp">
@@ -35,7 +34,26 @@
 	
 	<select id="login" resultType="emp" parameterType="emp">
 		select e.*,d.deptname from emp e, dept d
-		where e.deptno=d.deptno and empid=#{empid} and pwd=#{pwd}
+		where e.deptno=d.deptno and e.empid=#{empid} and e.pwd=#{pwd} and e.state='0'
+	</select>
+	
+	
+	<update id="empserviceupdate" parameterType="emp">
+		update emp 
+		set pwd=#{pwd},phone=#{phone},email=#{email}
+		where empno=#{empno}
+	</update>
+	
+	<select id="empsearch" resultType="emp" parameterType="Map">
+		select e.*,d.deptname from emp e, dept d
+		<where>
+			<if test="tag=='name' and search!=''">
+				e.deptno=d.deptno and e.name like '%' || #{search} || '%'
+			</if>
+			<if test="tag=='deptname' and search!=''">
+				e.deptno=d.deptno and d.deptname like '%' || #{search} || '%'
+			</if>
+		</where>
 	</select>
 </mapper>
 

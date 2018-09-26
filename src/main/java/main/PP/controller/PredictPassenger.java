@@ -6,17 +6,22 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.stereotype.Service;
 
 import main.PP.dto.PredictPassengerDTO;
 import main.PP.dto.RealTimePassengerDTO;
+import main.api.FlightDTO;
 
+@Service
 public class PredictPassenger {
 //http://openapi.airport.kr/openapi/service/PassengerNoticeKR/getfPassengerNoticeIKR?ServiceKey=인증키&selectdate=0
-	PredictPassengerDTO PredictPassenger(String selectdate) throws IOException {
+	ArrayList<PredictPassengerDTO> PredictPassenger(String selectdate) throws IOException {
 		StringBuilder urlBuilder = new StringBuilder(
 				"http://openapi.airport.kr/openapi/service/PassengerNoticeKR/getfPassengerNoticeIKR");
 		urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8")
@@ -53,25 +58,33 @@ public class PredictPassenger {
 			JSONObject root = (JSONObject) jsonObj.get("response");
 			JSONObject body = (JSONObject) root.get("body");
 			JSONObject items = (JSONObject) body.get("items");
-			JSONObject item = (JSONObject) items.get("item");
-			RealTimePassengerDTO rtginfo = new RealTimePassengerDTO();
-			//System.out.println(item);
-			rtginfo.setAreadiv((Long) item.get("areadiv"));
-			rtginfo.setCgtdt((Long) item.get("cgtdt"));
-			rtginfo.setCgthm((String) item.get("cgthm"));
-			rtginfo.setGate1((Long) item.get("gate1"));
-			rtginfo.setGate2((Long) item.get("gate2"));
-			if(selectdate.equals("0")) {
-				rtginfo.setGate3((Long) item.get("gate3"));
-				rtginfo.setGate4((Long) item.get("gate4"));
-			}
-			rtginfo.setGateinfo1((Long) item.get("gateinfo1"));
-			rtginfo.setGateinfo2((Long) item.get("gateinfo2"));
-			if(selectdate.equals("1")){
-				rtginfo.setGateinfo3((Long) item.get("gateinfo3"));
-				rtginfo.setGateinfo4((Long) item.get("gateinfo4"));
-			}
-			rtginfo.setTerno((Long) item.get("terno"));
+			JSONArray item = (JSONArray) items.get("item");
+            ArrayList<PredictPassengerDTO> ppinfolist = new ArrayList<PredictPassengerDTO>();
+            for(int i=0 ; i<item.size() ; i++){
+                JSONObject tempObj = (JSONObject) item.get(i);
+                PredictPassengerDTO ppinfo = new PredictPassengerDTO();
+                //System.out.println(item);
+				//ppinfo.setAdate((Long) tempObj.get("adate"));
+				ppinfo.setAtime((String) tempObj.get("atime"));
+				ppinfo.setT1sum1((Long) tempObj.get("t1sum1"));
+				ppinfo.setT1sum2((Long) tempObj.get("t1sum2"));
+				ppinfo.setT1sum3((Long) tempObj.get("t1sum3"));
+				ppinfo.setT1sum4((Long) tempObj.get("t1sum4"));
+				ppinfo.setT1sum5((Long) tempObj.get("t1sum5"));
+				ppinfo.setT1sum6((Long) tempObj.get("t1sum6"));
+				ppinfo.setT1sum7((Long) tempObj.get("t1sum7"));
+				ppinfo.setT1sum8((Long) tempObj.get("t1sum8"));
+				ppinfo.setT1sumset1((Long) tempObj.get("t1sumset1"));
+				ppinfo.setT1sumset2((Long) tempObj.get("t1sumset2"));
+				ppinfo.setT2sum1((Long) tempObj.get("t2sum1"));
+				ppinfo.setT2sum2((Long) tempObj.get("t2sum2"));
+				ppinfo.setT2sum3((Long) tempObj.get("t2sum3"));
+				ppinfo.setT2sum4((Long) tempObj.get("t2sum4"));
+				ppinfo.setT2sumset1((Long) tempObj.get("t2sumset1"));
+				ppinfo.setT2sumset2((Long) tempObj.get("t2sumset2"));
+				ppinfolist.add(ppinfo);
+            }
+			return ppinfolist;
 			
 		} catch (ParseException e) {
 			e.printStackTrace();
