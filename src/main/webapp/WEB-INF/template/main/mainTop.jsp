@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="se" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +28,10 @@
 									<li><a href="/airport/main/realtime.do">실시간정보</a></li>
 									<li><a href="/airport/main/passenger.do">예상승객</a></li>
 									<li><a href="/airport/main/flight.do">지연결항</a></li>
+									
+									<%-- <se:authorize access="isAuthenticated()"> --%>
 									<li><a href="/airport/main/myservice.do">My Service</a></li>
+									<%-- </se:authorize> --%>
 									
 									<!-- 로그인 로그아웃 -->
 									<c:choose>
