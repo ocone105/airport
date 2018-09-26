@@ -3,7 +3,7 @@ package main.PP.dto;
 public class RealTimePassengerDTO {
 	Long areadiv; //지역구분
 	Long cgtdt;	//혼잡일자 YYYYMMDD
-	Long cgthm;	//업데이트시간 HHMM
+	String cgthm;	//업데이트시간 HHMM
 	Long gate1;	// T1 2번, T2 1번 출국장 혼잡도
 	Long gate2; 	// T1 3번, T2 2번
 	Long gate3;	// T1 4번
@@ -17,7 +17,7 @@ public class RealTimePassengerDTO {
 	public RealTimePassengerDTO() {
 		super();
 	}
-	public RealTimePassengerDTO(Long areadiv, Long cgtdt, Long cgthm, Long gate1, Long gate2, Long gate3,
+	public RealTimePassengerDTO(Long areadiv, Long cgtdt, String cgthm, Long gate1, Long gate2, Long gate3,
 			Long gate4, Long gateinfo1, Long gateinfo2, Long gateinfo3, Long gateinfo4, Long terno) {
 		super();
 		this.areadiv = areadiv;
@@ -52,10 +52,10 @@ public class RealTimePassengerDTO {
 	public void setCgtdt(Long cgtdt) {
 		this.cgtdt = cgtdt;
 	}
-	public Long getCgthm() {
+	public String getCgthm() {
 		return cgthm;
 	}
-	public void setCgthm(Long cgthm) {
+	public void setCgthm(String cgthm) {
 		this.cgthm = cgthm;
 	}
 	public Long getGate1() {

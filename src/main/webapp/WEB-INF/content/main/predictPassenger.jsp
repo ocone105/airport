@@ -42,6 +42,8 @@ $(document).ready(function() {
 				$("#gate1_detail").append(mydata1); 
 				$("#gate2_detail").empty(mydata2);
 				$("#gate2_detail").append(mydata2); 
+				$(".day").empty(data[0].adate);
+				$(".day").append(data[0].adate); 
 			},
 			error:function(a,b,c){	//ajax실패시 원인(에러메시지)
 				alert(a+b+c);
@@ -79,6 +81,8 @@ $(document).ready(function() {
 				$("#gate1_detail").append(mydata1); 
 				$("#gate2_detail").empty(mydata2);
 				$("#gate2_detail").append(mydata2); 
+				$(".day").empty(data[0].adate);
+				$(".day").append(data[0].adate); 
 			},
 			error:function(a,b,c){	//ajax실패시 원인(에러메시지)
 				alert(a+b+c);
@@ -178,19 +182,21 @@ $(document).ready(function() {
 							<div class="tab-content pl-3 pt-2" id="nav-tabContent" >
 								<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 									<div id="map1" style="width: 1005px; height: 700px; margin-top: 50px"></div>
-									<div class="mapinfo " style="margin-left: 55%;"  >
-									Blue: 원활, Green: 보통, Yellow: 혼잡, Red: 매우혼잡, Grey: 종료
+									<div class="mapinfo row" >
+									<span class="col-sm-7">업데이트 시간: ${ptginfo1.cgthm}</span>
+									<span class="col-sm-5">Blue: 원활, Green: 보통, Yellow: 혼잡, Red: 매우혼잡, Gray: 종료</span>
 									</div>
 									<hr/>
-									<div class="selectdate" style="margin-left: 70%;">
-									<span>날짜쓰기</span>
-									<span><input type="button" class="today btn btn-sm btn-info" value="오늘"></span>
-									<span><input type="button" class="tomorrow btn btn-sm btn-info"  value="내일"></span>
-										<span><select>
+									<div class="row" >
+									<span class="day col-sm-8">${ppinfolist1.get(0).adate }</span>
+									<span class="col-sm-4"><input type="button" class="today btn btn-sm btn-info" value="오늘">
+									<input type="button" class="tomorrow btn btn-sm btn-info"  value="내일">
+										<select>
 											<option value="">20180925</option>
 											<option value="">20180925</option>
 											<option value="">20180925</option>
-										</select></span>
+										</select>
+									</span>
 									</div>
 									<div class="gate_detail"  style="margin: auto;">
 									<table class="table">
@@ -219,19 +225,21 @@ $(document).ready(function() {
 								</div>
 								<div class="tab-pane fade active" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
 									<div id="map2" style="width: 1005px; height: 700px; margin-top: 50px"></div>
-									<div class="mapinfo" style="margin-left: 55%;" >
-									Blue: 원활, Green: 보통, Yellow: 혼잡, Red: 매우혼잡, Grey: 종료
+									<div class="mapinfo row" >
+									<span class="col-sm-7">업데이트 시간: ${ptginfo2.cgthm}</span>
+									<span class="col-sm-5">Blue: 원활, Green: 보통, Yellow: 혼잡, Red: 매우혼잡, Gray: 종료</span>
 									</div>
 									<hr/>
-									<div class="selectdate" style="margin-left: 80%;">
-									<span>날짜쓰기</span>
-										<span><input type="button" class="today btn btn-sm btn-info"  value="오늘"></span>
-										<span><input type="button" class="tomorrow btn btn-sm btn-info"  value="내일"></span>
-										<span><select>
+										<div class="row" >
+									<span class="day col-sm-8">${ppinfolist2.get(0).adate }</span>
+									<span class="col-sm-4"><input type="button" class="today btn btn-sm btn-info"  value="오늘">
+										<input type="button" class="tomorrow btn btn-sm btn-info"  value="내일">
+										<select>
 											<option value="">20180925</option>
 											<option value="">20180925</option>
 											<option value="">20180925</option>
-										</select></span>
+										</select>
+										</span>
 									</div>
 									<div class="gate2_detail" style="margin: auto;">
 									<table class="table">

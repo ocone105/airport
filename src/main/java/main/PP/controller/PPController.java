@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import erp.dept.dto.DeptDTO;
 import main.PP.dto.PredictPassengerDTO;
 import main.PP.dto.RealTimePassengerDTO;
 
@@ -34,6 +33,28 @@ public class PPController {
 			ptginfo1 = rtpservice.realTimePassenger("1");
 			ptginfo2 = rtpservice.realTimePassenger("2");
 			ppinfolist1 =  ppservice.PredictPassenger("0");
+			
+			String Cgthm = ptginfo1.getCgthm();
+			String hour = Cgthm.substring(0, 2);
+			String min = Cgthm.substring(2,4);
+			//System.out.println(Cgthm + ","+ hour + ","+min);
+			Cgthm = hour + "시 " + min +"분";
+			ptginfo1.setCgthm(Cgthm);
+			
+			Cgthm = ptginfo2.getCgthm();
+			hour = Cgthm.substring(0, 2);
+			min = Cgthm.substring(2,4);
+			Cgthm = hour + "시 " + min +"분";
+			ptginfo2.setCgthm(Cgthm);
+			
+			for(int i=0; i<ppinfolist1.size(); i++) {
+				PredictPassengerDTO ppinfo = ppinfolist1.get(i);
+				String atime = ppinfo.getAtime();
+				atime = atime.replace("_","시 ~ ");
+				atime = atime +"시";
+				ppinfolist1.get(i).setAtime(atime);
+			}
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -48,6 +69,13 @@ public class PPController {
 		ArrayList<PredictPassengerDTO> ppinfolist = null;
 		try {
 			ppinfolist = ppservice.PredictPassenger(selectdate);
+			for(int i=0; i<ppinfolist.size(); i++) {
+				PredictPassengerDTO ppinfo = ppinfolist.get(i);
+				String atime = ppinfo.getAtime();
+				atime = atime.replace("_","시 ~ ");
+				atime = atime +"시";
+				ppinfolist.get(i).setAtime(atime);
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -59,6 +87,13 @@ public class PPController {
 		ArrayList<PredictPassengerDTO> ppinfolist = null;
 		try {
 			ppinfolist = ppservice.PredictPassenger(selectdate);
+			for(int i=0; i<ppinfolist.size(); i++) {
+				PredictPassengerDTO ppinfo = ppinfolist.get(i);
+				String atime = ppinfo.getAtime();
+				atime = atime.replace("_","시 ~ ");
+				atime = atime +"시";
+				ppinfolist.get(i).setAtime(atime);
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

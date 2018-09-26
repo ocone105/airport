@@ -64,7 +64,9 @@ public class PredictPassenger {
                 JSONObject tempObj = (JSONObject) item.get(i);
                 PredictPassengerDTO ppinfo = new PredictPassengerDTO();
                 //System.out.println(item);
-				//ppinfo.setAdate((Long) tempObj.get("adate"));
+                if(i!=item.size()-1) {
+                	ppinfo.setAdate((Long) tempObj.get("adate"));
+                }
 				ppinfo.setAtime((String) tempObj.get("atime"));
 				ppinfo.setT1sum1((Long) tempObj.get("t1sum1"));
 				ppinfo.setT1sum2((Long) tempObj.get("t1sum2"));
