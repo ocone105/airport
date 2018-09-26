@@ -62,28 +62,29 @@ select * from PFINFO;
 Drop table PFTEAM;
 create table PFTEAM(
 	pfinfono number,
-	deptno varchar2(20));
+	deptno varchar2(20),
+	currentstaff number);
 	
-insert into PFTEAM values(1, 'abas002');
-insert into PFTEAM values(2, 'abas002');
-insert into PFTEAM values(3, 'abas002');
-insert into PFTEAM values(4, 'abas002');
-insert into PFTEAM values(5, 'abas002');
-insert into PFTEAM values(6, 'abas002');
+insert into PFTEAM values(1, 'abas002', 10);
+insert into PFTEAM values(2, 'abas002', 20);
+insert into PFTEAM values(3, 'abas002', 20);
+insert into PFTEAM values(4, 'abas002', 20);
+insert into PFTEAM values(5, 'abas002', 20);
+insert into PFTEAM values(6, 'abas002',10);
 
-insert into PFTEAM values(7, 'paps003');
-insert into PFTEAM values(8, 'paps003');
-insert into PFTEAM values(9, 'paps003');
-insert into PFTEAM values(10, 'paps003');
-insert into PFTEAM values(11, 'paps003');
-insert into PFTEAM values(12, 'paps003');
+insert into PFTEAM values(7, 'paps003', 2);
+insert into PFTEAM values(8, 'paps003', 2);
+insert into PFTEAM values(9, 'paps003', 2);
+insert into PFTEAM values(10, 'paps003', 2);
+insert into PFTEAM values(11, 'paps003', 2);
+insert into PFTEAM values(12, 'paps003', 2);
 
-insert into PFTEAM values(13, 'abas003');
-insert into PFTEAM values(14, 'abas003');
-insert into PFTEAM values(15, 'asbs002');
-insert into PFTEAM values(16, 'asbs002');
-insert into PFTEAM values(17, 'Pats002');
-insert into PFTEAM values(18, 'Pats001');
+insert into PFTEAM values(13, 'abas003', 10);
+insert into PFTEAM values(14, 'abas003', 10);
+insert into PFTEAM values(15, 'asbs002', 10);
+insert into PFTEAM values(16, 'asbs002', 10);
+insert into PFTEAM values(17, 'Pats002', 15);
+insert into PFTEAM values(18, 'Pats001', 15);
 
 select * from PFTEAM;
 
@@ -101,4 +102,6 @@ create table PF (
 create sequence pfno_seq;
 
 select * from pf;
+
+
  

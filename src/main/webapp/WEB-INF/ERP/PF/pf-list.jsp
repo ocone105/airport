@@ -17,11 +17,21 @@
 				
 			<script type="text/javascript">
 				$(document).ready(function(){
+					
+					var imageSrc = '/airport/resources/logo/씨에어.jpg', // 마커이미지의 주소입니다    
+				    imageSize = new daum.maps.Size(64, 69), // 마커이미지의 크기입니다
+				    imageOption = {offset: new daum.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
+				      
+				// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+				var markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imageOption);
+
+
 					var markers = [
 						<c:forEach items="${pfinfo}" var="pfmarker"> 
 						    {
 						        position: new daum.maps.LatLng(${pfmarker.pfloc}),
-						        text: '${pfmarker.pfname}'
+						        text: '${pfmarker.pfname}',
+						        image: markerImage
 						    },
 						</c:forEach>
 				    {
@@ -57,7 +67,6 @@
 									<thead class=" text-primary">
 										<th>여객시설번호</th>
 										<th>시설이름</th>
-										<th>담당자</th>
 										<th>관리부서</th>
 										<th>현재인원</th>
 									</thead>
@@ -65,10 +74,21 @@
 										<c:forEach items="${pfinfo}" var="pfinfo">
 											<tr>
 												<td>${pfinfo.pfinfono}</td>
-												<td><a href="#">${pfinfo.pfname}</a></td>
-												<td>사원이름</td>
-												<td>부서이름</td>
-												<td>5</td>
+												<td><a href="/airport/erp/pfrequest.do">${pfinfo.pfname}</a></td>
+												<td>
+													<c:forEach items="${pfteam}" var="pfteam">
+														<c:if test="${pfteam.pfinfono==pfinfo.pfinfono}">
+															${pfteam.deptno}
+														</c:if>
+													</c:forEach>
+												</td>
+												<td>
+													<c:forEach items="${pfteam}" var="pfteam">
+														<c:if test="${pfteam.pfinfono==pfinfo.pfinfono}">
+															${pfteam.currentstaff}
+														</c:if>
+													</c:forEach>
+												</td>
 											</tr>
 										</c:forEach>
 									</tbody>
@@ -78,5 +98,6 @@
 					</div>
 				</div>
 	</div>
+
 </body>
 </html>

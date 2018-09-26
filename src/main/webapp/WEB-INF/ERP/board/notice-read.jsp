@@ -95,9 +95,14 @@
 							<h4>${post.title}</h4>
 							<hr />
 							<div class="row">
-								<span class="col-md-3"><label>작성자</label> ${post.empno}</span> <span
-									class="col-md-3"><label>작성일</label>${post.boarddate}</span> <span
-									class="col-md-3"><label>조회수</label>${post.hits}</span>
+								<span class="col-md-4"><label>작성자</label> ${post.empno}</span> 
+								<span class="col-md-4"><label>작성일</label>${post.boarddate}</span> 
+								<span class="col-md-4"><label>조회수</label>${post.hits}</span>
+								<c:if test="${post.attach!=null}">
+									<span class="col-md-4"><label>첨부파일 : </label>
+									<a href="/airport/erp/board/download.do?file=${post.attach}&boardno=${post.boardno}">
+									${post.attach}</a></span>
+								</c:if>
 							</div>
 							<hr />
 							<div>

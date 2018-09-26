@@ -24,17 +24,20 @@ public class PFServiceImpl implements PFService {
 	public List<PFTEAMDTO> pfteamlist() {
 		return dao.pfteamlist();
 	}
-
+	
 	@Override
-	public String pfteamlist(int pfinfono) {
+	public PFTEAMDTO pfteamlist(int pfinfono) {
 		return dao.pfteamlist(pfinfono);
 	}
-	
+
 	@Override
 	public List<PFDTO> pflist() {
 		return dao.pflist();
 	}
 
-	
+	@Override
+	public int pfinsert(PFDTO pf) {
+		return dao.pfinsert(pf);
+	}
 
 }

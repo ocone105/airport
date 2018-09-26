@@ -10,8 +10,17 @@
 		select * from PFTEAM
 	</select>
 	
+	<select id="pfteam" parameterType="Integer" resultType="pfteam">
+		select * from PFTEAM where pfinfono = #{pfinfono}
+	</select>
+	
 	<select id="pflist" resultType="pf">
 		select * from PF
 	</select>
+	
+	<insert id="request" parameterType="pf">
+		insert into PF 
+		values(pfno_seq.nextval, #{pfinfono}, sysdate, #{pftxt}, #{pfstaff}, #{deptno})
+	</insert>
 	
 </mapper>

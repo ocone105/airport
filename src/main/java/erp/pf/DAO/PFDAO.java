@@ -10,6 +10,7 @@ public interface PFDAO {
 
 	List<PFINFODTO> pfinfolist();
 	List<PFTEAMDTO> pfteamlist();
-	String pfteamlist(int pfinfono);
+	PFTEAMDTO pfteamlist(int pfinfono);
 	List<PFDTO> pflist();
+	int pfinsert(PFDTO pf);
 }

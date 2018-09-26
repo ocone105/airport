@@ -10,13 +10,9 @@ public class PFDTO {
 	private int pfstaff;
 	private String deptno;
 
-	private String pfloc;
-	private String pfname;
-	
 	public PFDTO() {}
 
-	public PFDTO(int pfno, int pfinfono, Date pfdate, String pftxt, int pfstaff, String deptno, String pfloc,
-			String pfname) {
+	public PFDTO(int pfno, int pfinfono, Date pfdate, String pftxt, int pfstaff, String deptno) {
 		super();
 		this.pfno = pfno;
 		this.pfinfono = pfinfono;
@@ -24,14 +20,12 @@ public class PFDTO {
 		this.pftxt = pftxt;
 		this.pfstaff = pfstaff;
 		this.deptno = deptno;
-		this.pfloc = pfloc;
-		this.pfname = pfname;
 	}
 
 	@Override
 	public String toString() {
 		return "PFDTO [pfno=" + pfno + ", pfinfono=" + pfinfono + ", pfdate=" + pfdate + ", pftxt=" + pftxt
-				+ ", pfstaff=" + pfstaff + ", deptno=" + deptno + ", pfloc=" + pfloc + ", pfname=" + pfname + "]";
+				+ ", pfstaff=" + pfstaff + ", deptno=" + deptno + "]";
 	}
 
 	public int getPfno() {
@@ -82,20 +76,4 @@ public class PFDTO {
 		this.deptno = deptno;
 	}
 
-	public String getPfloc() {
-		return pfloc;
-	}
-
-	public void setPfloc(String pfloc) {
-		this.pfloc = pfloc;
-	}
-
-	public String getPfname() {
-		return pfname;
-	}
-
-	public void setPfname(String pfname) {
-		this.pfname = pfname;
-	}
-	
 }

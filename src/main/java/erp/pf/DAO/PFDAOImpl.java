@@ -26,8 +26,8 @@ public class PFDAOImpl implements PFDAO {
 	}
 	
 	@Override
-	public String pfteamlist(int pfinfono) {
-		return sqlSession.selectOne("kr.airport.erp.pf.getmgr", pfinfono);
+	public PFTEAMDTO pfteamlist(int pfinfono) {
+		return sqlSession.selectOne("kr.airport.erp.pf.pfteam", pfinfono);
 	}
 	
 	@Override
@@ -35,6 +35,9 @@ public class PFDAOImpl implements PFDAO {
 		return sqlSession.selectList("kr.airport.erp.pf.pflist");
 	}
 
-	
+	@Override
+	public int pfinsert(PFDTO pf) {
+		return sqlSession.insert("kr.airport.erp.pf.request", pf);
+	}
 
 }
