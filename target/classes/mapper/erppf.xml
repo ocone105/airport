@@ -22,6 +22,10 @@
 		select * from PF where pfinfono=#{pfinfono}
 	</select>
 	
+	<select id="pflist2" resultType="Integer">
+		select pfinfono from pf group by pfinfono
+	</select>
+	
 	<insert id="request" parameterType="pf">
 		insert into PF 
 		values(pfno_seq.nextval, #{pfinfono}, sysdate, #{pftxt}, #{pfstaff}, #{deptno})

@@ -41,6 +41,11 @@ public class PFDAOImpl implements PFDAO {
 	}
 
 	@Override
+	public List<Integer> pflist() {
+		return sqlSession.selectList("kr.airport.erp.pf.pflist2");
+	}
+	
+	@Override
 	public int pfinsert(PFDTO pf) {
 		return sqlSession.insert("kr.airport.erp.pf.request", pf);
 	}
@@ -54,4 +59,5 @@ public class PFDAOImpl implements PFDAO {
 	public DeptDTO dept(String deptname) {
 		return sqlSession.selectOne("kr.airport.erp.pf.dept", deptname);
 	}
+
 }

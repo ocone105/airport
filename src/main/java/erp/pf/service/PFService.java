@@ -13,6 +13,7 @@ public interface PFService {
 	PFINFODTO getPfinfo(int pfinfono);
 	List<PFTEAMDTO> pfteamlist();
 	PFTEAMDTO pfteamlist(int pfinfono);
+	List<Integer> pflist();
 	List<PFDTO> pflist(int pfinfono);
 	int pfinsert(PFDTO pf);
 	

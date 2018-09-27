@@ -14,6 +14,7 @@ public interface PFDAO {
 	List<PFTEAMDTO> pfteamlist();
 	PFTEAMDTO pfteamlist(int pfinfono);
 	List<PFDTO> pflist(int pfinfono);
+	List<Integer> pflist();
 	int pfinsert(PFDTO pf);
 	
 	// 부서명, 매니저 

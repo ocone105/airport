@@ -101,9 +101,11 @@
 																</c:forEach>
 															</td>
 															<td>
-															<button type="button" rel="tooltip" title="Check" class="btn btn-danger btn-link btn-sm" onclick="window.open('/airport/erp/pfrequestCheck.do?pfinfono=${pfinfo.pfinfono}')">
-																<i class="material-icons">check</i>
-															</button>
+																<c:if test="${pfinfo.pfinfono==pfinfono}">
+																	<button type="button" rel="tooltip" title="Check" class="btn btn-danger btn-link btn-sm" onclick="window.open('/airport/erp/pfrequestCheck.do?pfinfono=${pfinfo.pfinfono}')">
+																		<i class="material-icons">check</i>
+																	</button>
+																</c:if>
 															</td>
 														</tr>
 													</c:forEach>

@@ -40,6 +40,11 @@ public class PFServiceImpl implements PFService {
 	public List<PFDTO> pflist(int pfinfono) {
 		return dao.pflist(pfinfono);
 	}
+	
+	@Override
+	public List<Integer> pflist() {
+		return dao.pflist();
+	}
 
 	@Override
 	public int pfinsert(PFDTO pf) {
@@ -55,5 +60,7 @@ public class PFServiceImpl implements PFService {
 	public DeptDTO dept(String deptname) {
 		return dao.dept(deptname);
 	}
+
+	
 
 }
