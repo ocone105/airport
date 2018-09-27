@@ -28,12 +28,12 @@
 					<div class="home_search_container">
 						<div class="home_search_title">회원 목록</div>
 						<div class="home_search_content">
-							<form action="/airport/member/search.do" class="home_search_form"
+							<form action="/airport/main/admin/membersearh.do" class="home_search_form"
 								id="home_search_form">
 								<div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
-									<input type="text" class="search_input search_input_1"
-										placeholder="아이디 + 이름" required="required"  style="margin: auto; width: 50%;">
-									<button class="home_search_button">search</button>
+									<input type="text" class="search_input search_input_1" name="search" id="search"
+									placeholder="아이디 + 이름" required="required"  style="margin: auto; width: 50%;">
+									<button type="submit" class="home_search_button">search</button>
 								</div>
 							</form>
 						</div>
@@ -62,7 +62,7 @@
 										<th>상태</th>
 									</tr>
 								</thead>
-								<tbody>
+								<tbody style="color: black;">
 									<c:forEach var="member" items="${memberlist}">
 										<tr>
 											<td>${member.id }</td>

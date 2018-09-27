@@ -16,7 +16,7 @@
 	<security:intercept-url pattern="/main/privacy.do" access="permitAll"/>
 	<security:intercept-url pattern="/main/email.do" access="permitAll"/>
 	<security:intercept-url pattern="/main/admin" access="hasRole('ROLE_ADMIN')"/>	
-	<security:intercept-url pattern="/main/myservice.do" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>		
+	<security:intercept-url pattern="/main/myservice.do" access="hasRole('ROLE_ADMIN')"/>		
  	<security:intercept-url pattern="/**" access="permitAll"/> 
 
 	<security:form-login 

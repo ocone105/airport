@@ -60,4 +60,11 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.selectList("main.member.memberlist");
 	}
 
+	@Override
+	public List<MemberDTO> memberSearch(String search) {
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("search", search);
+		return sqlSession.selectList("main.member.membersearch", map);
+	}
+
 }

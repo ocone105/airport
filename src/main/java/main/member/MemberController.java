@@ -140,5 +140,24 @@ public class MemberController {
 		mav.setViewName("adminMain");
 		return mav;
 	}
+	
+	// 회원검색
+	@RequestMapping(value="/main/admin/membersearh.do")
+	public ModelAndView empsearch(String search){
+		ModelAndView mav = new ModelAndView();
+		List<MemberDTO> memberlist = service.memberSearch(search);
+		for (int i = 0; i < memberlist.size();i++) {
+			if(memberlist.get(i).getState().equals("0")){
+				memberlist.get(i).setState("탈퇴");
+			}else if(memberlist.get(i).getState().equals("1")){
+				memberlist.get(i).setState("일반");
+			}else if(memberlist.get(i).getState().equals("2")){
+				memberlist.get(i).setState("카카오");
+			}
+		}
+		mav.addObject("memberlist", memberlist);
+		mav.setViewName("adminMain");
+		return mav;
+	} 
 
 }

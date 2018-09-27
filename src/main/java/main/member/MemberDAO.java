@@ -11,4 +11,5 @@ public interface MemberDAO {
 	int withdraw(MemberDTO member);
 	
 	List<MemberDTO> memberList();
+	List<MemberDTO> memberSearch(String search);
 }

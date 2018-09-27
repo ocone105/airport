@@ -40,4 +40,15 @@
 		select * from member
 	</select>
 	
+	<select id="membersearch" resultType="member" parameterType="Map">
+		select * from member
+		<where>
+			<if test="search!=''">
+				id like '%' || #{search} || '%'
+				or name like '%' || #{search} || '%'
+			</if>
+		</where>
+	</select>
+		
+	
 </mapper>

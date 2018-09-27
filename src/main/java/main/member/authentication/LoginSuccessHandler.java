@@ -29,7 +29,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 			GrantedAuthority authority = authlist_it.next();
 			// 설정되어 있는 권한 중 ROLE_ADMIN이 있다면
 			if (authority.getAuthority().equals("ROLE_ADMIN")) {
-				url = "/airport/erp/login.do";
+				url = "/airport/main/admin";
 			}
 		}
 		res.sendRedirect(url);		

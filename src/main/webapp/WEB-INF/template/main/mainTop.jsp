@@ -30,7 +30,7 @@
 									<li><a href="/airport/main/flight.do">지연결항</a></li>
 									
 									<se:authorize access="hasRole('ROLE_USER')">
-									<li><a href="/airport/main/myservice.do">My Service</a></li>
+									<li><a href="/airport/main/myservice">My Service</a></li>
 									</se:authorize>
 
 									<se:authorize access="hasRole('ROLE_ADMIN')">

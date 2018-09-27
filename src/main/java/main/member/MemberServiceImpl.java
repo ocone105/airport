@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+
+import erp.insa.dto.EmpDTO;
 @Service
 public class MemberServiceImpl implements MemberService {
 
@@ -45,6 +47,11 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public List<MemberDTO> memberList() {
 		return dao.memberList();
+	}
+
+	@Override
+	public List<MemberDTO> memberSearch(String search) {
+		return dao.memberSearch(search);
 	}
 
 }
