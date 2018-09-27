@@ -37,6 +37,11 @@ public class IndexController extends AbstractView{
 		return new ModelAndView("myservice", "pf", pf);
 	}
 
+	@RequestMapping("/main/admin")
+	public String admin() {
+		return "admin";
+	}
+	
 	@RequestMapping("/main/signin.do")
 	public String signin() {
 		return "signin";

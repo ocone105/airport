@@ -1,5 +1,7 @@
 package main.member;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.JsonNode;
+
+import erp.insa.dto.EmpDTO;
 
 @Controller
 public class MemberController {
@@ -52,7 +56,6 @@ public class MemberController {
 	// 회원가입
 	@RequestMapping(value = "/member/signup.do", method = RequestMethod.POST)
 	public String signup(MemberDTO member, HttpSession session) {
-		System.out.println("컨트롤러 진입===>"+member);
 		if(member.getEmail_alarm()==null) {
 			member.setEmail_alarm("n");
 		}
@@ -120,5 +123,14 @@ public class MemberController {
 		System.out.println(result + "탈퇴 성공");
 		return "redirect:/main/index.do";
 	}	
+	
+/*	// 회원목록
+	@RequestMapping(value="/admin/memberlist")
+	public ModelAndView emplist(){
+		ModelAndView mav = new ModelAndView();
+		List<MemberDTO> memberlist = service.memberList();
+		mav.addObject("memberlist", memberlist);
+		return mav;
+	} */
 
 }

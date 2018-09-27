@@ -8,12 +8,12 @@
 	
 	<insert id="signup" parameterType="member">
 		insert into member values
-		(#{id}, #{pwd}, #{name}, #{phone}, #{email}, '1', #{email_alarm}, #{sms_alarm}, 'role_user')
+		(#{id}, #{pwd}, #{name}, #{phone}, #{email}, '1', #{email_alarm}, #{sms_alarm}, 'ROLE_USER')
 	</insert>
 
 	<insert id="kakao" parameterType="member">
 		insert into member values
-		(#{id}, null, #{name}, null, #{email}, '2', 'y', 'n', 'role_user')
+		(#{id}, null, #{name}, null, #{email}, '2', 'y', 'n', 'ROLE_USER')
 	</insert>
 	
 	<select id="login" parameterType="Map" resultType="member">
@@ -35,5 +35,9 @@
 		state='0' where
 		id=#{id}
 	</update>
+	
+	<select id="memberlist" resultType="member">
+		select * from member
+	</select>
 	
 </mapper>

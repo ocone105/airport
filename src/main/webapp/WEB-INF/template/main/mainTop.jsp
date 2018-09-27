@@ -19,7 +19,7 @@
 							class="header_content_inner d-flex flex-row align-items-end justify-content-start">
 							<div class="logo">
 								<a href="/airport/main/index.do">Airport</a> | <a
-									href="/airport/erp/index.do">Corporation</a>
+									href="/airport/erp/login.do">Corporation</a>
 							</div>
 							<nav class="main_nav">
 								<ul
@@ -29,19 +29,21 @@
 									<li><a href="/airport/main/passenger.do">예상승객</a></li>
 									<li><a href="/airport/main/flight.do">지연결항</a></li>
 									
-									<%-- <se:authorize access="isAuthenticated()"> --%>
+									<se:authorize access="hasRole('ROLE_USER')">
 									<li><a href="/airport/main/myservice.do">My Service</a></li>
-									<%-- </se:authorize> --%>
+									</se:authorize>
+
+									<se:authorize access="hasRole('ROLE_ADMIN')">
+									<li><a href="/airport/main/admin">Admin</a></li>
+									</se:authorize>
 									
 									<!-- 로그인 로그아웃 -->
-									<c:choose>
-										<c:when test="${empty loginUser}">
+									<se:authorize access="isAnonymous()">
 											<li><a href="/airport/main/signin.do">Sign in</a></li>
-										</c:when>
-										<c:otherwise>
+									</se:authorize>
+									<se:authorize access="isAuthenticated()">
 											<li><a href="/airport/member/logout.do">Logout</a></li>
-										</c:otherwise>
-									</c:choose>
+									</se:authorize>
 									
 								</ul>
 							</nav>

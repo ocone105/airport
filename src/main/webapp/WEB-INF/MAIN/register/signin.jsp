@@ -88,7 +88,7 @@
 								</div>
 								<div class="form-bottom">
 									<!-- 네이버 아이디로 로그인 -->
-  <%
+  <%-- <%
     String clientId = "8WNSYq9HslIkdHkdXkX8";//애플리케이션 클라이언트 아이디값";
     String redirectURI = URLEncoder.encode("http://localhost:8088/airport/WEB-INF/MAIN/register/callback.jsp", "UTF-8");
     SecureRandom random = new SecureRandom();
@@ -100,7 +100,7 @@
     session.setAttribute("state", state);
  %>
   <a href="<%=apiURL%>"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a>
-  
+ --%>  
 
 
 									<!-- 카카오톡으로 로그인 -->			

@@ -1,21 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link rel="stylesheet" type="text/css" href="/airport/resources/styles/contact.css">
+	<link rel="stylesheet" type="text/css" href="/airport/resources/styles/contact_responsive.css">
 </head>
 <body>
+	<div class="home">
+		<div class="background_image" style="background-image:url(/airport/resources/images/contact.jpg)"></div>
+	</div>
+
+	<!-- Search -->
 	<div class="content">
 		<div class="container-fluid">
 			<div class="row">
 				<form class="/airport/member/search.do">
 					<select name="tag">
-						<option value="all">전체</option>
-						<option value="id">아이디</option>
-						<option value="title">이름</option>
+						<option value="all">아이디+이름</option>
 					</select>
 					<div class="input-group no-border">
 						<input type="text" value="" class="form-control"
@@ -30,7 +35,6 @@
 				<div class="col-md-12">
 					<div class="card">
 						<div class="card-header card-header-info">
-							<h4 class="card-title ">사원조회</h4>
 							<p class="card-category">
 								<!-- 검색명 -->
 							</p>
@@ -54,11 +58,11 @@
 										<tr>
 											<td>${member.id }</td>
 											<td>${member.name }</td>
-											<td>${emp.phone  }</td>
-											<td>${emp.email }</td>
-											<td>${emp.email_alarm }</td>
-											<td>${emp.sms_alarm }</td>
-											<td>${emp.state }</td>
+											<td>${member.phone  }</td>
+											<td>${member.email }</td>
+											<td>${member.email_alarm }</td>
+											<td>${member.sms_alarm }</td>
+											<td>${member.state }</td>
 										</tr>
 									</c:forEach>
 									</tbody>
@@ -70,5 +74,11 @@
 			</div>
 		</div>
 	</div>
+
+
+
+<script src="/airport/resources/https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
+<script src="/airport/resources/js/contact.js"></script>
+
 </body>
 </html>

@@ -1,5 +1,7 @@
 package main.member;
 
+import java.util.List;
+
 public interface MemberDAO {
 	int signup(MemberDTO member);
 	int kakao(MemberDTO member);
@@ -7,4 +9,6 @@ public interface MemberDAO {
 	boolean idCheck(String id);
 	int update(MemberDTO member);
 	int withdraw(MemberDTO member);
+	
+	List<MemberDTO> memberList();
 }
