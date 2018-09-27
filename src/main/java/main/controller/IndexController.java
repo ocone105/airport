@@ -39,7 +39,7 @@ public class IndexController extends AbstractView{
 
 	@RequestMapping("/main/admin")
 	public String admin() {
-		return "admin";
+		return "adminMain";
 	}
 	
 	@RequestMapping("/main/signin.do")
