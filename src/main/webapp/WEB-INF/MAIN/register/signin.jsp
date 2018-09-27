@@ -64,13 +64,13 @@
 										<div class="form-group">
 											<label class="sr-only" for="form-username">ID 아이디</label> <input
 												type="text" name="id" placeholder="ID"
-												class="form-username form-control" id="id">
+												class="form-username form-control" id="id" required="required">
 										</div>
 										<div class="form-group">
 											<label class="sr-only" for="form-password">Password
 												비밀번호</label> <input type="password" name="pwd"
 												placeholder="Password" class="form-password form-control"
-												id="pwd">
+												id="pwd" required="required">
 										</div>
 										<button type="submit" class="btn">Sign in 로그인</button>
 									</form>
