@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import erp.dept.dto.DeptDTO;
 import erp.pf.DTO.PFDTO;
 import erp.pf.DTO.PFINFODTO;
 import erp.pf.DTO.PFTEAMDTO;
@@ -38,6 +39,11 @@ public class PFDAOImpl implements PFDAO {
 	@Override
 	public int pfinsert(PFDTO pf) {
 		return sqlSession.insert("kr.airport.erp.pf.request", pf);
+	}
+
+	@Override
+	public DeptDTO getDept(String pfname) {
+		return sqlSession.selectOne("kr.airport.erp.pf.getDept", pfname);
 	}
 
 }

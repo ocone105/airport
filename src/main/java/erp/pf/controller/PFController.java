@@ -27,10 +27,14 @@ public class PFController {
 		return "erp/datalist";
 	}
 	@RequestMapping("/erp/pfrequest.do")
-	public ModelAndView pfrequest(){
+	public ModelAndView pfrequest(String pfname){
 		ModelAndView mav = new ModelAndView();
+		DeptDTO dept = service.getDept(pfname);
+		System.out.println("부서 "+dept);
 		List<PFINFODTO> pfinfo = service.pfinfolist();
 		mav.addObject("pfinfo", pfinfo);
+		mav.addObject("name",pfname);
+		mav.addObject("dept", dept);
 		mav.setViewName("erp/pfrequest");
 		return mav;
 	}
