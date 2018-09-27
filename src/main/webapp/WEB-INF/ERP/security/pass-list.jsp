@@ -54,7 +54,7 @@
 										<tr>
 											<td>${pass.scno }</td>
 											<td>${pass.empno }</td>
-											<td><a href="/airport/erp/passlist.do">${pass.name }</a></td>
+											<td><a href="/airport/erp/passread.do?scno=${pass.scno }">${pass.name }</a></td>
 											<td>${pass.deptname }</td>
 											<td>${pass.issuedate }</td>
 											<td>${pass.exdate }</td>

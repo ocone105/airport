@@ -22,7 +22,10 @@ public class SecurityDAOImpl implements SecurityDAO {
 	public SecurityDTO secCheck(int empno) {
 		return sqlSession.selectOne("kr.airport.erp.security.seccheck", empno);
 	}
-
+	@Override
+	public SecurityDTO secread(String scno) {
+		return sqlSession.selectOne("kr.airport.erp.security.secread", scno);
+	}
 	@Override
 	public void reapply(SecurityDTO sec) {
 		sqlSession.update("kr.airport.erp.security.reapply", sec);
@@ -55,5 +58,9 @@ public class SecurityDAOImpl implements SecurityDAO {
 		
 	}
 
-	
+	@Override
+	public void delete(int empno) {
+		sqlSession.delete("kr.airport.erp.security.delete", empno);
+	}
+
 }

@@ -7,7 +7,9 @@ public class MemberDTO {
 	private String phone;
 	private String email;
 	private String state;
-	private String alarm;
+	private String email_alarm;
+	private String sms_alarm;
+	private String role;
 	
 	public MemberDTO() {
 		
@@ -61,15 +63,32 @@ public class MemberDTO {
 		this.state = state;
 	}
 
-	public String getAlarm() {
-		return alarm;
+	public String getEmail_alarm() {
+		return email_alarm;
 	}
 
-	public void setAlarm(String alarm) {
-		this.alarm = alarm;
+	public void setEmail_alarm(String email_alarm) {
+		this.email_alarm = email_alarm;
 	}
 
-	public MemberDTO(String id, String pwd, String name, String phone, String email, String state, String alarm) {
+	public String getSms_alarm() {
+		return sms_alarm;
+	}
+
+	public void setSms_alarm(String sms_alarm) {
+		this.sms_alarm = sms_alarm;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public MemberDTO(String id, String pwd, String name, String phone, String email, String state, String email_alarm,
+			String sms_alarm, String role) {
 		super();
 		this.id = id;
 		this.pwd = pwd;
@@ -77,14 +96,18 @@ public class MemberDTO {
 		this.phone = phone;
 		this.email = email;
 		this.state = state;
-		this.alarm = alarm;
+		this.email_alarm = email_alarm;
+		this.sms_alarm = sms_alarm;
+		this.role = role;
 	}
 
 	@Override
 	public String toString() {
 		return "MemberDTO [id=" + id + ", pwd=" + pwd + ", name=" + name + ", phone=" + phone + ", email=" + email
-				+ ", state=" + state + ", alarm=" + alarm + "]";
+				+ ", state=" + state + ", email_alarm=" + email_alarm + ", sms_alarm=" + sms_alarm + ", role=" + role
+				+ "]";
 	}
+	
 	
 	
 }

@@ -22,4 +22,17 @@ public class SecurityListController {
 		return "erp/passlist";
 	}
 
+	@RequestMapping("/erp/passread.do")
+	public String passread(String scno,Model model){
+		SecurityDTO sec = service.secread(scno);
+		model.addAttribute("sec", sec);
+		return "erp/passread";
+	}
+	
+	@RequestMapping("/erp/seccancel.do")
+	public String passread(int empno){
+		service.delete(empno);
+		return "redirect:/erp/passlist.do";
+	}
+
 }

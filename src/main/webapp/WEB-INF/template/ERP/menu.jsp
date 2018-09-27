@@ -18,6 +18,14 @@
 	display: block
 }
 </style>
+<!-- <script type="text/javascript">
+$(document).ready(function() {
+	$(".nav-item").on("click",function(){
+		$(".nav-item").attr("class","nav-item")
+		$(this).attr("class","nav-item active")	
+	})
+})
+</script> -->
 </head>
 <body>
 	<div class="sidebar" data-color="azure" data-background-color="white">
@@ -33,8 +41,8 @@
 						<p>부서조회</p>
 					</a>
 				</li>
-				<li>
-					<a class="nav-link" data-toggle="collapse" href="#task">
+				<li class="nav-item">
+					<a class="nav-link " data-toggle="collapse" href="#task">
 						<i class="material-icons">work</i>
 						<p>업무관리</p>
 					</a>
@@ -94,7 +102,7 @@
 						<p>출입증신청</p>
 					</a>
 				</li>
-				<li>
+				<li class="nav-item">
 					<a class="nav-link" data-toggle="collapse" href="#board">
 						<i class="material-icons">view_list</i>
 						<p>사내게시판</p>

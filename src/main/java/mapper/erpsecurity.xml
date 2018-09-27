@@ -12,6 +12,12 @@
 		select * from security
 		where empno=#{empno}
 	</select>
+	
+	<select id="secread" parameterType="String" resultType="security">
+		select s.*,e.name,e.email,d.deptname 
+		from security s, emp e, dept d
+		where s.empno=e.empno and d.deptno=e.deptno and scno=#{scno}
+	</select>
 
 	<update id="reapply" parameterType="security">
 		update security
@@ -28,7 +34,7 @@
 	<select id="passlist" resultType="security">
 		select s.*,e.name,e.email,d.deptname 
 		from security s, emp e, dept d
-		where s.empno=e.empno and d.deptno=e.deptno and scstate='1'
+		where s.empno=e.empno and d.deptno=e.deptno and scstate='1' or scstate='0'
 		order by d.deptname asc
 	</select>	
 	
@@ -49,5 +55,10 @@
 		set scstate='0'
 		where scno=#{scno}
 	</update>
+	
+	<delete id="delete" parameterType="Integer">
+		delete from security
+		where empno=#{empno}
+	</delete>
 	
 </mapper>

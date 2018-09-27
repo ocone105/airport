@@ -222,7 +222,7 @@ $(document).ready(function() {
 												type="text" class="form-control" name="position" value="${emp.position }">
 										</div>
 									</div>
-									<div class="col-md-6">
+									<%-- <div class="col-md-6">
 									<div class="form-group">
 										<label class="bmd-label-floating">사원상태</label> 
 										<div class="radio">
@@ -236,7 +236,7 @@ $(document).ready(function() {
 											</c:if>
 										</div>
 									</div>
-								</div>
+								</div> --%>
 								</div>
 								<button type="submit" class="btn btn-primary pull-right">수정하기</button>
 								<div class="clearfix"></div>
