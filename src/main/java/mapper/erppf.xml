@@ -23,4 +23,10 @@
 		values(pfno_seq.nextval, #{pfinfono}, sysdate, #{pftxt}, #{pfstaff}, #{deptno})
 	</insert>
 	
+	<select id="getDept" parameterType="String" resultType="dept">
+		select d.deptname, d.mgr
+		from pfinfo pi, pfteam pt, dept d
+		where pi.pfinfono=pt.pfinfono and pt.deptno=d.deptno and pi.pfname=#{pfname}
+	</select>
+	
 </mapper>

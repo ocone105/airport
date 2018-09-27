@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import erp.dept.dto.DeptDTO;
 import erp.pf.DAO.PFDAO;
 import erp.pf.DTO.PFDTO;
 import erp.pf.DTO.PFINFODTO;
@@ -38,6 +39,11 @@ public class PFServiceImpl implements PFService {
 	@Override
 	public int pfinsert(PFDTO pf) {
 		return dao.pfinsert(pf);
+	}
+
+	@Override
+	public DeptDTO getDept(String pfname) {
+		return dao.getDept(pfname);
 	}
 
 }
