@@ -12,6 +12,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int signup(MemberDTO member) {
+		System.out.println("signupservice");
 		return dao.signup(member);
 	}
 	

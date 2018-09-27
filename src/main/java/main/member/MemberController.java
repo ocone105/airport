@@ -52,6 +52,7 @@ public class MemberController {
 	// 회원가입
 	@RequestMapping(value = "/member/signup.do", method = RequestMethod.POST)
 	public String signup(MemberDTO member, HttpSession session) {
+		System.out.println("컨트롤러 진입===>"+member);
 		if(member.getEmail_alarm()==null) {
 			member.setEmail_alarm("n");
 		}

@@ -12,6 +12,7 @@ sms_alarm varchar2(5),
 role varchar2(15)
 );
 
-insert into member values('air', 'port', '관리자', null, null, 1, null, null, 'role_admin')
+insert into member values('air', 'port', '관리자', null, null, 1, null, null, 'role_admin');
+
 //state: 탈퇴처리-0 기본-1 카카오-2 네이버-3
 

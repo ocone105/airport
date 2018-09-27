@@ -59,7 +59,7 @@
 									</div>
 								</div>
 								<div class="form-bottom">
-									<form role="form" action="/airport/member/login.do"
+									<form role="form" action="/airport/j_spring_security_check"
 										method="post" class="login-form" name="loginform">
 										<div class="form-group">
 											<label class="sr-only" for="form-username">ID 아이디</label> <input
@@ -135,7 +135,7 @@
 
 									<form role="form" action="/airport/member/signup.do"
 										method="post" class="registration-form" id="signupform"
-										name="signupform" onsubmit="return join()">
+										name="signupform" >
 
 										<div class="form-group">
 											<label class="sr-only" for="form-id">ID</label> <input
@@ -188,7 +188,7 @@
 											</span>
 										</div>
 
-										<button type="submit" class="btn">Sign up 회원가입</button>
+										<button type="button" class="btn" onclick="return join()">Sign up 회원가입</button>
 
 									</form>
 								</div>
