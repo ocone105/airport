@@ -12,6 +12,8 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.databind.util.Converter;
+
 import main.PP.dto.RealTimePassengerDTO;
 
 @Service
@@ -58,7 +60,16 @@ public class RealTimePassenger {
 			//System.out.println(item);
 			rtginfo.setAreadiv((Long) item.get("areadiv"));
 			rtginfo.setCgtdt((Long) item.get("cgtdt"));
-			rtginfo.setCgthm((String) item.get("cgthm"));
+			
+			if(item.get("cgthm").getClass().getTypeName().equals("java.lang.String")) {
+				rtginfo.setCgthm((String) item.get("cgthm"));
+				//System.out.println("String");
+			}else {
+				rtginfo.setCgthm(Long.toString((Long) item.get("cgthm")));
+				//System.out.println(item.get("cgthm").getClass().getTypeName());
+				//System.out.println("Long");
+			}
+			
 			rtginfo.setGate1((Long) item.get("gate1"));
 			rtginfo.setGate2((Long) item.get("gate2"));
 			if(ter.equals("1")) {

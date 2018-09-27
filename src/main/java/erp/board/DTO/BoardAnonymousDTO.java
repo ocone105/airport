@@ -95,12 +95,12 @@ public class BoardAnonymousDTO {
 		this.empno = empno;
 	}
 
-	public MultipartFile getFile() {
+	public MultipartFile getUpfile() {
 		return upfile;
 	}
 
-	public void setFile(MultipartFile upfile) {
+	public void setUpfile(MultipartFile upfile) {
 		this.upfile = upfile;
 	}
-	
+
 }

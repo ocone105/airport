@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
@@ -18,7 +19,9 @@ public class MemberController {
 	@Autowired
 	MemberService service;
 
-
+	// 네이버 로그인
+	
+	// 카카오 로그인
 	@RequestMapping(value = "/member/kakao", produces = "application/json", 
 			method = { RequestMethod.GET, RequestMethod.POST })
 	public String kakaologin(@RequestParam("code") String code, HttpSession Session) {
@@ -27,7 +30,6 @@ public class MemberController {
 		String id = profile.path("id").asText();
 		String nickname = profile.path("properties").path("nickname").asText();
 		String email = profile.path("kaccount_email").asText();
-		System.out.println(email+" 이메일");
 		String urlPath = null;
 		MemberDTO member = new MemberDTO();
 		boolean loginUser = service.idCheck(id);
@@ -38,11 +40,11 @@ public class MemberController {
 			service.kakao(member);
 			Session.removeAttribute("loginUser");
 			Session.setAttribute("loginUser", id);
-			urlPath = "redirect:/main/myservice.do";
+			urlPath = "redirect:/main/index.do";
 		} else {
 			Session.removeAttribute("loginUser");
 			Session.setAttribute("loginUser", id);
-			urlPath = "redirect:/main/myservice.do";
+			urlPath = "redirect:/main/index.do";
 		}
 		return urlPath;
 	}
@@ -50,6 +52,13 @@ public class MemberController {
 	// 회원가입
 	@RequestMapping(value = "/member/signup.do", method = RequestMethod.POST)
 	public String signup(MemberDTO member, HttpSession session) {
+		if(member.getEmail_alarm()==null) {
+			member.setEmail_alarm("n");
+		}
+		if(member.getSms_alarm()==null) {
+			member.setSms_alarm("n");
+		}
+		
 		int result = service.signup(member);
 		//System.out.println(result + "가입 성공");
 		return "redirect:/main/signin.do";
@@ -63,7 +72,7 @@ public class MemberController {
 
 		if (loginUser != null) {
 			if (loginUser.getState().equals("1")) {
-				viewName = "redirect:/main/myservice.do";
+				viewName = "redirect:/main/index.do";
 				session.setAttribute("loginUser", loginUser); 
 			} else if (loginUser.getState().equals("0")) {	// 회원탈퇴의 경우
 				viewName = "redirect:/main/signin.do";
@@ -108,7 +117,7 @@ public class MemberController {
 	public String withdraw(MemberDTO user) {
 		int result = service.withdraw(user);
 		System.out.println(result + "탈퇴 성공");
-		return "redirect:/main/myservice.do";
+		return "redirect:/main/index.do";
 	}	
 
 }
