@@ -38,7 +38,6 @@ $(document).ready(function(){
 		deptname =  $(this).next().next().next().next().next().val();
 		email =  $(this).next().next().next().next().next().next().val();
 		appdate =  $(this).next().next().next().next().next().next().next().val();
-		
 	})
 	$("#permitInfo").on("show.bs.modal",function(){
 		mydata="<img src='/airport/resources/upload/"+img+"' class='img-responsive thumbnail' style='width: 130px; height: 150px;'>"

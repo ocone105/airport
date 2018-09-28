@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.AbstractView;
 
 import erp.pf.DTO.PFINFODTO;
+import erp.pf.DTO.PFTEAMDTO;
 import erp.pf.service.PFService;
 
 @Controller
@@ -33,8 +34,13 @@ public class IndexController extends AbstractView{
 
 	@RequestMapping("/main/myservice")
 	public ModelAndView myservice() {
-		List<PFINFODTO> pf = service.pfinfolist();
-		return new ModelAndView("myservice", "pf", pf);
+		ModelAndView mav = new ModelAndView();
+		List<PFINFODTO> pfinfo = service.pfinfolist();	// 여객시설정보리스트
+		List<PFTEAMDTO> pfteam = service.pfteamlist();	// 시설근무팀 리스트
+		mav.addObject("pfinfo", pfinfo);
+		mav.addObject("pfteam", pfteam);
+		mav.setViewName("myservice");
+		return mav;
 	}
 
 	@RequestMapping("/main/signin.do")
