@@ -31,7 +31,7 @@ public class IndexController extends AbstractView{
 		return "abnormalflight";
 	}
 
-	@RequestMapping("/main/myservice.do")
+	@RequestMapping("/main/myservice")
 	public ModelAndView myservice() {
 		List<PFINFODTO> pf = service.pfinfolist();
 		return new ModelAndView("myservice", "pf", pf);
@@ -42,12 +42,12 @@ public class IndexController extends AbstractView{
 		return "signin";
 	}
 
-	@RequestMapping("/main/privacy.do")
+	@RequestMapping("/main/privacy")
 	public String privacy() {
 		return "privacy";
 	}
 	
-	@RequestMapping("/main/email.do")
+	@RequestMapping("/main/email")
 	public String rejectEmail() {
 		return "email";
 	}

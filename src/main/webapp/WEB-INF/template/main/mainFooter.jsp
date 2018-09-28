@@ -80,8 +80,8 @@
 			</div>
 		</div>
 		<div class="col text-center">Copyright International Airport Corporation.&copy;<script>document.write(new Date().getFullYear());</script> 
-		All rights reserved |<a href="/airport/main/privacy.do" style="font-weight: bold;">개인정보처리방침</a>
-		|<a href="/airport/main/email.do" style="font-weight: bold;">이메일무단수집거부</a>|
+		All rights reserved |<a href="/airport/main/privacy" style="font-weight: bold;">개인정보처리방침</a>
+		|<a href="/airport/main/email" style="font-weight: bold;">이메일무단수집거부</a>|
 		<i class="fa fa-heart-o" aria-hidden="true"></i> This site is licensed under <a href="/airport/main/index.do" target="_blank">Airport</a>
 		</div>
 	</footer>
