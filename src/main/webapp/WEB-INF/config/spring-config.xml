@@ -28,7 +28,12 @@
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/" />
 		<beans:property name="suffix" value=".jsp" />
-		<beans:property name="order" value="2" />
+		<beans:property name="order" value="3" />
+	</beans:bean>
+	<!-- ==============다운로드 뷰리졸버================================= -->
+	<beans:bean id="fileDownloadView" class="erp.board.etc.FileDownloadView"/>
+	<beans:bean  id="fileViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<beans:property name="order" value="2"/>
 	</beans:bean>
 
 	<!-- =====================db관련 작업============================== -->

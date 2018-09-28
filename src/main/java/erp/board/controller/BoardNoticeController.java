@@ -5,6 +5,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,6 +83,9 @@ public class BoardNoticeController {
 		service.hits(boardno);
 		BoardNoticeDTO post = service.read(boardno);
 		List<BoardNoticeCmtDTO> cmt = service.Cmtlist(boardno);
+		if(post.getAttach().equals("null")) {
+			post.setAttach("");
+		}
 		mav.addObject("post",post);
 		mav.addObject("cmt", cmt);
 		mav.setViewName("erp/boardread1");
@@ -115,4 +120,23 @@ public class BoardNoticeController {
 		service.delete(boardno);
 		return "redirect:/erp/noticelist.do";
 	}
+	
+	
+	@RequestMapping(value="/erp/board/download.do") 
+	public ModelAndView filedownload(String file, int boardno, HttpServletRequest req, HttpServletResponse res) throws Exception{
+		
+		ModelAndView mav = new ModelAndView();
+		
+		// 다운 받은 파일의 절대 경로 필요
+		String fileFullPath = "D:\\ICTSub\\work\\3rdProject\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\airport\\WEB-INF\\ERP\\board\\upload/"+file; 
+		File downloadFile = new File(fileFullPath);
+		if(!downloadFile.canRead()) {
+			throw new Exception("파일을 찾을 수 없습니다.");
+		}
+		
+		mav.addObject("downloadFile", downloadFile);
+		mav.setViewName("fileDownloadView");
+		return mav;
+	}
+
 }
