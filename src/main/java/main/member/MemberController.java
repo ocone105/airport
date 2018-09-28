@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,10 +16,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-import erp.insa.dto.EmpDTO;
-
 @Controller
 public class MemberController {
+
+	private ShaPasswordEncoder passencoder = new ShaPasswordEncoder(256);
 
 	@Autowired
 	MemberService service;
@@ -60,6 +61,9 @@ public class MemberController {
 		if (member.getSms_alarm() == null) {
 			member.setSms_alarm("n");
 		}
+
+		String securitypass = passencoder.encodePassword(member.getPwd(), null);
+		member.setPwd(securitypass); // 암호화된 패스워드를 다시 패스워드로 세팅
 
 		int result = service.signup(member);
 		// System.out.println(result + "가입 성공");
