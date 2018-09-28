@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.airport.erp.pf">
+	
+	<select id="pfinfolist" resultType="pfinfo">
+		select * from PFINFO 
+	</select>
+	
+	<select id="pfteamlist" resultType="pfteam">
+		select * from PFTEAM
+	</select>
+	
+	<select id="pfteam" parameterType="Integer" resultType="pfteam">
+		select * from PFTEAM where pfinfono = #{pfinfono}
+	</select>
+	
+	<select id="pflist" resultType="pf">
+		select * from PF
+	</select>
+	
+	<insert id="request" parameterType="pf">
+		insert into PF 
+		values(pfno_seq.nextval, #{pfinfono}, sysdate, #{pftxt}, #{pfstaff}, #{deptno})
+	</insert>
+	
+</mapper>

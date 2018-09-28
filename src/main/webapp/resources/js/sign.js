@@ -60,6 +60,12 @@ function join(){
 		return false;
 	}else{
 		if(document.signupform.pwd.value==document.signupform.pwd2.value){
+			if($('input:checkbox[id="email_alarm"]').is(':checked')){
+				$(document.forms["signupform"].email_alarm).val('y')
+			}
+			if($('input:checkbox[id="sms_alarm"]').is(':checked')){
+				$(document.forms["signupform"].sms_alarm).val('y')
+			}
 			document.signupform.submit();
 			alert("회원가입 완료!")
 		}else{

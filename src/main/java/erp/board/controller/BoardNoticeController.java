@@ -5,6 +5,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
+import erp.board.DTO.BoardNoticeCmtDTO;
 import erp.board.DTO.BoardNoticeDTO;
 import erp.board.service.BoardNoticeService;
 
@@ -34,7 +37,6 @@ public class BoardNoticeController {
 	public String noticewrite(){
 		return "erp/noticewrite";
 	}
-	
 	
 	@RequestMapping(value="/erp/noticewrite.do",method=RequestMethod.POST) 
 	public String noticeinsert(BoardNoticeDTO post, HttpSession session) throws Exception{
@@ -77,15 +79,38 @@ public class BoardNoticeController {
 	
 	@RequestMapping("/erp/noticeread.do")
 	public ModelAndView read(int boardno){
+		ModelAndView mav = new ModelAndView();
+		service.hits(boardno);
 		BoardNoticeDTO post = service.read(boardno);
-		return new ModelAndView("erp/boardread1", "post", post);
+		List<BoardNoticeCmtDTO> cmt = service.Cmtlist(boardno);
+		if(post.getAttach().equals("null")) {
+			post.setAttach("");
+		}
+		mav.addObject("post",post);
+		mav.addObject("cmt", cmt);
+		mav.setViewName("erp/boardread1");
+		return mav;
 	}
 	
-	@RequestMapping("/erp/noticeupdate.do")
-	public String update(BoardNoticeDTO post){
+	@RequestMapping(value="/erp/noticeupdate.do", method=RequestMethod.GET)
+	public ModelAndView update1(int boardno){
+		BoardNoticeDTO post = service.read(boardno);
+		return new ModelAndView("erp/noticeupdate", "post", post);
+	}
+	
+	@RequestMapping(value="/erp/noticeupdate.do", method=RequestMethod.POST)
+	public String update2(BoardNoticeDTO post, HttpSession session) throws Exception{
 		if(post.getUpfile().isEmpty()) {
-			post.setAttach("null");
-		} else {}
+			BoardNoticeDTO origin = service.read(post.getBoardno());
+			String attach = origin.getAttach();
+			post.setAttach(attach);
+		} else {
+			MultipartFile file = post.getUpfile();
+			String path = WebUtils.getRealPath(session.getServletContext(), "/WEB-INF/ERP/board/upload/");
+			String fileName = file.getOriginalFilename();
+			post.setAttach(fileName);
+			upload(file, path, fileName);
+		}
 		service.update(post);
 		return "redirect:/erp/noticelist.do";
 	}
@@ -95,4 +120,23 @@ public class BoardNoticeController {
 		service.delete(boardno);
 		return "redirect:/erp/noticelist.do";
 	}
+	
+	
+	@RequestMapping(value="/erp/board/download.do") 
+	public ModelAndView filedownload(String file, int boardno, HttpServletRequest req, HttpServletResponse res) throws Exception{
+		
+		ModelAndView mav = new ModelAndView();
+		
+		// 다운 받은 파일의 절대 경로 필요
+		String fileFullPath = "D:\\ICTSub\\work\\3rdProject\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\airport\\WEB-INF\\ERP\\board\\upload/"+file; 
+		File downloadFile = new File(fileFullPath);
+		if(!downloadFile.canRead()) {
+			throw new Exception("파일을 찾을 수 없습니다.");
+		}
+		
+		mav.addObject("downloadFile", downloadFile);
+		mav.setViewName("fileDownloadView");
+		return mav;
+	}
+
 }

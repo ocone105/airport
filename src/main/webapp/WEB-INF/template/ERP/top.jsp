@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,18 +33,26 @@
           <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
               <li class="nav-item">
+              <c:choose>
+					<c:when test="${empty erploginUser}">
              	<a class="nav-link" href="/airport/erp/login.do">
                  login
                 </a>
+                </c:when>
+                <c:otherwise>
                 <a class="nav-link" href="/airport/erp/logout.do">
                  logout
                 </a>
+                </c:otherwise>
+              </c:choose>  
               </li>
+              <c:if test="${!empty erploginUser }">
               <li class="nav-item">
-                <a class="nav-link" href="#pablo">
+                <a class="nav-link" href="/airport/erp/empservice.do">
                   <i class="material-icons">person</i>
                 </a>
               </li>
+              </c:if>
             </ul>
           </div>
         </div>

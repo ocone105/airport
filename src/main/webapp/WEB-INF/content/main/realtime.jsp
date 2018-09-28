@@ -29,13 +29,13 @@
 					<div class="home_search_container">
 						<div class="home_search_title">Departures</div>
 						<div class="home_search_content">
-							<form action="#" class="home_search_form" id="home_search_form">
+							<form action="/airport/main/realtimeSearch.do" class="home_search_form" id="home_search_form">
 								<div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
-									<input type="text" class="search_input search_input_1" placeholder="Destination" required="required">
-									<input type="text" class="search_input search_input_2" placeholder="Airline" required="required">
-									<input type="text" class="search_input search_input_3" placeholder="Flight" required="required">
-									<input type="text" class="search_input search_input_4" placeholder="Time" required="required">
-									<button class="home_search_button">search</button>
+									<input type="text" class="search_input search_input_1" placeholder="Destination" name="destination">
+									<input type="text" class="search_input search_input_2" placeholder="Airline" name="airline">
+									<input type="text" class="search_input search_input_3" placeholder="Flight" name="flight">
+									<input type="text" class="search_input search_input_4" placeholder="Time" name="time">
+									<button type="submit" class="home_search_button">search</button>
 								</div>
 							</form>
 						</div>
@@ -84,100 +84,30 @@
 										</span>
 									</div>
 								</td>
-								<td><img src="/airport/resources/logo/KOREANAIR.jpg"
-									width="300"></td>
+								<td><img src="/airport/resources/logo/${info.airline}.jpg" width=300 height="100"></td>
 								<td>
 									<div class="table-data__info">
 										<h6>${info.airport}</h6>
 									</div>
 								</td>
 								<td>
-									<h6>${info.scheduleDateTime}</h6>
+									<h6>${info.time}</h6>
 								</td>
 								<td>${info.gatenumber}</td>
-								<td><span class="role user">${info.remark}</span></td>
+								<td>
+									<c:if test="${info.remark=='출발'}">
+										<span class="role user">${info.remark}</span>	
+									</c:if>
+									<c:if test="${empty info.remark}">
+										<c:if test="${!empty info.gatenumber}">
+											<span class="role member">탑승중</span>
+										</c:if>
+									</c:if>
+								</td>
 								<td><span class="more"> <i class="zmdi zmdi-more"></i>
 								</span></td>
 							</tr>
 						</c:forEach>
-							<tr>
-								<td><label class="au-checkbox"> <input
-										type="checkbox"> <span class="au-checkmark"></span>
-								</label></td>
-								<td>
-									<div class="table-data__info">
-										<h6>KE5691</h6>
-										<span> <a href="#">대한항공</a>
-										</span>
-									</div>
-								</td>
-								<td><img src="/airport/resources/logo/KOREANAIR.jpg"
-									width="300"></td>
-								<td>
-									<div class="table-data__info">
-										<h6>TAIPEI</h6>
-									</div>
-								</td>
-								<td>
-									<h4>17:50</h4>
-								</td>
-								<td>30</td>
-								<td><span class="role user">출발</span></td>
-								<td><span class="more"> <i class="zmdi zmdi-more"></i>
-								</span></td>
-							</tr>
-							<tr>
-								<td><label class="au-checkbox"> <input
-										type="checkbox"> <span class="au-checkmark"></span>
-								</label></td>
-								<td>
-									<div class="table-data__info">
-										<h6>OZ106</h6>
-										<span> <a href="#">Asiana Airlines</a>
-										</span>
-									</div>
-								</td>
-								<td><img src="/airport/resources/logo/ASIANAAIRLINES.png"
-									width="300"></td>
-								<td>
-									<div class="table-data__info">
-										<h6>TOKYO/NARITA</h6>
-									</div>
-								</td>
-								<td>
-									<h4>17:55</h4>
-								</td>
-								<td>17</td>
-								<td><span class="role user">출발</span></td>
-								<td><span class="more"> <i class="zmdi zmdi-more"></i>
-								</span></td>
-							</tr>
-							<tr>
-								<td><label class="au-checkbox"> <input
-										type="checkbox"> <span class="au-checkmark"></span>
-								</label></td>
-								<td>
-									<div class="table-data__info">
-										<h6>KE5749</h6>
-										<span> <a href="#">대한항공</a>
-										</span>
-									</div>
-								</td>
-								<td><img src="/airport/resources/logo/KOREANAIR.jpg"
-									width="300"></td>
-								<td>
-									<div class="table-data__info">
-										<h6>KITA KYUSHU</h6>
-									</div>
-								</td>
-								<td>
-									<h4>18:00</h4>
-								</td>
-								<td>103</td>
-								<td><span class="role member">탑승중</span></td>
-								<td><span class="more"> <i class="zmdi zmdi-more"></i>
-								</span></td>
-							</tr>
 						</tbody>
 					</table>
 				</div>

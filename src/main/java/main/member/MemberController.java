@@ -1,5 +1,7 @@
 package main.member;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -9,8 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.JsonNode;
+
+import erp.insa.dto.EmpDTO;
 
 @Controller
 public class MemberController {
@@ -18,16 +23,15 @@ public class MemberController {
 	@Autowired
 	MemberService service;
 
-
-	@RequestMapping(value = "/member/kakao", produces = "application/json", 
-			method = { RequestMethod.GET, RequestMethod.POST })
+	// 카카오 로그인
+	@RequestMapping(value = "/member/kakao", produces = "application/json", method = { RequestMethod.GET,
+			RequestMethod.POST })
 	public String kakaologin(@RequestParam("code") String code, HttpSession Session) {
 		JsonNode token = KakaoLogin.getAccessToken(code);
 		JsonNode profile = KakaoLogin.getKakaoUserInfo(token.path("access_token").toString());
 		String id = profile.path("id").asText();
 		String nickname = profile.path("properties").path("nickname").asText();
 		String email = profile.path("kaccount_email").asText();
-		System.out.println(email+" 이메일");
 		String urlPath = null;
 		MemberDTO member = new MemberDTO();
 		boolean loginUser = service.idCheck(id);
@@ -38,20 +42,27 @@ public class MemberController {
 			service.kakao(member);
 			Session.removeAttribute("loginUser");
 			Session.setAttribute("loginUser", id);
-			urlPath = "redirect:/main/myservice.do";
+			urlPath = "redirect:/main/index.do";
 		} else {
 			Session.removeAttribute("loginUser");
 			Session.setAttribute("loginUser", id);
-			urlPath = "redirect:/main/myservice.do";
+			urlPath = "redirect:/main/index.do";
 		}
 		return urlPath;
 	}
-	
+
 	// 회원가입
 	@RequestMapping(value = "/member/signup.do", method = RequestMethod.POST)
 	public String signup(MemberDTO member, HttpSession session) {
+		if (member.getEmail_alarm() == null) {
+			member.setEmail_alarm("n");
+		}
+		if (member.getSms_alarm() == null) {
+			member.setSms_alarm("n");
+		}
+
 		int result = service.signup(member);
-		//System.out.println(result + "가입 성공");
+		// System.out.println(result + "가입 성공");
 		return "redirect:/main/signin.do";
 	}
 
@@ -63,9 +74,9 @@ public class MemberController {
 
 		if (loginUser != null) {
 			if (loginUser.getState().equals("1")) {
-				viewName = "redirect:/main/myservice.do";
-				session.setAttribute("loginUser", loginUser); 
-			} else if (loginUser.getState().equals("0")) {	// 회원탈퇴의 경우
+				viewName = "redirect:/main/index.do";
+				session.setAttribute("loginUser", loginUser);
+			} else if (loginUser.getState().equals("0")) { // 회원탈퇴의 경우
 				viewName = "redirect:/main/signin.do";
 			}
 		} else {
@@ -108,7 +119,45 @@ public class MemberController {
 	public String withdraw(MemberDTO user) {
 		int result = service.withdraw(user);
 		System.out.println(result + "탈퇴 성공");
-		return "redirect:/main/myservice.do";
-	}	
+		return "redirect:/main/index.do";
+	}
+
+	// 회원목록
+	@RequestMapping(value = "/main/admin")
+	public ModelAndView emplist() {
+		ModelAndView mav = new ModelAndView();
+		List<MemberDTO> memberlist = service.memberList();
+		for (int i = 0; i < memberlist.size();i++) {
+			if(memberlist.get(i).getState().equals("0")){
+				memberlist.get(i).setState("탈퇴");
+			}else if(memberlist.get(i).getState().equals("1")){
+				memberlist.get(i).setState("일반");
+			}else if(memberlist.get(i).getState().equals("2")){
+				memberlist.get(i).setState("카카오");
+			}
+		}
+		mav.addObject("memberlist", memberlist);
+		mav.setViewName("adminMain");
+		return mav;
+	}
+	
+	// 회원검색
+	@RequestMapping(value="/main/admin/membersearh.do")
+	public ModelAndView empsearch(String search){
+		ModelAndView mav = new ModelAndView();
+		List<MemberDTO> memberlist = service.memberSearch(search);
+		for (int i = 0; i < memberlist.size();i++) {
+			if(memberlist.get(i).getState().equals("0")){
+				memberlist.get(i).setState("탈퇴");
+			}else if(memberlist.get(i).getState().equals("1")){
+				memberlist.get(i).setState("일반");
+			}else if(memberlist.get(i).getState().equals("2")){
+				memberlist.get(i).setState("카카오");
+			}
+		}
+		mav.addObject("memberlist", memberlist);
+		mav.setViewName("adminMain");
+		return mav;
+	} 
 
 }

@@ -18,6 +18,14 @@
 	display: block
 }
 </style>
+<!-- <script type="text/javascript">
+$(document).ready(function() {
+	$(".nav-item").on("click",function(){
+		$(".nav-item").attr("class","nav-item")
+		$(this).attr("class","nav-item active")	
+	})
+})
+</script> -->
 </head>
 <body>
 	<div class="sidebar" data-color="azure" data-background-color="white">
@@ -33,8 +41,8 @@
 						<p>부서조회</p>
 					</a>
 				</li>
-				<li>
-					<a class="nav-link" data-toggle="collapse" href="#task">
+				<li class="nav-item">
+					<a class="nav-link " data-toggle="collapse" href="#task">
 						<i class="material-icons">work</i>
 						<p>업무관리</p>
 					</a>
@@ -51,11 +59,11 @@
 									<span><i class="material-icons">how_to_reg</i>사원조회</span>
 								</a>
 							</li>
-							<li>
+							<!-- <li>
 								<a href="/airport/erp/empdeptlist.do"> 
 									<span><i class="material-icons">how_to_reg</i>부서별사원조회</span>
 								</a>
-							</li>
+							</li> -->
 							<!-- 보안팀이 로그인한 경우 -->
 							<li>
 								<a href="/airport/erp/permissionlist.do"> 
@@ -94,7 +102,7 @@
 						<p>출입증신청</p>
 					</a>
 				</li>
-				<li>
+				<li class="nav-item">
 					<a class="nav-link" data-toggle="collapse" href="#board">
 						<i class="material-icons">view_list</i>
 						<p>사내게시판</p>

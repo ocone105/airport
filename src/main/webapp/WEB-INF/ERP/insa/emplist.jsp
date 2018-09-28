@@ -11,18 +11,15 @@
 	<div class="content">
 		<div class="container-fluid">
 			<div class="row">
-				<form class="/airport/erp/empsearch.do">
-					<select name="tag">
-						<option value="all">전체</option>
-						<option value="id">사원번호</option>
-						<option value="title">이름</option>
-						<option value="content">부서</option>
+				<form action="/airport/erp/empsearch.do" method="post">
+					<select class="selectpicker" name="tag" id="tag">
+						<option value="name">이름</option>
+						<option value="deptname">부서명</option>
 					</select>
 					<div class="input-group no-border">
-						<input type="text" value="" class="form-control"
+						<input type="text" name="search" id="search" class="form-control"
 							placeholder="Search...">
-						<button type="submit"
-							class="btn btn-white btn-round btn-just-icon">
+						<button type="submit" class="btn btn-white btn-round btn-just-icon">
 							<i class="material-icons">search</i>
 							<div class="ripple-container"></div>
 						</button>
@@ -45,7 +42,7 @@
 											<th>이름</th>
 											<th>부서</th>
 											<th>전화번호</th>
-											<th>이메일</th>
+											<th>재직</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -55,7 +52,14 @@
 											<td><a href="/airport/erp/empread.do?empno=${emp.empno }">${emp.name }</a></td>
 											<td>${emp.deptname }</td>
 											<td>${emp.phone  }</td>
-											<td>${emp.email }</td>
+											<td>
+											<c:if test="${emp.state eq '0' }">
+												재직
+											</c:if>
+											<c:if test="${emp.state eq '1' }">
+												퇴사
+											</c:if>
+											</td>
 										</tr>
 									</c:forEach>
 									</tbody>
