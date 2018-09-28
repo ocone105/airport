@@ -5,21 +5,19 @@
 
 <tiles-definitions>
 	<definition name="realtime" extends="mainTemplate">
-		<put-attribute name="content" value="/WEB-INF/content/main/realtime.jsp" />
+		<put-attribute name="content" value="/WEB-INF/MAIN/realtime/realtime.jsp" />
 	</definition>
 
 	<definition name="passenger" extends="mainTemplate">
-		<put-attribute name="content"
-			value="/WEB-INF/content/main/predictPassenger.jsp" />
+		<put-attribute name="content" value="/WEB-INF/MAIN/passenger/predictPassenger.jsp" />
 	</definition>
 
 	<definition name="abnormalflight" extends="mainTemplate">
-		<put-attribute name="content"
-			value="/WEB-INF/content/main/predictFlight.jsp" />
+		<put-attribute name="content" value="/WEB-INF/MAIN/flight/predictFlight.jsp" />
 	</definition>
 
 	<definition name="myservice" extends="mainTemplate">
-		<put-attribute name="content" value="/WEB-INF/content/main/predictPassenger2.jsp" />
+		<put-attribute name="content" value="/WEB-INF/MAIN/myservice/memberlist.jsp" />
 	</definition>
 
 	<definition name="signin" extends="mainTemplate">

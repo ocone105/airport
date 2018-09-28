@@ -10,10 +10,13 @@ import erp.pf.DTO.PFTEAMDTO;
 public interface PFService {
 	
 	List<PFINFODTO> pfinfolist();
+	PFINFODTO getPfinfo(int pfinfono);
 	List<PFTEAMDTO> pfteamlist();
 	PFTEAMDTO pfteamlist(int pfinfono);
-	List<PFDTO> pflist();
+	List<Integer> pflist();
+	List<PFDTO> pflist(int pfinfono);
 	int pfinsert(PFDTO pf);
 	
 	DeptDTO getDept(String pfname);
+	DeptDTO dept(String deptname);
 }

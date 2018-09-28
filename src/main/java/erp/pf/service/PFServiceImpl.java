@@ -22,6 +22,11 @@ public class PFServiceImpl implements PFService {
 	}
 
 	@Override
+	public PFINFODTO getPfinfo(int pfinfono) {
+		return dao.getPfinfo(pfinfono);
+	}
+
+	@Override
 	public List<PFTEAMDTO> pfteamlist() {
 		return dao.pfteamlist();
 	}
@@ -32,7 +37,12 @@ public class PFServiceImpl implements PFService {
 	}
 
 	@Override
-	public List<PFDTO> pflist() {
+	public List<PFDTO> pflist(int pfinfono) {
+		return dao.pflist(pfinfono);
+	}
+	
+	@Override
+	public List<Integer> pflist() {
 		return dao.pflist();
 	}
 
@@ -45,5 +55,12 @@ public class PFServiceImpl implements PFService {
 	public DeptDTO getDept(String pfname) {
 		return dao.getDept(pfname);
 	}
+
+	@Override
+	public DeptDTO dept(String deptname) {
+		return dao.dept(deptname);
+	}
+
+	
 
 }
