@@ -2,14 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="main.member">
 
+	<select id="securityLogin" resultType="map">
+		select * from member where id = #{id}
+	</select>
+	
 	<insert id="signup" parameterType="member">
 		insert into member values
-		(#{id}, #{pwd}, #{name}, #{phone}, #{email}, '1', '1')
+		(#{id}, #{pwd}, #{name}, #{phone}, #{email}, '1', #{email_alarm}, #{sms_alarm}, 'role_user')
 	</insert>
 
 	<insert id="kakao" parameterType="member">
 		insert into member values
-		(#{id}, null, #{name}, null, #{email}, '2', '1')
+		(#{id}, null, #{name}, null, #{email}, '2', 'y', 'n', 'role_user')
 	</insert>
 	
 	<select id="login" parameterType="Map" resultType="member">
@@ -22,8 +26,8 @@
 
 	<update id="update" parameterType="member">
 		update member set
-		pwd=#{pwd}, phone=#{phone}, email=#{email}, alarm=#{alarm} where
-		id=#{id}
+		pwd=#{pwd}, phone=#{phone}, email=#{email}, email_alarm=#{email_alarm}, sms_alarm=#{sms_alarm} 
+		where id=#{id}
 	</update>
 
 	<update id="withdraw" parameterType="member">

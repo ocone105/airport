@@ -15,4 +15,12 @@
 	<definition name="erp/empupdate" extends="ERPTemplate">
 		<put-attribute name="content" value="/WEB-INF/ERP/insa/empupdate.jsp"/>
 	</definition>
+	
+	<definition name="erp/empservice" extends="ERPTemplate">
+		<put-attribute name="content" value="/WEB-INF/ERP/insa/empservice.jsp"/>
+	</definition>
+	<definition name="erp/empserviceupdate" extends="ERPTemplate">
+		<put-attribute name="content" value="/WEB-INF/ERP/insa/empserviceupdate.jsp"/>
+	</definition>
+	
 </tiles-definitions>

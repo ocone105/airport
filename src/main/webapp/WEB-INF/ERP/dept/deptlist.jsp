@@ -141,8 +141,8 @@ $(document).ready(function() {
 	<br/>
 	<div class="row">
 		<div class="col-sm-7">
-			<div class="treeview" id="tree" style="margin: 20px">
-				<ul id="browser" class="filetree">
+			<div class="treeview " id="tree" style="margin: 20px">
+				<ul id="browser" class="famfamfam">
 				<c:forEach var="dept" items="${deptlist}">
 					<li class="closed"><span class="step1 folder">${dept.deptname}</span>
 						<input type="hidden" value="${dept.deptno}"/>

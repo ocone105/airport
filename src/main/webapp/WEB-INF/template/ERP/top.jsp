@@ -46,11 +46,13 @@
                 </c:otherwise>
               </c:choose>  
               </li>
+              <c:if test="${!empty erploginUser }">
               <li class="nav-item">
-                <a class="nav-link" href="#pablo">
+                <a class="nav-link" href="/airport/erp/empservice.do">
                   <i class="material-icons">person</i>
                 </a>
               </li>
+              </c:if>
             </ul>
           </div>
         </div>

@@ -22,4 +22,17 @@ public class EmpListController {
 		mav.setViewName("erp/emplist");
 		return mav;
 	} 
+	
+	@RequestMapping(value="/erp/empsearch.do")
+	public ModelAndView empsearch(String tag, String search){
+		System.out.println("test");
+		ModelAndView mav = new ModelAndView();
+		List<EmpDTO> emplist = service.empsearch(tag, search);
+		//System.out.println(emplist);
+		mav.addObject("emplist", emplist);
+		mav.setViewName("erp/emplist");
+		return mav;
+	} 
+	
+	
 }

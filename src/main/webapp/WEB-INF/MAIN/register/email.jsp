@@ -20,7 +20,7 @@
 <link rel="stylesheet" type="text/css"
 	href="/airport/resources/styles/about_responsive.css">
 
-<title>Insert title here</title>
+<title>이메일 무단수집 거부</title>
 </head>
 <body>
 	<div class="home">
