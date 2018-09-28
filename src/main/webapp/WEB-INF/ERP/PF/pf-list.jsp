@@ -101,11 +101,13 @@
 																</c:forEach>
 															</td>
 															<td>
-																<c:if test="${pfinfo.pfinfono==pfinfono}">
+																<c:forEach items="${pfinfono}" var="no">
+																<c:if test="${pfinfo.pfinfono==no}">
 																	<button type="button" rel="tooltip" title="Check" class="btn btn-danger btn-link btn-sm" onclick="window.open('/airport/erp/pfrequestCheck.do?pfinfono=${pfinfo.pfinfono}')">
 																		<i class="material-icons">check</i>
 																	</button>
 																</c:if>
+																</c:forEach>
 															</td>
 														</tr>
 													</c:forEach>

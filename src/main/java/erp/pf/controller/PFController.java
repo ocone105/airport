@@ -74,7 +74,7 @@ public class PFController {
 		ModelAndView mav = new ModelAndView();
 		List<PFINFODTO> pfinfo = service.pfinfolist();	// 여객시설정보리스트
 		List<PFTEAMDTO> pfteam = service.pfteamlist();	// 시설근무팀리스트
-		List<Integer> pfinfono = service.pflist();				// 인원요청리스트
+		List<Integer> pfinfono = service.pflist();		// 인원요청리스트
 		mav.addObject("pfinfo", pfinfo);
 		mav.addObject("pfteam", pfteam);
 		mav.addObject("pfinfono",pfinfono);
