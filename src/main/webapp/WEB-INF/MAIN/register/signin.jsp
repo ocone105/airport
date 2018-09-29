@@ -59,18 +59,18 @@
 									</div>
 								</div>
 								<div class="form-bottom">
-									<form role="form" action="/airport/member/login.do"
+									<form role="form" action="/airport/j_spring_security_check"
 										method="post" class="login-form" name="loginform">
 										<div class="form-group">
 											<label class="sr-only" for="form-username">ID 아이디</label> <input
 												type="text" name="id" placeholder="ID"
-												class="form-username form-control" id="id">
+												class="form-username form-control" id="id" required="required">
 										</div>
 										<div class="form-group">
 											<label class="sr-only" for="form-password">Password
 												비밀번호</label> <input type="password" name="pwd"
 												placeholder="Password" class="form-password form-control"
-												id="pwd">
+												id="pwd" required="required">
 										</div>
 										<button type="submit" class="btn">Sign in 로그인</button>
 									</form>
@@ -88,7 +88,7 @@
 								</div>
 								<div class="form-bottom">
 									<!-- 네이버 아이디로 로그인 -->
-  <%
+  <%-- <%
     String clientId = "8WNSYq9HslIkdHkdXkX8";//애플리케이션 클라이언트 아이디값";
     String redirectURI = URLEncoder.encode("http://localhost:8088/airport/WEB-INF/MAIN/register/callback.jsp", "UTF-8");
     SecureRandom random = new SecureRandom();
@@ -100,7 +100,7 @@
     session.setAttribute("state", state);
  %>
   <a href="<%=apiURL%>"><img height="50" src="http://static.nid.naver.com/oauth/small_g_in.PNG"/></a>
-  
+ --%>  
 
 
 									<!-- 카카오톡으로 로그인 -->			
@@ -135,7 +135,7 @@
 
 									<form role="form" action="/airport/member/signup.do"
 										method="post" class="registration-form" id="signupform"
-										name="signupform" onsubmit="return join()">
+										name="signupform" >
 
 										<div class="form-group">
 											<label class="sr-only" for="form-id">ID</label> <input
@@ -188,7 +188,7 @@
 											</span>
 										</div>
 
-										<button type="submit" class="btn">Sign up 회원가입</button>
+										<button type="button" class="btn" onclick="return join()">Sign up 회원가입</button>
 
 									</form>
 								</div>

@@ -1,6 +1,7 @@
 package main.member;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -52,6 +53,18 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public int withdraw(MemberDTO member) {
 		return sqlSession.update("main.member.withdraw", member);
+	}
+
+	@Override
+	public List<MemberDTO> memberList() {
+		return sqlSession.selectList("main.member.memberlist");
+	}
+
+	@Override
+	public List<MemberDTO> memberSearch(String search) {
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("search", search);
+		return sqlSession.selectList("main.member.membersearch", map);
 	}
 
 }

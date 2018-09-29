@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import erp.dept.dto.DeptDTO;
 import erp.pf.DTO.PFDTO;
 import erp.pf.DTO.PFINFODTO;
 import erp.pf.DTO.PFTEAMDTO;
@@ -19,7 +20,11 @@ public class PFDAOImpl implements PFDAO {
 	public List<PFINFODTO> pfinfolist() {
 		return sqlSession.selectList("kr.airport.erp.pf.pfinfolist");
 	}
-	
+
+	@Override
+	public PFINFODTO getPfinfo(int pfinfono) {
+		return sqlSession.selectOne("kr.airport.erp.pf.getPfinfo", pfinfono);
+	}
 	@Override
 	public List<PFTEAMDTO> pfteamlist() {
 		return sqlSession.selectList("kr.airport.erp.pf.pfteamlist");
@@ -31,13 +36,28 @@ public class PFDAOImpl implements PFDAO {
 	}
 	
 	@Override
-	public List<PFDTO> pflist() {
-		return sqlSession.selectList("kr.airport.erp.pf.pflist");
+	public List<PFDTO> pflist(int pfinfono) {
+		return sqlSession.selectList("kr.airport.erp.pf.pflist", pfinfono);
 	}
 
 	@Override
+	public List<Integer> pflist() {
+		return sqlSession.selectList("kr.airport.erp.pf.pflist2");
+	}
+	
+	@Override
 	public int pfinsert(PFDTO pf) {
 		return sqlSession.insert("kr.airport.erp.pf.request", pf);
+	}
+
+	@Override
+	public DeptDTO getDept(String pfname) {
+		return sqlSession.selectOne("kr.airport.erp.pf.getDept", pfname);
+	}
+
+	@Override
+	public DeptDTO dept(String deptname) {
+		return sqlSession.selectOne("kr.airport.erp.pf.dept", deptname);
 	}
 
 }
