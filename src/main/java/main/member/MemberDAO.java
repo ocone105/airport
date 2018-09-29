@@ -10,6 +10,7 @@ public interface MemberDAO {
 	int update(MemberDTO member);
 	int withdraw(MemberDTO member);
 	
+	MemberDTO read(String id);
 	List<MemberDTO> memberList();
 	List<MemberDTO> memberSearch(String search);
 }

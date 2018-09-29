@@ -54,4 +54,9 @@ public class MemberServiceImpl implements MemberService {
 		return dao.memberSearch(search);
 	}
 
+	@Override
+	public MemberDTO read(String id) {
+		return dao.read(id);
+	}
+
 }

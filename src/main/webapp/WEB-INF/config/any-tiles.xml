@@ -19,6 +19,10 @@
 	<definition name="myservice" extends="mainTemplate">
 		<put-attribute name="content" value="/WEB-INF/MAIN/myservice/myservice.jsp" />
 	</definition>
+	
+	<definition name="myservice_modify" extends="mainTemplate">
+		<put-attribute name="content" value="/WEB-INF/MAIN/myservice/myservice_modify.jsp" />
+	</definition>
 
 	<definition name="signin" extends="mainTemplate">
 		<put-attribute name="content" value="/WEB-INF/MAIN/register/signin.jsp" />

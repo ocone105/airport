@@ -2,7 +2,6 @@ package main.member;
 
 import java.util.List;
 
-import erp.insa.dto.EmpDTO;
 
 public interface MemberService {
 	int signup(MemberDTO member);
@@ -12,6 +11,7 @@ public interface MemberService {
 	int update(MemberDTO member);
 	int withdraw(MemberDTO member);
 	
+	MemberDTO read(String id);
 	List<MemberDTO> memberList();
 	List<MemberDTO> memberSearch(String search);
 }

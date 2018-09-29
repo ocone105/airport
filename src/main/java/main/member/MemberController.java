@@ -16,6 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
+import erp.dept.dto.DeptDTO;
+import erp.insa.dto.EmpDTO;
+
 @Controller
 public class MemberController {
 
@@ -66,7 +69,6 @@ public class MemberController {
 		member.setPwd(securitypass); // 암호화된 패스워드를 다시 패스워드로 세팅
 
 		int result = service.signup(member);
-		// System.out.println(result + "가입 성공");
 		return "redirect:/main/signin.do";
 	}
 
@@ -80,6 +82,7 @@ public class MemberController {
 			if (loginUser.getState().equals("1")) {
 				viewName = "redirect:/main/index.do";
 				session.setAttribute("loginUser", loginUser);
+				System.out.println("세션: "+session);
 			} else if (loginUser.getState().equals("0")) { // 회원탈퇴의 경우
 				viewName = "redirect:/main/signin.do";
 			}
@@ -111,11 +114,26 @@ public class MemberController {
 	}
 
 	// 회원 정보 수정
-	@RequestMapping(value = "/member/update.do", method = RequestMethod.POST)
-	public String update(MemberDTO user) {
-		int result = service.update(user);
-		System.out.println(result + "수정 성공");
-		return "redirect:/main/myservice.do";
+	@RequestMapping(value="/main/myservice/update.do", method=RequestMethod.GET)
+	public ModelAndView updateView(String id){
+		ModelAndView mav = new ModelAndView();
+		MemberDTO member = service.read(id);
+		mav.addObject("member", member);
+		mav.setViewName("myservice_modify");
+		return mav;
+	}
+	
+	@RequestMapping(value="/main/myservice/update.do", method=RequestMethod.POST)
+	public String update(MemberDTO member){
+		if (member.getEmail_alarm() == null) {
+			member.setEmail_alarm("n");
+		}
+		if (member.getSms_alarm() == null) {
+			member.setSms_alarm("n");
+		}
+		System.out.println("수정한 정보:"+member);
+		int result = service.update(member);
+		return "redirect:/main/myservice";
 	}
 
 	// 회원 탈퇴 - 상태변경
@@ -126,6 +144,19 @@ public class MemberController {
 		return "redirect:/main/index.do";
 	}
 
+	// 회원 정보 읽기
+	@RequestMapping("/main/myservice")
+	public ModelAndView myservice(HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		HttpSession session = request.getSession();
+		//System.out.println("세션 정보:"+session.getAttribute("loginUser"));
+		String id = (String) session.getAttribute("loginUser");
+		MemberDTO member =service.read(id);
+		mav.addObject("member", member);
+		mav.setViewName("myservice");
+		return mav;
+	}
+	
 	// 회원목록
 	@RequestMapping(value = "/main/admin")
 	public ModelAndView emplist() {

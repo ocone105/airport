@@ -23,10 +23,14 @@
 	<select id="idcheck" parameterType="String" resultType="member">
 		select * from member where id = #{id}
 	</select>
+	
+	<select id="read" resultType="member" parameterType="String">
+		select * from member where id=#{id}
+	</select>
 
 	<update id="update" parameterType="member">
 		update member set
-		pwd=#{pwd}, phone=#{phone}, email=#{email}, email_alarm=#{email_alarm}, sms_alarm=#{sms_alarm} 
+		phone=#{phone}, email=#{email}, email_alarm=#{email_alarm}, sms_alarm=#{sms_alarm} 
 		where id=#{id}
 	</update>
 
