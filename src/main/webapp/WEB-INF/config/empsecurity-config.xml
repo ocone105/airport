@@ -8,7 +8,7 @@
 
 <!-- role별로 접근할 수 있는 리소스를 정의하는 작업 -->
 <security:http auto-config="true" use-expressions="true">
-
+	<security:intercept-url pattern="/erp/login.do" access="permitAll"/>
 	<security:intercept-url pattern="/erp/**" access="hasRole('ROLE_EMP')"/>
 
 	<security:form-login 
@@ -38,6 +38,5 @@
 </security:authentication-manager>
 
 <bean id="empProvider" class="erp.login.authentication.EmpAuthenticationProvider"/>
-<import resource="spring-config.xml"/>
-
+	<import resource="spring-config.xml"/>
 </beans>

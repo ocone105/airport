@@ -17,7 +17,7 @@
 	<insert id="empinsert" parameterType="emp">
 		insert into emp
 		values(emp_seq.nextVal,#{empid},#{pwd},#{name},#{birth},#{gender},
-		#{phone},#{email},#{position},'0',sysdate,null,#{deptno})
+		#{phone},#{email},#{position},'0',sysdate,null,#{deptno},'ROLE_EMP')
 	</insert>
 	
 	<update id="empupdate" parameterType="emp">
@@ -32,7 +32,7 @@
 		where empno=#{empno}
 	</update>
 	
-	<select id="securitylogin" resultType="emp" parameterType="emp">
+	<select id="securitylogin" resultType="map">
 		select e.*,d.deptname from emp e, dept d
 		where e.deptno=d.deptno and e.empid=#{empid} and e.state='0'
 	</select>
