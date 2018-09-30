@@ -32,6 +32,11 @@
 		where empno=#{empno}
 	</update>
 	
+	<select id="securitylogin" resultType="emp" parameterType="emp">
+		select e.*,d.deptname from emp e, dept d
+		where e.deptno=d.deptno and e.empid=#{empid} and e.state='0'
+	</select>
+	
 	<select id="login" resultType="emp" parameterType="emp">
 		select e.*,d.deptname from emp e, dept d
 		where e.deptno=d.deptno and e.empid=#{empid} and e.pwd=#{pwd} and e.state='0'
