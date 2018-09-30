@@ -34,10 +34,10 @@
 		where id=#{id}
 	</update>
 
-	<update id="withdraw" parameterType="member">
+	<update id="memberwithdraw" parameterType="String">
 		update member set
-		state='0' where
-		id=#{id}
+		state='0' 
+		where id = #{id}
 	</update>
 	
 	<select id="memberlist" resultType="member">

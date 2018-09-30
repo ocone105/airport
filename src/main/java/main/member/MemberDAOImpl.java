@@ -56,8 +56,8 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public int withdraw(MemberDTO member) {
-		return sqlSession.update("main.member.withdraw", member);
+	public int withdraw(String id) {
+		return sqlSession.update("main.member.memberwithdraw", id);
 	}
 
 	@Override

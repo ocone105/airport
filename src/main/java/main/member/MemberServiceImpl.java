@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import erp.insa.dto.EmpDTO;
 @Service
 public class MemberServiceImpl implements MemberService {
 
@@ -40,8 +39,8 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int withdraw(MemberDTO member) {
-		return dao.withdraw(member);
+	public int withdraw(String id) {
+		return dao.withdraw(id);
 	}
 
 	@Override
