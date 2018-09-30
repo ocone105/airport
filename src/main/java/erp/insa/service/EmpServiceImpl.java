@@ -60,5 +60,9 @@ public class EmpServiceImpl implements EmpService {
 	public List<EmpDTO> empsearch(String tag, String search) {
 		return empdao.empsearch(tag, search);
 	}
+	@Override
+	public boolean idCheck(String empid) {
+		return empdao.idCheck(empid);
+	}
 	
 }

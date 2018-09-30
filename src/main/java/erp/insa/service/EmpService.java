@@ -13,4 +13,5 @@ public interface EmpService {
 	EmpDTO login(EmpDTO emp);
 	void empserviceupdate(EmpDTO emp);
 	List<EmpDTO> empsearch(String tag,String search);
+	boolean idCheck(String empid);
 }

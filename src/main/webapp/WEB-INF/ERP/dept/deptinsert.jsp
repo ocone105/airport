@@ -8,6 +8,39 @@
 <title>Insert title here</title>
 <link href="/airport/resources/common/css/select.css" rel="stylesheet" />
 <script type="text/javascript">
+//아이디 중복확인
+$(document).ready(function() {
+	$("#deptno").bind("keyup",function(){
+		$.ajax({
+			url:"/airport/erp/deptnocheck.do",
+			type:"get",
+			data:{
+				"deptno":$("#deptno").val()
+			},
+			success:function(data){
+				//alert("test")
+				if(data==1){
+					$("#deptnoChk").html("이미 존재하는 부서번호입니다."); 
+				}else{
+					$("#deptnoChk").html("사용가능한 부서번호입니다."); 
+				}
+			}
+		});
+	});
+});
+
+
+//중복 아이디x
+function join(){
+	if($("#deptnoChk").text()=="이미 존재하는 부서번호입니다."){
+		alert("이미 존재하는 부서번호입니다.");
+		return false;
+	}else{
+		document.deptform.submit();
+		alert("부서등록 완료")
+	}
+}
+
 $(document).ready(function() {
 	$("#ctg1").change(function(){
 		deptno = $(this).val();
@@ -56,7 +89,7 @@ $(document).ready(function() {
 						</div>
 						<div class="card-body">
 							<form class="form-horizontal" method="post"
-								action="/airport/erp/deptwrite.do">
+								action="/airport/erp/deptwrite.do" id="deptform" name="deptform">
 								<div class="row">
 									<div class="col-md-4">
 										<div class="form-group">
@@ -105,7 +138,7 @@ $(document).ready(function() {
 											</a>
 											<div id="collapse3" class="panel-collapse collapse">
 												<div class="panel-body" id="input3">
-													<input type='text' class='form-control' name='deptname' id='ctg3'>
+													<input type='text' class='form-control' name='deptname' id='ctg3' required>
 												</div>
 											</div>
 										</div>
@@ -115,31 +148,32 @@ $(document).ready(function() {
 									<div class="col-md-5">
 										<div class="form-group">
 											<label class="bmd-label-floating">부서번호</label> <input
-												type="text" class="form-control" name="deptno" id="deptno">
+												type="text" class="form-control" name="deptno" id="deptno" required>
 												<span>숫자3자리를 더 입력해주세요</span>
+												<span id="deptnoChk">부서번호중복check</span>
 										</div>
 									</div>
 									<div class="col-md-5">
 										<div class="form-group">
 											<label class="bmd-label-floating">매니저</label> <input
-												type="number" class="form-control" name="mgr" id="mgr">
+												type="number" class="form-control" name="mgr" id="mgr" required>
 										</div>
 									</div>
 									<div class="col-md-7">
 										<div class="form-group">
 											<label class="bmd-label-floating">부서연락처</label> <input
-												type="text" class="form-control" name="tel" id="tel">
+												type="text" class="form-control" name="tel" id="tel" required>
 										</div>
 									</div>
 									<div class="col-md-10">
 										<div class="form-group">
 											<label class="bmd-label-floating">임무</label> <input
-												type="text" class="form-control" name="task" id="task">
+												type="text" class="form-control" name="task" id="task" required>
 										</div>
 									</div>
 								</div>
 
-								<button type="submit" class="btn btn-primary pull-right">등록하기</button>
+								<button type="button" class="btn btn-primary pull-right" onclick="return join()">등록하기</button>
 								<div class="clearfix"></div>
 							</form>
 						</div>

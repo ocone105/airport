@@ -1,3 +1,8 @@
+
+
+
+
+
 select * from dept;
 select * from emp;
 select * from dept where deptno='test111';
