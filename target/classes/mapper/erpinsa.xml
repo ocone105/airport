@@ -59,8 +59,8 @@
 				e.deptno=d.deptno and d.deptname like '%' || #{search} || '%'
 			</if>
 		</where>
+		order by e.deptno asc
 	</select>
-	
 	<select id="idcheck" parameterType="String" resultType="emp">
 		select * from emp where empid = #{empid}
 	</select>

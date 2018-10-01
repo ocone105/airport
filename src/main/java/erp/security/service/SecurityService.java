@@ -15,5 +15,6 @@ public interface SecurityService {
 	void reject(String scno);
 	void expire(String scno);
 	void delete(int empno);
+	List<SecurityDTO> passsearch(String tag,String search);
 
 }

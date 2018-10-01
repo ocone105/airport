@@ -66,4 +66,9 @@ public class SecurityServiceImpl implements SecurityService {
 		dao.delete(empno);
 	}
 
+	@Override
+	public List<SecurityDTO> passsearch(String tag, String search) {
+		return dao.passsearch(tag, search);
+	}
+
 }

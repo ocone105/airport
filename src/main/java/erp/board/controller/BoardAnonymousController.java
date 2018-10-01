@@ -19,6 +19,7 @@ import erp.board.DTO.BoardAnonymousDTO;
 import erp.board.DTO.BoardNoticeCmtDTO;
 import erp.board.DTO.BoardNoticeDTO;
 import erp.board.service.BoardAnonymousService;
+import erp.security.dto.SecurityDTO;
 
 @Controller
 public class BoardAnonymousController {
@@ -120,5 +121,16 @@ public class BoardAnonymousController {
 		service.delete(boardno);
 		return "redirect:/erp/anonymouslist.do";
 	}
+	
+	@RequestMapping(value="/erp/aboardsearch.do")
+	public ModelAndView empsearch(String tag, String search){
+		ModelAndView mav = new ModelAndView();
+		List<BoardAnonymousDTO> posts = service.aboardsearch(tag, search);
+		System.out.println(posts);
+		mav.addObject("posts", posts);
+		mav.setViewName("erp/anonymouslist");
+		return mav;
+	}
+	
 	
 }

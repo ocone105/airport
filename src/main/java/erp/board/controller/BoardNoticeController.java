@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
+import erp.board.DTO.BoardAnonymousDTO;
 import erp.board.DTO.BoardNoticeCmtDTO;
 import erp.board.DTO.BoardNoticeDTO;
 import erp.board.service.BoardNoticeService;
@@ -136,6 +137,16 @@ public class BoardNoticeController {
 		
 		mav.addObject("downloadFile", downloadFile);
 		mav.setViewName("fileDownloadView");
+		return mav;
+	}
+	
+	@RequestMapping(value="/erp/nboardsearch.do")
+	public ModelAndView empsearch(String tag, String search){
+		ModelAndView mav = new ModelAndView();
+		List<BoardNoticeDTO> posts = service.nboardsearch(tag, search);
+		System.out.println(posts);
+		mav.addObject("posts", posts);
+		mav.setViewName("erp/noticelist");
 		return mav;
 	}
 
