@@ -44,12 +44,13 @@
 						<a href="/airport/erp/noticewrite.do">글쓰기</a>
 					</div>
 					<div class="kboard-search">
-						<form id="kboard-search-form-1" method="get" action="/airport/erp/search.do">
-							<select name="column">
-								<option value="">전체</option>
+						<form id="anonymousboard-search" method="post" action="/airport/erp/nboardsearch.do">
+							<select name="tag" id="tag">
+								<option value="all">전체</option>
 								<option value="title">제목</option>
-								<option value="content">내용</option>
-							</select> <input type="text" name="search" value="">
+								<option value="txt">내용</option>
+								<option value="cmttxt">댓글</option>
+							</select> <input type="text" name="search" id="search" value="">
 							<button type="submit" class="kboard-thumbnail-button-small">검색</button>
 						</form>
 					</div>
