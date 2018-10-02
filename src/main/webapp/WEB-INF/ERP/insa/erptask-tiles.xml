@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+      "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+      "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="erp/empinsert" extends="ERPTemplate">
+		<put-attribute name="content" value="/WEB-INF/ERP/insa/empinsert.jsp"/>
+	</definition>
+	<definition name="erp/emplist" extends="ERPTemplate">
+		<put-attribute name="content" value="/WEB-INF/ERP/insa/emplist.jsp"/>
+	</definition>
+	<definition name="erp/empread" extends="ERPTemplate">
+		<put-attribute name="content" value="/WEB-INF/ERP/insa/empread.jsp"/>
+	</definition>
+	<definition name="erp/empupdate" extends="ERPTemplate">
+		<put-attribute name="content" value="/WEB-INF/ERP/insa/empupdate.jsp"/>
+	</definition>
+	
+	<definition name="erp/empservice" extends="ERPTemplate">
+		<put-attribute name="content" value="/WEB-INF/ERP/insa/empservice.jsp"/>
+	</definition>
+	<definition name="erp/empserviceupdate" extends="ERPTemplate">
+		<put-attribute name="content" value="/WEB-INF/ERP/insa/empserviceupdate.jsp"/>
+	</definition>
+	
+</tiles-definitions>

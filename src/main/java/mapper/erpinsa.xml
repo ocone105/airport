@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.airport.erp.insa">
+	<select id="emplist" resultType="emp">
+		select e.*,d.deptname from emp e, dept d
+		where e.deptno=d.deptno and state='0'
+		order by e.deptno asc
+	</select>
+	
+	<select id="empread" resultType="emp" parameterType="Integer">
+		select e.*,d.deptname from emp e, dept d
+		where e.deptno=d.deptno and e.empno=#{empno}
+	</select>
+	
+	<insert id="empinsert" parameterType="emp">
+		insert into emp
+		values(emp_seq.nextVal,#{empid},#{pwd},#{name},#{birth},#{gender},
+		#{phone},#{email},#{position},'0',sysdate,null,#{deptno},'ROLE_EMP')
+	</insert>
+	
+	<update id="empupdate" parameterType="emp">
+		update emp 
+		set pwd=#{pwd},gender=#{gender},phone=#{phone},email=#{email},position=#{position},deptno=#{deptno} 
+		where empno=#{empno}
+	</update>
+
+	<update id="empdelete" parameterType="Integer">
+		update emp 
+		set state='1', enddate=sysdate
+		where empno=#{empno}
+	</update>
+	
+	<select id="securitylogin" resultType="map">
+		select e.*,d.deptname from emp e, dept d
+		where e.deptno=d.deptno and e.empid=#{empid} and e.state='0'
+	</select>
+	
+	<select id="login" resultType="emp" parameterType="emp">
+		select e.*,d.deptname from emp e, dept d
+		where e.deptno=d.deptno and e.empid=#{empid} and e.pwd=#{pwd} and e.state='0'
+	</select>
+	
+	
+	<update id="empserviceupdate" parameterType="emp">
+		update emp 
+		set pwd=#{pwd},phone=#{phone},email=#{email}
+		where empno=#{empno}
+	</update>
+	
+	<select id="empsearch" resultType="emp" parameterType="Map">
+		select e.*,d.deptname from emp e, dept d
+		<where>
+			<if test="tag=='name' and search!=''">
+				e.deptno=d.deptno and e.name like '%' || #{search} || '%'
+			</if>
+			<if test="tag=='deptname' and search!=''">
+				e.deptno=d.deptno and d.deptname like '%' || #{search} || '%'
+			</if>
+		</where>
+		order by e.deptno asc
+	</select>
+	<select id="idcheck" parameterType="String" resultType="emp">
+		select * from emp where empid = #{empid}
+	</select>
+</mapper>
+
+

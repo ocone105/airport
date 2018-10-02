@@ -3,12 +3,26 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-	<!-- <typeAliases>
-  		<typeAlias type="kr.kitri.bigdataShop.product.ProductDTO" alias="product"/>
-  		<typeAlias type="kr.kitri.bigdataShop.product.comment.ProductCommentDTO" alias="comment"/>
+	<typeAliases> 
+		<typeAlias type="erp.board.DTO.BoardNoticeDTO" alias="notice" />
+		<typeAlias type="erp.board.DTO.BoardAnonymousDTO" alias="anonymous" />
+		<typeAlias type="erp.board.DTO.BoardNoticeCmtDTO" alias="noticeCmt" />
+		<typeAlias type="erp.pf.DTO.PFINFODTO" alias="pfinfo" />
+		<typeAlias type="erp.pf.DTO.PFTEAMDTO" alias="pfteam" />
+		<typeAlias type="erp.pf.DTO.PFDTO" alias="pf" />
+		<typeAlias type="main.member.MemberDTO" alias="member" />
+		<typeAlias type="main.realtime.dto.airportcodeDTO" alias="airport" />
+		<typeAlias type="erp.dept.dto.DeptDTO" alias="dept" />
+		<typeAlias type="erp.insa.dto.EmpDTO" alias="emp" />
+		<typeAlias type="erp.security.dto.SecurityDTO" alias="security" />
 	</typeAliases>
 	<mappers>
-		<mapper resource="/mapper/product.xml"/>
-		<mapper resource="/mapper/productComment.xml"/>
-	</mappers> -->
+		<mapper resource="/mapper/BoardNotice.xml" />
+		<mapper resource="mapper/member.xml" />
+		<mapper resource="/mapper/erpdept.xml" />
+		<mapper resource="/mapper/erpinsa.xml" />
+		<mapper resource="/mapper/erpsecurity.xml" />
+		<mapper resource="/mapper/erppf.xml" />
+		<mapper resource="/mapper/main.xml" />
+	</mappers>
 </configuration>

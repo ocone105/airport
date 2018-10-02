@@ -1,0 +1,8 @@
+mongoexport --db airport --collection abnormal --out C:\Users\dy\Desktop\data\abnormal.json
+mongoexport --db airport --collection allflight --out C:\Users\dy\Desktop\data\allflight.json
+
+mongoimport -d airport -c weather --type csv --file C:\Users\dy\Desktop\data\weather.csv --headerline
+mongoimport -d airport -c abnormal --file C:\Users\dy\Desktop\data\abnormal.json
+mongoimport -d airport -c allflight --file C:\Users\dy\Desktop\data\allflight.json
+
+data.zip에 있음

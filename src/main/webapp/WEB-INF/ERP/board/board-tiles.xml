@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+      "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+      "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="erp/noticelist" extends="ERPTemplate">
+		<put-attribute name="content" value="/WEB-INF/ERP/board/noticeboardlist.jsp"/>
+	</definition>
+	<definition name="erp/noticewrite" extends="ERPTemplate">
+		<put-attribute name="content" value="/WEB-INF/ERP/board/notice-write.jsp"/>
+	</definition>
+	<definition name="erp/noticeupdate" extends="ERPTemplate">
+		<put-attribute name="content" value="/WEB-INF/ERP/board/notice-update.jsp"/>
+	</definition>
+	<definition name="erp/anonymousupdate" extends="ERPTemplate">
+		<put-attribute name="content" value="/WEB-INF/ERP/board/anonymous-update.jsp"/>
+	</definition>
+	<definition name="erp/anonymouslist" extends="ERPTemplate">
+		<put-attribute name="content" value="/WEB-INF/ERP/board/anonymousboardlist.jsp"/>
+	</definition>
+	<definition name="erp/anonymouswrite" extends="ERPTemplate">
+		<put-attribute name="content" value="/WEB-INF/ERP/board/anonymous-write.jsp"/>
+	</definition>
+	<definition name="erp/boardread1" extends="ERPTemplate">
+		<put-attribute name="content" value="/WEB-INF/ERP/board/notice-read.jsp"/>
+	</definition>
+	<definition name="erp/boardread2" extends="ERPTemplate">
+		<put-attribute name="content" value="/WEB-INF/ERP/board/anonymous-read.jsp"/>
+	</definition>
+	
+</tiles-definitions>

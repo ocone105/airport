@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.airport.erp.pf">
+	
+	<select id="pfinfolist" resultType="pfinfo">
+		select * from PFINFO 
+	</select>
+	
+	<select id="getPfinfo" parameterType="Integer" resultType="pfinfo">
+		select * from PFINFO where pfinfono = #{pfinfono}
+	</select>
+	
+	<select id="pfteamlist" resultType="pfteam">
+		select * from PFTEAM
+	</select>
+	
+	<select id="pfteam" parameterType="Integer" resultType="pfteam">
+		select * from PFTEAM where pfinfono = #{pfinfono}
+	</select>
+	
+	<select id="pflist" parameterType="Integer" resultType="pf">
+		select * from PF where pfinfono=#{pfinfono}
+	</select>
+	
+	<select id="pflist2" resultType="Integer">
+		select pfinfono from pf group by pfinfono
+	</select>
+	
+	<insert id="request" parameterType="pf">
+		insert into PF 
+		values(pfno_seq.nextval, #{pfinfono}, sysdate, #{pftxt}, #{pfstaff}, #{deptno})
+	</insert>
+	
+	<select id="getDept" parameterType="String" resultType="dept">
+		select d.*
+		from pfinfo pi, pfteam pt, dept d
+		where pi.pfinfono=pt.pfinfono and pt.deptno=d.deptno and pi.pfname=#{pfname}
+	</select>
+	
+	<select id="dept" parameterType="String" resultType="dept">
+		select * from dept where deptname=#{deptname}
+	</select>
+	
+</mapper>

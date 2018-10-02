@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+      "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+      "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="erp/permissionlist" extends="ERPTemplate">
+		<put-attribute name="content" value="/WEB-INF/ERP/security/pass-permission.jsp"/>
+	</definition>
+	<definition name="erp/passlist" extends="ERPTemplate">
+		<put-attribute name="content" value="/WEB-INF/ERP/security/pass-list.jsp"/>
+	</definition>
+	<definition name="erp/passread" extends="ERPTemplate">
+		<put-attribute name="content" value="/WEB-INF/ERP/security/pass-read.jsp"/>
+	</definition>
+	
+</tiles-definitions>

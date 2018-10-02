@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="main.member">
+
+	<select id="securityLogin" resultType="map">
+		select * from member where id = #{id} and state = '1'
+	</select>
+	
+	<insert id="signup" parameterType="member">
+		insert into member values
+		(#{id}, #{pwd}, #{name}, #{phone}, #{email}, '1', #{email_alarm}, #{sms_alarm}, 'ROLE_USER')
+	</insert>
+
+	<insert id="kakao" parameterType="member">
+		insert into member values
+		(#{id}, null, #{name}, null, #{email}, '2', 'y', 'n', 'ROLE_USER')
+	</insert>
+	
+	<select id="login" parameterType="Map" resultType="member">
+		select * from member where id = #{id} and pwd = #{pwd}
+	</select>
+
+	<select id="idcheck" parameterType="String" resultType="member">
+		select * from member where id = #{id}
+	</select>
+	
+	<select id="read" resultType="member" parameterType="String">
+		select * from member where id=#{id}
+	</select>
+
+	<update id="update" parameterType="member">
+		update member set
+		phone=#{phone}, email=#{email}, email_alarm=#{email_alarm}, sms_alarm=#{sms_alarm} 
+		where id=#{id}
+	</update>
+
+	<update id="memberwithdraw" parameterType="String">
+		update member set
+		state='0' 
+		where id = #{id}
+	</update>
+	
+	<select id="memberlist" resultType="member">
+		select * from member
+	</select>
+	
+	<select id="membersearch" resultType="member" parameterType="Map">
+		select * from member
+		<where>
+			<if test="search!=''">
+				id like '%' || #{search} || '%'
+				or name like '%' || #{search} || '%'
+			</if>
+		</where>
+	</select>
+		
+	
+</mapper>

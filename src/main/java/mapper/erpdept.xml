@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.airport.erp.dept">
+	<select id="deptread" resultType="dept" parameterType="String">
+		select * from dept where deptno=#{deptno}
+	</select>
+
+	<select id="deptlist" resultType="dept">
+		select * from dept where deptstep=1 order by deptname asc
+	</select>
+	
+	<select id="deptstep" resultType="dept" parameterType="String">
+		select * from dept 
+		where uppercode=#{deptno}
+		order by deptname asc
+	</select>
+	
+	<select id="getbyupper" resultType="dept" parameterType="String">
+		select * from dept 
+		where uppercode=(select uppercode from dept where deptno=#{deptno})
+		order by deptname asc
+	</select>
+	
+	<select id="getupcode" resultType="String" parameterType="String">
+		select uppercode from dept where deptno=#{deptno,jdbcType=VARCHAR}
+	</select>
+	
+	<insert id="deptinsert" parameterType="dept">
+		insert into dept 
+		values(#{deptno},#{deptname},3,#{uppercode},#{tel},#{task},#{mgr})
+	</insert>
+	
+	<delete id="deptdelete" parameterType="String">
+		delete from dept where deptno=#{deptno}
+	</delete>
+	
+	<update id="deptupdate" parameterType="dept">
+		update dept 
+		set deptname=#{deptname},tel=#{tel},task=#{task},mgr=#{mgr} 
+		where deptno=#{deptno}
+	</update>
+	
+	<select id="deptnocheck" parameterType="String" resultType="dept">
+		select * from dept where deptno = #{deptno}
+	</select>
+</mapper>
+
+

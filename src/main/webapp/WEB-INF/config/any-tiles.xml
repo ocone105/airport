@@ -4,21 +4,44 @@
        "http://tiles.apache.org/dtds/tiles-config_3.0.dtd">
 
 <tiles-definitions>
-
 	<definition name="realtime" extends="mainTemplate">
-		<put-attribute name="content" value="/WEB-INF/content/main/realtime.jsp" />
-	</definition>	
-	
+		<put-attribute name="content" value="/WEB-INF/MAIN/realtime/realtime.jsp" />
+	</definition>
+
 	<definition name="passenger" extends="mainTemplate">
-		<put-attribute name="content" value="/WEB-INF/content/main/predictPassenger.jsp" />
+		<put-attribute name="content" value="/WEB-INF/MAIN/passenger/predictPassenger.jsp" />
 	</definition>
-	
+
 	<definition name="abnormalflight" extends="mainTemplate">
-		<put-attribute name="content" value="/WEB-INF/content/main/predictFlight.jsp" />
+		<put-attribute name="content" value="/WEB-INF/MAIN/flight/predictFlight.jsp" />
 	</definition>
-	
+
 	<definition name="myservice" extends="mainTemplate">
-		<put-attribute name="content" value="/WEB-INF/content/main/myservice.jsp" />
+		<put-attribute name="content" value="/WEB-INF/MAIN/myservice/myservice.jsp" />
 	</definition>
 	
+	<definition name="myservice_modify" extends="mainTemplate">
+		<put-attribute name="content" value="/WEB-INF/MAIN/myservice/myservice_modify.jsp" />
+	</definition>
+	
+	<definition name="myservice_withdraw" extends="mainTemplate">
+		<put-attribute name="content" value="/WEB-INF/MAIN/myservice/myservice_withdraw.jsp" />
+	</definition>
+
+	<definition name="signin" extends="mainTemplate">
+		<put-attribute name="content" value="/WEB-INF/MAIN/register/signin.jsp" />
+	</definition>
+
+	<definition name="adminMain" extends="mainTemplate">
+		<put-attribute name="content" value="/WEB-INF/MAIN/myservice/admin.jsp" />
+	</definition>
+	
+	<definition name="privacy" extends="mainTemplate">
+		<put-attribute name="content" value="/WEB-INF/MAIN/register/privacy.jsp" />
+	</definition>
+
+	<definition name="email" extends="mainTemplate">
+		<put-attribute name="content" value="/WEB-INF/MAIN/register/email.jsp" />
+	</definition>
+
 </tiles-definitions>   
