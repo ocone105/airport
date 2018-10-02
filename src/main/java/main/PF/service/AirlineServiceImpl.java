@@ -6,9 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import main.PF.dao.AirlineDAO;
+import main.PF.dto.complex.ComplexDTO;
+import main.PF.dto.complex.Complex_CancelDTO;
+import main.PF.dto.complex.Complex_DelayDTO;
+import main.PF.dto.condition.ConditionDTO;
+import main.PF.dto.condition.Condition_CancelDTO;
+import main.PF.dto.condition.Condition_DelayDTO;
 import main.PF.dto.connection.ConnectionDTO;
 import main.PF.dto.connection.Connection_CancelDTO;
 import main.PF.dto.connection.Connection_DelayDTO;
+import main.PF.dto.repair.RepairDTO;
+import main.PF.dto.repair.Repair_CancelDTO;
+import main.PF.dto.repair.Repair_DelayDTO;
 
 @Service
 public class AirlineServiceImpl implements AirlineService {
@@ -22,56 +31,59 @@ public class AirlineServiceImpl implements AirlineService {
 
 	@Override
 	public List<Connection_CancelDTO> findcon_cancel() {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.findcon_cancel();
 	}
 
 	@Override
 	public List<Connection_DelayDTO> findcon_delay() {
+		return dao.findcon_delay();
+	}
+	
+
+	@Override
+	public List<RepairDTO> findre() {
+		return dao.findre();
+	}
+
+	@Override
+	public List<Repair_CancelDTO> findre_cancel() {
+		return dao.findre_cancel();
+	}
+
+	@Override
+	public List<Repair_DelayDTO> findre_delay() {
+		return dao.findre_delay();
+	}
+
+	@Override
+	public List<ComplexDTO> findcom() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-/*	@Autowired
-	ScoreMongoDAO dao;
-	
+
 	@Override
-	public ScoreDTO findById(String key, String value) {
-		return dao.findById(key, value);
+	public List<Complex_CancelDTO> findcom_cancel() {
+		return dao.findcom_cancel();
 	}
 
 	@Override
-	public void insertDocument(ScoreDTO doc) {
-		dao.insertDocument(doc);
+	public List<Complex_DelayDTO> findcom_delay() {
+		return dao.findcom_delay();
 	}
 
 	@Override
-	public void insertAllDocument(List<ScoreDTO> docs) {
-		dao.insertAllDocument(docs);
+	public List<ConditionDTO> findcond() {
+		return dao.findcond();
 	}
 
 	@Override
-	public List<ScoreDTO> findCriteria(String key, String value) {
-		return dao.findCriteria(key, value);
+	public List<Condition_CancelDTO> findcond_cancel() {
+		return dao.findcond_cancel();
 	}
 
 	@Override
-	public void update(ScoreDTO document) {
-		dao.update(document);
+	public List<Condition_DelayDTO> findcond_delay() {
+		return dao.findcond_delay();
 	}
-
-	@Override
-	public void test1() {
-
-	}
-
-	@Override
-	public List<ScoreDTO> findAll() {
-		return dao.findAll();
-	}
-
-	@Override
-	public List<ScoreDTO> findAll(int pageNo) {
-		return dao.findAll(pageNo);
-	}*/
 
 }
