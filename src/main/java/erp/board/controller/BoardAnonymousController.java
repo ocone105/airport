@@ -36,7 +36,7 @@ public class BoardAnonymousController {
 	@RequestMapping("/erp/anonymouslist.do")
 	public ModelAndView anonymouslist() {
 		List<ConnectionDTO> dto = airservice.findcon();
-		System.out.println("mongoTest:"+dto);
+		System.out.println("mongoTest임:"+dto);
 		List<BoardAnonymousDTO> posts = service.boardlist();
 		return new ModelAndView("erp/anonymouslist", "posts", posts);
 	}
