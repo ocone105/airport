@@ -1,4 +1,4 @@
-package main.controller;
+package main.realtime.controller;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -16,8 +16,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import main.api.FlightDTO;
-import main.api.realtimeAPI;
+import main.realtime.api.FlightDTO;
+import main.realtime.api.realtimeAPI;
 
 @Controller
 public class RealtimeController {

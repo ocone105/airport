@@ -1,4 +1,4 @@
-package main.controller;
+package main.realtime.controller;
 
 import java.util.List;
 import java.util.Map;

@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 
 import main.PP.dto.PredictPassengerDTO;
 import main.PP.dto.RealTimePassengerDTO;
-import main.api.FlightDTO;
+import main.realtime.api.FlightDTO;
 
 @Service
 public class PredictPassenger {
