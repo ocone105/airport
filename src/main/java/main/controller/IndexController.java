@@ -1,4 +1,4 @@
-package main.realtime.controller;
+package main.controller;
 
 import java.util.List;
 import java.util.Map;
@@ -15,7 +15,7 @@ import org.springframework.web.servlet.view.AbstractView;
 import erp.pf.DTO.PFINFODTO;
 import erp.pf.DTO.PFTEAMDTO;
 import erp.pf.service.PFService;
-
+ 
 @Controller
 public class IndexController extends AbstractView{
 
@@ -32,7 +32,7 @@ public class IndexController extends AbstractView{
 		return "abnormalflight";
 	}
 
-	@RequestMapping("/main/myservice")
+/*	@RequestMapping("/main/myservice")
 	public ModelAndView myservice() {
 		ModelAndView mav = new ModelAndView();
 		List<PFINFODTO> pfinfo = service.pfinfolist();	// 여객시설정보리스트
@@ -41,7 +41,7 @@ public class IndexController extends AbstractView{
 		mav.addObject("pfteam", pfteam);
 		mav.setViewName("myservice");
 		return mav;
-	}
+	}*/
 
 	@RequestMapping("/main/signin.do")
 	public String signin() {
