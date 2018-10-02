@@ -6,6 +6,25 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+$(document).ready(function () {
+	   $(function () {
+	            $("#phone").keydown(function (event) {
+	             var key = event.charCode || event.keyCode || 0;
+	             $text = $(this); 
+	             if (key !== 8 && key !== 9) {
+	                 if ($text.val().length === 3) {
+	                     $text.val($text.val() + '-');
+	                 }
+	                 if ($text.val().length === 8) {
+	                     $text.val($text.val() + '-');
+	                 }
+	             }
+	             return (key == 8 || key == 9 || key == 46 || (key >= 48 && key <= 57) || (key >= 96 && key <= 105));
+	         })
+	   });
+});
+</script>
 </head>
 <body>
 	<div class="content">
@@ -44,7 +63,7 @@
 											</tr>
 											<tr>
 												<td>비밀번호</td>
-												<td><input type="password" id="pwd" name="pwd" value="${erploginUser.pwd }"></td>
+												<td><input class="form-control" type="password" id="pwd" name="pwd" value="${erploginUser.pwd }" required maxlength="15"></td>
 											</tr>
 											<tr>
 												<td>생년월일</td>
@@ -71,11 +90,11 @@
 											</tr>
 											<tr>
 												<td>Email</td>
-												<td><input type="email" name="email" value="${erploginUser.email }"></td>
+												<td><input class="form-control" type="email" name="email" value="${erploginUser.email }" required maxlength="30"></td>
 											</tr>
 											<tr>
 												<td>Phone Number</td>
-												<td><input type="text" name="phone" value="${erploginUser.phone }"></td>
+												<td><input class="form-control" type="text" id="phone" name="phone" value="${erploginUser.phone }" required maxlength="13"></td>
 											</tr>
 										</tbody>
 									</table>

@@ -5,6 +5,7 @@ import java.util.List;
 import erp.board.DTO.BoardAnonymousDTO;
 import erp.board.DTO.BoardNoticeCmtDTO;
 import erp.board.DTO.BoardNoticeDTO;
+import erp.security.dto.SecurityDTO;
 
 public interface BoardAnonymousDAO {
 
@@ -18,4 +19,6 @@ public interface BoardAnonymousDAO {
 	int insertCmt(BoardNoticeCmtDTO cmt);
 	List<BoardAnonymousDTO> Cmtlist(int boardno);
 	int deleteCmt(int cmtno);
+	
+	List<BoardAnonymousDTO> aboardsearch(String tag,String search);
 }

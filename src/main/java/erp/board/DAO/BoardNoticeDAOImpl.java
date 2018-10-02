@@ -1,6 +1,8 @@
 package erp.board.DAO;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +59,14 @@ public class BoardNoticeDAOImpl implements BoardNoticeDAO {
 	@Override
 	public int deleteCmt(int cmtno) {
 		return sqlSession.delete("kr.airport.erp.board.deleteCmt", cmtno);
+	}
+
+	@Override
+	public List<BoardNoticeDTO> nboardsearch(String tag, String search) {
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("tag", tag);
+		map.put("search", search);
+		return sqlSession.selectList("kr.airport.erp.board.nboardsearch", map);
 	}
 
 	

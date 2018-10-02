@@ -12,6 +12,7 @@
         <div class="container">
           <div class="col-lg-6 col-md-8 ml-auto mr-auto">
             <form class="form" method="post" action="/airport/erp/login.do">
+           <!--  <form class="form" method="post" action=" /airport/j_spring_security_check"> -->
               <div class="card card-login">
                 <div class="card-header ">
                   <div class="card-header ">

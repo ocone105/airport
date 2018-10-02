@@ -11,15 +11,13 @@
 	<div class="content">
 		<div class="container-fluid">
 			<div class="row">
-				<form class="/airport/erp/empsearch.do">
-					<select name="tag">
-						<option value="all">전체</option>
-						<option value="id">사원번호</option>
-						<option value="title">이름</option>
-						<option value="content">부서</option>
+				<form action="/airport/erp/passsearch.do"  method="post">
+					<select name="tag" id="tag">
+						<option value="name">이름</option>
+						<option value="deptname">부서명</option>
 					</select>
 					<div class="input-group no-border">
-						<input type="text" value="" class="form-control"
+						<input type="text" name="search" id="search" class="form-control"
 							placeholder="Search...">
 						<button type="submit"
 							class="btn btn-white btn-round btn-just-icon">

@@ -61,4 +61,9 @@ public class BoardAnonymousServiceImpl implements BoardAnonymousService {
 		return dao.deleteCmt(cmtno);
 	}
 
+	@Override
+	public List<BoardAnonymousDTO> aboardsearch(String tag, String search) {
+		return dao.aboardsearch(tag, search);
+	}
+
 }

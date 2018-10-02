@@ -15,8 +15,6 @@ import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
 
 import main.PP.dto.PredictPassengerDTO;
-import main.PP.dto.RealTimePassengerDTO;
-import main.api.FlightDTO;
 
 @Service
 public class PredictPassenger {

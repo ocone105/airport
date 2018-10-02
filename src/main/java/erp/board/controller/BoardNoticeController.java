@@ -20,12 +20,16 @@ import org.springframework.web.util.WebUtils;
 import erp.board.DTO.BoardNoticeCmtDTO;
 import erp.board.DTO.BoardNoticeDTO;
 import erp.board.service.BoardNoticeService;
+import main.PF.dto.connection.ConnectionDTO;
+import main.PF.service.AirlineService;
 
 @Controller
 public class BoardNoticeController {
 	
 	@Autowired
 	BoardNoticeService service;
+	@Autowired 
+	AirlineService aservice;
 	
 	@RequestMapping("/erp/noticelist.do")
 	public ModelAndView noticelist(String pageNo){
@@ -136,6 +140,16 @@ public class BoardNoticeController {
 		
 		mav.addObject("downloadFile", downloadFile);
 		mav.setViewName("fileDownloadView");
+		return mav;
+	}
+	
+	@RequestMapping(value="/erp/nboardsearch.do")
+	public ModelAndView empsearch(String tag, String search){
+		ModelAndView mav = new ModelAndView();
+		List<BoardNoticeDTO> posts = service.nboardsearch(tag, search);
+		System.out.println(posts);
+		mav.addObject("posts", posts);
+		mav.setViewName("erp/noticelist");
 		return mav;
 	}
 

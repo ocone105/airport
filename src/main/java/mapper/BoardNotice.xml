@@ -53,4 +53,46 @@
 	<delete id="deleteCmt" parameterType="Integer">
 		delete from BOARDCMT where cmtno=#{cmtno}
 	</delete>	
+	
+	
+	<select id="aboardsearch" resultType="anonymous" parameterType="Map">
+		select * from BOARD 
+		<where>
+			<if test="tag=='all' and search!=''">
+				ctg='anonymous' and title like '%' || #{search} || '%' or txt like '%' || #{search} || '%'
+				or boardno in (select boardno from BOARDCMT where cmttxt like '%' || #{search} || '%')
+			</if>
+			<if test="tag=='title' and search!=''">
+				ctg='anonymous' and title like '%' || #{search} || '%'
+			</if>
+			<if test="tag=='txt' and search!=''">
+				ctg='anonymous' and txt like '%' || #{search} || '%'
+			</if>
+			<if test="tag=='cmttxt' and search!=''">
+			 	ctg='anonymous' and boardno in (select boardno from BOARDCMT where cmttxt like '%' || #{search} || '%')
+			</if>
+		</where>
+		order by boarddate desc
+	</select>
+	
+	<select id="nboardsearch" resultType="notice" parameterType="Map">
+		select * from BOARD 
+		<where>
+			<if test="tag=='all' and search!=''">
+				ctg='notice' and title like '%' || #{search} || '%' or txt like '%' || #{search} || '%'
+				or boardno in (select boardno from BOARDCMT where cmttxt like '%' || #{search} || '%')
+			</if>
+			<if test="tag=='title' and search!=''">
+				ctg='notice' and title like '%' || #{search} || '%'
+			</if>
+			<if test="tag=='txt' and search!=''">
+				ctg='notice' and txt like '%' || #{search} || '%'
+			</if>
+			<if test="tag=='cmttxt' and search!=''">
+			 	ctg='notice' and boardno in (select boardno from BOARDCMT where cmttxt like '%' || #{search} || '%')
+			</if>
+		</where>
+		order by boarddate desc
+	</select>
+	
 </mapper>

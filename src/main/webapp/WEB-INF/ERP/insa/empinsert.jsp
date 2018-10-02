@@ -7,62 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="/airport/resources/common/css/select.css" rel="stylesheet" />
-<script type="text/javascript">
-$(document).ready(function() {
-	$("#ctg1").change(function(){
-		deptno = $(this).val();
-		$("#deptno").val(deptno)
-		$.ajax({
-			url: "/airport/erp/deptlist",
-			type: "get",
-			data:{
-				"deptno":deptno
-			},
-			success:function(data){
-				//alert(data); 	
-				mydata = ""; 
-				for(i=0;i<data.length;i++){
-					mydata = mydata + "<option value='"+data[i].deptno+"'>"+data[i].deptname+"</option>";
-				} 
-				if(data[0].deptstep==3){
-					$("#ctg2").empty(mydata);
-					$("#ctg2").append("<option value='"+deptno+"'>없음</option>");
-					$("#ctg3").empty(mydata);
-					$("#ctg3").append(mydata);
-				}else{
-					$("#ctg2").empty(mydata);
-					$("#ctg2").append(mydata);
-				}
-			},
-			error:function(a,b,c){	//ajax실패시 원인(에러메시지)
-				alert(a+b+c);
-			}
-		}); 
-	});
-	$(document).on("change","#ctg2",function(){
-		deptno = $(this).val();
-		$.ajax({
-			url: "/airport/erp/insadept",
-			type: "get",
-			data:{
-				"deptno":deptno
-			},
-			success:function(data){
-				//alert(data); 	
-				mydata = ""; 
-				for(i=0;i<data.length;i++){
-					mydata = mydata + "<option value='"+data[i].deptno+"'>"+data[i].deptname+"</option>";
-				} 
-				$("#ctg3").empty(mydata);
-				$("#ctg3").append(mydata);
-			},
-			error:function(a,b,c){	//ajax실패시 원인(에러메시지)
-				alert(a+b+c);
-			}
-		}); 
-	});
-});
-</script>
+<script src="/airport/resources/common/js/empinsert.js"></script>
 </head>
 <body>
 	<div class="content">
@@ -76,36 +21,37 @@ $(document).ready(function() {
 						</div>
 						<div class="card-body">
 							<form class="form-horizontal" method="post"
-								action="/airport/erp/empinsert.do">
+								action="/airport/erp/empinsert.do" id="signupform" name="signupform">
 								<div class="row">
 									<div class="col-md-4">
-										<div class="form-group">
+										<div class="form-group ">
 											<label class="bmd-label-floating">사원ID</label> <input
-												type="text" class="form-control" name="empid">
+												type="text" class="form-control" id="empid" name="empid" required maxlength="15">
+												<p class="help-block" id="idChk">아이디중복check</p>
 										</div>
 									</div>
 									<div class="col-md-5">
 										<div class="form-group">
 											<label class="bmd-label-floating">비밀번호</label> <input
-												type="password" class="form-control" name="pwd">
+												type="password" class="form-control" name="pwd" required maxlength="15">
 										</div>
 									</div>
 									<div class="col-md-8">
 										<div class="form-group">
 											<label class="bmd-label-floating">이름</label> <input
-												type="text" class="form-control" name="name">
+												type="text" class="form-control" name="name" required>
 										</div>
 									</div>
 									<div class="col-md-5">
 										<div class="form-group">
 											<label class="bmd-label-floating">생일</label> <input
-												type="text" class="form-control" name="birth"> 
+												type="text" class="form-control" name="birth" required> 
 										</div>
 									</div>
 									<div class="col-md-5">
 										<div class="form-group">
 											<label class="bmd-label-floating">성별</label> 
-											<div class="radio">
+											<div class="radio" required>
 												<label> <input type="radio" name="gender" value="m" checked/>남자</label> 
 												<label> <input type="radio" name="gender" value="f" />여자
 												</label>
@@ -115,13 +61,13 @@ $(document).ready(function() {
 									<div class="col-md-10">
 										<div class="form-group">
 											<label class="bmd-label-floating">전화번호</label> <input
-												type="text" class="form-control" name="phone">
+												type="text" class="form-control" name="phone" id="phone" required maxlength="13">
 										</div>
 									</div>
 									<div class="col-md-8">
 										<div class="form-group">
 											<label class="bmd-label-floating">Email address</label> <input
-												type="email" class="form-control" name="email">
+												type="email" class="form-control" name="email" required maxlength="30">
 										</div>
 									</div>
 								</div>
@@ -182,11 +128,11 @@ $(document).ready(function() {
 									<div class="col-md-4">
 										<div class="form-group">
 											<label class="bmd-label-floating">직급</label> <input
-												type="text" class="form-control" name="position">
+												type="text" class="form-control" name="position" required>
 										</div>
 									</div>
 								</div>
-								<button type="submit" class="btn btn-primary pull-right">등록하기</button>
+								<button type="button" class="btn btn-primary pull-right" onclick="return join()">등록하기</button>
 								<div class="clearfix"></div>
 							</form>
 						</div>

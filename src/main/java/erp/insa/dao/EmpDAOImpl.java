@@ -61,4 +61,14 @@ public class EmpDAOImpl implements EmpDAO {
 		map.put("search", search);
 		return sqlSession.selectList("kr.airport.erp.insa.empsearch", map);
 	}
+
+	@Override
+	public boolean idCheck(String empid) {
+		boolean state = false;
+		EmpDTO user = sqlSession.selectOne("kr.airport.erp.insa.idcheck", empid);
+		if (user != null) {
+			state = true;
+		}
+		return state;
+	}
 }
