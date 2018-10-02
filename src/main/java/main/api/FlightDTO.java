@@ -12,7 +12,7 @@ public class FlightDTO {
 	private String terminalid;
 	private String remark;
 	private String time;
-	
+	 
 	public FlightDTO() {}
 
 	public FlightDTO(String airline, String airport, String airportcode, String chkinrange, long estimatedDateTime,

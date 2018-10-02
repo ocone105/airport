@@ -1,5 +1,5 @@
 package main.dto;
-
+ 
 public class airportcodeDTO {
 	private String code;
 	private String name;

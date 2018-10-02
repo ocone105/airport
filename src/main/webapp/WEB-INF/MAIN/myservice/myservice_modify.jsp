@@ -7,6 +7,38 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+//전화번호 자동하이픈
+$(document).ready(function () {
+	   $(function () {
+	            $("#phone").keydown(function (event) {
+	             var key = event.charCode || event.keyCode || 0;
+	             $text = $(this); 
+	             if (key !== 8 && key !== 9) {
+	                 if ($text.val().length === 3) {
+	                     $text.val($text.val() + '-');
+	                 }
+	                 if ($text.val().length === 8) {
+	                     $text.val($text.val() + '-');
+	                 }
+	             }
+	             return (key == 8 || key == 9 || key == 46 || (key >= 48 && key <= 57) || (key >= 96 && key <= 105));
+	         })
+	   });
+});
+
+function update(){
+		if($('input:checkbox[id="email_alarm"]').is(':checked')){
+			$(document.forms["myform"].email_alarm).val('y')
+		}
+		if($('input:checkbox[id="sms_alarm"]').is(':checked')){
+			$(document.forms["myform"].sms_alarm).val('y')
+		}
+		
+		document.myform.submit();
+}
+	   
+</script>
 <link rel="stylesheet" type="text/css"
 	href="/airport/resources/styles/member.css">
 <!-- <link rel="stylesheet" type="text/css"
@@ -59,45 +91,53 @@
 					<div class="card-body">
 						<div
 							class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
-							<div class="panel panel-info">
-								<div class="panel-heading">
-									<h3 class="panel-title">회원정보</h3>
-								</div>
-								<div class="panel-body">
-									<div class="row">
+							<form class="form-horizontal" method="post" id="myform" name="myform"
+								action="/airport/main/myservice/update.do">
+								<div class="panel panel-info">
+									<div class="panel-heading">
+										<h3 class="panel-title">회원정보 수정</h3>
+									</div>
+
+									<div class="panel-body">
+										<div class="row">
 											<table class="table table-user-information">
 												<tbody>
 													<tr>
 														<td>아이디</td>
 														<td>${member.id}</td>
+														<input type="hidden" name="id" value="${member.id }"/>
 													</tr>
 													<tr>
 														<td>이름</td>
 														<td>${member.name}</td>
+														<input type="hidden" name="name" value="${member.name }"/>
+														
 													</tr>
 													<tr>
 														<td>이메일</td>
-														<td>${member.email }</td>
-														<td>수신여부: ${member.email_alarm }</td>
+														<td><input type="email" name="email" id="email"
+															value=${member.email } class="form-email form-control"
+															required></td>
+														<td>수신여부: <input type="checkbox" name="email_alarm"
+															id="email_alarm"></td>
 													</tr>
 													<tr>
 														<td>전화번호</td>
-														<td>${member.phone }</td>
-														<td>수신여부: ${member.sms_alarm }</td>
+														<td><input type="text" name="phone" id="phone"
+															value=${member.phone } class="form-phone form-control"
+															maxlength="13" required></td>
+														<td>수신여부: <input type="checkbox" name="sms_alarm"
+															id="sms_alarm"></td>
 													</tr>
 												</tbody>
 											</table>
+										</div>
+									</div>
+									<div class="panel-footer">
+										<button type="button" class="btn green" onclick="return update()">수정완료</button>
 									</div>
 								</div>
-								<div class="panel-footer">
-									<a href="/airport/main/myservice/withdraw.do?id=${member.id }"
-										class="btn red"><span>회원탈퇴</span></a>
-									<a href="/airport/main/myservice/update.do?id=${member.id }"
-										class="btn orange"><span>수정</span></a> 
-
-								</div>
-
-							</div>
+							</form>
 						</div>
 					</div>
 				</div>

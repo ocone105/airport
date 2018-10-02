@@ -46,13 +46,18 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
+	public MemberDTO read(String id) {
+		return sqlSession.selectOne("main.member.read", id);
+	}
+
+	@Override
 	public int update(MemberDTO member) {
 		return sqlSession.update("main.member.update", member);
 	}
 
 	@Override
-	public int withdraw(MemberDTO member) {
-		return sqlSession.update("main.member.withdraw", member);
+	public int withdraw(String id) {
+		return sqlSession.update("main.member.memberwithdraw", id);
 	}
 
 	@Override
@@ -66,5 +71,6 @@ public class MemberDAOImpl implements MemberDAO {
 		map.put("search", search);
 		return sqlSession.selectList("main.member.membersearch", map);
 	}
+
 
 }

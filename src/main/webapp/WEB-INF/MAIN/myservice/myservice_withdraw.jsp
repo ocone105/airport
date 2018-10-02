@@ -7,10 +7,30 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <link rel="stylesheet" type="text/css"
 	href="/airport/resources/styles/member.css">
-<!-- <link rel="stylesheet" type="text/css"
-	href="/airport/resources/styles/contact_responsive.css"> -->
+
+<script type="text/javascript">
+	function withdraw() {
+		$.ajax({
+			url : "/airport/main/myservice/withdraw.do",
+			type : "post",
+			data : {
+				"id" : $("#id").val(),
+				"pwd" : $("#pwd").val(),
+			},
+			success : function(data) {
+				if (data == 0) {
+					alert("비밀번호를 확인해주세요.");
+				} else if (data == 1) {
+					alert("탈퇴 완료");
+					location.href = "/airport/main/index.do";
+				}
+			}
+		})
+	}
+</script>
 
 </head>
 <body>
@@ -54,59 +74,25 @@
 	<div class="container">
 		<div class="container-fluid">
 			<div class="row">
-
 				<div class="col-md-12">
-					<div class="card-body">
-						<div
-							class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
-							<div class="panel panel-info">
-								<div class="panel-heading">
-									<h3 class="panel-title">회원정보</h3>
-								</div>
-								<div class="panel-body">
-									<div class="row">
-											<table class="table table-user-information">
-												<tbody>
-													<tr>
-														<td>아이디</td>
-														<td>${member.id}</td>
-													</tr>
-													<tr>
-														<td>이름</td>
-														<td>${member.name}</td>
-													</tr>
-													<tr>
-														<td>이메일</td>
-														<td>${member.email }</td>
-														<td>수신여부: ${member.email_alarm }</td>
-													</tr>
-													<tr>
-														<td>전화번호</td>
-														<td>${member.phone }</td>
-														<td>수신여부: ${member.sms_alarm }</td>
-													</tr>
-												</tbody>
-											</table>
-									</div>
-								</div>
-								<div class="panel-footer">
-									<a href="/airport/main/myservice/withdraw.do?id=${member.id }"
-										class="btn red"><span>회원탈퇴</span></a>
-									<a href="/airport/main/myservice/update.do?id=${member.id }"
-										class="btn orange"><span>수정</span></a> 
-
-								</div>
-
-							</div>
-						</div>
+					<div class="panel-footer" style="text-align: center; margin: auto;">
+						<br/>
+						<img src="/airport/resources/images/unjoin.png">
+						<p style="font-size: 24px; margin: auto;">회원탈퇴를 원하시면 비밀번호를 한번
+							더 입력하시기 바랍니다.</p>
+						<p style="font-size: 20px;">탈퇴 후에는 새로 회원가입을 하셔야 서비스 이용이 가능합니다.</p>
+						<input style="margin:auto; width: 400px; height: 50px;" type="password"
+							name="pwd" id="pwd" placeholder="비밀번호를 입력해주세요."
+							class="form-password form-control" required> <input
+							type="hidden" id="id" name="id" value="${member.id }" />
+					</div>
+					<div class="panel-footer" style="text-align: center;">
+						<button type="button" class="btn red" onclick="withdraw()">회원탈퇴</button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
-
-
 
 	<script
 		src="/airport/resources/https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>

@@ -9,6 +9,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo-1.5.xsd">
 
+
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
 
@@ -92,6 +93,4 @@
 		<beans:property name="maxUploadSize" value="5000000"/>
 		<beans:property name="defaultEncoding" value="UTF-8"/>
 	</beans:bean>
-	
-	
 </beans:beans>
