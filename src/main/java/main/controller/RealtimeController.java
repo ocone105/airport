@@ -1,23 +1,14 @@
-package main.realtime.controller;
+package main.controller;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import main.realtime.api.FlightDTO;
-import main.realtime.api.realtimeAPI;
+import main.api.FlightDTO;
+import main.api.realtimeAPI;
 
 @Controller
 public class RealtimeController {

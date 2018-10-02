@@ -20,15 +20,23 @@ import erp.board.DTO.BoardNoticeCmtDTO;
 import erp.board.DTO.BoardNoticeDTO;
 import erp.board.service.BoardAnonymousService;
 import erp.security.dto.SecurityDTO;
+import main.PF.dto.connection.ConnectionDTO;
+import main.PF.dto.connection.ConnectionRepository;
+import main.PF.service.AirlineService;
 
 @Controller
 public class BoardAnonymousController {
 
 	@Autowired
 	BoardAnonymousService service;
+	
+	@Autowired
+	AirlineService airservice;
 
 	@RequestMapping("/erp/anonymouslist.do")
 	public ModelAndView anonymouslist() {
+		List<ConnectionDTO> dto = airservice.findcon();
+		System.out.println("mongoTest임:"+dto);
 		List<BoardAnonymousDTO> posts = service.boardlist();
 		return new ModelAndView("erp/anonymouslist", "posts", posts);
 	}

@@ -1,4 +1,4 @@
-package main.realtime.api;
+package main.api;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -15,8 +15,8 @@ import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import main.realtime.dao.realtimeDAO;
-import main.realtime.dto.airportcodeDTO;
+import main.dao.realtimeDAO;
+import main.dto.airportcodeDTO;
 
 @Service
 public class realtimeAPI {

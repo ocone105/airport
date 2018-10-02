@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 public class MemberController {
 
 	private ShaPasswordEncoder passencoder = new ShaPasswordEncoder(256);
-
+ 
 	@Autowired
 	MemberService service;
 
