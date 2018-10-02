@@ -18,4 +18,6 @@ public interface BoardAnonymousService {
 	int insertCmt(BoardNoticeCmtDTO cmt);
 	List<BoardAnonymousDTO> Cmtlist(int boardno);
 	int deleteCmt(int cmtno);
+	
+	List<BoardAnonymousDTO> aboardsearch(String tag,String search);
 }

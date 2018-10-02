@@ -47,4 +47,15 @@ public class DeptInsertController {
 		List<DeptDTO> deptlist = service.deptstepList(deptno);
 		return deptlist;
 	}
+	
+	// 아이디 중복 체크
+	@RequestMapping(value = "/erp/deptnocheck.do", method = RequestMethod.GET, produces = "application/text;charset=utf-8")
+	public @ResponseBody String idCheck(String deptno) {
+		String result = "0";
+		boolean check = service.deptnoCheck(deptno);
+		if(check) {
+			result="1";
+		}
+		return result;
+	}
 }

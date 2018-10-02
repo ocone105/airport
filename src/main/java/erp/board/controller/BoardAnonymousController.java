@@ -16,15 +16,18 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
 import erp.board.DTO.BoardAnonymousDTO;
-import erp.board.DTO.BoardNoticeCmtDTO;
-import erp.board.DTO.BoardNoticeDTO;
 import erp.board.service.BoardAnonymousService;
+import main.PF.dto.connection.ConnectionDTO;
+import main.PF.service.AirlineService;
 
 @Controller
 public class BoardAnonymousController {
 
 	@Autowired
 	BoardAnonymousService service;
+	
+	@Autowired
+	AirlineService airservice;
 
 	@RequestMapping("/erp/anonymouslist.do")
 	public ModelAndView anonymouslist() {
@@ -120,5 +123,16 @@ public class BoardAnonymousController {
 		service.delete(boardno);
 		return "redirect:/erp/anonymouslist.do";
 	}
+	
+	@RequestMapping(value="/erp/aboardsearch.do")
+	public ModelAndView empsearch(String tag, String search){
+		ModelAndView mav = new ModelAndView();
+		List<BoardAnonymousDTO> posts = service.aboardsearch(tag, search);
+		System.out.println(posts);
+		mav.addObject("posts", posts);
+		mav.setViewName("erp/anonymouslist");
+		return mav;
+	}
+	
 	
 }
