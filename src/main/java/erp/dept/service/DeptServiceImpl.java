@@ -56,5 +56,10 @@ public class DeptServiceImpl implements DeptService {
 		dao.deptupdate(dept);
 	}
 
+	@Override
+	public boolean deptnoCheck(String deptno) {
+		return dao.deptnoCheck(deptno);
+	}
+
 
 }

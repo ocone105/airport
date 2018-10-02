@@ -13,5 +13,5 @@ public interface DeptDAO {
 	void deptinsert(DeptDTO dept);
 	void deptdelete(String deptno);
 	void deptupdate(DeptDTO dept);
-	
+	boolean deptnoCheck(String deptno);
 }

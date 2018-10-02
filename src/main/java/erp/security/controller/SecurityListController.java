@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
+import erp.insa.dto.EmpDTO;
 import erp.security.dto.SecurityDTO;
 import erp.security.service.SecurityService;
 
@@ -35,4 +37,14 @@ public class SecurityListController {
 		return "redirect:/erp/passlist.do";
 	}
 
+	@RequestMapping(value="/erp/passsearch.do")
+	public ModelAndView empsearch(String tag, String search){
+		ModelAndView mav = new ModelAndView();
+		List<SecurityDTO> passlist = service.passsearch(tag, search);
+		System.out.println(passlist);
+		mav.addObject("passlist", passlist);
+		mav.setViewName("erp/passlist");
+		return mav;
+	}
+	
 }

@@ -37,7 +37,7 @@ public class KakaoLogin {
 			final int responseCode = response.getStatusLine().getStatusCode();
 
 			//System.out.println("\nSending 'POST' request to URL : " + RequestUrl);
-			//System.out.println("Post parameters : " + postParams);
+			System.out.println("Post parameters : " + postParams);
 			//System.out.println("Response Code : " + responseCode);
 
 			// JSON 형태 반환값 처리

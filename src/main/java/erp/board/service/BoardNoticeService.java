@@ -17,4 +17,5 @@ public interface BoardNoticeService {
 	int insertCmt(BoardNoticeCmtDTO cmt);
 	List<BoardNoticeCmtDTO> Cmtlist(int boardno);
 	int deleteCmt(int cmtno);
+	List<BoardNoticeDTO> nboardsearch(String tag,String search);
 }
