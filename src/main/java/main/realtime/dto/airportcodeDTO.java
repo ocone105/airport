@@ -1,4 +1,4 @@
-package main.dto;
+package main.realtime.dto;
 
 public class airportcodeDTO {
 	private String code;

@@ -66,7 +66,6 @@ function join(){
 			if($('input:checkbox[id="sms_alarm"]').is(':checked')){
 				$(document.forms["signupform"].sms_alarm).val('y')
 			}
-			
 			document.signupform.submit();
 			alert("회원가입 완료!")
 		}else{

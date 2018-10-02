@@ -1,4 +1,4 @@
-package main.controller;
+package main.realtime.controller;
 
 import java.util.List;
 import java.util.Map;
@@ -32,7 +32,7 @@ public class IndexController extends AbstractView{
 		return "abnormalflight";
 	}
 
-	@RequestMapping("/main/myservice.do")
+	@RequestMapping("/main/myservice")
 	public ModelAndView myservice() {
 		ModelAndView mav = new ModelAndView();
 		List<PFINFODTO> pfinfo = service.pfinfolist();	// 여객시설정보리스트
@@ -48,12 +48,12 @@ public class IndexController extends AbstractView{
 		return "signin";
 	}
 
-	@RequestMapping("/main/privacy.do")
+	@RequestMapping("/main/privacy")
 	public String privacy() {
 		return "privacy";
 	}
 	
-	@RequestMapping("/main/email.do")
+	@RequestMapping("/main/email")
 	public String rejectEmail() {
 		return "email";
 	}
