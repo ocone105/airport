@@ -16,6 +16,7 @@ public interface PFService {
 	List<Integer> pflist();
 	List<PFDTO> pflist(int pfinfono);
 	int pfinsert(PFDTO pf);
+	int requestPermit(int pfno);
 	
 	DeptDTO getDept(String pfname);
 	DeptDTO dept(String deptname);
