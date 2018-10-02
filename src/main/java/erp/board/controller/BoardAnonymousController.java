@@ -16,16 +16,18 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
 import erp.board.DTO.BoardAnonymousDTO;
-import erp.board.DTO.BoardNoticeCmtDTO;
-import erp.board.DTO.BoardNoticeDTO;
 import erp.board.service.BoardAnonymousService;
-import erp.security.dto.SecurityDTO;
+import main.PF.dto.connection.ConnectionDTO;
+import main.PF.service.AirlineService;
 
 @Controller
 public class BoardAnonymousController {
 
 	@Autowired
 	BoardAnonymousService service;
+	
+	@Autowired
+	AirlineService airservice;
 
 	@RequestMapping("/erp/anonymouslist.do")
 	public ModelAndView anonymouslist() {

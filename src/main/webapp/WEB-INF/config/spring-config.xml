@@ -50,16 +50,6 @@
 		<beans:property name="dataSource" ref="ds" />
 	</beans:bean>
 	
-	<!-- mongodb 서버에 접속하기 위해서 서버의 ip와 port정보를 명시 -->
-	<mongo:mongo host="127.0.0.1" port="27017"/>
-	
-	<!-- spring-data에서 mongodb와 연동하기 위한 핵심클래스인 MongoTemplate을 등록 -->
-	<beans:bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
-		<beans:constructor-arg ref="mongo"/>
-		<beans:constructor-arg name="databaseName" value="airport"/>
-	</beans:bean>
-	<mongo:repositories base-package="main.PF.dto"/>
-	
 	<!-- ==== tiles ===== -->
 	<beans:bean id="tilesConfigurer"
 		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
@@ -87,6 +77,16 @@
 	<beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<beans:constructor-arg ref="sqlSessionFactory" />
 	</beans:bean>
+	
+	<!-- mongodb 서버에 접속하기 위해서 서버의 ip와 port정보를 명시 -->
+	<mongo:mongo host="127.0.0.1" port="27017"/>
+	
+	<!-- spring-data에서 mongodb와 연동하기 위한 핵심클래스인 MongoTemplate을 등록 -->
+	<beans:bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+		<beans:constructor-arg ref="mongo"/>
+		<beans:constructor-arg name="databaseName" value="airport"/>
+	</beans:bean>
+	<mongo:repositories base-package="main.PF.repository"/>
 
 	<!-- =====================파일업로드===================== -->
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

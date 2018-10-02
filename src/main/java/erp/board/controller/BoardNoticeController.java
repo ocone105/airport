@@ -20,7 +20,10 @@ import org.springframework.web.util.WebUtils;
 import erp.board.DTO.BoardNoticeCmtDTO;
 import erp.board.DTO.BoardNoticeDTO;
 import erp.board.service.BoardNoticeService;
-import main.PF.dto.connection.ConnectionDTO;
+import main.PF.dto.complex.ComplexDTO;
+import main.PF.dto.condition.ConditionDTO;
+import main.PF.dto.repair.RepairDTO;
+import main.PF.dto.repair.Repair_DelayDTO;
 import main.PF.service.AirlineService;
 
 @Controller
@@ -33,6 +36,19 @@ public class BoardNoticeController {
 	
 	@RequestMapping("/erp/noticelist.do")
 	public ModelAndView noticelist(String pageNo){
+		List<ComplexDTO> comlist = aservice.findcom();
+		System.out.println("comlist : "+comlist);
+		List<ConditionDTO> condlist = aservice.findcond();
+		System.out.println("condlist : "+condlist);
+		List<RepairDTO> relist = aservice.findre();
+		List<Repair_DelayDTO> relistDelay = aservice.findre_delay();
+		for (int i = 0; i < relist.size(); i++) {
+			if(relist.get(i).get_id()==relistDelay.get(i).get_id()) {
+				System.out.println("relist : "+relist.get(i).getValue());
+				System.out.println("relist지연 : "+relistDelay.get(i).getValue());
+			}
+		}
+		
 		List<BoardNoticeDTO> posts = service.boardlist();
 		return new ModelAndView("erp/noticelist", "posts", posts);
 	}

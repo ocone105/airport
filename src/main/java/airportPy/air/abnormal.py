@@ -1,7 +1,7 @@
 '''
 Created on 2018. 9. 23.
 
-@author: dy
+@author: dy 
 '''
 
 from bs4 import BeautifulSoup
