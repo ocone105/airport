@@ -91,7 +91,7 @@
 									</div>
 								</td>
 								<td>
-									<h6>${info.scheduleDateTime}</h6>
+									<h6>${info.time}</h6>
 								</td>
 								<td>${info.gatenumber}</td>
 								<td>
