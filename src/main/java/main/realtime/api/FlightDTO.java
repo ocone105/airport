@@ -1,4 +1,4 @@
-package main.api;
+package main.realtime.api;
 
 public class FlightDTO {
 	private String airline;

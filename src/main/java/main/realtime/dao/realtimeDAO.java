@@ -1,4 +1,4 @@
-package main.dao;
+package main.realtime.dao;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import main.dto.airportcodeDTO;
+import main.realtime.dto.airportcodeDTO;
 @Repository
 public class realtimeDAO {
 	
