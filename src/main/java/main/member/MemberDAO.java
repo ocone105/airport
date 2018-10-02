@@ -8,8 +8,9 @@ public interface MemberDAO {
 	MemberDTO login(String id,String pwd);
 	boolean idCheck(String id);
 	int update(MemberDTO member);
-	int withdraw(MemberDTO member);
+	int withdraw(String id);
 	
+	MemberDTO read(String id);
 	List<MemberDTO> memberList();
 	List<MemberDTO> memberSearch(String search);
 }

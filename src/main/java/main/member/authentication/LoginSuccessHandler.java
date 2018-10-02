@@ -32,7 +32,9 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 				url = "/airport/main/admin";
 			}
 		}
+		req.getSession().setAttribute("loginUser", dto.getId());
 		res.sendRedirect(url);		
+		
 	}
 
 }

@@ -101,6 +101,18 @@ public class MemberDTO {
 		this.role = role;
 	}
 
+	// 회원정보 수정
+	public MemberDTO(String id, String name, String phone, String email, String email_alarm, String sms_alarm) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.phone = phone;
+		this.email = email;
+		this.email_alarm = email_alarm;
+		this.sms_alarm = sms_alarm;
+	}	
+
+
 	@Override
 	public String toString() {
 		return "MemberDTO [id=" + id + ", pwd=" + pwd + ", name=" + name + ", phone=" + phone + ", email=" + email

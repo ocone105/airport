@@ -12,7 +12,7 @@ sms_alarm varchar2(5),
 role varchar2(15)
 );
 
-insert into member values('air', 'port', '관리자', null, null, 1, null, null, 'ROLE_ADMIN');
+insert into member values('air', 'f8d397a33fcb9725db96501e653bf3cfa4455c5639482b9936c22b221634d659', '관리자', null, null, 1, null, null, 'ROLE_ADMIN');
 
-//state: 탈퇴처리-0 기본-1 카카오-2 네이버-3
-
+//air 계정 비밀번호: port
+//state: 탈퇴처리-0 기본-1 카카오-2

@@ -1,0 +1,183 @@
+db.abnormal.aggregate([{$group:{_id:"$비정상원인",num:{$sum:1}}}])
+
+db.abnormal.find( { 'checkday' : { $type : 1 } } ).forEach( function (x) {   
+x.checkday = new String(x.checkday); 
+db.abnormal.save(x);
+})
+
+var map = function(){
+	var word = this.checkday
+	var line = word.split(" ")
+	for(var i in line)
+	{emit(line[i], 1)}}
+var reduce = function(key, values){
+	var total = 0
+	for(var i in values){
+	total = total + values[i]}
+	 return total}
+db.allflight.mapReduce(map, reduce, "test")
+
+
+1. connection 연결 (앞 항공기 지연으로 인한 지연)  ->   항공사별로
+	var map = function(){
+		var line = this.항공사.split(" ")
+		for(var i in line)
+		{ emit(line[i], 1)}}
+	var reduce = function(key, values){
+		var total = 0
+		for(var i in values){
+		total = total + values[i]}
+		return total}
+	db.allflight.mapReduce(map, reduce, "connection")
+
+	var map = function(){ 
+		if(this.현황=="지연"){
+		 	if (this.비정상원인=="연결-항공기"|this.비정상원인=="연결-승객"|this.비정상원인=="연결-화물연결"|this.비정상원인=="연결-승무원연결"){
+			var line = this.항공사.split(" ")
+			for(var i in line){
+			emit(line[i], 1)}}}
+	 }
+	var reduce = function(key, values){
+		var total = 0
+		for(var i in values){
+		total = total + values[i]}
+		return total}
+	db.abnormal.mapReduce(map, reduce, "connection_delay")
+	
+	var map = function(){ 
+		if(this.현황=="취소"){
+		 	if (this.비정상원인=="연결-항공기"|this.비정상원인=="연결-승객"|this.비정상원인=="연결-화물연결"|this.비정상원인=="연결-승무원연결"){
+			var line = this.항공사.split(" ")
+			for(var i in line){
+			emit(line[i], 1)}}}
+	 }
+	var reduce = function(key, values){
+		var total = 0
+		for(var i in values){
+		total = total + values[i]}
+		return total}
+	db.abnormal.mapReduce(map, reduce, "connection_cancel")
+
+
+
+2. repair 정비        -> 비행기별로
+	var map = function(){
+		var line = this.편명.split(" ")
+		for(var i in line)
+		{emit(line[i], 1)}}
+	var reduce = function(key, values){
+		var total = 0
+		for(var i in values){
+		total = total + values[i]}
+		 return total}
+	db.allflight.mapReduce(map, reduce, "repair")
+
+	var map = function(){ 
+	 if (this.현황=="지연"){
+		if(this.비정상원인=="정비-낙뢰"|this.비정상원인=="정비-기체"|this.비정상원인=="정비-엔진"|this.비정상원인=="정비-조류충돌"|this.비정상원인=="정비-항공전자"|this.비정상원인=="정비-착륙바퀴"|this.비정상원인=="정비-기타"){
+	  	var line = this.편명.split(" ")
+		for(var i in line)
+		{ emit(line[i], 1)}}}
+	 }
+	var reduce = function(key, values){
+	 var total = 0
+	 for(var i in values){
+	 total = total + values[i]}
+	  return total}
+	db.abnormal.mapReduce(map, reduce, "repair_delay")
+	
+	var map = function(){ 
+	 if (this.현황=="취소"){
+		if(this.비정상원인=="정비-낙뢰"|this.비정상원인=="정비-기체"|this.비정상원인=="정비-엔진"|this.비정상원인=="정비-조류충돌"|this.비정상원인=="정비-항공전자"|this.비정상원인=="정비-착륙바퀴"|this.비정상원인=="정비-기타"){
+	  	var line = this.편명.split(" ")
+		for(var i in line)
+		{ emit(line[i], 1)}}}
+	 }
+	var reduce = function(key, values){
+	 var total = 0
+	 for(var i in values){
+	 total = total + values[i]}
+	  return total}
+	db.abnormal.mapReduce(map, reduce, "repair_cancel")
+
+
+
+3. complex 항로혼잡        -> 항로혼잡일 때 시간보고 그 시간에 운항된 항공기 수 
+	var map = function(){
+		var line = this.계획.split(" ")
+		for(var i in line)
+		{ var time = line[i].substr(0,3)
+		emit(time, 1)}}
+	var reduce = function(key, values){
+		var total = 0
+		for(var i in values){
+		total = total + values[i]}
+		 return total}
+	db.allflight.mapReduce(map, reduce, "complex")
+
+	var map = function(){ 
+	 if (this.현황=="지연"){
+	  if(this.비정상원인=="항로혼잡"){
+	  var line = this.계획.split(" ")
+	  for(var i in line)
+	  {	 var time = line[i].substr(0,3)
+		emit(time, 1)}}}
+	 }
+	var reduce = function(key, values){
+	 var total = 0
+	 for(var i in values){
+	total = total + values[i]}
+		 return total}
+	db.abnormal.mapReduce(map, reduce, "complex_delay")
+
+
+	var map = function(){ 
+	 if (this.현황=="취소"){
+	  if(this.비정상원인=="항로혼잡"){
+	  var line = this.계획.split(" ")
+	  for(var i in line)
+	  {	 var time = line[i].substr(0,3)
+		emit(time, 1)}}}
+	 }
+	var reduce = function(key, values){
+	 var total = 0
+	 for(var i in values){
+	total = total + values[i]}
+		 return total}
+	db.abnormal.mapReduce(map, reduce, "complex_cancel")
+
+4. condition 기상        -> 그냥 기상
+	var map = function(){
+		 emit(this.checkday, 1)}
+	var reduce = function(key, values){
+		var total = 0
+		for(var i in values){
+		total = total + values[i]}
+		 return total}
+	db.allflight.mapReduce(map, reduce, "condition")
+
+	var map = function(){ 
+	 if (this.현황=="지연"){
+		if(this.비정상원인=="기상"|this.비정상원인=="기상-눈"|this.비정상원인=="기상-시정"|this.비정상원인=="기상-기타"|this.비정상원인=="기상-비"|this.비정상원인=="기상-바람"|this.비정상원인=="기상-태풍"|this.비정상원인=="기상-뇌전"|this.비정상원인=="기상-운고"|this.비정상원인=="제방빙작업"){
+	  	emit(this.checkday, 1)}}
+	 }
+	var reduce = function(key, values){
+		var total = 0
+		for(var i in values){
+		total = total + values[i]}
+		return total}
+	db.abnormal.mapReduce(map, reduce, "condition_delay")
+	var map = function(){ 
+	 if (this.현황=="취소"){
+		if(this.비정상원인=="기상"|this.비정상원인=="기상-눈"|this.비정상원인=="기상-시정"|this.비정상원인=="기상-기타"|this.비정상원인=="기상-비"|this.비정상원인=="기상-바람"|this.비정상원인=="기상-태풍"|this.비정상원인=="기상-뇌전"|this.비정상원인=="기상-운고"|this.비정상원인=="제방빙작업"){
+	  	emit(this.checkday, 1)}}
+	 }
+	var reduce = function(key, values){
+		var total = 0
+		for(var i in values){
+		total = total + values[i]}
+		return total}
+	db.abnormal.mapReduce(map, reduce, "condition_cancel")
+
+
+5. etc  기타        -> 전체적으로

@@ -20,7 +20,6 @@ public class SecurityLoginService implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		//System.out.println(username + ".............loadUserByUsername");
 		Map<String, Object> user = sqlsession.selectOne("main.member.securityLogin", username);
 		//System.out.println("user: " + user);
 		//System.out.println("user: " + user.get("ID"));
