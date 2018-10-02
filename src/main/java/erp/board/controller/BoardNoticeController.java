@@ -17,16 +17,19 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
-import erp.board.DTO.BoardAnonymousDTO;
 import erp.board.DTO.BoardNoticeCmtDTO;
 import erp.board.DTO.BoardNoticeDTO;
 import erp.board.service.BoardNoticeService;
+import main.PF.dto.connection.ConnectionDTO;
+import main.PF.service.AirlineService;
 
 @Controller
 public class BoardNoticeController {
 	
 	@Autowired
 	BoardNoticeService service;
+	@Autowired 
+	AirlineService aservice;
 	
 	@RequestMapping("/erp/noticelist.do")
 	public ModelAndView noticelist(String pageNo){

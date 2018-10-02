@@ -1,7 +1,14 @@
+// 계정
+air/port
+
+//계정 생성
+conn system/manager
+create user air identified by port
+grant connect, resource to air
+grant create view to air
 
 
-
-
+drop table
 
 select * from dept;
 select * from emp;
