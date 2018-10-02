@@ -42,7 +42,7 @@ public class IndexController extends AbstractView{
 		mav.setViewName("myservice");
 		return mav;
 	}*/
-
+ 
 	@RequestMapping("/main/signin.do")
 	public String signin() {
 		return "signin";
