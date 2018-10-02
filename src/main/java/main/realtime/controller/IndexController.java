@@ -23,13 +23,6 @@ public class IndexController extends AbstractView{
 		return "index";
 	}
 
-	@RequestMapping("/main/flight.do")
-	public String predictFlight() {
-		return "abnormalflight";
-	}
-
-
-
 	@RequestMapping("/main/signin.do")
 	public String signin() {
 		return "signin";
