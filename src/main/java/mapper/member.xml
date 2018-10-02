@@ -3,7 +3,7 @@
 <mapper namespace="main.member">
 
 	<select id="securityLogin" resultType="map">
-		select * from member where id = #{id}
+		select * from member where id = #{id} and state = '1'
 	</select>
 	
 	<insert id="signup" parameterType="member">

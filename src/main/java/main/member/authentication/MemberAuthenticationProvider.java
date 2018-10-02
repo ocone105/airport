@@ -26,7 +26,7 @@ public class MemberAuthenticationProvider implements AuthenticationProvider{
 		
 		// db인증작업을 하기 위해서 mybatis를 이용해서 db에서 조회한 결과를 저장
 		SecurityLoginDTO user = (SecurityLoginDTO) securityService.loadUserByUsername(username);
-		//System.out.println("MemberAuthenticationProvider: "+user);
+		System.out.println("MemberAuthenticationProvider: "+user);
 		
 		// db에서 조회한 데이터와 사용자가 입력한 데이터를 비교 + 암호화해서 비교
 		boolean state = passencoder.isPasswordValid(user.getPassword(), pwd, null);

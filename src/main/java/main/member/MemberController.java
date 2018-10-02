@@ -71,7 +71,7 @@ public class MemberController {
 	}
 
 	// 로그인
-	@RequestMapping(value = "/member/login.do", method = RequestMethod.POST)
+	/*@RequestMapping(value = "/member/login.do", method = RequestMethod.POST)
 	public String login(MemberDTO user, HttpSession session) {
 		String viewName = "";
 		MemberDTO loginUser = service.login(user.getId(), user.getPwd());
@@ -88,7 +88,7 @@ public class MemberController {
 			viewName = "redirect:/main/signin.do";
 		}
 		return viewName;
-	}
+	}*/
 
 	// 로그아웃
 	@RequestMapping(value = "/member/logout.do", method = RequestMethod.GET)
