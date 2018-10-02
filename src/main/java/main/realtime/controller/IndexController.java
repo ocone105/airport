@@ -32,16 +32,7 @@ public class IndexController extends AbstractView{
 		return "abnormalflight";
 	}
 
-	@RequestMapping("/main/myservice")
-	public ModelAndView myservice() {
-		ModelAndView mav = new ModelAndView();
-		List<PFINFODTO> pfinfo = service.pfinfolist();	// 여객시설정보리스트
-		List<PFTEAMDTO> pfteam = service.pfteamlist();	// 시설근무팀 리스트
-		mav.addObject("pfinfo", pfinfo);
-		mav.addObject("pfteam", pfteam);
-		mav.setViewName("myservice");
-		return mav;
-	}
+
 
 	@RequestMapping("/main/signin.do")
 	public String signin() {
