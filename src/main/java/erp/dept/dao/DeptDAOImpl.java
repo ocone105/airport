@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import erp.dept.dto.DeptDTO;
+import erp.insa.dto.EmpDTO;
 
 @Repository("deptdao")
 public class DeptDAOImpl implements DeptDAO {
@@ -56,6 +57,16 @@ public class DeptDAOImpl implements DeptDAO {
 	public void deptupdate(DeptDTO dept) {
 		sqlSession.update("kr.airport.erp.dept.deptupdate", dept);
 		
+	}
+
+	@Override
+	public boolean deptnoCheck(String deptno) {
+		boolean state = false;
+		DeptDTO dept = sqlSession.selectOne("kr.airport.erp.dept.deptnocheck", deptno);
+		if (dept != null) {
+			state = true;
+		}
+		return state;
 	}
 
 

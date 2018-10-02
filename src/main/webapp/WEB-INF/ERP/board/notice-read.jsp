@@ -13,7 +13,7 @@
 		
 		// 댓글 삭제 Ajax
 		$(document).on("click",".deletecmt", function(){
-			cmtno = $("#cmtno").val();
+			cmtno = $(this).attr("id");
 			boardno = $("#boardno").val();
 			$.ajax({
 				url:"/airport/erp/cmt/noticedelete.do",
@@ -33,7 +33,7 @@
 									"</div><div class='comments-list-content'>"
 									+ list[i].cmttxt +
 									"</div><div class='comments-list-controller'><div class='right'>" +
-									"<a type='button' data_num='"+list[i].cmtno+"' href='#' class='deletecmt comments-button-action comments-button-delete onclick='return confirm('삭제 하시겠습니까?')' title='삭제'>삭제</a></div></div></li></ul>" +
+									"<a type='button' id='"+list[i].cmtno+"' href='#' class='deletecmt comments-button-action comments-button-delete onclick='return confirm('삭제 하시겠습니까?')' title='삭제'>삭제</a></div></div></li></ul>" +
 									"<input type='hidden' id='cmtno' value="+list[i].cmtno+">";
 					}
 					$("#cmtcount").val(list.length);
@@ -68,7 +68,7 @@
 									"</div><div class='comments-list-content'>"
 									+ list[i].cmttxt +
 									"</div><div class='comments-list-controller'><div class='right'>" +
-									"<a type='button' data_num='"+list[i].cmtno+"' href='#' class='deletecmt comments-button-action comments-button-delete onclick='return confirm('삭제 하시겠습니까?')' title='삭제'>삭제</a></div></div></li></ul>"+
+									"<a type='button' id='"+list[i].cmtno+"' href='#' class='deletecmt comments-button-action comments-button-delete onclick='return confirm('삭제 하시겠습니까?')' title='삭제'>삭제</a></div></div></li></ul>"+
 									"<input type='hidden' id='cmtno' value="+list[i].cmtno+">";
 					}
 					$("#cmtcount").val(list.length);
@@ -141,7 +141,7 @@
 									${comment.cmttxt }</div>
 							<div class="comments-list-controller">
 								<div class="right">
-									<a type="button" href="#"
+									<a type="button" href="#" id="${comment.cmtno }"
 										class="deletecmt comments-button-action comments-button-delete"
 										onclick="return confirm('삭제 하시겠습니까?');" title="삭제" >삭제</a>
 								</div>

@@ -17,7 +17,7 @@
 	<insert id="empinsert" parameterType="emp">
 		insert into emp
 		values(emp_seq.nextVal,#{empid},#{pwd},#{name},#{birth},#{gender},
-		#{phone},#{email},#{position},'0',sysdate,null,#{deptno})
+		#{phone},#{email},#{position},'0',sysdate,null,#{deptno},'ROLE_EMP')
 	</insert>
 	
 	<update id="empupdate" parameterType="emp">
@@ -31,6 +31,11 @@
 		set state='1', enddate=sysdate
 		where empno=#{empno}
 	</update>
+	
+	<select id="securitylogin" resultType="map">
+		select e.*,d.deptname from emp e, dept d
+		where e.deptno=d.deptno and e.empid=#{empid} and e.state='0'
+	</select>
 	
 	<select id="login" resultType="emp" parameterType="emp">
 		select e.*,d.deptname from emp e, dept d
@@ -54,6 +59,10 @@
 				e.deptno=d.deptno and d.deptname like '%' || #{search} || '%'
 			</if>
 		</where>
+		order by e.deptno asc
+	</select>
+	<select id="idcheck" parameterType="String" resultType="emp">
+		select * from emp where empid = #{empid}
 	</select>
 </mapper>
 

@@ -36,13 +36,13 @@
 								var map = new daum.maps.Map(mapContainer, mapOption);
 							
 								<c:forEach begin="0" end="${fn:length(pfinfo)-1}" varStatus="pf">
-									var marker = new daum.maps.Marker({
-										position : new daum.maps.LatLng(${pfinfo[pf.index].pfloc}),
-										image : 
-												new daum.maps.MarkerImage('/airport/resources/common/markericon/${pfinfo[pf.index].pfname}.png',	// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-												new daum.maps.Size(30,35))  // 마커가 표시될 위치입니다
-									});
-									marker.setMap(map);
+								var marker = new daum.maps.Marker({
+									position : new daum.maps.LatLng(${pfinfo[pf.index].pfloc}),
+									image : 
+											new daum.maps.MarkerImage('/airport/resources/common/markericon/${pfinfo[pf.index].pfname}.png',	// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+											new daum.maps.Size(30,35))  // 마커가 표시될 위치입니다
+								});
+								marker.setMap(map);
 								</c:forEach>
 						
 								// 커스텀 오버레이를 생성합니다

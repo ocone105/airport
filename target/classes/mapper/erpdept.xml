@@ -42,6 +42,9 @@
 		where deptno=#{deptno}
 	</update>
 	
+	<select id="deptnocheck" parameterType="String" resultType="dept">
+		select * from dept where deptno = #{deptno}
+	</select>
 </mapper>
 
 

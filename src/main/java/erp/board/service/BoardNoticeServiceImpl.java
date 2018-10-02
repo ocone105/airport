@@ -59,4 +59,9 @@ public class BoardNoticeServiceImpl implements BoardNoticeService {
 		return dao.deleteCmt(cmtno);
 	}
 
+	@Override
+	public List<BoardNoticeDTO> nboardsearch(String tag, String search) {
+		return dao.nboardsearch(tag, search);
+	}
+
 }
