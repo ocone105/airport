@@ -83,8 +83,8 @@ insert into PFTEAM values(13, 'abas003', 10);
 insert into PFTEAM values(14, 'abas003', 10);
 insert into PFTEAM values(15, 'asbs002', 10);
 insert into PFTEAM values(16, 'asbs002', 10);
-insert into PFTEAM values(17, 'Pats002', 15);
-insert into PFTEAM values(18, 'Pats001', 15);
+insert into PFTEAM values(17, 'pats002', 15);
+insert into PFTEAM values(18, 'pats001', 15);
 
 select * from PFTEAM;
 
@@ -102,6 +102,3 @@ create table PF (
 create sequence pfno_seq;
 
 select * from pf;
-
-
- 

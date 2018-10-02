@@ -9,8 +9,10 @@
 	<definition name="erp/pflist" extends="ERPTemplate">
 		<put-attribute name="content" value="/WEB-INF/ERP/PF/pf-list.jsp"/>
 	</definition>
-	
 	<definition name="erp/datalist" extends="ERPTemplate">
 		<put-attribute name="content" value="/WEB-INF/ERP/PF/datalist.jsp"/>
+	</definition>
+	<definition name="erp/pfcheck" extends="ERPTemplate">
+		<put-attribute name="content" value="/WEB-INF/ERP/PF/pf-request-check.jsp"/>
 	</definition>
 </tiles-definitions>

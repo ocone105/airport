@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.AbstractView;
 
 import erp.pf.DTO.PFINFODTO;
+import erp.pf.DTO.PFTEAMDTO;
 import erp.pf.service.PFService;
 
 @Controller
@@ -31,11 +32,10 @@ public class IndexController extends AbstractView{
 		return "abnormalflight";
 	}
 
-	@RequestMapping("/main/myservice")
-	public ModelAndView myservice() {
-		List<PFINFODTO> pf = service.pfinfolist();
-		return new ModelAndView("myservice", "pf", pf);
-	}
+/*	@RequestMapping("/main/myservice")
+	public String myservice() {
+		return "myservice";
+	}*/
 
 	@RequestMapping("/main/signin.do")
 	public String signin() {
