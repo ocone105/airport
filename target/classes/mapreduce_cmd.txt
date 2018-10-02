@@ -106,7 +106,7 @@ db.allflight.mapReduce(map, reduce, "test")
 	var map = function(){
 		var line = this.계획.split(" ")
 		for(var i in line)
-		{ var time = line[i].substr(0,3)
+		{ var time = line[i].substr(0,2)
 		emit(time, 1)}}
 	var reduce = function(key, values){
 		var total = 0
@@ -120,7 +120,7 @@ db.allflight.mapReduce(map, reduce, "test")
 	  if(this.비정상원인=="항로혼잡"){
 	  var line = this.계획.split(" ")
 	  for(var i in line)
-	  {	 var time = line[i].substr(0,3)
+	  {	 var time = line[i].substr(0,2)
 		emit(time, 1)}}}
 	 }
 	var reduce = function(key, values){
@@ -136,7 +136,7 @@ db.allflight.mapReduce(map, reduce, "test")
 	  if(this.비정상원인=="항로혼잡"){
 	  var line = this.계획.split(" ")
 	  for(var i in line)
-	  {	 var time = line[i].substr(0,3)
+	  {	 var time = line[i].substr(0,2)
 		emit(time, 1)}}}
 	 }
 	var reduce = function(key, values){

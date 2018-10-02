@@ -61,6 +61,9 @@ public class PFServiceImpl implements PFService {
 		return dao.dept(deptname);
 	}
 
-	
+	@Override
+	public int requestPermit(int pfno) {
+		return dao.requestPermit(pfno);
+	}
 
 }
