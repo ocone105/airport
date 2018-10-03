@@ -14,28 +14,23 @@
 </head>
 <body>
 	<div class="home">
-		<div class="background_image"
-			style="background-image: url(/airport/resources/images/contact.jpg)"></div>
-	</div>
-	<br />
+		<!-- Home Slider -->
+		<div class="owl-carousel owl-theme home_slider">
 
-	<!-- Search -->
-
-	<div class="home_search">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="home_search_container">
-						<div class="home_search_title">회원 목록</div>
-						<div class="home_search_content">
-							<form action="/airport/main/admin/membersearh.do" class="home_search_form"
-								id="home_search_form">
-								<div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
-									<input type="text" class="search_input search_input_1" name="search" id="search"
-									placeholder="아이디 + 이름" required="required"  style="margin: auto; width: 50%;">
-									<button type="submit" class="home_search_button">search</button>
+			<!-- Slide -->
+			<div class="owl-item">
+				<div class="background_image"
+					style="background-image: url(/airport/resources/images/contact.jpg)"></div>
+				<div class="home_slider_content_container">
+					<div class="container">
+						<div class="row">
+							<div class="col">
+								<div class="home_slider_content">
+									<div class="home_title">
+										<h2>Let us take you away</h2>
+									</div>
 								</div>
-							</form>
+							</div>
 						</div>
 					</div>
 				</div>
