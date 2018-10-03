@@ -16,12 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
 import erp.board.DTO.BoardAnonymousDTO;
-import erp.board.DTO.BoardNoticeCmtDTO;
-import erp.board.DTO.BoardNoticeDTO;
 import erp.board.service.BoardAnonymousService;
-import erp.security.dto.SecurityDTO;
 import main.PF.dto.connection.ConnectionDTO;
-import main.PF.dto.connection.ConnectionRepository;
 import main.PF.service.AirlineService;
 
 @Controller
@@ -35,8 +31,6 @@ public class BoardAnonymousController {
 
 	@RequestMapping("/erp/anonymouslist.do")
 	public ModelAndView anonymouslist() {
-		List<ConnectionDTO> dto = airservice.findcon();
-		System.out.println("mongoTest임:"+dto);
 		List<BoardAnonymousDTO> posts = service.boardlist();
 		return new ModelAndView("erp/anonymouslist", "posts", posts);
 	}

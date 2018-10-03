@@ -20,23 +20,19 @@ import org.springframework.web.util.WebUtils;
 import erp.board.DTO.BoardNoticeCmtDTO;
 import erp.board.DTO.BoardNoticeDTO;
 import erp.board.service.BoardNoticeService;
-import main.PF.dto.connection.ConnectionDTO;
-import main.PF.service.AirlineService;
 
 @Controller
 public class BoardNoticeController {
 	
 	@Autowired
 	BoardNoticeService service;
-	@Autowired 
-	AirlineService aservice;
 	
 	@RequestMapping("/erp/noticelist.do")
 	public ModelAndView noticelist(String pageNo){
 		List<BoardNoticeDTO> posts = service.boardlist();
 		return new ModelAndView("erp/noticelist", "posts", posts);
 	}
-	
+
 	@RequestMapping(value="/erp/noticewrite.do",method=RequestMethod.GET) 
 	public String noticewrite(){
 		return "erp/noticewrite";

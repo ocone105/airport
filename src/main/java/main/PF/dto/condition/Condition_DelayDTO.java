@@ -7,20 +7,20 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection="condition_delay")
 public class Condition_DelayDTO {
 	@Id
-	String _id;
+	int _id;
 	int value;
 	
 	public Condition_DelayDTO() {}
-	public Condition_DelayDTO(String _id, int value) {
+	public Condition_DelayDTO(int _id, int value) {
 		super();
 		this._id = _id;
 		this.value = value;
 	}
 	
-	public String get_id() {
+	public int get_id() {
 		return _id;
 	}
-	public void set_id(String _id) {
+	public void set_id(int _id) {
 		this._id = _id;
 	}
 	public int getValue() {

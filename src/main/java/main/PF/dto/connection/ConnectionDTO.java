@@ -4,7 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 //document와 매핑될 객체를 정의 - 도메인 클래스라 칭함
-@Document(collection="connetion")
+@Document(collection="connection")
 public class ConnectionDTO {
 	@Id
 	String _id;

@@ -54,8 +54,10 @@ public class PFController {
 		service.pfinsert(pf);
 		List<PFINFODTO> pfinfo = service.pfinfolist();
 		List<PFTEAMDTO> pfteam = service.pfteamlist();
+		List<Integer> pfinfono = service.pflist();
 		mav.addObject("pfinfo", pfinfo);
 		mav.addObject("pfteam", pfteam);
+		mav.addObject("pfinfono",pfinfono);
 		mav.setViewName("erp/pflist");
 		return mav;
 	}
@@ -93,15 +95,12 @@ public class PFController {
 	}
 	
 	@RequestMapping("/erp/pfcheck.do")
-	public String check2(@RequestParam(value = "pfno",required=false) List<Integer> pfnoList){
+	public void check2(@RequestParam(value = "pfno",required=false) List<Integer> pfnoList){
 		if(pfnoList!=null) {
 			for(int i=0; i<pfnoList.size();i++) {
-				//service.permit(pfnoList.get(i));
+				service.requestPermit(pfnoList.get(i));
 			}
 		}
-		/*List<PFDTO> pf = service.pflist(pfinfono);
-		mav.addObject("pf",pf);*/
-		return "redirect:/erp/pflist.do";
 	}
 
 }
