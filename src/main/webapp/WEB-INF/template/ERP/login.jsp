@@ -11,8 +11,8 @@
       <div class="content">
         <div class="container">
           <div class="col-lg-6 col-md-8 ml-auto mr-auto">
-            <form class="form" method="post" action="/airport/erp/login.do">
-           <!--  <form class="form" method="post" action=" /airport/j_spring_security_check"> -->
+           <!--  <form class="form" method="post" action="/airport/erp/login.do"> -->
+            <form class="form" method="post" action=" /airport/j_spring_security_check"> 
               <div class="card card-login">
                 <div class="card-header ">
                   <div class="card-header ">
@@ -26,7 +26,7 @@
                         <i class="nc-icon nc-single-02"></i>
                       </span>
                     </div>
-                    <input type="text" class="form-control" name="empid" placeholder="ID.">
+                    <input type="text" class="form-control" name="id" id="id" placeholder="ID.">
                   </div>
                   <br/>
                   <div class="input-group">
@@ -35,7 +35,7 @@
                         <i class="nc-icon nc-key-25"></i>
                       </span>
                     </div>
-                    <input type="password" name="pwd" placeholder="Password" class="form-control">
+                    <input type="password" name="pwd" id="pwd" placeholder="Password" class="form-control">
                   </div>
                   <br/>
                   <!-- <div class="form-group">

@@ -26,7 +26,7 @@
 									<div class="col-md-4">
 										<div class="form-group ">
 											<label class="bmd-label-floating">사원ID</label> <input
-												type="text" class="form-control" id="empid" name="empid" required maxlength="15">
+												type="text" class="form-control" id="id" name="id" required maxlength="15">
 												<p class="help-block" id="idChk">아이디중복check</p>
 										</div>
 									</div>
