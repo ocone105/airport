@@ -16,6 +16,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
+import main.realtime.api.MyFlightDTO;
+import main.realtime.api.realtimeAPI;
+
 
 @Controller
 public class MemberController {
@@ -25,6 +28,9 @@ public class MemberController {
 	@Autowired
 	MemberService service;
 
+	@Autowired
+	realtimeAPI service2;
+	
 	// 카카오 로그인
 	@RequestMapping(value = "/member/kakao", produces = "application/json", method = { RequestMethod.GET,
 			RequestMethod.POST })
@@ -202,6 +208,11 @@ public class MemberController {
 		//System.out.println("세션 정보:"+session.getAttribute("loginUser"));
 		String id = (String) session.getAttribute("loginUser");
 		MemberDTO member =service.read(id);
+		
+		List<MyFlightDTO> myflight = service2.myflight2(id);
+		System.out.println(myflight);
+		mav.addObject("myflight", myflight);
+		
 		mav.addObject("member", member);
 		mav.setViewName("myservice");
 		return mav;

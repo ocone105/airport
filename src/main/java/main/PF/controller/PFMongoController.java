@@ -1,10 +1,12 @@
 package main.PF.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import main.PF.dto.complex.ComplexDTO;
 import main.PF.dto.complex.Complex_CancelDTO;
@@ -19,34 +21,109 @@ import main.PF.dto.repair.RepairDTO;
 import main.PF.dto.repair.Repair_CancelDTO;
 import main.PF.dto.repair.Repair_DelayDTO;
 import main.PF.service.AirlineService;
+import main.realtime.api.FlightDTO;
+import main.realtime.api.realtimeAPI;
 @Controller
 public class PFMongoController {
 
 	@Autowired 
 	AirlineService service;
 	
+	@Autowired
+	realtimeAPI api;
+	
 	@RequestMapping("/main/flight.do")
-	public String predictFlight() {
-		int con1 = connection("대한항공");
+	public ModelAndView predictFlight() throws Exception{
+		/*int con1 = connection("대한항공");
 		int con2 = connectionDelay("대한항공");
 		int con3 = connectionCancel("대한항공");
-		// System.out.println("항공사(연결) : "+con1+" * "+con2+" * "+con3);
+		System.out.println("항공사(연결) : "+con1+" * "+con2+" * "+con3);
 		int repair1 = repair("LJ221");
 		int repair2 = repairDelay("LJ221");
 		int repair3 = repairCancel("OK191");
-		// System.out.println("편명(정비) : "+repair1+" * "+repair2+" * "+repair3);
+		System.out.println("편명(정비) : "+repair1+" * "+repair2+" * "+repair3);
 		int com1 = complex("09");
 		int com2 = complexDelay("09");
 		int com3 = complexCancel("14");
-		// System.out.println("시간(혼잡) : "+com1+" * "+com2+" * "+com3);
+		System.out.println("시간(혼잡) : "+com1+" * "+com2+" * "+com3);
 		int cond1 = condition(20171008);
 		int cond2 = conditionDelay(20171008);
 		int cond3 = conditionCancel(20171223);
-		// System.out.println("날짜(날씨) : "+cond1+" * "+cond2+" * "+con3);
-		double result = (1 - (1 - (double)con2/con1)*(1 - (double)repair2/repair1)*(1 - (double)com2/com1)*(1 - (double)cond2/cond1));
-		System.out.println("최종 결과 : "+result*100+"%");
-
-		return "abnormalflight";
+		System.out.println("날짜(날씨) : "+cond1+" * "+cond2+" * "+con3);
+		double rst = (1 - (1 - (double)con2/con1)*(1 - (double)repair2/repair1)*(1 - (double)com2/com1)*(1 - (double)cond2/cond1));
+		double result = Double.parseDouble(String.format("%.2f" , rst*100 ) );	// 소수점2째자리까지
+		System.out.println("최종 결과 : "+result+"%");*/
+		
+		ArrayList<FlightDTO> info = api.realtime("");
+		List<Double> delay = null;
+		for (int i = 0; i < info.size(); i++) {
+			String airline = info.get(i).getAirline();
+			String flight = info.get(i).getFlightId();
+			int date = Integer.parseInt(String.valueOf(info.get(i).getScheduleDateTime()).substring(0,8))-10000;
+			String time = String.valueOf(info.get(i).getScheduleDateTime()).substring(8,10);
+			double con1 = connection(airline);
+			double con2 = connectionDelay(airline);
+			double con3 = connectionCancel(airline);
+			double repair1 = repair(flight);
+			double repair2 = repairDelay(flight);
+			double repair3 = repairCancel(flight);
+			double com1 = complex(time);
+			double com2 = complexDelay(time);
+			double com3 = complexCancel(time);
+			double cond1 = condition(date);
+			double cond2 = conditionDelay(date);
+			double cond3 = conditionCancel(date);
+			double num1 = 0;
+			double num2 = 0;
+			double num3 = 0;
+			double num4 = 0;
+			try {
+				num1 = (double) (1 - con2 / con1);
+			} catch (ArithmeticException e) {
+				num1 = 1.0;
+			}
+			try {
+				num2 = (double) (1 - repair2 / repair1);
+			} catch (ArithmeticException e) {
+				num2 = 1.0;
+			}
+			try {
+				num3 = (double) (1 - com2 / com1);
+			} catch (ArithmeticException e) {
+				num3 = 1.0;
+			}
+			try {
+				num4 = (double) (1 - cond2 / cond1);
+			} catch (ArithmeticException e) {
+				num4 = 1.0;
+			}
+			
+			if(con1==0.0||con2==0.0) {
+				num1=1.0;
+			}if(repair1==0.0||repair2==0.0) {
+				num2=1.0;
+			}if(com1==0.0||com2==0.0) {
+				num3=1.0;
+			}if(cond1==0.0||cond2==0.0) {
+				num4=1.0;
+			}
+			double num = (1 - num1*num2*num3*num4);
+			double result = Double.parseDouble(String.format("%.2f" , num*100 ) );
+			info.get(i).setDelay(result);
+			// System.out.println("최종 결과 : "+result+"%");
+		}
+		
+		for (int i = 0; i < info.size(); i++) {
+			String time1 = String.valueOf(info.get(i).getScheduleDateTime());
+			String month = time1.substring(4, 6);
+			String day = time1.substring(6, 8);
+			String hour = time1.substring(8, 10);
+			String min = time1.substring(10, 12);
+			String time2 = month + "/" + day + "\t" + hour + ":" + min;
+			// System.out.println(time2);
+			info.get(i).setTime(time2);
+		}
+		return new ModelAndView("abnormalflight", "info", info);
 	}
 	
 	public int connection(String airline) {
