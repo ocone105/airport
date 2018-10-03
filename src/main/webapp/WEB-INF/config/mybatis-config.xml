@@ -15,6 +15,7 @@
 		<typeAlias type="erp.dept.dto.DeptDTO" alias="dept" />
 		<typeAlias type="erp.insa.dto.EmpDTO" alias="emp" />
 		<typeAlias type="erp.security.dto.SecurityDTO" alias="security" />
+		<typeAlias type="main.realtime.api.MyFlightDTO" alias="myflight" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="/mapper/BoardNotice.xml" />
