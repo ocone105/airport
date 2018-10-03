@@ -286,4 +286,22 @@ drop sequence pfno_seq;
 create sequence pfno_seq;
 
 
+--관심항공테이블
+Drop table FAVORITE;
+create table FAVORITE(
+ favoriteno number,
+ id varchar2(30),
+ flightId varchar2(100),
+ airline varchar2(100),
+ airport varchar2(150),
+ scheduleDateTime varchar2(100),
+ gatenumber varchar2(20),
+ remark varchar2(50)
+ );
+drop sequence favoriteno_seq;
+create sequence favoriteno_seq;
+
+
+
+
 

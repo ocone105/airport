@@ -12,11 +12,13 @@ public class FlightDTO {
 	private String terminalid;
 	private String remark;
 	private String time;
-	 
+	
+	private double delay;
+
 	public FlightDTO() {}
 
 	public FlightDTO(String airline, String airport, String airportcode, String chkinrange, long estimatedDateTime,
-			String flightId, Long gatenumber, Long scheduleDateTime, String terminalid, String remark, String time) {
+			String flightId, Long gatenumber, Long scheduleDateTime, String terminalid, String remark, String time, double delay) {
 		super();
 		this.airline = airline;
 		this.airport = airport;
@@ -29,24 +31,25 @@ public class FlightDTO {
 		this.terminalid = terminalid;
 		this.remark = remark;
 		this.time = time;
+		this.delay = delay;
 	}
 
 
-	
-	public String getTime() {
-		return time;
-	}
-
-	public void setTime(String time) {
-		this.time = time;
-	}
 
 	@Override
 	public String toString() {
 		return "FlightDTO [airline=" + airline + ", airport=" + airport + ", airportcode=" + airportcode
 				+ ", chkinrange=" + chkinrange + ", estimatedDateTime=" + estimatedDateTime + ", flightId=" + flightId
 				+ ", gatenumber=" + gatenumber + ", scheduleDateTime=" + scheduleDateTime + ", terminalid=" + terminalid
-				+ ", remark=" + remark + ", time=" + time + "]";
+				+ ", remark=" + remark + ", time=" + time + ", delay=" + delay + "]";
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
 	}
 
 	public String getRemark() {
@@ -128,5 +131,13 @@ public class FlightDTO {
 	public void setTerminalid(String terminalid) {
 		this.terminalid = terminalid;
 	}
-	
+	 
+	public double getDelay() {
+		return delay;
+	}
+
+	public void setDelay(double delay) {
+		this.delay = delay;
+	}
+
 }
