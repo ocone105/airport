@@ -41,4 +41,8 @@
 		select * from dept where deptname=#{deptname}
 	</select>
 	
+	<update id="requestPermit" parameterType="Integer">
+	
+	</update>
+	
 </mapper>

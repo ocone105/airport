@@ -7,58 +7,86 @@
 		insert into security
 		values('se62-0623-2311-'||sec_seq.nextVal,#{empno},#{img},#{appdate},null,null,'2')
 	</insert>
-	
-	<select id="seccheck" parameterType="Integer" resultType="security">
+
+	<select id="seccheck" parameterType="Integer"
+		resultType="security">
 		select * from security
 		where empno=#{empno}
 	</select>
-	
-	<select id="secread" parameterType="String" resultType="security">
-		select s.*,e.name,e.email,d.deptname 
+
+	<select id="secread" parameterType="String"
+		resultType="security">
+		select s.*,e.name,e.email,d.deptname
 		from security s, emp e, dept d
-		where s.empno=e.empno and d.deptno=e.deptno and scno=#{scno}
+		where s.empno=e.empno and d.deptno=e.deptno
+		and scno=#{scno}
 	</select>
 
 	<update id="reapply" parameterType="security">
 		update security
-		set img=#{img}, appdate=#{appdate}, issuedate=null, exdate=null, scstate='2'
+		set
+		img=#{img}, appdate=#{appdate}, issuedate=null, exdate=null,
+		scstate='2'
 		where scno=#{scno}
 	</update>
-	
+
 	<select id="secpermitlist" resultType="security">
-		select s.*,e.name,e.email,d.deptname 
+		select
+		s.*,e.name,e.email,d.deptname
 		from security s, emp e, dept d
-		where s.empno=e.empno and d.deptno=e.deptno and scstate='2'
-	</select>	
-	
+		where s.empno=e.empno and d.deptno=e.deptno
+		and scstate='2'
+	</select>
+
 	<select id="passlist" resultType="security">
-		select s.*,e.name,e.email,d.deptname 
+		select
+		s.*,e.name,e.email,d.deptname
 		from security s, emp e, dept d
-		where s.empno=e.empno and d.deptno=e.deptno and scstate='1' or scstate='0'
+		where s.empno=e.empno and d.deptno=e.deptno
+		and scstate='1' or scstate='0'
 		order by d.deptname asc
-	</select>	
-	
+	</select>
+
 	<update id="permit" parameterType="String">
 		update security
-		set scstate='1', issuedate=sysdate, exdate=add_months(sysdate,12)
-		where scno=#{scno}
+		set
+		scstate='1', issuedate=sysdate, exdate=add_months(sysdate,12)
+		where
+		scno=#{scno}
 	</update>
-	
+
 	<update id="reject" parameterType="String">
 		update security
 		set scstate='3'
 		where scno=#{scno}
 	</update>
-	
+
 	<update id="expire" parameterType="String">
 		update security
 		set scstate='0'
 		where scno=#{scno}
 	</update>
-	
+
 	<delete id="delete" parameterType="Integer">
 		delete from security
-		where empno=#{empno}
+		where
+		empno=#{empno}
 	</delete>
-	
+
+	<select id="passsearch" resultType="security" parameterType="Map">
+		select
+		s.*,e.name,e.email,d.deptname
+		from security s, emp e, dept d
+		<where>
+			<if test="tag=='name' and search!=''">
+				s.empno=e.empno and d.deptno=e.deptno and e.name like '%' || #{search} || '%' and scstate='1' or scstate='0'
+			</if>
+			<if test="tag=='deptname' and search!=''">
+				s.empno=e.empno and d.deptno=e.deptno and d.deptname like '%' || #{search} || '%' and scstate='1' or scstate='0'
+			</if>
+		</where>
+		order by d.deptname asc
+	</select>
+
+
 </mapper>

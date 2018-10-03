@@ -41,4 +41,15 @@ public class EmpInsertController {
 		List<DeptDTO> deptlist=deptservice.deptstepList(deptno);
 		return deptlist;
 	}
+	
+	// 아이디 중복 체크
+	@RequestMapping(value = "/erp/idcheck.do", method = RequestMethod.GET, produces = "application/text;charset=utf-8")
+	public @ResponseBody String idCheck(String empid) {
+		String result = "0";
+		boolean check = empservice.idCheck(empid);
+		if(check) {
+			result="1";
+		}
+		return result;
+	}
 }

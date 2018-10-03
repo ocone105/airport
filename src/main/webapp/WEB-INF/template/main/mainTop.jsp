@@ -20,6 +20,7 @@
 							<div class="logo">
 								<a href="/airport/main/index.do">Airport</a> | <a
 									href="/airport/erp/login.do">Corporation</a>
+								<a href="/airport/crawler.do">load more</a>
 							</div>
 							<nav class="main_nav">
 								<ul

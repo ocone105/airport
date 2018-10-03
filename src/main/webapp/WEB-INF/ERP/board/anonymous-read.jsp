@@ -9,11 +9,10 @@
 <link rel='stylesheet' id='kboard-skin-thumbnail-css' href='/airport/resources/common/css/comments.css' type='text/css' media='all' />
 <script type="text/javascript">
 	$(document).ready(function() {
-		
 		// 댓글 삭제 Ajax
 		$(document).on("click",".deletecmt", function(){
-			cmtno = $("#cmtno").val();
-			boardno = $("#boardno").val();
+			cmtno = $(this).attr("id");
+			boardno = ${post.boardno};
 			$.ajax({
 				url:"/airport/erp/cmt/noticedelete.do",
 				type:"get",
@@ -22,7 +21,6 @@
 					"boardno":boardno
 				},
 				success:function(list){
-					$("#cmttxt").val('');
 					cmtlist="";
 					for (var i = 0; i < list.length; i++) {
 						cmtlist = cmtlist + "<ul><li itemscope itemtype='http://schema.org/Comment' class='kboard-comments-item'><div class='comments-list-username'>"
@@ -32,7 +30,7 @@
 									"</div><div class='comments-list-content'>"
 									+ list[i].cmttxt +
 									"</div><div class='comments-list-controller'><div class='right'>" +
-									"<a type='button' data_num='"+list[i].cmtno+"' href='#' class='deletecmt comments-button-action comments-button-delete onclick='return confirm('삭제 하시겠습니까?')' title='삭제'>삭제</a></div></div></li></ul>" +
+									"<a type='button' id='"+list[i].cmtno+"' href='#' class='deletecmt comments-button-action comments-button-delete onclick='return confirm('삭제 하시겠습니까?')' title='삭제'>삭제</a></div></div></li></ul>" +
 									"<input type='hidden' id='cmtno' value="+list[i].cmtno+">";
 					}
 					$("#cmtcount").val(list.length);
@@ -46,7 +44,7 @@
 		$("#insertcmt").click(function(){
 			cmttxt = $("#cmttxt").val();
 			empno = $("#empno").val();
-			boardno = $("#boardno").val();
+			boardno = ${post.boardno}
 			
 			$.ajax({
 				url:"/airport/erp/cmt/noticewrite.do",
@@ -65,9 +63,9 @@
 									"</div><div class='comments-list-create'>"
 									+ list[i].cmtdate + 
 									"</div><div class='comments-list-content'>"
-									+ list[i].cmttxt +
+									+ list[i].cmttxt + 
 									"</div><div class='comments-list-controller'><div class='right'>" +
-									"<a type='button' data_num='"+list[i].cmtno+"' href='#' class='deletecmt comments-button-action comments-button-delete onclick='return confirm('삭제 하시겠습니까?')' title='삭제'>삭제</a></div></div></li></ul>"+
+									"<a type='button' id='"+list[i].cmtno+"' href='#' class='deletecmt comments-button-action comments-button-delete onclick='return confirm('삭제 하시겠습니까?')' title='삭제'>삭제</a></div></div></li></ul>"+
 									"<input type='hidden' id='cmtno' value="+list[i].cmtno+">";
 					}
 					$("#cmtcount").val(list.length);
@@ -138,7 +136,7 @@
 																<div class="right">
 																	<a type="button" href="#"
 										class="deletecmt comments-button-action comments-button-delete"
-										onclick="return confirm('삭제 하시겠습니까?');" title="삭제" >삭제</a>
+										onclick="return confirm('삭제 하시겠습니까?');" id="${comment.cmtno }" title="삭제" >삭제</a>
 																</div>
 															</div>
 														</li>

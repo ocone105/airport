@@ -1,11 +1,14 @@
 package erp.security.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import erp.insa.dto.EmpDTO;
 import erp.security.dto.SecurityDTO;
 
 @Repository("securitydao")
@@ -61,6 +64,14 @@ public class SecurityDAOImpl implements SecurityDAO {
 	@Override
 	public void delete(int empno) {
 		sqlSession.delete("kr.airport.erp.security.delete", empno);
+	}
+
+	@Override
+	public List<SecurityDTO> passsearch(String tag, String search) {
+		Map<String,String> map = new HashMap<String, String>();
+		map.put("tag", tag);
+		map.put("search", search);
+		return sqlSession.selectList("kr.airport.erp.security.passsearch", map);
 	}
 
 }

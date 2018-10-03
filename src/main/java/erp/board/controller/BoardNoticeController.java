@@ -32,7 +32,7 @@ public class BoardNoticeController {
 		List<BoardNoticeDTO> posts = service.boardlist();
 		return new ModelAndView("erp/noticelist", "posts", posts);
 	}
-	
+
 	@RequestMapping(value="/erp/noticewrite.do",method=RequestMethod.GET) 
 	public String noticewrite(){
 		return "erp/noticewrite";
@@ -136,6 +136,16 @@ public class BoardNoticeController {
 		
 		mav.addObject("downloadFile", downloadFile);
 		mav.setViewName("fileDownloadView");
+		return mav;
+	}
+	
+	@RequestMapping(value="/erp/nboardsearch.do")
+	public ModelAndView empsearch(String tag, String search){
+		ModelAndView mav = new ModelAndView();
+		List<BoardNoticeDTO> posts = service.nboardsearch(tag, search);
+		System.out.println(posts);
+		mav.addObject("posts", posts);
+		mav.setViewName("erp/noticelist");
 		return mav;
 	}
 
