@@ -138,6 +138,4 @@ public class AirlineDAOImpl implements AirlineDAO {
 		return docs;
 	}
 	
-
-
 }

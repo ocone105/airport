@@ -57,8 +57,7 @@ public class AirlineServiceImpl implements AirlineService {
 
 	@Override
 	public List<ComplexDTO> findcom() {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.findcom();
 	}
 
 	@Override

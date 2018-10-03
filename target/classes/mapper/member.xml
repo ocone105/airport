@@ -34,11 +34,15 @@
 		where id=#{id}
 	</update>
 
-	<update id="memberwithdraw" parameterType="String">
+<!-- 	<update id="memberwithdraw" parameterType="String">
 		update member set
 		state='0' 
 		where id = #{id}
-	</update>
+	</update> -->
+	
+	<delete id="memberwithdraw" parameterType="String">
+		delete from member where id = #{id}
+	</delete>
 	
 	<select id="memberlist" resultType="member">
 		select * from member

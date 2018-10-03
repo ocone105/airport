@@ -16,6 +16,7 @@ public interface PFDAO {
 	List<PFDTO> pflist(int pfinfono);
 	List<Integer> pflist();
 	int pfinsert(PFDTO pf);
+	int requestPermit(int pfno);
 	
 	// 부서명, 매니저 
 	DeptDTO getDept(String pfname);
