@@ -13,6 +13,6 @@ public interface EmpDAO {
 	EmpDTO login(EmpDTO emp);
 	void empserviceupdate(EmpDTO emp);
 	List<EmpDTO> empsearch(String tag,String search);
-	boolean idCheck(String empid);
+	boolean idCheck(String id);
 	
 }

@@ -44,9 +44,9 @@ public class EmpInsertController {
 	
 	// 아이디 중복 체크
 	@RequestMapping(value = "/erp/idcheck.do", method = RequestMethod.GET, produces = "application/text;charset=utf-8")
-	public @ResponseBody String idCheck(String empid) {
+	public @ResponseBody String idCheck(String id) {
 		String result = "0";
-		boolean check = empservice.idCheck(empid);
+		boolean check = empservice.idCheck(id);
 		if(check) {
 			result="1";
 		}

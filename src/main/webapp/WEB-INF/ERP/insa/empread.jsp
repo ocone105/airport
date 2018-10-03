@@ -37,11 +37,7 @@
 											</tr>
 											<tr>
 												<td>아이디</td>
-												<td>${emp.empid }</td>
-											</tr>
-											<tr>
-												<td>비밀번호</td>
-												<td>${emp.pwd }</td>
+												<td>${emp.id }</td>
 											</tr>
 											<tr>
 												<td>생년월일</td>

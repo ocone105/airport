@@ -21,11 +21,6 @@ public class PFController {
 	@Autowired
 	PFService service;
 	
-	@RequestMapping("/erp/datalist.do")
-	public String datalist(){
-		return "erp/datalist";
-	}
-	
 	// 인원요청
 	@RequestMapping("/erp/pfrequest.do")
 	public ModelAndView pfrequest(String pfname){

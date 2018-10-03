@@ -26,7 +26,7 @@ public class LoginController {
 		return "erp/login";
 	}
 	
-	@RequestMapping(value="/erp/login.do", method=RequestMethod.POST)
+	/*@RequestMapping(value="/erp/login.do", method=RequestMethod.POST)
 	public String emplogin(EmpDTO emp,HttpSession session){
 		//System.out.println("emp"+emp);
 		EmpDTO loginUser = service.login(emp);
@@ -50,7 +50,7 @@ public class LoginController {
 			url = "erp/login";
 		}
 		return url;
-	}
+	}*/
 	
 	@RequestMapping(value="/erp/logout.do")
 	public String emplogout(HttpServletRequest request) {

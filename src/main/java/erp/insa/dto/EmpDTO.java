@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class EmpDTO {
 	int empno;
-	String empid;
+	String id;
 	String pwd;
 	String name;
 	String birth;
@@ -20,11 +20,11 @@ public class EmpDTO {
 	String deptname;
 	
 	public EmpDTO() {}
-	public EmpDTO(int empno, String empid, String pwd, String name, String birth, String gender, String phone,
+	public EmpDTO(int empno, String id, String pwd, String name, String birth, String gender, String phone,
 			String email, String position, String state, Date startdate, Date enddate, String deptno) {
 		super();
 		this.empno = empno;
-		this.empid = empid;
+		this.id = id;
 		this.pwd = pwd;
 		this.name = name;
 		this.birth = birth;
@@ -38,11 +38,11 @@ public class EmpDTO {
 		this.deptno = deptno;
 	}
 	//empread용
-	public EmpDTO(int empno, String empid, String pwd, String name, String birth, String gender, String phone,
+	public EmpDTO(int empno, String id, String pwd, String name, String birth, String gender, String phone,
 			String email, String position, String state, Date startdate, Date enddate, String deptno, String deptname) {
 		super();
 		this.empno = empno;
-		this.empid = empid;
+		this.id = id;
 		this.pwd = pwd;
 		this.name = name;
 		this.birth = birth;
@@ -59,7 +59,7 @@ public class EmpDTO {
 	
 	@Override
 	public String toString() {
-		return "InsaDTO [empno=" + empno + ", empid=" + empid + ", pwd=" + pwd + ", name=" + name + ", birth=" + birth
+		return "InsaDTO [empno=" + empno + ", id=" + id + ", pwd=" + pwd + ", name=" + name + ", birth=" + birth
 				+ ", gender=" + gender + ", phone=" + phone + ", email=" + email + ", position=" + position + ", state="
 				+ state + ", startdate=" + startdate + ", enddate=" + enddate + ", deptno=" + deptno + "]";
 	}
@@ -70,11 +70,11 @@ public class EmpDTO {
 	public void setEmpno(int empno) {
 		this.empno = empno;
 	}
-	public String getEmpid() {
-		return empid;
+	public String getId() {
+		return id;
 	}
-	public void setEmpid(String empid) {
-		this.empid = empid;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getPwd() {
 		return pwd;

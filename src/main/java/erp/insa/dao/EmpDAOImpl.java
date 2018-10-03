@@ -63,9 +63,9 @@ public class EmpDAOImpl implements EmpDAO {
 	}
 
 	@Override
-	public boolean idCheck(String empid) {
+	public boolean idCheck(String id) {
 		boolean state = false;
-		EmpDTO user = sqlSession.selectOne("kr.airport.erp.insa.idcheck", empid);
+		EmpDTO user = sqlSession.selectOne("kr.airport.erp.insa.idcheck", id);
 		if (user != null) {
 			state = true;
 		}
