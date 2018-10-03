@@ -19,7 +19,7 @@
 					<div>
 					<span>제목</span>
 					<input type="text" class="form-control" name="title" required>
-					<input type="hidden" name="empno" value="0">
+					<input type="hidden" name="empno" value="${erploginUser.empno }">
 					</div>
 					<div>
 						<label>내용</label>

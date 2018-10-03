@@ -34,9 +34,16 @@ public class PFdataController {
 
 	@Autowired
 	AirportMongoData amservice;
-
+	
+	@Autowired
+	predictData pdservice;
+	
 	@RequestMapping("/erp/datalist.do")
 	public ModelAndView pfwrite() {
+		
+		//pdservice.predictdatedata("20181005");
+		
+		
 		ModelAndView mav = new ModelAndView();
 		int count = 0;
 		int count_de = 0;
@@ -96,7 +103,6 @@ public class PFdataController {
 		for (int i = 0; i < data1_can.size(); i++) {
 			count_can = count_can + data1_can.get(i).getValue();
 		}
-		System.out.println(count_de + "," + count_can + "," + count);
 		double result1_1 = (double) count_de / count * 100.0;
 		double result1_2 = (double) count_can / count * 100.0;
 		result1_1 = Double.parseDouble(df.format(result1_1));
@@ -120,7 +126,6 @@ public class PFdataController {
 		for (int i = 0; i < data2_can.size(); i++) {
 			count_can = count_can + data2_can.get(i).getValue();
 		}
-		System.out.println(count_de + "," + count_can + "," + count);
 		double result2_1 = (double) count_de / count * 100.0;
 		double result2_2 = (double) count_can / count * 100.0;
 		result2_1 = Double.parseDouble(df.format(result2_1));
@@ -143,7 +148,6 @@ public class PFdataController {
 		for (int i = 0; i < data3_can.size(); i++) {
 			count_can = count_can + data3_can.get(i).getValue();
 		}
-		System.out.println(count_de + "," + count_can + "," + count);
 		double result3_1 = (double) count_de / count * 100.0;
 		double result3_2 = (double) count_can / count * 100.0;
 		result3_1 = Double.parseDouble(df.format(result3_1));
@@ -166,7 +170,6 @@ public class PFdataController {
 		for (int i = 0; i < data4_can.size(); i++) {
 			count_can = count_can + data4_can.get(i).getValue();
 		}
-		System.out.println(count_de + "," + count_can + "," + count);
 		double result4_1 = (double) count_de / count * 100.0;
 		double result4_2 = (double) count_can / count * 100.0;
 		result4_1 = Double.parseDouble(df.format(result4_1));

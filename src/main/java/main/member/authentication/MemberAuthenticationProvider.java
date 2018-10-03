@@ -29,7 +29,6 @@ public class MemberAuthenticationProvider implements AuthenticationProvider {
 		String checkid = username.substring(0, 3);
 		if(checkid.equals("emp")) {
 			String pwd = (String)data.getCredentials(); // 비밀번호
-			Object obj = data.getPrincipal();
 			//System.out.println(username+" , "+pwd+" , "+obj);
 			
 			// db인증작업을 하기 위해서 mybatis를 이용해서 db에서 조회한 결과를 저장
@@ -41,8 +40,7 @@ public class MemberAuthenticationProvider implements AuthenticationProvider {
 			UsernamePasswordAuthenticationToken authUser = null;
 
 			if (empuser != null) {
-				//boolean state = passencoder.isPasswordValid(empuser.getPassword(), pwd, null);
-				boolean state = pwd.equals(empuser.getPassword());
+				boolean state = passencoder.isPasswordValid(empuser.getPassword(), pwd, null);
 				if (state) { // 로그인 성공
 					authUser = new UsernamePasswordAuthenticationToken(empuser, pwd, empuser.getAuthorities());
 				}

@@ -64,6 +64,10 @@
 	<select id="idcheck" parameterType="String" resultType="emp">
 		select * from emp where id = #{id}
 	</select>
+	
+	<select id="getid" parameterType="Integer" resultType="String">
+		select id from emp where empno=#{empno}
+	</select>
 </mapper>
 
 

@@ -47,7 +47,7 @@
 	</insert>
 	
 	<select id="noticeCmtlist" resultType="noticeCmt">
-		select * from BOARDCMT where boardno=#{boardno} order by cmtdate desc
+		select b.*, e.id from BOARDCMT b, emp e where b.empno=e.empno and boardno=#{boardno} order by cmtdate desc
 	</select>
 	
 	<delete id="deleteCmt" parameterType="Integer">
