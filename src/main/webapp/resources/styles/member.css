@@ -51,6 +51,18 @@ div
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
+
+td
+{
+	color: black;
+}
+
+.td
+{
+	font-weight: bold;
+	color: #373737;
+}
+
 ul
 {
 	list-style: none;
@@ -83,14 +95,14 @@ p:last-of-type
 {
 	margin-bottom: 0;
 }
-a, a:hover, a:visited, a:active, a:link
+/* a, a:hover, a:visited, a:active, a:link
 {
 	text-decoration: none;
 	-webkit-font-smoothing: antialiased;
 	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
 	text-shadow: rgba(0,0,0,.01) 0 0 1px;
 	 color: #fff;
-}
+} */
 p a:active
 {
 	position: relative;
