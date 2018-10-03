@@ -11,6 +11,9 @@
 	href="/airport/resources/styles/member.css">
 <!-- <link rel="stylesheet" type="text/css"
 	href="/airport/resources/styles/contact_responsive.css"> -->
+	
+	<link href="/airport/resources/list/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="/airport/resources/list/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
 
 </head>
 <body>
@@ -55,7 +58,7 @@
 		<div class="container-fluid">
 			<div class="row">
 
-				<div class="col-md-12">
+				<div class="col-md-12" >
 					<div class="card-body">
 						<div
 							class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
@@ -98,6 +101,76 @@
 								</div>
 
 							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<!-- 관심 항공 -->
+				<div class="col-md-12">
+					<div class="card-body">
+						<div class="panel panel-info">
+							<div class="panel-heading">
+								<h3 class="panel-title">나의 관심 항공</h3>
+							</div>
+							<div class="table-responsive table-data">
+					<table class="table">
+						<thead>
+							<tr>
+								<td><label class="au-checkbox"> 
+									</label></td>
+								<td>Airline/Flight
+								<td>
+								<td>Destination</td>
+								<td>Departure Time</td>
+								<td>GATE</td>
+								<td>Status</td>
+								<td>More</td>
+							</tr>
+						</thead>
+						<tbody>
+						<c:forEach var="info" items="${myflight}">
+							<tr>
+								<td><label class="au-checkbox"> 
+									<input type="checkbox"> 
+									<span class="au-checkmark"></span>
+								</label></td>
+								<td>
+									<div class="table-data__info">
+										<h6>${info.flightId}</h6>
+										<span> ${info.airline}
+										</span>
+									</div>
+								</td>
+								<td></td>
+								<%-- <td><img src="/airport/resources/logo/${info.airline}.jpg" width=300 height="100"></td> --%>
+								<td>
+									<div class="table-data__info">
+										<h6>${info.airport}</h6>
+									</div>
+								</td>
+								<td>
+									<h6>${info.scheduleDateTime}</h6>
+								</td>
+								<td>${info.gatenumber}</td>
+								<td>
+									<c:if test="${info.remark=='출발'}">
+										<span class="role user">${info.remark}</span>	
+									</c:if>
+									<c:if test="${empty info.remark}">
+										<c:if test="${!empty info.gatenumber}">
+											<span class="role member">탑승중</span>
+										</c:if>
+									</c:if>
+									<!-- <span class="role admin">결항</span> -->
+								</td>
+								<td><span class="more"> <i class="zmdi zmdi-more"></i>
+								</span></td>
+							</tr>
+						</c:forEach>
+						</tbody>
+					</table>
+				</div>
 						</div>
 					</div>
 				</div>
