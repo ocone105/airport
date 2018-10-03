@@ -15,7 +15,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="card">
-						<div class="card-header card-header-primary">
+						<div class="card-header card-header-info">
 							<h4 class="card-title">사원등록</h4>
 							<p class="card-category">Complete profile</p>
 						</div>

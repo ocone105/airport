@@ -123,7 +123,7 @@ $(document).ready(function() {
 					</div>
 				</li>
 				
-				<!-- <li class="nav-item "><a class="nav-link"
+			<!-- 	<li class="nav-item "><a class="nav-link"
 					href="/airport/erp/dashboard.do"> <i class="material-icons">dashboard</i>
 						<p>Dashboard</p>
 				</a></li>
@@ -150,7 +150,7 @@ $(document).ready(function() {
 				<li class="nav-item "><a class="nav-link"
 					href="/airport/erp/notification.do"> <i class="material-icons">notifications</i>
 						<p>Notifications</p>
-				</a></li> -->
+				</a></li>  -->
 				<!-- <li class="nav-item active-pro "><a class="nav-link"
 					href="/airport/erp/upgrade.do"> <i class="material-icons">unarchive</i>
 						<p>Upgrade to PRO</p>

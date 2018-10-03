@@ -17,6 +17,7 @@ public class PassController {
 	@Autowired
 	SecurityService service;
 	
+	
 	@RequestMapping("/erp/pass.do")
 	public String insertView(Model model, HttpServletRequest req){
 		String today = new java.text.SimpleDateFormat ("yyyy-MM-dd").format(new java.util.Date()); 
