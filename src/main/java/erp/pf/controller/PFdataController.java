@@ -23,6 +23,7 @@ import main.PF.dto.repair.RepairDTO;
 import main.PF.dto.repair.Repair_CancelDTO;
 import main.PF.dto.repair.Repair_DelayDTO;
 import main.PF.service.AirlineService;
+import main.realtime.api.FlightDTO;
 
 @Controller
 public class PFdataController {
@@ -35,14 +36,8 @@ public class PFdataController {
 	@Autowired
 	AirportMongoData amservice;
 	
-	@Autowired
-	predictData pdservice;
-	
 	@RequestMapping("/erp/datalist.do")
 	public ModelAndView pfwrite() {
-		
-		//pdservice.predictdatedata("20181005");
-		
 		
 		ModelAndView mav = new ModelAndView();
 		int count = 0;
