@@ -41,7 +41,7 @@
 						</table>
 					</div>
 					<div class="kboard-control">
-					<c:if test="${erploginUser.role eq 'ROLE_AMDIN' }">
+					<c:if test="${erploginUser.role eq 'ROLE_ADMIN' }">
 						<a href="/airport/erp/noticewrite.do">글쓰기</a>
 						</c:if>
 					</div>

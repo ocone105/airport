@@ -7,11 +7,15 @@
 	</select>
 	
 	<insert id="myflight1" parameterType="myflight">
-		insert into FAVORITE values(favoriteno_seq.nextval, #{id}, #{flightId}, #{airline}, #{airport}, #{scheduleDateTime}, #{gatenumber}, #{remark})
+		insert into FAVORITE values(favoriteno_seq.nextval, #{id}, #{flightId}, #{airline}, #{airport}, #{scheduleDateTime}, #{gatenumber}, #{remark}, #{delay})
 	</insert>
 
 		<select id="myflight2" parameterType="String" resultType="myflight">
 		select * from FAVORITE where id=#{id}
 	</select>
 
+	<delete id="deletemyFlight" parameterType="myflight">
+		delete from FAVORITE where id=#{id} and flightId=#{flightId} and airline=#{airline} and
+			airport=#{airport}and scheduleDateTime=#{scheduleDateTime}
+	</delete>
 </mapper>

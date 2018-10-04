@@ -29,13 +29,13 @@
 					<div class="home_search_container">
 						<div class="home_search_title">Departures</div>
 						<div class="home_search_content">
-							<form action="#" class="home_search_form" id="home_search_form">
+							<form action="/airport/main/PFSearch.do" class="home_search_form" id="home_search_form">
 								<div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
-									<input type="text" class="search_input search_input_1" placeholder="Destination" required="required">
-									<input type="text" class="search_input search_input_2" placeholder="Airline" required="required">
-									<input type="text" class="search_input search_input_3" placeholder="Flight" required="required">
-									<input type="text" class="search_input search_input_4" placeholder="Time" required="required">
-									<button class="home_search_button">search</button>
+									<input type="text" class="search_input search_input_1" placeholder="Destination" name="destination">
+									<input type="text" class="search_input search_input_2" placeholder="Airline" name="airline">
+									<input type="text" class="search_input search_input_3" placeholder="Flight" name="flight">
+									<input type="text" class="search_input search_input_4" placeholder="Time" name="time">
+									<button type="submit" class="home_search_button">search</button>
 								</div>
 							</form>
 						</div>
@@ -44,12 +44,13 @@
 			</div>
 		</div>
 	</div>
-
 	<!-- News -->
 
 	<div class="news">
 		<div class="container">
 
+
+			<form class="form-horizontal" action="/airport/main/myFlight2.do">
 <!-- List -->
 			<div class="user-data m-b-40">
 				<h3 class="title-3 m-b-30">
@@ -60,7 +61,7 @@
 						<thead>
 							<tr>
 								<td>
-<!-- 									<label class="au-checkbox"> 
+<!-- 								<label class="au-checkbox"> 
 									<input type="checkbox"> <span class="au-checkmark"></span>
 									</label> -->
 								</td>
@@ -78,7 +79,7 @@
 								<td>
 									<se:authorize access="hasRole('ROLE_USER')">
 									<label class="au-checkbox"> 
-									<input type="checkbox"> 
+									<input type="checkbox" value="${info.flightId}+${info.airline}+${info.airport}+${info.time}+${info.gatenumber}+${info.remark}+${info.delay}" name="info"> 
 									<span class="au-checkmark"></span>
 									</label>
 									</se:authorize>
@@ -121,11 +122,12 @@
 				</div>
 				<div class="user-data__footer">
 					<se:authorize access="hasRole('ROLE_USER')">
-					<button class="au-btn au-btn-load">load more</button>
+					<button class="au-btn au-btn-load">관심 항공 등록</button>
 					</se:authorize>
 				</div>
 			</div>
 			<!-- END LIST-->
+			</form>
 
 			<!-- Pagination -->
 			<!-- <div class="pagination">
