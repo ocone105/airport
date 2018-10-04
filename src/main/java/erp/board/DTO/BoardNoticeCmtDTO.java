@@ -10,6 +10,7 @@ public class BoardNoticeCmtDTO {
 	private Date cmtdate; 
 	private int boardno;
 	private int empno; 
+	private String id;
 
 	public BoardNoticeCmtDTO(){}
 
@@ -20,6 +21,16 @@ public class BoardNoticeCmtDTO {
 		this.cmtdate = cmtdate;
 		this.boardno = boardno;
 		this.empno = empno;
+	}
+
+	public BoardNoticeCmtDTO(int cmtno, String cmttxt, Date cmtdate, int boardno, int empno, String id) {
+		super();
+		this.cmtno = cmtno;
+		this.cmttxt = cmttxt;
+		this.cmtdate = cmtdate;
+		this.boardno = boardno;
+		this.empno = empno;
+		this.id = id;
 	}
 
 	@Override
@@ -67,5 +78,14 @@ public class BoardNoticeCmtDTO {
 	public void setEmpno(int empno) {
 		this.empno = empno;
 	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+	
 
 }

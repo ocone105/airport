@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import erp.insa.dto.EmpDTO;
+import erp.login.authentication.EmpSecurityLoginDTO;
 import erp.security.dto.SecurityDTO;
 import erp.security.service.SecurityService;
 
@@ -17,12 +17,13 @@ public class PassController {
 	@Autowired
 	SecurityService service;
 	
+	
 	@RequestMapping("/erp/pass.do")
 	public String insertView(Model model, HttpServletRequest req){
 		String today = new java.text.SimpleDateFormat ("yyyy-MM-dd").format(new java.util.Date()); 
 		//System.out.println(today);
 		HttpSession ses = req.getSession(false);
-		EmpDTO emp = (EmpDTO)ses.getAttribute("erploginUser");
+		EmpSecurityLoginDTO emp = (EmpSecurityLoginDTO)ses.getAttribute("erploginUser");
 		SecurityDTO sec = service.secCheck(emp.getEmpno());
 		
 		model.addAttribute("sec",sec);

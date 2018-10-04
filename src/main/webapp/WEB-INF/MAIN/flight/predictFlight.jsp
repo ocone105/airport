@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="se" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,133 +50,94 @@
 	<div class="news">
 		<div class="container">
 
-			<!-- List -->
+<!-- List -->
 			<div class="user-data m-b-40">
 				<h3 class="title-3 m-b-30">
 					<i class="zmdi zmdi-airplane"></i>비정상운항
 				</h3>
-				<div class="filters m-b-45">
-					<div
-						class="rs-select2--dark rs-select2--md m-r-10 rs-select2--border">
-						<select class="js-select2" name="property">
-							<option selected="selected">All Status</option>
-							<option value="">delayed</option>
-							<option value="">Cancelled</option>
-						</select>
-						<div class="dropDownSelect2"></div>
-					</div>
-					<div class="rs-select2--dark rs-select2--sm rs-select2--border">
-						<select class="js-select2 au-select-dark" name="time">
-							<option selected="selected">All Time</option>
-							<option value="">By Month</option>
-							<option value="">By Day</option>
-						</select>
-						<div class="dropDownSelect2"></div>
-					</div>
-				</div>
 				<div class="table-responsive table-data">
 					<table class="table">
 						<thead>
 							<tr>
-								<td><label class="au-checkbox"> <input
-										type="checkbox"> <span class="au-checkmark"></span>
-								</label></td>
+								<td>
+<!-- 									<label class="au-checkbox"> 
+									<input type="checkbox"> <span class="au-checkmark"></span>
+									</label> -->
+								</td>
 								<td>Airline/Flight
 								<td>
 								<td>Destination</td>
 								<td>Departure Time</td>
-								<td>GATE</td>
 								<td>Status</td>
-								<td>More</td>
+								<td>비정상운항(%)</td>
 							</tr>
 						</thead>
 						<tbody>
+						<c:forEach var="info" items="${info}">
 							<tr>
-								<td><label class="au-checkbox"> <input
-										type="checkbox"> <span class="au-checkmark"></span>
-								</label></td>
+								<td>
+									<se:authorize access="hasRole('ROLE_USER')">
+									<label class="au-checkbox"> 
+									<input type="checkbox"> 
+									<span class="au-checkmark"></span>
+									</label>
+									</se:authorize>
+								</td>
 								<td>
 									<div class="table-data__info">
-										<h6>KE5691</h6>
-										<span> <a href="#">대한항공</a>
+										<h6>${info.flightId}</h6>
+										<span> <a href="#">${info.airline}</a>
 										</span>
 									</div>
 								</td>
-								<td><img src="/airport/resources/logo/KOREANAIR.jpg"
-									width="300"></td>
+								<td><img src="/airport/resources/logo/${info.airline}.jpg" width=300 height="100"></td>
 								<td>
 									<div class="table-data__info">
-										<h6>TAIPEI</h6>
+										<h6>${info.airport}</h6>
 									</div>
 								</td>
 								<td>
-									<h4>17:50</h4>
+									<h6>${info.time}</h6>
 								</td>
-								<td>30</td>
-								<td><span class="role admin">결항</span></td>
-								<td><span class="more"> <i class="zmdi zmdi-more"></i>
-								</span></td>
+								<td>
+									<c:if test="${info.remark=='출발'}">
+										<span class="role user">예정</span>	
+									</c:if>
+									<c:if test="${empty info.remark}">
+										<c:if test="${!empty info.gatenumber}">
+											<span class="role member">지연</span>
+										</c:if>
+									</c:if>
+									<!-- <span class="role admin">결항</span> -->
+								</td>
+								<td>
+									${info.delay}
+								<!-- <span class="more"> <i class="zmdi zmdi-more"></i></span> -->
+								</td>
 							</tr>
-							<tr>
-								<td><label class="au-checkbox"> <input
-										type="checkbox"> <span class="au-checkmark"></span>
-								</label></td>
-								<td>
-									<div class="table-data__info">
-										<h6>OZ106</h6>
-										<span> <a href="#">Asiana Airlines</a>
-										</span>
-									</div>
-								</td>
-								<td><img src="/airport/resources/logo/ASIANAAIRLINES.png"
-									width="300"></td>
-								<td>
-									<div class="table-data__info">
-										<h6>TOKYO/NARITA</h6>
-									</div>
-								</td>
-								<td>
-									<h4>17:55</h4>
-								</td>
-								<td>17</td>
-								<td><span class="role member">지연</span></td>
-								<td><span class="more"> <i class="zmdi zmdi-more"></i>
-								</span></td>
-							</tr>
-							<tr>
-								<td><label class="au-checkbox"> <input
-										type="checkbox"> <span class="au-checkmark"></span>
-								</label></td>
-								<td>
-									<div class="table-data__info">
-										<h6>KE5749</h6>
-										<span> <a href="#">대한항공</a>
-										</span>
-									</div>
-								</td>
-								<td><img src="/airport/resources/logo/KOREANAIR.jpg"
-									width="300"></td>
-								<td>
-									<div class="table-data__info">
-										<h6>KITA KYUSHU</h6>
-									</div>
-								</td>
-								<td>
-									<h4>18:00</h4>
-								</td>
-								<td>103</td>
-								<td><span class="role user">탑승중</span></td>
-								<td><span class="more"> <i class="zmdi zmdi-more"></i>
-								</span></td>
-							</tr>
+						</c:forEach>
 						</tbody>
 					</table>
 				</div>
 				<div class="user-data__footer">
+					<se:authorize access="hasRole('ROLE_USER')">
 					<button class="au-btn au-btn-load">load more</button>
+					</se:authorize>
 				</div>
 			</div>
 			<!-- END LIST-->
+
+			<!-- Pagination -->
+			<!-- <div class="pagination">
+				<ul class="d-flex flex-row align-items-start justify-content-start">
+					<li class="active"><a href="#">1.</a></li>
+					<li><a href="#">2.</a></li>
+					<li><a href="#">3.</a></li>
+					<li><a href="#">4.</a></li>
+					<li><a href="#">5.</a></li>
+				</ul>
+			</div>
+			</br></br> -->
 			
 		</div>
 	</div>

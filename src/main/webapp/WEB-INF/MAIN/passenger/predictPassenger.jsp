@@ -188,14 +188,14 @@ $(document).ready(function() {
 									</div>
 									<hr/>
 									<div class="row" >
-									<span class="day col-sm-8">${ppinfolist1.get(0).adate }</span>
-									<span class="col-sm-4"><input type="button" class="today btn btn-sm btn-info" value="오늘">
+									<span class="day col-sm-10">${ppinfolist1.get(0).adate }</span>
+									<span class="col-sm-2"><input type="button" class="today btn btn-sm btn-info" value="오늘">
 									<input type="button" class="tomorrow btn btn-sm btn-info"  value="내일">
-										<select>
+										<!-- <select>
 											<option value="">20180925</option>
 											<option value="">20180925</option>
 											<option value="">20180925</option>
-										</select>
+										</select> -->
 									</span>
 									</div>
 									<div class="gate_detail"  style="margin: auto;">
@@ -231,14 +231,14 @@ $(document).ready(function() {
 									</div>
 									<hr/>
 										<div class="row" >
-									<span class="day col-sm-8">${ppinfolist2.get(0).adate }</span>
-									<span class="col-sm-4"><input type="button" class="today btn btn-sm btn-info"  value="오늘">
+									<span class="day col-sm-10">${ppinfolist2.get(0).adate }</span>
+									<span class="col-sm-2"><input type="button" class="today btn btn-sm btn-info"  value="오늘">
 										<input type="button" class="tomorrow btn btn-sm btn-info"  value="내일">
-										<select>
+										<!-- <select>
 											<option value="">20180925</option>
 											<option value="">20180925</option>
 											<option value="">20180925</option>
-										</select>
+										</select> -->
 										</span>
 									</div>
 									<div class="gate2_detail" style="margin: auto;">
