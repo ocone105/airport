@@ -13,7 +13,6 @@ role varchar2(15)
 );
 insert into member values('air', 'f8d397a33fcb9725db96501e653bf3cfa4455c5639482b9936c22b221634d659', '관리자', null, null, 1, null, null, 'ROLE_ADMIN');
 
-
 --emp테이블
 drop table emp;
 create table emp(
