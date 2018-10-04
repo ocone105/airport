@@ -298,12 +298,8 @@ create table FAVORITE(
  airport varchar2(150),
  scheduleDateTime varchar2(100),
  gatenumber varchar2(20),
- remark varchar2(50)
+ remark varchar2(50),
+ delay varchar2(50)
  );
 drop sequence favoriteno_seq;
 create sequence favoriteno_seq;
-
-
-
-
-
