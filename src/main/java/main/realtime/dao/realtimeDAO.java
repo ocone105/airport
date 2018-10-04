@@ -26,5 +26,9 @@ public class realtimeDAO {
 	public List<MyFlightDTO> myflight2(String id){
 		return sqlSession.selectList("kr.airport.main.realtime.myflight2", id);
 	}
+	
+	public int deletemyFlight(MyFlightDTO myflight) {
+		return sqlSession.delete("kr.airport.main.realtime.deletemyFlight", myflight);
+	}
 }
  

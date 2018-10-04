@@ -64,5 +64,9 @@ public class EmpServiceImpl implements EmpService {
 	public boolean idCheck(String id) {
 		return empdao.idCheck(id);
 	}
+	@Override
+	public String getId(int empno) {
+		return empdao.getId(empno);
+	}
 	
 }

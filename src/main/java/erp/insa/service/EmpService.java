@@ -14,4 +14,5 @@ public interface EmpService {
 	void empserviceupdate(EmpDTO emp);
 	List<EmpDTO> empsearch(String tag,String search);
 	boolean idCheck(String id);
+	String getId(int empno);
 }

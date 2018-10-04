@@ -3,6 +3,7 @@ package erp.insa.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,6 +21,8 @@ public class EmpInsertController {
 	
 	@Autowired
 	EmpService empservice;
+	
+	private ShaPasswordEncoder passencoder = new ShaPasswordEncoder(256);
 	 
 	@RequestMapping(value="/erp/empinsert.do", method=RequestMethod.GET)
 	public ModelAndView insertView(){
@@ -32,6 +35,9 @@ public class EmpInsertController {
 	 
 	@RequestMapping(value="/erp/empinsert.do", method=RequestMethod.POST)
 	public String empinsert(EmpDTO emp){
+		
+		String securitypass = passencoder.encodePassword(emp.getPwd(), null);
+		emp.setPwd(securitypass); // 암호화된 패스워드를 다시 패스워드로 세팅
 		empservice.empinsert(emp);
 		return "redirect:/erp/emplist.do?deptno="+emp.getDeptno();
 	}

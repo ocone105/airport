@@ -71,4 +71,9 @@ public class EmpDAOImpl implements EmpDAO {
 		}
 		return state;
 	}
+
+	@Override
+	public String getId(int empno) {
+		return sqlSession.selectOne("kr.airport.erp.insa.getid", empno);
+	}
 }
