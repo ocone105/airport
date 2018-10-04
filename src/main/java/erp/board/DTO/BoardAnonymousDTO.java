@@ -14,6 +14,7 @@ public class BoardAnonymousDTO {
 	private String attach;
 	private int empno;
 	private MultipartFile upfile;
+	
 
 	public BoardAnonymousDTO(){}
 

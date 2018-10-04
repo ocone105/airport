@@ -24,16 +24,19 @@
 					cmtlist="";
 					for (var i = 0; i < list.length; i++) {
 						cmtlist = cmtlist + "<ul><li itemscope itemtype='http://schema.org/Comment' class='kboard-comments-item'><div class='comments-list-username'>"
-									+ list[i].empno + 
+									+ "익명" + 
 									"</div><div class='comments-list-create'>"
 									+ list[i].cmtdate + 
 									"</div><div class='comments-list-content'>"
 									+ list[i].cmttxt +
-									"</div><div class='comments-list-controller'><div class='right'>" +
-									"<a type='button' id='"+list[i].cmtno+"' href='#' class='deletecmt comments-button-action comments-button-delete onclick='return confirm('삭제 하시겠습니까?')' title='삭제'>삭제</a></div></div></li></ul>" +
-									"<input type='hidden' id='cmtno' value="+list[i].cmtno+">";
+									"</div>";
+						if("${erploginUser.empno}"==list[i].empno | "${erploginUser.role}"=="ROLE_ADMIN"){
+							cmtlist = cmtlist +	"<div class='comments-list-controller'><div class='right'><a type='button' id='"+list[i].cmtno+"' href='#' class='deletecmt comments-button-action comments-button-delete onclick='return confirm('삭제 하시겠습니까?')' title='삭제'>삭제</a></div></div></li></ul>"+
+										"<input type='hidden' id='cmtno' value="+list[i].cmtno+">";
+							}
 					}
-					$("#cmtcount").val(list.length);
+					$("#cmtcount").empty();
+					$("#cmtcount").append(list.length);
 					$("#cmtlist").empty();
 					$("#cmtlist").append(cmtlist);
 				}
@@ -59,16 +62,19 @@
 					cmtlist="";
 					for (var i = 0; i < list.length; i++) {
 						cmtlist = cmtlist + "<ul><li itemscope itemtype='http://schema.org/Comment' class='kboard-comments-item'><div class='comments-list-username'>"
-									+ list[i].empno + 
+									+ "익명" + 
 									"</div><div class='comments-list-create'>"
 									+ list[i].cmtdate + 
 									"</div><div class='comments-list-content'>"
 									+ list[i].cmttxt + 
-									"</div><div class='comments-list-controller'><div class='right'>" +
-									"<a type='button' id='"+list[i].cmtno+"' href='#' class='deletecmt comments-button-action comments-button-delete onclick='return confirm('삭제 하시겠습니까?')' title='삭제'>삭제</a></div></div></li></ul>"+
+									"</div><div class='comments-list-controller'><div class='right'>" ;
+						if("${erploginUser.empno}"==list[i].empno | "${erploginUser.role}"=="ROLE_ADMIN"){
+						cmtlist = cmtlist +	"<div class='comments-list-controller'><div class='right'><a type='button' id='"+list[i].cmtno+"' href='#' class='deletecmt comments-button-action comments-button-delete onclick='return confirm('삭제 하시겠습니까?')' title='삭제'>삭제</a></div></div></li></ul>"+
 									"<input type='hidden' id='cmtno' value="+list[i].cmtno+">";
+						}
 					}
-					$("#cmtcount").val(list.length);
+					$("#cmtcount").empty();
+					$("#cmtcount").append(list.length);
 					$("#cmtlist").empty();
 					$("#cmtlist").append(cmtlist);
 				
@@ -134,9 +140,11 @@
 															<div class="comments-list-content">${comment.cmttxt }</div>
 															<div class="comments-list-controller">
 																<div class="right">
+																<c:if test="${erploginUser.empno eq comment.empno or erploginUser.role eq 'ROLE_ADMIN' }">
 																	<a type="button" href="#"
 										class="deletecmt comments-button-action comments-button-delete"
 										onclick="return confirm('삭제 하시겠습니까?');" id="${comment.cmtno }" title="삭제" >삭제</a>
+										</c:if>
 																</div>
 															</div>
 														</li>
@@ -151,7 +159,7 @@
 													</div>
 													<div class="comments-submit-button">
 														<input class="btn" type="submit" style="background-color:#9c27b0;"value="입력" id="insertcmt">
-														<input type="hidden" id="empno" value=111>
+														<input type="hidden" id="empno" value="${erploginUser.empno }">
 													</div>
 												</div>
 											</form>
@@ -161,8 +169,10 @@
 							</div>
 						</div>
 						<hr />
+						<c:if test="${erploginUser.empno eq post.empno or erploginUser.role eq 'ROLE_ADMIN' }">
 						<a class="pull-right" href="/airport/erp/anonymousdelete.do?boardno=${post.boardno}"><i class="material-icons">delete</i>삭제</a>
 						<a class="pull-right" href="/airport/erp/anonymousupdate.do?boardno=${post.boardno}"><i class="material-icons">edit</i>수정</a>
+						</c:if>
 						<a class="pull-right" href="/airport/erp/anonymouslist.do"><i class="material-icons">list</i>목록</a>
 					</div>
 				</div>

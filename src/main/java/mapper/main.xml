@@ -6,4 +6,12 @@
 		select * from airportcode where name like '%'||#{name}||'%'
 	</select>
 	
+	<insert id="myflight1" parameterType="myflight">
+		insert into FAVORITE values(favoriteno_seq.nextval, #{id}, #{flightId}, #{airline}, #{airport}, #{scheduleDateTime}, #{gatenumber}, #{remark})
+	</insert>
+
+		<select id="myflight2" parameterType="String" resultType="myflight">
+		select * from FAVORITE where id=#{id}
+	</select>
+
 </mapper>

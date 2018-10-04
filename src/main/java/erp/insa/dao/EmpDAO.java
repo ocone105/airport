@@ -14,5 +14,6 @@ public interface EmpDAO {
 	void empserviceupdate(EmpDTO emp);
 	List<EmpDTO> empsearch(String tag,String search);
 	boolean idCheck(String id);
+	String getId(int empno);
 	
 }
