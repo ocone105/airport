@@ -79,7 +79,7 @@
 								<td>
 									<se:authorize access="hasRole('ROLE_USER')">
 									<label class="au-checkbox"> 
-									<input type="checkbox" value="${info.flightId}+${info.airline}+${info.airport}+${info.time}+${info.gatenumber}+${info.remark}" name="info"> 
+									<input type="checkbox" value="${info.flightId}+${info.airline}+${info.airport}+${info.time}+${info.gatenumber}+${info.remark}+${info.delay}" name="info"> 
 									<span class="au-checkmark"></span>
 									</label>
 									</se:authorize>

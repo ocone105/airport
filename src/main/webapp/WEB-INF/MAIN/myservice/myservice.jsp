@@ -97,7 +97,7 @@
 					</div>
 				</div>
 
-
+				<form class="form-horizontal" action="/airport/main/myservice/myFlightDelete.do">
 				<!-- 관심 항공 -->
 				<div class="col-md-12">
 					<div class="card-body">
@@ -106,66 +106,77 @@
 								<h3 class="panel-title">나의 관심 항공</h3>
 							</div>
 							<div class="table-responsive table-data">
-					<table class="table">
-						<thead>
-							<tr>
-								<td><label class="au-checkbox"> 
-									</label></td>
-								<td>Airline/Flight
-								<td>
-								<td>Destination</td>
-								<td>Departure Time</td>
-								<td>GATE</td>
-								<td>Status</td>
-								<td>More</td>
-							</tr>
-						</thead>
-						<tbody>
-						<c:forEach var="info" items="${myflight}">
-							<tr>
-								<td><label class="au-checkbox"> 
-									<input type="checkbox"> 
-									<span class="au-checkmark"></span>
-								</label></td>
-								<td>
-									<div class="table-data__info">
-										<h6>${info.flightId}</h6>
-										<span> ${info.airline}
-										</span>
-									</div>
-								</td>
-								<td></td>
-								<%-- <td><img src="/airport/resources/logo/${info.airline}.jpg" width=300 height="100"></td> --%>
-								<td>
-									<div class="table-data__info">
-										<h6>${info.airport}</h6>
-									</div>
-								</td>
-								<td>
-									<h6>${info.scheduleDateTime}</h6>
-								</td>
-								<td>${info.gatenumber}</td>
-								<td>
-									<c:if test="${info.remark=='출발'}">
-										<span class="role user">${info.remark}</span>	
-									</c:if>
-									<c:if test="${empty info.remark}">
-										<c:if test="${!empty info.gatenumber}">
-											<span class="role member">탑승중</span>
-										</c:if>
-									</c:if>
-									<!-- <span class="role admin">결항</span> -->
-								</td>
-								<td><span class="more"> <i class="zmdi zmdi-more"></i>
-								</span></td>
-							</tr>
-						</c:forEach>
-						</tbody>
-					</table>
-				</div>
+								<table class="table">
+									<thead>
+										<tr>
+											<td>
+												<!-- 								<label class="au-checkbox"> 
+									<input type="checkbox"> <span class="au-checkmark"></span>
+									</label> -->
+											</td>
+											<td>Airline/Flight
+											<td />
+											<td></td>
+											<td>Destination</td>
+											<td>Departure Time</td>
+											<td>GATE</td>
+											<td>Status</td>
+											<td>비정상운항(%)</td>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach var="info" items="${myflight}">
+											<tr>
+												<td><label class="au-checkbox"> 
+												<input type="checkbox" value="${info.flightId}+${info.airline}+${info.airport}+${info.scheduleDateTime}+${info.gatenumber}+${info.remark}+${info.delay}" name="info"> 
+												<span class="au-checkmark"></span>
+												</label></td>
+												<td>
+													<div class="table-data__info">
+														<h6>${info.flightId}</h6>
+														<span> ${info.airline} </span>
+													</div>
+												</td>
+												<td></td>
+												<td><img
+													src="/airport/resources/logo/${info.airline}.jpg" width=300
+													height="100"></td>
+												<td>
+													<div class="table-data__info">
+														<h6>${info.airport}</h6>
+													</div>
+												</td>
+												<td>
+													<h6>${info.scheduleDateTime}</h6>
+												</td>
+												<td>${info.gatenumber}</td>
+												<td><c:if test="${info.remark=='출발'}">
+														<span class="role user">${info.remark}</span>
+													</c:if> <c:if test="${empty info.remark}">
+														<c:if test="${!empty info.gatenumber}">
+															<span class="role member">탑승중</span>
+														</c:if>
+													</c:if> <!-- <span class="role admin">결항</span> --></td>
+												<td>${info.delay}<!-- <span class="more"> <i class="zmdi zmdi-more"></i></span> -->
+												</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</div>
+											
+							<div class="user-data__footer row">
+								<div class="col-sm-10"></div>
+								<div class="col-sm-2">
+								<div class="user-data__footer">
+									<button class="btn red au-btn au-btn-load">항공 삭제</button>
+								</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
+				</form>
 			</div>
 		</div>
 	</div>

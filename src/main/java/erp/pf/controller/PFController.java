@@ -15,6 +15,7 @@ import erp.pf.DTO.PFDTO;
 import erp.pf.DTO.PFINFODTO;
 import erp.pf.DTO.PFTEAMDTO;
 import erp.pf.service.PFService;
+import main.realtime.api.MyFlightDTO;
 @Controller
 public class PFController {
 	
@@ -89,13 +90,23 @@ public class PFController {
 		return mav;
 	}
 	
+	// 인원요청 확인
 	@RequestMapping("/erp/pfcheck.do")
-	public void check2(@RequestParam(value = "pfno",required=false) List<Integer> pfnoList){
-		if(pfnoList!=null) {
-			for(int i=0; i<pfnoList.size();i++) {
-				service.requestPermit(pfnoList.get(i));
-			}
+	public void check2(@RequestParam(value = "pfno",required=false) List<String> pfList){
+		
+		String line = "";
+		for (int i = 0; i < pfList.size(); i++) {
+			line = pfList.get(i);
+			String splitArr[] = line.split("\\+");
+			
+			PFTEAMDTO pfteam = new PFTEAMDTO();
+			pfteam.setDeptno(splitArr[0]);	// pfno임 인원 요청을 확인하면 요청을 삭제하기 위해 pfno를 담아서 넘김
+			pfteam.setPfinfono(Integer.parseInt(splitArr[1]));
+			pfteam.setCurrentstaff(Integer.parseInt(splitArr[2]));
+			
+			service.requestPermit(pfteam);
 		}
+		
 	}
 
 }

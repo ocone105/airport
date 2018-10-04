@@ -93,12 +93,12 @@ $(document).ready(function() {
 									<span><i class="material-icons">group_add</i>인원요청</span>
 								</a>
 							</li>
+							</c:if>
 							<li>
 								<a href="/airport/erp/pflist.do"> 
 									<span><i class="material-icons">group</i>인원배치조회</span>
 								</a>
 							</li>
-							</c:if>
 						</ul>
 					</div>
 				</li>
