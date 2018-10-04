@@ -41,8 +41,8 @@ public class RealtimeController {
 	@RequestMapping("/main/realtimeSearch.do")
 	public ModelAndView realtimeSearch(String destination, String airline, String flight, String time)
 			throws Exception {
-		ArrayList<FlightDTO> desti = api.realtime(destination);
-		ArrayList<FlightDTO> info = null;
+		ArrayList<FlightDTO> desti = null;
+		ArrayList<FlightDTO> info =  api.realtime(destination);
 		for (int i = 0; i < info.size(); i++) {
 			String time1 = String.valueOf(info.get(i).getScheduleDateTime());
 			String month = time1.substring(4, 6);
