@@ -101,7 +101,7 @@
 					<div class="milestone text-center">
 						<div class="milestone_icon"><img src="/airport/resources/images/airplanemode_active.svg"width="500"></div>
 						<div class="milestone_counter" data-end-value="${todayflight }">0</div>
-						<div class="milestone_text">오늘 Flight</div>
+						<div class="milestone_text">항공편</div>
 					</div>
 				</div>
 
@@ -110,7 +110,7 @@
 					<div class="milestone text-center">
 						<div class="milestone_icon"><img src="/airport/resources/images/people.svg" width="500"></div>
 						<div class="milestone_counter" data-end-value="${passengerresult }">0</div>
-						<div class="milestone_text">현시각 Passenger 수</div>
+						<div class="milestone_text">승객</div>
 					</div>
 				</div>
 
@@ -119,7 +119,7 @@
 					<div class="milestone text-center">
 						<div class="milestone_icon"><img src="/airport/resources/images/more_horiz.svg"  width="500"></div>
 						<div class="milestone_counter" data-end-value="${todaydelay}">0</div>
-						<div class="milestone_text">Delayed</div>
+						<div class="milestone_text">지연</div>
 					</div>
 				</div>
 
@@ -128,7 +128,7 @@
 					<div class="milestone text-center">
 						<div class="milestone_icon"><img src="/airport/resources/images/airplanemode_inactive.svg"  width="500"></div>
 						<div class="milestone_counter" data-end-value="${todaycancel}">0</div>
-						<div class="milestone_text">Canceled</div>
+						<div class="milestone_text">결항</div>
 					</div>
 				</div>
 
