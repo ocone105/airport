@@ -72,7 +72,7 @@
 									</div>
 								</div>
 							</div>
-							<button type="submit" class="btn btn-warning pull-right"  onclick="window.close();">요청하기</button>
+							<button type="submit" class="btn btn-warning pull-right"  onclick="window.close();">확인</button>
 						</form>
 						</div>
 					</div>

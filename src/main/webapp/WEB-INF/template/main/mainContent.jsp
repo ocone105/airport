@@ -118,7 +118,7 @@
 				<div class="col-lg-3 milestone_col">
 					<div class="milestone text-center">
 						<div class="milestone_icon"><img src="/airport/resources/images/more_horiz.svg"  width="500"></div>
-						<div class="milestone_counter" data-end-value="12">0</div>
+						<div class="milestone_counter" data-end-value="${todaydelay}">0</div>
 						<div class="milestone_text">Delayed</div>
 					</div>
 				</div>
@@ -127,7 +127,7 @@
 				<div class="col-lg-3 milestone_col">
 					<div class="milestone text-center">
 						<div class="milestone_icon"><img src="/airport/resources/images/airplanemode_inactive.svg"  width="500"></div>
-						<div class="milestone_counter" data-end-value="0">0</div>
+						<div class="milestone_counter" data-end-value="${todaycancel}">0</div>
 						<div class="milestone_text">Canceled</div>
 					</div>
 				</div>

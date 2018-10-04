@@ -16,7 +16,6 @@ import org.springframework.web.servlet.view.AbstractView;
 import erp.pf.controller.AirportMongoData;
 import erp.pf.service.PFService;
 import main.PP.controller.PredictPassenger;
-import main.PP.controller.RealTimePassenger;
 import main.PP.dto.PredictPassengerDTO;
 
 @Controller
@@ -56,9 +55,10 @@ public class IndexController extends AbstractView{
 		int todate = Integer.parseInt(today);
 		todate = todate - 10000;
 		
-		
 		model.addAttribute("todayflight", amservice.condition(todate));
 		model.addAttribute("passengerresult", passengerresult);
+		model.addAttribute("todaydelay", amservice.mainDelay(todate));
+		model.addAttribute("todaycancel", amservice.mainCancel(todate));
 		model.addAttribute("ppinfolist1", ppinfolist1);
 
 		return "index";

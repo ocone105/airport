@@ -181,3 +181,30 @@ db.allflight.mapReduce(map, reduce, "test")
 
 
 5. etc  기타        -> 전체적으로
+
+
+
+------------------------------------------------------------------------------------------
+* main에 뿌려줄 지연 / 결항 
+var map = function(){ 
+	 if (this.현황=="지연"){
+	  	emit(this.checkday, 1)}
+	 }
+	var reduce = function(key, values){
+		var total = 0
+		for(var i in values){
+		total = total + values[i]}
+		return total}
+	db.abnormal.mapReduce(map, reduce, "main_delay")
+	
+	
+var map = function(){ 
+	 if (this.현황=="취소"){
+	  	emit(this.checkday, 1)}
+	 }
+	var reduce = function(key, values){
+		var total = 0
+		for(var i in values){
+		total = total + values[i]}
+		return total}
+	db.abnormal.mapReduce(map, reduce, "main_cancel")

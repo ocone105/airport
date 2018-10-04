@@ -66,6 +66,7 @@ public class PPController {
 	
 	@RequestMapping(value = "/erp/todaylist.do", method=RequestMethod.GET,produces="application/json;charset=utf-8")
 	public @ResponseBody List<PredictPassengerDTO> todayPPlist(String selectdate) {
+		System.out.println("check"+selectdate);
 		ArrayList<PredictPassengerDTO> ppinfolist = null;
 		try {
 			ppinfolist = ppservice.PredictPassenger(selectdate);
