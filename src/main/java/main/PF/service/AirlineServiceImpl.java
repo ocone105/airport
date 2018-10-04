@@ -15,6 +15,8 @@ import main.PF.dto.condition.Condition_DelayDTO;
 import main.PF.dto.connection.ConnectionDTO;
 import main.PF.dto.connection.Connection_CancelDTO;
 import main.PF.dto.connection.Connection_DelayDTO;
+import main.PF.dto.main.Main_CancelDTO;
+import main.PF.dto.main.Main_DelayDTO;
 import main.PF.dto.repair.RepairDTO;
 import main.PF.dto.repair.Repair_CancelDTO;
 import main.PF.dto.repair.Repair_DelayDTO;
@@ -83,6 +85,16 @@ public class AirlineServiceImpl implements AirlineService {
 	@Override
 	public List<Condition_DelayDTO> findcond_delay() {
 		return dao.findcond_delay();
+	}
+
+	@Override
+	public List<Main_CancelDTO> findmain_cancel() {
+		return dao.findmain_cancel();
+	}
+
+	@Override
+	public List<Main_DelayDTO> findmain_delay() {
+		return dao.findmain_delay();
 	}
 
 }

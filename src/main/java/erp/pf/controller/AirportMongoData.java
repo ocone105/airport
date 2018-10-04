@@ -14,6 +14,8 @@ import main.PF.dto.condition.Condition_DelayDTO;
 import main.PF.dto.connection.ConnectionDTO;
 import main.PF.dto.connection.Connection_CancelDTO;
 import main.PF.dto.connection.Connection_DelayDTO;
+import main.PF.dto.main.Main_CancelDTO;
+import main.PF.dto.main.Main_DelayDTO;
 import main.PF.dto.repair.RepairDTO;
 import main.PF.dto.repair.Repair_CancelDTO;
 import main.PF.dto.repair.Repair_DelayDTO;
@@ -151,6 +153,29 @@ public class AirportMongoData {
 		for(int i=0; i<condlistCancel.size();i++) {
 			if(condlistCancel.get(i).get_id()==date) {
 				result = condlistCancel.get(i).getValue();
+			}
+		}
+		return result;
+	}
+	
+	public int mainDelay(int date) {
+		System.out.println(date);
+		List<Main_DelayDTO> mainDelay = service.findmain_delay();
+		int result = 0;
+		for(int i=0; i<mainDelay.size();i++) {
+			if(mainDelay.get(i).get_id()==date) {
+				result = mainDelay.get(i).getValue();
+			}
+		}
+		return result;
+	}
+	
+	public int mainCancel(int date) {
+		List<Main_CancelDTO> mainCancel = service.findmain_cancel();
+		int result = 0;
+		for(int i=0; i<mainCancel.size();i++) {
+			if(mainCancel.get(i).get_id()==date) {
+				result = mainCancel.get(i).getValue();
 			}
 		}
 		return result;
