@@ -7,8 +7,28 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 <!-- role별로 접근할 수 있는 리소스를 정의하는 작업 -->
-<security:http auto-config="true" use-expressions="true">
+<security:http auto-config="true" use-expressions="true" name="erp" pattern="/erp/**">
+	<security:intercept-url pattern="/erp/login.do" access="permitAll"/>
+	<security:intercept-url pattern="/erp/**" access="hasAnyRole('ROLE_EMP','ROLE_ADMIN')"/>
 
+	<security:form-login 
+	username-parameter="id"
+	password-parameter="pwd"
+	login-page="/erp/login.do"
+	default-target-url="/erp/index.do"
+	authentication-failure-url="/erp/login.do?fail=true"
+	authentication-success-handler-ref="successHandler"/>
+	
+	<security:logout
+	delete-cookies="true"
+	logout-success-url="/erp/login.do"
+	logout-url="/erp/logout.do"
+	invalidate-session="true"	
+	/>
+		
+</security:http>
+
+<security:http auto-config="true" use-expressions="true" name="main">
 	<security:intercept-url pattern="/main/signin.do" access="permitAll"/>
 	<security:intercept-url pattern="/main/index.do" access="permitAll"/>
 	<security:intercept-url pattern="/main/flight.do" access="permitAll"/>
@@ -16,8 +36,9 @@
 	<security:intercept-url pattern="/main/privacy.do" access="permitAll"/>
 	<security:intercept-url pattern="/main/email.do" access="permitAll"/>
 	<security:intercept-url pattern="/main/admin" access="hasRole('ROLE_ADMIN')"/>	
-	<security:intercept-url pattern="/main/myservice.do" access="hasRole('ROLE_ADMIN')"/>		
- 	<security:intercept-url pattern="/**" access="permitAll"/> 
+	<security:intercept-url pattern="/main/myservice.do" access="hasRole('ROLE_ADMIN')"/>	
+	<security:intercept-url pattern="/main/**" access="permitAll"/>	
+	<security:intercept-url pattern="/**" access="permitAll"/> 
 
 	<security:form-login 
 	username-parameter="id"
@@ -36,6 +57,7 @@
 		
 </security:http>
 
+
 <!-- 로그인 성공시에 처리할 일들이 있는 경우 객체 정의 -->
 <bean id="successHandler" class="main.member.authentication.LoginSuccessHandler" />
 
@@ -44,6 +66,7 @@
 	<security:authentication-provider ref="memberProvider">
 	</security:authentication-provider>
 </security:authentication-manager>
+
 
 <bean id="memberProvider" class="main.member.authentication.MemberAuthenticationProvider"/>
 <import resource="spring-config.xml"/>
