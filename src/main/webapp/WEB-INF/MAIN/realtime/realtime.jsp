@@ -29,13 +29,13 @@
 				<div class="col">
 					<div class="home_search_container">
 						<div class="home_search_title">Departures</div>
-						<div class="home_search_content">
+						<div class="home_search_content" style="width: 600px; margin: auto;">
 							<form action="/airport/main/realtimeSearch.do" class="home_search_form" id="home_search_form">
 								<div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
-									<input type="text" class="search_input search_input_1" placeholder="Destination" name="destination">
-									<input type="text" class="search_input search_input_2" placeholder="Airline" name="airline">
+									<input type="text" class="search_input search_input_1" style="width: 50%" placeholder="Destination" name="destination">
+									<!-- <input type="text" class="search_input search_input_2" placeholder="Airline" name="airline">
 									<input type="text" class="search_input search_input_3" placeholder="Flight" name="flight">
-									<input type="text" class="search_input search_input_4" placeholder="Time" name="time">
+									<input type="text" class="search_input search_input_4" placeholder="Time" name="time"> -->
 									<button type="submit" class="home_search_button">search</button>
 								</div>
 							</form>
