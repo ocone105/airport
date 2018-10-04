@@ -15,7 +15,6 @@ import erp.pf.DTO.PFDTO;
 import erp.pf.DTO.PFINFODTO;
 import erp.pf.DTO.PFTEAMDTO;
 import erp.pf.service.PFService;
-import main.realtime.api.MyFlightDTO;
 @Controller
 public class PFController {
 	
