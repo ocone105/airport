@@ -213,7 +213,6 @@ create sequence sec_seq;
 
 
 
-
 --여객시설정보테이블
 Drop table PFINFO;
 create table PFINFO (
