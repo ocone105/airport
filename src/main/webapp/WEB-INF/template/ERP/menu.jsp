@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,11 +50,13 @@ $(document).ready(function() {
 					<div class="collapse" id="task">
 						<ul class="nav">
 							<!-- 인사팀이 로그인했을 경우 -->
+							<c:if test="${erploginUser.deptno eq 'aihr002' or erploginUser.role eq 'ROLE_ADMIN' }">
 							<li>
 								<a href="/airport/erp/empinsert.do"> 
 									<span><i class="material-icons">person</i>사원등록</span>
 								</a>
 							</li>
+							</c:if>
 							<li>
 								<a href="/airport/erp/emplist.do"> 
 									<span><i class="material-icons">how_to_reg</i>사원조회</span>
@@ -65,6 +68,7 @@ $(document).ready(function() {
 								</a>
 							</li> -->
 							<!-- 보안팀이 로그인한 경우 -->
+							<c:if test="${erploginUser.deptno eq 'abss003' or erploginUser.role eq 'ROLE_ADMIN' }">
 							<li>
 								<a href="/airport/erp/permissionlist.do"> 
 									<span><i class="material-icons">contact_mail</i>출입증허가</span>
@@ -75,8 +79,10 @@ $(document).ready(function() {
 									<span><i class="material-icons">recent_actors</i>출입증조회</span>
 								</a>
 							</li>
+							</c:if>
 								
 							<!-- 여객시설팀이 로그인했을 경우 -->
+							<c:if test="${erploginUser.deptno eq 'paps003' or erploginUser.role eq 'ROLE_ADMIN' }">
 							<li>
 								<a href="/airport/erp/datalist.do"> 
 									<span><i class="material-icons">timeline</i>데이터조회</span>
@@ -92,6 +98,7 @@ $(document).ready(function() {
 									<span><i class="material-icons">group</i>인원배치조회</span>
 								</a>
 							</li>
+							</c:if>
 						</ul>
 					</div>
 				</li>

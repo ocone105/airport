@@ -94,6 +94,7 @@
 							</div>
 						</div>
 						<div class="panel-footer">
+						<c:if test="${erploginUser.deptno eq 'aihr002' or erploginUser.role eq 'ROLE_ADMIN' }">
 							<span
 								class="pull-right"> <a href="/airport/erp/empupdate.do?empno=${emp.empno }&deptno=${emp.deptno}"
 								data-original-title="Edit this user" data-toggle="tooltip"
@@ -104,6 +105,7 @@
 								type="button" class="btn btn-sm btn-danger"><i
 									class="glyphicon glyphicon-remove"></i>삭제</a>
 							</span>
+						</c:if>
 						</div>
 
 					</div>
