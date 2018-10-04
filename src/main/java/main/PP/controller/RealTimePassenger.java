@@ -18,7 +18,7 @@ import main.PP.dto.RealTimePassengerDTO;
 
 @Service
 public class RealTimePassenger {
-	RealTimePassengerDTO realTimePassenger(String ter) throws IOException {
+	public RealTimePassengerDTO realTimePassenger(String ter) throws IOException {
 		StringBuilder urlBuilder = new StringBuilder(
 				"http://openapi.airport.kr/openapi/service/StatusOfDepartures/getDeparturesCongestion");
 		urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8")

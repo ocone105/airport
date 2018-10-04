@@ -32,9 +32,9 @@
 							<form action="/airport/main/PFSearch.do" class="home_search_form" id="home_search_form">
 								<div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
 									<input type="text" class="search_input search_input_1" placeholder="Destination" name="destination">
-									<input type="text" class="search_input search_input_2" placeholder="Airline" name="airline">
+									<!-- <input type="text" class="search_input search_input_2" placeholder="Airline" name="airline">
 									<input type="text" class="search_input search_input_3" placeholder="Flight" name="flight">
-									<input type="text" class="search_input search_input_4" placeholder="Time" name="time">
+									<input type="text" class="search_input search_input_4" placeholder="Time" name="time"> -->
 									<button type="submit" class="home_search_button">search</button>
 								</div>
 							</form>
@@ -56,6 +56,7 @@
 				<h3 class="title-3 m-b-30">
 					<i class="zmdi zmdi-airplane"></i>비정상운항
 				</h3>
+				<div class="pull-right"><span>예정: 정상운항</span><span>지연가능: 지연가능성이 높을 경우</span><span>결항가능: 결항가능성이 높을 경우</span></div>
 				<div class="table-responsive table-data">
 					<table class="table">
 						<thead>
@@ -102,13 +103,25 @@
 								</td>
 								<td>
 									<c:if test="${info.remark=='출발'}">
-										<span class="role user">예정</span>	
+										<span class="role member">예정</span>	
+									</c:if>
+									<c:if test="${info.remark=='지연'}">
+										<span class="role user">지연</span>	
+									</c:if>
+									<c:if test="${info.remark=='취소'}">
+										<span class="role admin">결항</span>	
 									</c:if>
 									<c:if test="${empty info.remark}">
-										<c:if test="${!empty info.gatenumber}">
-											<span class="role member">지연</span>
-										</c:if>
+										<c:choose>
+											<c:when test="${info.delay >= 10}">
+												<span class="role user">지연가능</span>
+											</c:when>
+											<c:otherwise>
+												<span class="role member">예정</span>
+											</c:otherwise>
+										</c:choose>
 									</c:if>
+									
 									<!-- <span class="role admin">결항</span> -->
 								</td>
 								<td>

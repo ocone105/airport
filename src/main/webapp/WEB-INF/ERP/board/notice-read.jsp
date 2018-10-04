@@ -140,7 +140,7 @@
 					<ul>
 						<li class="kboard-comments-item">
 							<div class="comments-list-username">
-								${comment.empno }</div>
+								${comment.id }</div>
 							<div class="comments-list-create">
 								${comment.cmtdate }</div>
 							<div class="comments-list-content">
