@@ -99,4 +99,12 @@ public class realtimeAPI {
 
 		return info;
 	}
+	
+	public int myflight1(MyFlightDTO myflight) {
+		return dao.myflight1(myflight);
+	}
+	
+	public List<MyFlightDTO> myflight2(String id){
+		return dao.myflight2(id);
+	}
 }

@@ -60,4 +60,9 @@ public class PFDAOImpl implements PFDAO {
 		return sqlSession.selectOne("kr.airport.erp.pf.dept", deptname);
 	}
 
+	@Override
+	public int requestPermit(int pfno) {
+		return sqlSession.update("kr.airport.erp.pf.requestPermit", pfno);
+	}
+
 }

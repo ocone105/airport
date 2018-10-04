@@ -49,6 +49,7 @@
 	<div class="intro_background" style="background-image:url(/airport/resources/images/intro.png)"></div>
 		<div class="container">
 
+			<form class="form-horizontal" action="/airport/main/myFlight.do">
 			<!-- List -->
 			<div class="user-data m-b-40">
 				<h3 class="title-3 m-b-30">
@@ -58,7 +59,8 @@
 					<table class="table">
 						<thead>
 							<tr>
-								<td><label class="au-checkbox"> <input
+								<td><label class="au-checkbox"> 
+									<input
 										type="checkbox"> <span class="au-checkmark"></span>
 								</label></td>
 								<td>Airline/Flight
@@ -74,7 +76,7 @@
 						<c:forEach var="info" items="${info}">
 							<tr>
 								<td><label class="au-checkbox"> 
-									<input type="checkbox"> 
+									<input type="checkbox" value="${info.flightId}+${info.airline}+${info.airport}+${info.time}+${info.gatenumber}+${info.remark}" name="info"> 
 									<span class="au-checkmark"></span>
 								</label></td>
 								<td>
@@ -103,6 +105,7 @@
 											<span class="role member">탑승중</span>
 										</c:if>
 									</c:if>
+									<!-- <span class="role admin">결항</span> -->
 								</td>
 								<td><span class="more"> <i class="zmdi zmdi-more"></i>
 								</span></td>
@@ -112,10 +115,11 @@
 					</table>
 				</div>
 				<div class="user-data__footer">
-					<button class="au-btn au-btn-load">load more</button>
+					<button type="submit" class="au-btn au-btn-load">관심 항공 등록</button>
 				</div>
 			</div>
 			<!-- END LIST-->
+			</form>
 
 			<!-- Pagination -->
 			<div class="pagination">

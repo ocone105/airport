@@ -26,7 +26,7 @@
 									<div class="col-md-4">
 										<div class="form-group">
 											<label class="bmd-label-floating">사원ID</label> 
-											<div>${emp.empid }</div>
+											<div>${emp.id }</div>
 											<input type="hidden" value="${emp.empno }"/>
 											<input type="hidden" name="empno" value="${emp.empno }"/>
 										</div>

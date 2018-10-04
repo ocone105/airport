@@ -20,23 +20,22 @@ import org.springframework.web.util.WebUtils;
 import erp.board.DTO.BoardNoticeCmtDTO;
 import erp.board.DTO.BoardNoticeDTO;
 import erp.board.service.BoardNoticeService;
-import main.PF.dto.connection.ConnectionDTO;
-import main.PF.service.AirlineService;
+import erp.insa.service.EmpService;
 
 @Controller
 public class BoardNoticeController {
 	
 	@Autowired
 	BoardNoticeService service;
-	@Autowired 
-	AirlineService aservice;
+	@Autowired
+	EmpService empservice;
 	
 	@RequestMapping("/erp/noticelist.do")
 	public ModelAndView noticelist(String pageNo){
 		List<BoardNoticeDTO> posts = service.boardlist();
 		return new ModelAndView("erp/noticelist", "posts", posts);
 	}
-	
+
 	@RequestMapping(value="/erp/noticewrite.do",method=RequestMethod.GET) 
 	public String noticewrite(){
 		return "erp/noticewrite";
@@ -90,6 +89,8 @@ public class BoardNoticeController {
 		if(post.getAttach().equals("null")) {
 			post.setAttach("");
 		}
+		String id = empservice.getId(post.getEmpno());
+		mav.addObject("id",id);
 		mav.addObject("post",post);
 		mav.addObject("cmt", cmt);
 		mav.setViewName("erp/boardread1");
