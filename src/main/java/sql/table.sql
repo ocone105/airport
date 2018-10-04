@@ -11,7 +11,7 @@ email_alarm varchar2(5),
 sms_alarm varchar2(5),
 role varchar2(15)
 );
-insert into member values('air', 'port', '관리자', null, null, 1, null, null, 'ROLE_ADMIN');
+insert into member values('air', 'f8d397a33fcb9725db96501e653bf3cfa4455c5639482b9936c22b221634d659', '관리자', null, null, 1, null, null, 'ROLE_ADMIN');
 
 
 --emp테이블
@@ -19,7 +19,7 @@ drop table emp;
 create table emp(
  empno number,
  id varchar2(20),
- pwd varchar2(20),
+ pwd varchar2(100),
  name varchar2(20),
  birth varchar2(20),
  gender varchar2(2),
@@ -34,8 +34,10 @@ create table emp(
 );
 drop sequence emp_seq;
 create sequence emp_seq;
-insert into emp values(emp_seq.nextVal,'empair', 'port', 'emp관리자', '19940302', 'm', '010-0000-0000', 'empadmin@naver.com', '관리인', '0', '20181003' , null, 'abas001', 'ROLE_ADMIN');
-insert into emp values(emp_seq.nextVal,'emp01', 'port', '임시완', '1980101', 'm', '010-1111-1111', 'lim@naver.com', '대리', '0', '20181003', null, 'abas001', 'ROLE_EMP');
+insert into emp values(emp_seq.nextVal,'empmgr', 'c722f8f42c3e49645ee85ec77cba05e85ec5cb039894b6b668e2278b32ada9dc', 'ERP관리자', '20181004', 'f', '010-0000-0000', 'erpmgr@naver.com', '팀장', '0', '20181004' , null, 'sasi002', 'ROLE_ADMIN');
+insert into emp values(emp_seq.nextVal,'empinsa', 'a4e6862c36ff80006cc4c9cf595a0d392f9fd9a6ffac9cf0bab7ea187eb83cf3', '김다영', '19940302', 'f', '010-1111-1111', 'kdy@naver.com', '팀장', '0', '20140101' , null, 'aihr002', 'ROLE_EMP');
+insert into emp values(emp_seq.nextVal,'empsec', 'cba311468700f0983d5c6478ccbb3d6cace666df43dd9534596a2e397f11169a', '오시원', '19911005', 'f', '010-2222-2222', 'osw@naver.com', '팀장', '0', '20130101' , null, 'abss003', 'ROLE_EMP');
+insert into emp values(emp_seq.nextVal,'emppf', 'f09f8c72e5eff802ccd25c294e6db8b46d35f298abdee19088bb2d5e01d3126e', '임한솔', '19941029', 'f', '010-3333-3333', 'lhs@naver.com', '팀장', '0', '20120101' , null, 'paps003', 'ROLE_EMP');
 
 --dept테이블
 drop table dept;

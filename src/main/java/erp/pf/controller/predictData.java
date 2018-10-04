@@ -68,7 +68,7 @@ public class predictData {
 				JSONObject body = (JSONObject) root.get("body");
 				System.out.println( body.get("items"));
 				JSONObject items = (JSONObject) body.get("items");
-
+				System.out.println(items);
 				JSONArray item = (JSONArray) items.get("item");
 
 				for (int i = 0; i < item.size(); i++) {
