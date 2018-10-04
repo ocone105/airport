@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="se" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,26 +60,30 @@
 					<table class="table">
 						<thead>
 							<tr>
-								<td><label class="au-checkbox"> 
-									<input
-										type="checkbox"> <span class="au-checkmark"></span>
-								</label></td>
+								<td>
+								<!-- 	<label class="au-checkbox"> 
+									<input type="checkbox"> <span class="au-checkmark"></span>
+									</label> -->
+								</td>
 								<td>Airline/Flight
 								<td>
 								<td>Destination</td>
 								<td>Departure Time</td>
 								<td>GATE</td>
 								<td>Status</td>
-								<td>More</td>
 							</tr>
 						</thead>
 						<tbody>
 						<c:forEach var="info" items="${info}">
 							<tr>
-								<td><label class="au-checkbox"> 
+								<td>
+									<se:authorize access="hasRole('ROLE_USER')">
+									<label class="au-checkbox"> 
 									<input type="checkbox" value="${info.flightId}+${info.airline}+${info.airport}+${info.time}+${info.gatenumber}+${info.remark}" name="info"> 
 									<span class="au-checkmark"></span>
-								</label></td>
+									</label>
+									</se:authorize>
+								</td>
 								<td>
 									<div class="table-data__info">
 										<h6>${info.flightId}</h6>
@@ -107,22 +112,24 @@
 									</c:if>
 									<!-- <span class="role admin">결항</span> -->
 								</td>
-								<td><span class="more"> <i class="zmdi zmdi-more"></i>
-								</span></td>
+								<!-- <td><span class="more"> <i class="zmdi zmdi-more"></i>
+								</span></td> -->
 							</tr>
 						</c:forEach>
 						</tbody>
 					</table>
 				</div>
 				<div class="user-data__footer">
+					<se:authorize access="hasRole('ROLE_USER')">
 					<button type="submit" class="au-btn au-btn-load">관심 항공 등록</button>
+					</se:authorize>
 				</div>
 			</div>
 			<!-- END LIST-->
 			</form>
 
 			<!-- Pagination -->
-			<div class="pagination">
+			<!-- <div class="pagination">
 				<ul class="d-flex flex-row align-items-start justify-content-start">
 					<li class="active"><a href="#">1.</a></li>
 					<li><a href="#">2.</a></li>
@@ -131,7 +138,7 @@
 					<li><a href="#">5.</a></li>
 				</ul>
 			</div>
-			</br></br>
+			</br></br> -->
 
 		</div>
 	</div>

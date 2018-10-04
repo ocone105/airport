@@ -18,7 +18,7 @@ insert into member values('air', 'port', '관리자', null, null, 1, null, null,
 drop table emp;
 create table emp(
  empno number,
- empid varchar2(20),
+ id varchar2(20),
  pwd varchar2(20),
  name varchar2(20),
  birth varchar2(20),
@@ -28,13 +28,14 @@ create table emp(
  position varchar2(20),
  state varchar2(2),
  startdate date,
- enddate date,
+ enddate varchar2(20),
  deptno varchar2(20),
  role varchar2(15)
 );
 drop sequence emp_seq;
 create sequence emp_seq;
-
+insert into emp values(emp_seq.nextVal,'empair', 'port', 'emp관리자', '19940302', 'm', '010-0000-0000', 'empadmin@naver.com', '관리인', '0', '20181003' , null, 'abas001', 'ROLE_ADMIN');
+insert into emp values(emp_seq.nextVal,'emp01', 'port', '임시완', '1980101', 'm', '010-1111-1111', 'lim@naver.com', '대리', '0', '20181003', null, 'abas001', 'ROLE_EMP');
 
 --dept테이블
 drop table dept;

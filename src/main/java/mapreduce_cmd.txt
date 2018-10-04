@@ -1,6 +1,5 @@
 db.abnormal.aggregate([{$group:{_id:"$비정상원인",num:{$sum:1}}}])
 
-
 db.abnormal.find( { 'checkday' : { $type : 1 } } ).forEach( function (x) {   
 x.checkday = new String(x.checkday); 
 db.abnormal.save(x);
@@ -17,7 +16,6 @@ var reduce = function(key, values){
 	total = total + values[i]}
 	 return total}
 db.allflight.mapReduce(map, reduce, "test")
-
 
 
 1. connection 연결 (앞 항공기 지연으로 인한 지연)  ->   항공사별로
