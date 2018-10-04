@@ -45,6 +45,7 @@ public class PFdataController {
 		int count_can = 0;
 		DecimalFormat df = new DecimalFormat("#.##");
 
+		//mongodb에서 직접 find().count()함 -> 추후에 abnormal과 연결해서 가져와야함
 		List<Double> delay = new ArrayList<Double>();
 		Double reason1 = 10855.0/20257.0 * 100.0;
 		reason1 = Double.parseDouble(df.format(reason1));
@@ -125,6 +126,10 @@ public class PFdataController {
 		double result2_2 = (double) count_can / count * 100.0;
 		result2_1 = Double.parseDouble(df.format(result2_1));
 		result2_2 = Double.parseDouble(df.format(result2_2));
+		
+		
+		// 기상-검색
+		
 		
 		
 		// 전체-기상에 대한 지연,결항

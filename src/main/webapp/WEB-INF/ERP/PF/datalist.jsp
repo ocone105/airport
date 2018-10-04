@@ -173,6 +173,31 @@
 					</div>
 				</div>
 		</div>
+		<%-- <div class="row">
+				<div class="col-md-4">
+					<div class="card card-chart">
+						<div class="card-header card-header-primary">
+							<select class="selectpicker" id="condition" size="1">
+								<c:forEach var="dept" items="${deptlist }">
+										<option value="${dept.deptno }">${dept.deptname }</option>
+								</c:forEach>
+							</select>
+						</div>
+						<div class="card-body">
+							<h4 class="card-title">기상에따른 delay</h4>
+							<p class="card-category">
+								<span class="text-success"><i class="fa fa-long-arrow-up"></i>
+									% </span> 기상에따른  지연률
+							</p>
+						</div>
+						<div class="card-footer">
+							<div class="stats">
+								<i class="material-icons">access_time</i>2017/10 - 2018/09 자료기준
+							</div>
+						</div>
+					</div>
+				</div>
+		</div> --%>
 	</div>
 <script type="text/javascript">
 //지연이유 차트
