@@ -85,7 +85,16 @@
 													<c:forEach items="${pfinfo}" var="pfinfo">
 														<tr>
 															<td>${pfinfo.pfinfono}</td>
-															<td><a href="/airport/erp/pfrequest.do">${pfinfo.pfname}</a></td>
+															<td>
+															<c:choose>
+																<c:when test="${erploginUser.deptno eq 'paps003' or erploginUser.role eq 'ROLE_ADMIN' }">
+																<a href="/airport/erp/pfrequest.do">${pfinfo.pfname}</a>
+																</c:when>
+																<c:otherwise>
+																${pfinfo.pfname}
+																</c:otherwise>
+															</c:choose>
+															</td>
 															<td>
 																<c:forEach items="${pfteam}" var="pfteam">
 																	<c:if test="${pfteam.pfinfono==pfinfo.pfinfono}">
