@@ -133,7 +133,7 @@ public class BoardNoticeController {
 		ModelAndView mav = new ModelAndView();
 		
 		// 다운 받은 파일의 절대 경로 필요
-		String fileFullPath = "D:\\ICTSub\\work\\3rdProject\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\airport\\WEB-INF\\ERP\\board\\upload/"+file; 
+		String fileFullPath = "C:\\ict\\work\\bigdataWork\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\airport\\WEB-INF\\ERP\\board\\upload/"+file; 
 		File downloadFile = new File(fileFullPath);
 		if(!downloadFile.canRead()) {
 			throw new Exception("파일을 찾을 수 없습니다.");

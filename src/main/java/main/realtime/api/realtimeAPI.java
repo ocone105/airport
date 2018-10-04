@@ -35,7 +35,8 @@ public class realtimeAPI {
 				StringBuilder urlBuilder = new StringBuilder(
 						"http://openapi.airport.kr/openapi/service/StatusOfPassengerFlightsDS/getPassengerDeparturesDS");
 				urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8")
-						+ "=SIiebQZNZnHWh2wfaDQr3sqEbhZH5dOGGBBnUuGTfGX0YfQLrVkPYI9IoYeHbFV0b2x0TxmtG873O%2BSlIjb8WA%3D%3D");
+						+ "=awXAezeT7c3zw%2BPOuXQjQSfoYr%2F9a51vEId%2BOw03z7fw6t9%2FI42xr3raGyNCXcW1LR6Msdmtb7zZFS5jMqydWQ%3D%3D");
+				// SIiebQZNZnHWh2wfaDQr3sqEbhZH5dOGGBBnUuGTfGX0YfQLrVkPYI9IoYeHbFV0b2x0TxmtG873O%2BSlIjb8WA%3D%3D
 				urlBuilder.append(
 						"&" + URLEncoder.encode("airport_code", "UTF-8") + "=" + URLEncoder.encode(code, "UTF-8"));
 				URL url = new URL(urlBuilder.toString());
@@ -106,5 +107,9 @@ public class realtimeAPI {
 	
 	public List<MyFlightDTO> myflight2(String id){
 		return dao.myflight2(id);
+	}
+	
+	public int deletemyFlight(MyFlightDTO myflight) {
+		return dao.deletemyFlight(myflight);
 	}
 }

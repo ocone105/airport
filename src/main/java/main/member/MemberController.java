@@ -255,5 +255,33 @@ public class MemberController {
 		mav.setViewName("adminMain");
 		return mav;
 	} 
-
+	
+	// 관심 항공 삭제
+	@RequestMapping("/main/myservice/myFlightDelete.do")
+	public ModelAndView myFlightDelete(@RequestParam(value="info",required=false) String flightinfo, HttpServletRequest request) throws Exception{
+		String splitArr[] = flightinfo.split("\\+");
+		MyFlightDTO myflight = new MyFlightDTO();
+		myflight.setFlightId(splitArr[0]);
+		myflight.setAirline(splitArr[1]);
+		myflight.setAirport(splitArr[2]);
+		myflight.setScheduleDateTime(splitArr[3]);
+		myflight.setGatenumber(splitArr[4]);
+		myflight.setRemark(splitArr[5]);
+		myflight.setDelay(splitArr[6]);
+		
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("loginUser");
+		myflight.setId(id);
+		
+		System.out.println(myflight);
+		service2.deletemyFlight(myflight);
+		ModelAndView mav = new ModelAndView();
+		MemberDTO member =service.read(id);
+		
+		List<MyFlightDTO> myflight2 = service2.myflight2(id);
+		mav.addObject("myflight", myflight2);
+		mav.addObject("member", member);
+		mav.setViewName("myservice");
+		return mav;
+	}
 }
