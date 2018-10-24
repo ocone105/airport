@@ -27,16 +27,19 @@
 					cmtlist="";
 					for (var i = 0; i < list.length; i++) {
 						cmtlist = cmtlist + "<ul><li itemscope itemtype='http://schema.org/Comment' class='kboard-comments-item'><div class='comments-list-username'>"
-									+ list[i].empno + 
+									+ list[i].id + 
 									"</div><div class='comments-list-create'>"
 									+ list[i].cmtdate + 
 									"</div><div class='comments-list-content'>"
 									+ list[i].cmttxt +
-									"</div><div class='comments-list-controller'><div class='right'>" +
-									"<a type='button' id='"+list[i].cmtno+"' href='#' class='deletecmt comments-button-action comments-button-delete onclick='return confirm('삭제 하시겠습니까?')' title='삭제'>삭제</a></div></div></li></ul>" +
-									"<input type='hidden' id='cmtno' value="+list[i].cmtno+">";
+									"</div>";
+						if("${erploginUser.empno}"==list[i].empno | "${erploginUser.role}"=="ROLE_ADMIN"){
+							cmtlist = cmtlist +	"<div class='comments-list-controller'><div class='right'><a type='button' id='"+list[i].cmtno+"' href='#' class='deletecmt comments-button-action comments-button-delete onclick='return confirm('삭제 하시겠습니까?')' title='삭제'>삭제</a></div></div></li></ul>"+
+							"<input type='hidden' id='cmtno' value="+list[i].cmtno+">";
+							}
 					}
-					$("#cmtcount").val(list.length);
+					$("#cmtcount").empty();
+					$("#cmtcount").append(list.length);
 					$("#cmtlist").empty();
 					$("#cmtlist").append(cmtlist);
 				}
@@ -62,16 +65,19 @@
 					cmtlist="";
 					for (var i = 0; i < list.length; i++) {
 						cmtlist = cmtlist + "<ul><li itemscope itemtype='http://schema.org/Comment' class='kboard-comments-item'><div class='comments-list-username'>"
-									+ list[i].empno + 
+									+ list[i].id + 
 									"</div><div class='comments-list-create'>"
 									+ list[i].cmtdate + 
 									"</div><div class='comments-list-content'>"
 									+ list[i].cmttxt +
-									"</div><div class='comments-list-controller'><div class='right'>" +
-									"<a type='button' id='"+list[i].cmtno+"' href='#' class='deletecmt comments-button-action comments-button-delete onclick='return confirm('삭제 하시겠습니까?')' title='삭제'>삭제</a></div></div></li></ul>"+
+									"</div><" ;
+									if("${erploginUser.empno}"==list[i].empno | "${erploginUser.role}"=="ROLE_ADMIN"){
+										cmtlist = cmtlist +	"<div class='comments-list-controller'><div class='right'><a type='button' id='"+list[i].cmtno+"' href='#' class='deletecmt comments-button-action comments-button-delete onclick='return confirm('삭제 하시겠습니까?')' title='삭제'>삭제</a></div></div></li></ul>"+
 									"<input type='hidden' id='cmtno' value="+list[i].cmtno+">";
+									}
 					}
-					$("#cmtcount").val(list.length);
+					$("#cmtcount").empty();
+					$("#cmtcount").append(list.length);
 					$("#cmtlist").empty();
 					$("#cmtlist").append(cmtlist);
 				
@@ -95,7 +101,7 @@
 							<h4>${post.title}</h4>
 							<hr />
 							<div class="row">
-								<span class="col-md-4"><label>작성자</label> ${post.empno}</span> 
+								<span class="col-md-4"><label>작성자</label> ${id}</span> 
 								<span class="col-md-4"><label>작성일</label>${post.boarddate}</span> 
 								<span class="col-md-4"><label>조회수</label>${post.hits}</span>
 								<c:if test="${post.attach!=null}">
@@ -134,16 +140,18 @@
 					<ul>
 						<li class="kboard-comments-item">
 							<div class="comments-list-username">
-								${comment.empno }</div>
+								${comment.id }</div>
 							<div class="comments-list-create">
 								${comment.cmtdate }</div>
 							<div class="comments-list-content">
 									${comment.cmttxt }</div>
 							<div class="comments-list-controller">
 								<div class="right">
+								<c:if test="${erploginUser.empno eq comment.empno or erploginUser.role eq 'ROLE_ADMIN' }">
 									<a type="button" href="#" id="${comment.cmtno }"
 										class="deletecmt comments-button-action comments-button-delete"
 										onclick="return confirm('삭제 하시겠습니까?');" title="삭제" >삭제</a>
+										</c:if>
 								</div>
 							</div>
 						</li>
@@ -157,8 +165,10 @@
 															placeholder="댓글을 입력하세요." style="color: black;"></textarea>
 													</div>
 													<div class="comments-submit-button">
+													
 														<input class="btn" type="submit" style="background-color:#9c27b0;"value="입력" id="insertcmt">
-														<input type="hidden" id="empno" value=111>
+														<input type="hidden" id="empno" value="${erploginUser.empno }">
+													
 													</div>
 												</div>
 											</form>
@@ -168,8 +178,10 @@
 							</div>
 						</div>
 						<hr />
+						<c:if test="${erploginUser.empno eq post.empno or erploginUser.role eq 'ROLE_ADMIN' }">
 						<a class="pull-right" href="/airport/erp/noticedelete.do?boardno=${post.boardno}"><i class="material-icons">delete</i>삭제</a>
 						<a class="pull-right" href="/airport/erp/noticeupdate.do?boardno=${post.boardno}"><i class="material-icons">edit</i>수정</a>
+						</c:if>
 						<a class="pull-right" href="/airport/erp/noticelist.do"><i class="material-icons">list</i>목록</a>
 					</div>
 				</div>

@@ -8,36 +8,45 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-//전화번호 자동하이픈
-$(document).ready(function () {
-	   $(function () {
-	            $("#phone").keydown(function (event) {
-	             var key = event.charCode || event.keyCode || 0;
-	             $text = $(this); 
-	             if (key !== 8 && key !== 9) {
-	                 if ($text.val().length === 3) {
-	                     $text.val($text.val() + '-');
-	                 }
-	                 if ($text.val().length === 8) {
-	                     $text.val($text.val() + '-');
-	                 }
-	             }
-	             return (key == 8 || key == 9 || key == 46 || (key >= 48 && key <= 57) || (key >= 96 && key <= 105));
-	         })
-	   });
-});
+	//전화번호 자동하이픈
+	$(document)
+			.ready(
+					function() {
+						$(function() {
+							$("#phone")
+									.keydown(
+											function(event) {
+												var key = event.charCode
+														|| event.keyCode || 0;
+												$text = $(this);
+												if (key !== 8 && key !== 9) {
+													if ($text.val().length === 3) {
+														$text.val($text.val()
+																+ '-');
+													}
+													if ($text.val().length === 8) {
+														$text.val($text.val()
+																+ '-');
+													}
+												}
+												return (key == 8
+														|| key == 9
+														|| key == 46
+														|| (key >= 48 && key <= 57) || (key >= 96 && key <= 105));
+											})
+						});
+					});
 
-function update(){
-		if($('input:checkbox[id="email_alarm"]').is(':checked')){
+	function update() {
+		if ($('input:checkbox[id="email_alarm"]').is(':checked')) {
 			$(document.forms["myform"].email_alarm).val('y')
 		}
-		if($('input:checkbox[id="sms_alarm"]').is(':checked')){
+		if ($('input:checkbox[id="sms_alarm"]').is(':checked')) {
 			$(document.forms["myform"].sms_alarm).val('y')
 		}
-		
+
 		document.myform.submit();
-}
-	   
+	}
 </script>
 <link rel="stylesheet" type="text/css"
 	href="/airport/resources/styles/member.css">
@@ -47,40 +56,29 @@ function update(){
 </head>
 <body>
 	<div class="home">
-		<div class="background_image"
-			style="background-image: url(/airport/resources/images/contact.jpg)"></div>
-	</div>
+		<!-- Home Slider -->
+		<div class="owl-carousel owl-theme home_slider">
 
-	<!-- Search -->
-
-	<div class="home_search">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="home_search_container">
-						<div class="home_search_title">Search for your trip</div>
-						<div class="home_search_content">
-							<form action="#" class="home_search_form" id="home_search_form">
-								<div
-									class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
-									<input type="text" class="search_input search_input_1"
-										placeholder="City" required="required"> <input
-										type="text" class="search_input search_input_2"
-										placeholder="Departure" required="required"> <input
-										type="text" class="search_input search_input_3"
-										placeholder="Arrival" required="required"> <input
-										type="text" class="search_input search_input_4"
-										placeholder="Budget" required="required">
-									<button class="home_search_button">search</button>
+			<!-- Slide -->
+			<div class="owl-item">
+				<div class="background_image"
+					style="background-image: url(/airport/resources/images/contact.jpg)"></div>
+				<div class="home_slider_content_container">
+					<div class="container">
+						<div class="row">
+							<div class="col">
+								<div class="home_slider_content">
+									<div class="home_title">
+										<h2>Let us take you away</h2>
+									</div>
 								</div>
-							</form>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
 	<!-- content -->
 
 	<div class="container">
@@ -91,11 +89,11 @@ function update(){
 					<div class="card-body">
 						<div
 							class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
-							<form class="form-horizontal" method="post" id="myform" name="myform"
-								action="/airport/main/myservice/update.do">
+							<form class="form-horizontal" method="post" id="myform"
+								name="myform" action="/airport/main/myservice/update.do">
 								<div class="panel panel-info">
 									<div class="panel-heading">
-										<h3 class="panel-title">회원정보 수정</h3>
+										<h3 class="panel-title" style="color: black;">회원정보 수정</h3>
 									</div>
 
 									<div class="panel-body">
@@ -103,18 +101,18 @@ function update(){
 											<table class="table table-user-information">
 												<tbody>
 													<tr>
-														<td>아이디</td>
+														<td class="td">아이디</td>
 														<td>${member.id}</td>
-														<input type="hidden" name="id" value="${member.id }"/>
+														<input type="hidden" name="id" value="${member.id }" />
 													</tr>
 													<tr>
-														<td>이름</td>
+														<td class="td">이름</td>
 														<td>${member.name}</td>
-														<input type="hidden" name="name" value="${member.name }"/>
-														
+														<input type="hidden" name="name" value="${member.name }" />
+
 													</tr>
 													<tr>
-														<td>이메일</td>
+														<td class="td">이메일</td>
 														<td><input type="email" name="email" id="email"
 															value=${member.email } class="form-email form-control"
 															required></td>
@@ -122,7 +120,7 @@ function update(){
 															id="email_alarm"></td>
 													</tr>
 													<tr>
-														<td>전화번호</td>
+														<td class="td">전화번호</td>
 														<td><input type="text" name="phone" id="phone"
 															value=${member.phone } class="form-phone form-control"
 															maxlength="13" required></td>
@@ -134,7 +132,8 @@ function update(){
 										</div>
 									</div>
 									<div class="panel-footer">
-										<button type="button" class="btn green" onclick="return update()">수정완료</button>
+										<button type="button" class="btn green"
+											onclick="return update()">수정완료</button>
 									</div>
 								</div>
 							</form>

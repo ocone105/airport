@@ -268,7 +268,7 @@ div.user-menu div.user-menu-content:not(.active){
 											</tr>
 											<tr>
 												<td>신청자아이디</td>
-												<td>${erploginUser.empid }
+												<td>${erploginUser.id }
 												</td>
 											</tr>
 											<tr>
@@ -318,7 +318,7 @@ div.user-menu div.user-menu-content:not(.active){
 											</tr>
 											<tr>
 												<td>신청자아이디</td>
-												<td>${erploginUser.empid }
+												<td>${erploginUser.id }
 												</td>
 											</tr>
 											<tr>

@@ -59,7 +59,7 @@
 															<td>
 																<div class="form-check">
 																	<label class="form-check-label"> 
-																		<input class="form-check-input" type="checkbox" value="${pf.pfno}" name="pfno">
+																		<input class="form-check-input" type="checkbox" value="${pf.pfno}+${pf.pfinfono}+${pf.pfstaff}" name="pfno">
 																		<span class="form-check-sign"> <span class="check"></span></span>
 																	</label>
 																</div>
@@ -72,7 +72,7 @@
 									</div>
 								</div>
 							</div>
-							<button type="submit" class="btn btn-warning pull-right"  onclick="window.close();">요청하기</button>
+							<button type="submit" class="btn btn-warning pull-right"  onclick="window.close();">확인</button>
 						</form>
 						</div>
 					</div>

@@ -32,7 +32,7 @@
 								<tr class="kboard-list-notice">
 									<td class="kboard-list-uid">${postno.count}</td>
 									<td class="kboard-list-user"><a href="/airport/erp/noticeread.do?boardno=${post.boardno}">${post.title}</a></td>
-									<td class="kboard-list-user">${post.empno}</td>
+									<td class="kboard-list-user">관리자</td>
 									<td class="kboard-list-date">${post.boarddate}</td>
 									<td class="kboard-list-view">${post.hits}</td>
 								</tr>
@@ -41,7 +41,9 @@
 						</table>
 					</div>
 					<div class="kboard-control">
+					<c:if test="${erploginUser.role eq 'ROLE_ADMIN' }">
 						<a href="/airport/erp/noticewrite.do">글쓰기</a>
+						</c:if>
 					</div>
 					<div class="kboard-search">
 						<form id="anonymousboard-search" method="post" action="/airport/erp/nboardsearch.do">

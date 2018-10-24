@@ -15,6 +15,8 @@ import main.PF.dto.condition.Condition_DelayDTO;
 import main.PF.dto.connection.ConnectionDTO;
 import main.PF.dto.connection.Connection_CancelDTO;
 import main.PF.dto.connection.Connection_DelayDTO;
+import main.PF.dto.main.Main_CancelDTO;
+import main.PF.dto.main.Main_DelayDTO;
 import main.PF.dto.repair.RepairDTO;
 import main.PF.dto.repair.Repair_CancelDTO;
 import main.PF.dto.repair.Repair_DelayDTO;
@@ -27,6 +29,8 @@ import main.PF.repository.Condition_DelayRepository;
 import main.PF.repository.ConnectionRepository;
 import main.PF.repository.Connection_CancelRepository;
 import main.PF.repository.Connection_DelayRepository;
+import main.PF.repository.Main_CancelRepository;
+import main.PF.repository.Main_DelayRepository;
 import main.PF.repository.RepairRepository;
 import main.PF.repository.Repair_CancelRepository;
 import main.PF.repository.Repair_DelayRepository;
@@ -64,6 +68,11 @@ public class AirlineDAOImpl implements AirlineDAO {
 	Condition_CancelRepository condcanRe;
 	@Autowired
 	Condition_DelayRepository conddeRe;
+	
+	@Autowired
+	Main_CancelRepository maincanRe;
+	@Autowired
+	Main_DelayRepository mainddeRe;
 
 
 	@Override
@@ -135,6 +144,18 @@ public class AirlineDAOImpl implements AirlineDAO {
 	@Override
 	public List<Condition_DelayDTO> findcond_delay() {
 		 List<Condition_DelayDTO> docs = (List<Condition_DelayDTO>) conddeRe.findAll();
+		return docs;
+	}
+
+	@Override
+	public List<Main_CancelDTO> findmain_cancel() {
+		List<Main_CancelDTO> docs = (List<Main_CancelDTO>) maincanRe.findAll();
+		return docs;
+	}
+
+	@Override
+	public List<Main_DelayDTO> findmain_delay() {
+		List<Main_DelayDTO> docs = (List<Main_DelayDTO>) mainddeRe.findAll();
 		return docs;
 	}
 	

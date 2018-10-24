@@ -1,12 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
  <!-- Chartist JS -->
- <script src="/airport/resources/common/js/plugins/chartist.min.js"></script>
+<!-- <script src="/airport/resources/common/js/plugins/chartist.min.js"></script> -->
+<script src="/airport/resources/common/js/Chart.bundle.js"></script>
+<script src="/airport/resources/common/js/Chart.js"></script>
 </head>
 <body>
 <div class="content">
@@ -16,17 +20,16 @@
 					<div class="card card-stats">
 						<div class="card-header card-header-warning card-header-icon">
 							<div class="card-icon">
-								<i class="material-icons">content_copy</i>
+								<i class="material-icons">flight_takeoff</i>
 							</div>
-							<p class="card-category">Used Space</p>
-							<h3 class="card-title">
-								49/50 <small>GB</small>
-							</h3>
+							<p class="card-category">연결에 의한</p>
+							<p class="card-category">지연/결항률 </p>
+							<h4 class="card-title">지연률: ${result1_1 }%</h4>
+							<h4 class="card-title">결항률: ${result1_2 }%</h4>
 						</div>
 						<div class="card-footer">
 							<div class="stats">
-								<i class="material-icons text-danger">warning</i> <a
-									href="#pablo">Get More Space...</a>
+								<i class="material-icons">local_offer</i> 2017/10 - 2018/09 자료기준
 							</div>
 						</div>
 					</div>
@@ -35,14 +38,16 @@
 					<div class="card card-stats">
 						<div class="card-header card-header-success card-header-icon">
 							<div class="card-icon">
-								<i class="material-icons">store</i>
+								<i class="material-icons">usb</i>
 							</div>
-							<p class="card-category">Revenue</p>
-							<h3 class="card-title">$34,245</h3>
+							<p class="card-category">항공기 정비에 따른</p>
+							<p class="card-category">지연/결항률 </p>
+							<h4 class="card-title">지연률: ${result2_1 }%</h4>
+							<h4 class="card-title">결항률: ${result2_2 }%</h4>
 						</div>
 						<div class="card-footer">
 							<div class="stats">
-								<i class="material-icons">date_range</i> Last 24 Hours
+								<i class="material-icons">local_offer</i> 2017/10 - 2018/09 자료기준
 							</div>
 						</div>
 					</div>
@@ -51,14 +56,16 @@
 					<div class="card card-stats">
 						<div class="card-header card-header-danger card-header-icon">
 							<div class="card-icon">
-								<i class="material-icons">info_outline</i>
+								<i class="material-icons">beach_access</i>
 							</div>
-							<p class="card-category">Fixed Issues</p>
-							<h3 class="card-title">75</h3>
+							<p class="card-category">기상에 따른</p>
+							<p class="card-category">지연/결항률 </p>
+							<h4 class="card-title">지연률: ${result3_1 }%</h4>
+							<h4 class="card-title">결항률: ${result3_2 }%</h4>
 						</div>
 						<div class="card-footer">
 							<div class="stats">
-								<i class="material-icons">local_offer</i> Tracked from Github
+								<i class="material-icons">local_offer</i> 2017/10 - 2018/09 자료기준
 							</div>
 						</div>
 					</div>
@@ -67,382 +74,293 @@
 					<div class="card card-stats">
 						<div class="card-header card-header-info card-header-icon">
 							<div class="card-icon">
-								<i class="fa fa-twitter"></i>
+								<i class="material-icons">timer</i>
 							</div>
-							<p class="card-category">Followers</p>
-							<h3 class="card-title">+245</h3>
+							<p class="card-category">항로복잡에 따른 </p>
+							<p class="card-category">지연/결항률 </p>
+							<h4 class="card-title">지연률: ${result4_1 }%</h4>
+							<h4 class="card-title">결항률: ${result4_2 }%</h4>
 						</div>
 						<div class="card-footer">
 							<div class="stats">
-								<i class="material-icons">update</i> Just Updated
+								<i class="material-icons">local_offer</i> 2017/10 - 2018/09 자료기준
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-4">
+				<div class="col-md-6">
 					<div class="card card-chart">
-						<div class="card-header card-header-success">
-							<div class="ct-chart" id="dailySalesChart"></div>
+						<div class="card-header card-header-info">
+							<canvas id="delayChart" height="200"></canvas>
 						</div>
 						<div class="card-body">
-							<h4 class="card-title">Daily Sales</h4>
+							<h4 class="card-title">지연이유 (%)</h4>
+							<p class="card-category">
+								<span class="text-success">	<i class="material-icons">local_offer</i></span>지연
+							</p>
+							<div>연결-${delay.get(0) }% | 정비-${delay.get(1) }% | 기상-${delay.get(2) }% </div> 
+							<div>항로혼잡-${delay.get(3) }% | 기타-${delay.get(4) }%</div>
+						</div>
+						<div class="card-footer">
+							<div class="stats">
+								<i class="material-icons">access_time</i>2017/10 - 2018/09 자료기준
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="card card-chart">
+						<div class="card-header card-header-info">
+							<canvas id="cancelChart" height="200"></canvas>
+						</div>
+						<div class="card-body">
+							<h4 class="card-title">결항이유(%)</h4>
+							<p class="card-category">
+								<span class="text-success"><i class="fa fa-long-arrow-up"></i></span>결항
+							</p>
+							<div>연결-${cancel.get(0) }% | 정비-${cancel.get(1) }% | 기상-${cancel.get(2) }% </div>
+							<div>항로혼잡-${cancel.get(3) }% | 기타-${cancel.get(4) }%</div>
+						</div>
+						<div class="card-footer">
+							<div class="stats">
+								<i class="material-icons">access_time</i>2017/10 - 2018/09 자료기준
+							</div>
+						</div>
+					</div>
+				</div>
+		</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="card card-chart">
+						<div class="card-header card-header-warning">
+							<canvas id="complexdelayChart" height="200"></canvas>
+							
+						</div>
+						<div class="card-body">
+							<h4 class="card-title">항로복잡 Delay</h4>
 							<p class="card-category">
 								<span class="text-success"><i class="fa fa-long-arrow-up"></i>
-									55% </span> increase in today sales.
+									% </span> 시간 별 항로복잡에 따른 지연률
 							</p>
 						</div>
 						<div class="card-footer">
 							<div class="stats">
-								<i class="material-icons">access_time</i> updated 4 minutes ago
+								<i class="material-icons">access_time</i>2017/10 - 2018/09 자료기준
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-6">
 					<div class="card card-chart">
 						<div class="card-header card-header-warning">
-							<div class="ct-chart" id="websiteViewsChart"></div>
+							<canvas id="complexcancelChart" height="200"></canvas>
 						</div>
 						<div class="card-body">
-							<h4 class="card-title">Email Subscriptions</h4>
-							<p class="card-category">Last Campaign Performance</p>
+							<h4 class="card-title">항로복잡 Cancel</h4>
+							<p class="card-category">
+								<span class="text-success"><i class="fa fa-long-arrow-up"></i>
+									% </span> 시간 별 항로복잡에 따른 결항률
+							</p>
 						</div>
 						<div class="card-footer">
 							<div class="stats">
-								<i class="material-icons">access_time</i> campaign sent 2 days
-								ago
+								<i class="material-icons">access_time</i>2017/10 - 2018/09 자료기준
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-4">
-					<div class="card card-chart">
-						<div class="card-header card-header-danger">
-							<div class="ct-chart" id="completedTasksChart"></div>
-						</div>
-						<div class="card-body">
-							<h4 class="card-title">Completed Tasks</h4>
-							<p class="card-category">Last Campaign Performance</p>
-						</div>
-						<div class="card-footer">
-							<div class="stats">
-								<i class="material-icons">access_time</i> campaign sent 2 days
-								ago
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-6 col-md-12">
-					<div class="card">
-						<div class="card-header card-header-tabs card-header-primary">
-							<div class="nav-tabs-navigation">
-								<div class="nav-tabs-wrapper">
-									<span class="nav-tabs-title">Tasks:</span>
-									<ul class="nav nav-tabs" data-tabs="tabs">
-										<li class="nav-item"><a class="nav-link active"
-											href="#profile" data-toggle="tab"> <i
-												class="material-icons">bug_report</i> Bugs
-												<div class="ripple-container"></div>
-										</a></li>
-										<li class="nav-item"><a class="nav-link" href="#messages"
-											data-toggle="tab"> <i class="material-icons">code</i>
-												Website
-												<div class="ripple-container"></div>
-										</a></li>
-										<li class="nav-item"><a class="nav-link" href="#settings"
-											data-toggle="tab"> <i class="material-icons">cloud</i>
-												Server
-												<div class="ripple-container"></div>
-										</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="card-body">
-							<div class="tab-content">
-								<div class="tab-pane active" id="profile">
-									<table class="table">
-										<tbody>
-											<tr>
-												<td>
-													<div class="form-check">
-														<label class="form-check-label"> <input
-															class="form-check-input" type="checkbox" value="" checked>
-															<span class="form-check-sign"> <span class="check"></span>
-														</span>
-														</label>
-													</div>
-												</td>
-												<td>Sign contract for "What are conference organizers
-													afraid of?"</td>
-												<td class="td-actions text-right">
-													<button type="button" rel="tooltip" title="Edit Task"
-														class="btn btn-primary btn-link btn-sm">
-														<i class="material-icons">edit</i>
-													</button>
-													<button type="button" rel="tooltip" title="Remove"
-														class="btn btn-danger btn-link btn-sm">
-														<i class="material-icons">close</i>
-													</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="form-check">
-														<label class="form-check-label"> <input
-															class="form-check-input" type="checkbox" value="">
-															<span class="form-check-sign"> <span class="check"></span>
-														</span>
-														</label>
-													</div>
-												</td>
-												<td>Lines From Great Russian Literature? Or E-mails
-													From My Boss?</td>
-												<td class="td-actions text-right">
-													<button type="button" rel="tooltip" title="Edit Task"
-														class="btn btn-primary btn-link btn-sm">
-														<i class="material-icons">edit</i>
-													</button>
-													<button type="button" rel="tooltip" title="Remove"
-														class="btn btn-danger btn-link btn-sm">
-														<i class="material-icons">close</i>
-													</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="form-check">
-														<label class="form-check-label"> <input
-															class="form-check-input" type="checkbox" value="">
-															<span class="form-check-sign"> <span class="check"></span>
-														</span>
-														</label>
-													</div>
-												</td>
-												<td>Flooded: One year later, assessing what was lost
-													and what was found when a ravaging rain swept through metro
-													Detroit</td>
-												<td class="td-actions text-right">
-													<button type="button" rel="tooltip" title="Edit Task"
-														class="btn btn-primary btn-link btn-sm">
-														<i class="material-icons">edit</i>
-													</button>
-													<button type="button" rel="tooltip" title="Remove"
-														class="btn btn-danger btn-link btn-sm">
-														<i class="material-icons">close</i>
-													</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="form-check">
-														<label class="form-check-label"> <input
-															class="form-check-input" type="checkbox" value="" checked>
-															<span class="form-check-sign"> <span class="check"></span>
-														</span>
-														</label>
-													</div>
-												</td>
-												<td>Create 4 Invisible User Experiences you Never Knew
-													About</td>
-												<td class="td-actions text-right">
-													<button type="button" rel="tooltip" title="Edit Task"
-														class="btn btn-primary btn-link btn-sm">
-														<i class="material-icons">edit</i>
-													</button>
-													<button type="button" rel="tooltip" title="Remove"
-														class="btn btn-danger btn-link btn-sm">
-														<i class="material-icons">close</i>
-													</button>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-								<div class="tab-pane" id="messages">
-									<table class="table">
-										<tbody>
-											<tr>
-												<td>
-													<div class="form-check">
-														<label class="form-check-label"> <input
-															class="form-check-input" type="checkbox" value="" checked>
-															<span class="form-check-sign"> <span class="check"></span>
-														</span>
-														</label>
-													</div>
-												</td>
-												<td>Flooded: One year later, assessing what was lost
-													and what was found when a ravaging rain swept through metro
-													Detroit</td>
-												<td class="td-actions text-right">
-													<button type="button" rel="tooltip" title="Edit Task"
-														class="btn btn-primary btn-link btn-sm">
-														<i class="material-icons">edit</i>
-													</button>
-													<button type="button" rel="tooltip" title="Remove"
-														class="btn btn-danger btn-link btn-sm">
-														<i class="material-icons">close</i>
-													</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="form-check">
-														<label class="form-check-label"> <input
-															class="form-check-input" type="checkbox" value="">
-															<span class="form-check-sign"> <span class="check"></span>
-														</span>
-														</label>
-													</div>
-												</td>
-												<td>Sign contract for "What are conference organizers
-													afraid of?"</td>
-												<td class="td-actions text-right">
-													<button type="button" rel="tooltip" title="Edit Task"
-														class="btn btn-primary btn-link btn-sm">
-														<i class="material-icons">edit</i>
-													</button>
-													<button type="button" rel="tooltip" title="Remove"
-														class="btn btn-danger btn-link btn-sm">
-														<i class="material-icons">close</i>
-													</button>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-								<div class="tab-pane" id="settings">
-									<table class="table">
-										<tbody>
-											<tr>
-												<td>
-													<div class="form-check">
-														<label class="form-check-label"> <input
-															class="form-check-input" type="checkbox" value="">
-															<span class="form-check-sign"> <span class="check"></span>
-														</span>
-														</label>
-													</div>
-												</td>
-												<td>Lines From Great Russian Literature? Or E-mails
-													From My Boss?</td>
-												<td class="td-actions text-right">
-													<button type="button" rel="tooltip" title="Edit Task"
-														class="btn btn-primary btn-link btn-sm">
-														<i class="material-icons">edit</i>
-													</button>
-													<button type="button" rel="tooltip" title="Remove"
-														class="btn btn-danger btn-link btn-sm">
-														<i class="material-icons">close</i>
-													</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="form-check">
-														<label class="form-check-label"> <input
-															class="form-check-input" type="checkbox" value="" checked>
-															<span class="form-check-sign"> <span class="check"></span>
-														</span>
-														</label>
-													</div>
-												</td>
-												<td>Flooded: One year later, assessing what was lost
-													and what was found when a ravaging rain swept through metro
-													Detroit</td>
-												<td class="td-actions text-right">
-													<button type="button" rel="tooltip" title="Edit Task"
-														class="btn btn-primary btn-link btn-sm">
-														<i class="material-icons">edit</i>
-													</button>
-													<button type="button" rel="tooltip" title="Remove"
-														class="btn btn-danger btn-link btn-sm">
-														<i class="material-icons">close</i>
-													</button>
-												</td>
-											</tr>
-											<tr>
-												<td>
-													<div class="form-check">
-														<label class="form-check-label"> <input
-															class="form-check-input" type="checkbox" value="" checked>
-															<span class="form-check-sign"> <span class="check"></span>
-														</span>
-														</label>
-													</div>
-												</td>
-												<td>Sign contract for "What are conference organizers
-													afraid of?"</td>
-												<td class="td-actions text-right">
-													<button type="button" rel="tooltip" title="Edit Task"
-														class="btn btn-primary btn-link btn-sm">
-														<i class="material-icons">edit</i>
-													</button>
-													<button type="button" rel="tooltip" title="Remove"
-														class="btn btn-danger btn-link btn-sm">
-														<i class="material-icons">close</i>
-													</button>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-6 col-md-12">
-					<div class="card">
-						<div class="card-header card-header-warning">
-							<h4 class="card-title">Employees Stats</h4>
-							<p class="card-category">New employees on 15th September,
-								2016</p>
-						</div>
-						<div class="card-body table-responsive">
-							<table class="table table-hover">
-								<thead class="text-warning">
-									<th>ID</th>
-									<th>Name</th>
-									<th>Salary</th>
-									<th>Country</th>
-								</thead>
-								<tbody>
-									<tr>
-										<td>1</td>
-										<td>Dakota Rice</td>
-										<td>$36,738</td>
-										<td>Niger</td>
-									</tr>
-									<tr>
-										<td>2</td>
-										<td>Minerva Hooper</td>
-										<td>$23,789</td>
-										<td>CuraÃ§ao</td>
-									</tr>
-									<tr>
-										<td>3</td>
-										<td>Sage Rodriguez</td>
-										<td>$56,142</td>
-										<td>Netherlands</td>
-									</tr>
-									<tr>
-										<td>4</td>
-										<td>Philip Chaney</td>
-										<td>$38,735</td>
-										<td>Korea, South</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
+		<%-- <div class="row">
+				<div class="col-md-4">
+					<div class="card card-chart">
+						<div class="card-header card-header-primary">
+							<select class="selectpicker" id="condition" size="1">
+								<c:forEach var="dept" items="${deptlist }">
+										<option value="${dept.deptno }">${dept.deptname }</option>
+								</c:forEach>
+							</select>
+						</div>
+						<div class="card-body">
+							<h4 class="card-title">기상에따른 delay</h4>
+							<p class="card-category">
+								<span class="text-success"><i class="fa fa-long-arrow-up"></i>
+									% </span> 기상에따른  지연률
+							</p>
+						</div>
+						<div class="card-footer">
+							<div class="stats">
+								<i class="material-icons">access_time</i>2017/10 - 2018/09 자료기준
+							</div>
+						</div>
+					</div>
+				</div>
+		</div> --%>
 	</div>
+<script type="text/javascript">
+//지연이유 차트
+var ctx = $("#delayChart");
+var datas = [];
+<c:forEach var="de" items="${delay}">
+	datas.push("${de}");
+ </c:forEach>
+var myChart = new Chart(ctx, {
+type: 'doughnut',
+data: {
+	labels: ["연결", "정비", "기상", "항로혼잡", "기타"],
+ datasets: [{
+	label: '지연이유 (%)',
+	data: datas,
+	backgroundColor: [
+		'rgba(5, 0, 23, 0.8)',
+        'rgba(70, 65, 217, 0.8)',
+        'rgba(67, 116, 217, 0.8)',
+		'rgba(107, 102, 255, 0.8)',
+		'rgba(103, 153, 255, 0.8)',
+		'rgba(178, 204, 255, 0.8)'
+		],
+		borderWidth: 1
+		}]
+}
+});
+
+//시간 별 항로혼잡에 따른 지연
+var ctx = $("#cancelChart");
+var datas = [];
+<c:forEach var="can" items="${cancel}">
+	datas.push("${can}");
+ </c:forEach>
+var myChart = new Chart(ctx, {
+type: 'doughnut',
+data: {
+	labels: ["연결", "정비", "기상", "항로혼잡", "기타"],
+ datasets: [{
+	label: '결항이유 (%)',
+	data: datas,
+	backgroundColor: [
+		'rgba(134, 0, 0, 0.8)',
+        'rgba(170, 18, 18, 0.8)',
+        'rgba(206, 54, 54, 0.8)',
+		'rgba(242, 90, 90, 0.8)',
+		'rgba(255, 126, 126, 0.8)'
+		],
+		borderWidth: 1
+		}]
+}
+});
+
+
+
+//시간 별 항로혼잡에 따른 지연
+	var ctx = $("#complexdelayChart");
+	var datas = [];
+	<c:forEach var="comde" items="${comderesult}">
+		datas.push("${comde}");
+	 </c:forEach>
+	var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+		labels: ["00시", "01시", "02시", "03시", "04시", "05시", "06시", "07시", "08시", "09시", "10시", "11시", "12시", 
+			"13시", "14시", "15시", "16시", "17시", "18시", "19시", "20시", "21시", "22시", "23시", "24시"],
+	 datasets: [{
+		label: '시간 별 항로혼잡에 따른 지연 (%)',
+		data: datas,
+		backgroundColor: [
+			'rgba(255, 99, 132, 0.8)',
+	        'rgba(54, 162, 235, 0.8)',
+	        'rgba(255, 99, 132, 0.8)',
+			'rgba(54, 162, 235, 0.8)',
+			'rgba(255, 99, 132, 0.8)',
+			'rgba(54, 162, 235, 0.8)',
+			'rgba(255, 99, 132, 0.8)',
+			'rgba(54, 162, 235, 0.8)',
+			'rgba(255, 99, 132, 0.8)',
+			'rgba(54, 162, 235, 0.8)',
+			'rgba(255, 99, 132, 0.8)',
+			'rgba(54, 162, 235, 0.8)',
+			'rgba(255, 99, 132, 0.8)',
+			'rgba(54, 162, 235, 0.8)',
+			'rgba(255, 99, 132, 0.8)',
+			'rgba(54, 162, 235, 0.8)',
+			'rgba(255, 99, 132, 0.8)',
+			'rgba(54, 162, 235, 0.8)',
+			'rgba(255, 99, 132, 0.8)',
+			'rgba(54, 162, 235, 0.8)',
+			'rgba(255, 99, 132, 0.8)',
+			'rgba(54, 162, 235, 0.8)',
+			'rgba(255, 99, 132, 0.8)',
+			'rgba(54, 162, 235, 0.8)'
+			],
+			borderWidth: 1
+			}]
+	},
+	options: {
+		scales: {
+			yAxes: [{
+				ticks: {
+					beginAtZero:true
+					}
+			}]
+	}
+	}
+	});
+	
+//complexcancelChart	
+	var ctx = $("#complexcancelChart");
+	var datas = [];
+	<c:forEach var="comcan" items="${comcanresult}">
+	 	datas.push("${comcan}");
+	 </c:forEach>
+	var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+		labels: ["00시", "01시", "02시", "03시", "04시", "05시", "06시", "07시", "08시", "09시", "10시", "11시", "12시", 
+			"13시", "14시", "15시", "16시", "17시", "18시", "19시", "20시", "21시", "22시", "23시", "24시"],
+	 datasets: [{
+		label: '시간 별 항로혼잡에 따른 결항 (%)',
+		data: datas,
+		backgroundColor: [
+			'rgba(255, 99, 132, 0.8)',
+	        'rgba(54, 162, 235, 0.8)',
+	        'rgba(255, 99, 132, 0.8)',
+			'rgba(54, 162, 235, 0.8)',
+			'rgba(255, 99, 132, 0.8)',
+			'rgba(54, 162, 235, 0.8)',
+			'rgba(255, 99, 132, 0.8)',
+			'rgba(54, 162, 235, 0.8)',
+			'rgba(255, 99, 132, 0.8)',
+			'rgba(54, 162, 235, 0.8)',
+			'rgba(255, 99, 132, 0.8)',
+			'rgba(54, 162, 235, 0.8)',
+			'rgba(255, 99, 132, 0.8)',
+			'rgba(54, 162, 235, 0.8)',
+			'rgba(255, 99, 132, 0.8)',
+			'rgba(54, 162, 235, 0.8)',
+			'rgba(255, 99, 132, 0.8)',
+			'rgba(54, 162, 235, 0.8)',
+			'rgba(255, 99, 132, 0.8)',
+			'rgba(54, 162, 235, 0.8)',
+			'rgba(255, 99, 132, 0.8)',
+			'rgba(54, 162, 235, 0.8)',
+			'rgba(255, 99, 132, 0.8)',
+			'rgba(54, 162, 235, 0.8)'
+			],
+			borderWidth: 1
+			}]
+	},
+	options: {
+		scales: {
+			yAxes: [{
+				ticks: {
+					beginAtZero:true
+					}
+			}]
+	}
+	}
+	});
+
+</script>
 </body>
 </html>

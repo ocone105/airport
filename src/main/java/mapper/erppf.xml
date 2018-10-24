@@ -41,8 +41,11 @@
 		select * from dept where deptname=#{deptname}
 	</select>
 	
-	<update id="requestPermit" parameterType="Integer">
-	
+	<update id="requestPermit1" parameterType="pfteam">
+		update PFTEAM set currentstaff=currentstaff + #{currentstaff} where pfinfono=#{pfinfono}
 	</update>
+	<delete id="requestPermit2" parameterType="String">
+		delete from PF where pfno=#{pfno}
+	</delete>
 	
 </mapper>

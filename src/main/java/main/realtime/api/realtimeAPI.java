@@ -35,7 +35,8 @@ public class realtimeAPI {
 				StringBuilder urlBuilder = new StringBuilder(
 						"http://openapi.airport.kr/openapi/service/StatusOfPassengerFlightsDS/getPassengerDeparturesDS");
 				urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8")
-						+ "=SIiebQZNZnHWh2wfaDQr3sqEbhZH5dOGGBBnUuGTfGX0YfQLrVkPYI9IoYeHbFV0b2x0TxmtG873O%2BSlIjb8WA%3D%3D");
+						+ "=awXAezeT7c3zw%2BPOuXQjQSfoYr%2F9a51vEId%2BOw03z7fw6t9%2FI42xr3raGyNCXcW1LR6Msdmtb7zZFS5jMqydWQ%3D%3D");
+				// SIiebQZNZnHWh2wfaDQr3sqEbhZH5dOGGBBnUuGTfGX0YfQLrVkPYI9IoYeHbFV0b2x0TxmtG873O%2BSlIjb8WA%3D%3D
 				urlBuilder.append(
 						"&" + URLEncoder.encode("airport_code", "UTF-8") + "=" + URLEncoder.encode(code, "UTF-8"));
 				URL url = new URL(urlBuilder.toString());
@@ -67,24 +68,27 @@ public class realtimeAPI {
 
 					JSONObject root = (JSONObject) jsonObj.get("response");
 					JSONObject body = (JSONObject) root.get("body");
-					JSONObject items = (JSONObject) body.get("items");
+					
+					if(!body.get("items").equals("")) {
+						JSONObject items = (JSONObject) body.get("items");
+						JSONArray item = (JSONArray) items.get("item");
 
-					JSONArray item = (JSONArray) items.get("item");
-
-					for (int i = 0; i < item.size(); i++) {
-						JSONObject tempObj = (JSONObject) item.get(i);
-						FlightDTO data = new FlightDTO();
-						data.setAirline((String) tempObj.get("airline"));
-						data.setAirport((String) tempObj.get("airport"));
-						data.setAirportcode((String) tempObj.get("airportcode"));
-						data.setChkinrange((String) tempObj.get("chkinrange"));
-						data.setEstimatedDateTime((Long) tempObj.get("estimatedDateTime"));
-						data.setFlightId((String) tempObj.get("flightId"));
-						data.setGatenumber((Long) tempObj.get("gatenumber"));
-						data.setScheduleDateTime((Long) tempObj.get("scheduleDateTime"));
-						data.setTerminalid((String) tempObj.get("terminalid"));
-						data.setRemark((String) tempObj.get("remark"));
-						info.add(data);
+						for (int i = 0; i < item.size(); i++) {
+							JSONObject tempObj = (JSONObject) item.get(i);
+							FlightDTO data = new FlightDTO();
+							data.setAirline((String) tempObj.get("airline"));
+							data.setAirport((String) tempObj.get("airport"));
+							data.setAirportcode((String) tempObj.get("airportcode"));
+							data.setChkinrange((String) tempObj.get("chkinrange"));
+							data.setEstimatedDateTime((Long) tempObj.get("estimatedDateTime"));
+							data.setFlightId((String) tempObj.get("flightId"));
+							data.setGatenumber((Long) tempObj.get("gatenumber"));
+							data.setScheduleDateTime((Long) tempObj.get("scheduleDateTime"));
+							data.setTerminalid((String) tempObj.get("terminalid"));
+							data.setRemark((String) tempObj.get("remark"));
+							info.add(data);
+						}
+					
 					}
 					// System.out.println(info.get(2).getAirline());
 					/*
@@ -106,5 +110,9 @@ public class realtimeAPI {
 	
 	public List<MyFlightDTO> myflight2(String id){
 		return dao.myflight2(id);
+	}
+	
+	public int deletemyFlight(MyFlightDTO myflight) {
+		return dao.deletemyFlight(myflight);
 	}
 }

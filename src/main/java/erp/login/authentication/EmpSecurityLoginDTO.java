@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.User;
 
 public class EmpSecurityLoginDTO extends User {
 	int empno;
-	String empid;
+	String id;
 	String pwd;
 	String name;
 	String birth;
@@ -23,10 +23,11 @@ public class EmpSecurityLoginDTO extends User {
 	String role;
 	String deptname;
 	
-	public EmpSecurityLoginDTO(String empid, String pwd, boolean enabled, boolean accountNonExpired,
+
+	public EmpSecurityLoginDTO(String id, String pwd, boolean enabled, boolean accountNonExpired,
 			boolean credentialsNonExpired, boolean accountNonLocked,
 			Collection<? extends GrantedAuthority> authorities) {
-		super(empid, pwd, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
+		super(id, pwd, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
 	}
 
 	
@@ -34,13 +35,13 @@ public class EmpSecurityLoginDTO extends User {
 	
 
 
-	public EmpSecurityLoginDTO(String empid, String pwd, boolean enabled, boolean accountNonExpired,
+	public EmpSecurityLoginDTO(String id, String pwd, boolean enabled, boolean accountNonExpired,
 			boolean credentialsNonExpired, boolean accountNonLocked, Collection<? extends GrantedAuthority> authorities,
 			int empno, String name, String birth, String gender, String phone, String email,
 			String position, String state, Date startdate, Date enddate, String deptno, String role, String deptname) {
-		super(empid, pwd, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
+		super(id, pwd, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
 		this.empno = empno;
-		this.empid = empid;
+		this.id = id;
 		this.pwd = pwd;
 		this.name = name;
 		this.birth = birth;
@@ -63,7 +64,7 @@ public class EmpSecurityLoginDTO extends User {
 
 	@Override
 	public String toString() {
-		return "EmpSecurityLoginDTO [empno=" + empno + ", empid=" + empid + ", pwd=" + pwd + ", name=" + name
+		return "EmpSecurityLoginDTO [empno=" + empno + ", id=" + id + ", pwd=" + pwd + ", name=" + name
 				+ ", birth=" + birth + ", gender=" + gender + ", phone=" + phone + ", email=" + email + ", position="
 				+ position + ", state=" + state + ", startdate=" + startdate + ", enddate=" + enddate + ", deptno="
 				+ deptno + ", role=" + role + "]";
@@ -80,12 +81,12 @@ public class EmpSecurityLoginDTO extends User {
 		this.empno = empno;
 	}
 
-	public String getEmpid() {
-		return empid;
+	public String getId() {
+		return id;
 	}
 
-	public void setEmpid(String empid) {
-		this.empid = empid;
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getPwd() {
@@ -182,7 +183,15 @@ public class EmpSecurityLoginDTO extends User {
 
 	public void setRole(String role) {
 		this.role = role;
+	}	
+	
+	public String getDeptname() {
+		return deptname;
 	}
+	public void setDeptname(String deptname) {
+		this.deptname = deptname;
+	}
+
 	
 	
 	

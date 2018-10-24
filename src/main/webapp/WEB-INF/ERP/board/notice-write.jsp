@@ -22,7 +22,7 @@
 					</div>
 					<div>
 						<span><label>작성자</label></span>
-						<span>아이디<input type="hidden" name="empno" value="0"></span>
+						<span>${erploginUser.id }<input type="hidden" name="empno" value="${erploginUser.empno }"></span>
 					</div>
 					<div>
 						<label>내용</label>

@@ -37,11 +37,7 @@
 											</tr>
 											<tr>
 												<td>아이디</td>
-												<td>${emp.empid }</td>
-											</tr>
-											<tr>
-												<td>비밀번호</td>
-												<td>${emp.pwd }</td>
+												<td>${emp.id }</td>
 											</tr>
 											<tr>
 												<td>생년월일</td>
@@ -98,6 +94,7 @@
 							</div>
 						</div>
 						<div class="panel-footer">
+						<c:if test="${erploginUser.deptno eq 'aihr002' or erploginUser.role eq 'ROLE_ADMIN' }">
 							<span
 								class="pull-right"> <a href="/airport/erp/empupdate.do?empno=${emp.empno }&deptno=${emp.deptno}"
 								data-original-title="Edit this user" data-toggle="tooltip"
@@ -108,6 +105,7 @@
 								type="button" class="btn btn-sm btn-danger"><i
 									class="glyphicon glyphicon-remove"></i>삭제</a>
 							</span>
+						</c:if>
 						</div>
 
 					</div>

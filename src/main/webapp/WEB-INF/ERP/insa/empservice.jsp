@@ -37,11 +37,7 @@
 											</tr>
 											<tr>
 												<td>아이디</td>
-												<td>${erploginUser.empid }</td>
-											</tr>
-											<tr>
-												<td>비밀번호</td>
-												<td>${erploginUser.pwd }</td>
+												<td>${erploginUser.id }</td>
 											</tr>
 											<tr>
 												<td>생년월일</td>

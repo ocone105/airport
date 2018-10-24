@@ -16,7 +16,7 @@
 	
 	<insert id="empinsert" parameterType="emp">
 		insert into emp
-		values(emp_seq.nextVal,#{empid},#{pwd},#{name},#{birth},#{gender},
+		values(emp_seq.nextVal,#{id},#{pwd},#{name},#{birth},#{gender},
 		#{phone},#{email},#{position},'0',sysdate,null,#{deptno},'ROLE_EMP')
 	</insert>
 	
@@ -34,12 +34,12 @@
 	
 	<select id="securitylogin" resultType="map">
 		select e.*,d.deptname from emp e, dept d
-		where e.deptno=d.deptno and e.empid=#{empid} and e.state='0'
+		where e.deptno=d.deptno and e.id=#{id} and e.state='0'
 	</select>
 	
 	<select id="login" resultType="emp" parameterType="emp">
 		select e.*,d.deptname from emp e, dept d
-		where e.deptno=d.deptno and e.empid=#{empid} and e.pwd=#{pwd} and e.state='0'
+		where e.deptno=d.deptno and e.id=#{id} and e.pwd=#{pwd} and e.state='0'
 	</select>
 	
 	
@@ -62,7 +62,11 @@
 		order by e.deptno asc
 	</select>
 	<select id="idcheck" parameterType="String" resultType="emp">
-		select * from emp where empid = #{empid}
+		select * from emp where id = #{id}
+	</select>
+	
+	<select id="getid" parameterType="Integer" resultType="String">
+		select id from emp where empno=#{empno}
 	</select>
 </mapper>
 

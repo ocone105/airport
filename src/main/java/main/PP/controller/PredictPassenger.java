@@ -19,7 +19,7 @@ import main.PP.dto.PredictPassengerDTO;
 @Service
 public class PredictPassenger {
 //http://openapi.airport.kr/openapi/service/PassengerNoticeKR/getfPassengerNoticeIKR?ServiceKey=인증키&selectdate=0
-	ArrayList<PredictPassengerDTO> PredictPassenger(String selectdate) throws IOException {
+	public ArrayList<PredictPassengerDTO> PredictPassenger(String selectdate) throws IOException {
 		StringBuilder urlBuilder = new StringBuilder(
 				"http://openapi.airport.kr/openapi/service/PassengerNoticeKR/getfPassengerNoticeIKR");
 		urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8")

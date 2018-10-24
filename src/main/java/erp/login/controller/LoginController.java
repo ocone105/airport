@@ -1,7 +1,5 @@
 package erp.login.controller;
 
-import java.text.SimpleDateFormat;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,9 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import erp.insa.dto.EmpDTO;
 import erp.insa.service.EmpService;
-import erp.security.dto.SecurityDTO;
 import erp.security.service.SecurityService;
 @Controller
 public class LoginController {
@@ -26,7 +22,7 @@ public class LoginController {
 		return "erp/login";
 	}
 	
-	@RequestMapping(value="/erp/login.do", method=RequestMethod.POST)
+	/*@RequestMapping(value="/erp/login.do", method=RequestMethod.POST)
 	public String emplogin(EmpDTO emp,HttpSession session){
 		//System.out.println("emp"+emp);
 		EmpDTO loginUser = service.login(emp);
@@ -50,7 +46,7 @@ public class LoginController {
 			url = "erp/login";
 		}
 		return url;
-	}
+	}*/
 	
 	@RequestMapping(value="/erp/logout.do")
 	public String emplogout(HttpServletRequest request) {

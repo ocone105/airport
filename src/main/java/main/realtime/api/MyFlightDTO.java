@@ -9,11 +9,12 @@ public class MyFlightDTO {
 	private String scheduleDateTime;
 	private String gatenumber;
 	private String remark;
+	private String delay;
 	
 	public MyFlightDTO() {}
 
 	public MyFlightDTO(int favoriteno, String id, String flightId, String airline, String airport,
-			String scheduleDateTime, String gatenumber, String remark) {
+			String scheduleDateTime, String gatenumber, String remark, String delay) {
 		super();
 		this.favoriteno = favoriteno;
 		this.id = id;
@@ -23,13 +24,14 @@ public class MyFlightDTO {
 		this.scheduleDateTime = scheduleDateTime;
 		this.gatenumber = gatenumber;
 		this.remark = remark;
+		this.delay = delay;
 	}
 
 	@Override
 	public String toString() {
 		return "MyFlightDTO [favoriteno=" + favoriteno + ", id=" + id + ", flightId=" + flightId + ", airline="
 				+ airline + ", airport=" + airport + ", scheduleDateTime=" + scheduleDateTime + ", gatenumber="
-				+ gatenumber + ", remark=" + remark + "]";
+				+ gatenumber + ", remark=" + remark + ", delay=" + delay + "]";
 	}
 
 	public int getFavoriteno() {
@@ -94,6 +96,14 @@ public class MyFlightDTO {
 
 	public void setRemark(String remark) {
 		this.remark = remark;
+	}
+
+	public String getDelay() {
+		return delay;
+	}
+
+	public void setDelay(String delay) {
+		this.delay = delay;
 	}
 
 }

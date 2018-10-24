@@ -20,12 +20,15 @@ import org.springframework.web.util.WebUtils;
 import erp.board.DTO.BoardNoticeCmtDTO;
 import erp.board.DTO.BoardNoticeDTO;
 import erp.board.service.BoardNoticeService;
+import erp.insa.service.EmpService;
 
 @Controller
 public class BoardNoticeController {
 	
 	@Autowired
 	BoardNoticeService service;
+	@Autowired
+	EmpService empservice;
 	
 	@RequestMapping("/erp/noticelist.do")
 	public ModelAndView noticelist(String pageNo){
@@ -86,6 +89,8 @@ public class BoardNoticeController {
 		if(post.getAttach().equals("null")) {
 			post.setAttach("");
 		}
+		String id = empservice.getId(post.getEmpno());
+		mav.addObject("id",id);
 		mav.addObject("post",post);
 		mav.addObject("cmt", cmt);
 		mav.setViewName("erp/boardread1");
@@ -128,7 +133,7 @@ public class BoardNoticeController {
 		ModelAndView mav = new ModelAndView();
 		
 		// 다운 받은 파일의 절대 경로 필요
-		String fileFullPath = "D:\\ICTSub\\work\\3rdProject\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\airport\\WEB-INF\\ERP\\board\\upload/"+file; 
+		String fileFullPath = "C:\\ict\\work\\bigdataWork\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\airport\\WEB-INF\\ERP\\board\\upload/"+file; 
 		File downloadFile = new File(fileFullPath);
 		if(!downloadFile.canRead()) {
 			throw new Exception("파일을 찾을 수 없습니다.");

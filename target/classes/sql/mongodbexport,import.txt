@@ -6,3 +6,8 @@ mongoimport -d airport -c abnormal --file C:\Users\dy\Desktop\data\abnormal.json
 mongoimport -d airport -c allflight --file C:\Users\dy\Desktop\data\allflight.json
 
 data.zip에 있음
+
+
+밑에꺼만 하면됨 위에꺼하면 겹침
+mongodump -d airport -o C:\Users\kitri\Desktop\data 
+mongorestore -d airport C:\Users\kitri\Desktop\data\airport
